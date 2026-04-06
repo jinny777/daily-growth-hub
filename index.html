@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Daily Growth Hub</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&display=swap');
+  * { font-family: 'Pretendard', -apple-system, sans-serif; }
+
+  .card-enter { animation: fadeSlideIn 0.4s ease both; }
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .check-pop { animation: popBounce 0.35s cubic-bezier(.36,2,.61,.73) both; }
+  @keyframes popBounce {
+    0%   { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1);   opacity: 1; }
+  }
+  .progress-bar { transition: width 0.6s cubic-bezier(.4,0,.2,1); }
+  .tab-active { border-bottom: 3px solid #6366f1; color: #6366f1; font-weight: 700; }
+  .markdown p  { margin-bottom: 4px; font-size: 13px; color: #4b5563; }
+  .markdown li { font-size: 13px; color: #4b5563; margin-left: 16px; list-style: disc; }
+  .markdown h2 { font-size: 13px; font-weight: 700; color: #374151; margin-top: 6px; margin-bottom: 2px; }
+</style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-indigo-50 min-h-screen">
+
+<!-- ═══════════════════════════════════════════════════
+     SCREENS
+═══════════════════════════════════════════════════ -->
+
+<!-- LOGIN SCREEN -->
+<div id="screen-login" class="min-h-screen flex items-center justify-center">
+  <div class="w-full max-w-sm bg-white rounded-2xl shadow-xl p-8 card-enter">
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-3">📚</div>
+      <h1 class="text-2xl font-bold text-gray-900">Daily Growth Hub</h1>
+      <p class="text-sm text-gray-400 mt-1">매일 성장하는 나를 위한 공간</p>
+    </div>
+    <div class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">이메일</label>
+        <input id="login-email" type="email" value="user@example.com"
+          class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 bg-gray-50" />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">비밀번호</label>
+        <input id="login-pw" type="password" value="password"
+          class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 bg-gray-50" />
+      </div>
+      <button onclick="doLogin()"
+        class="w-full bg-indigo-500 text-white font-bold py-3 rounded-xl hover:bg-indigo-600 active:scale-95 transition text-sm">
+        로그인
+      </button>
+    </div>
+    <div class="text-center mt-5">
+      <span class="text-sm text-gray-400">계정이 없으신가요? </span>
+      <button onclick="showScreen('register')" class="text-sm text-indigo-500 font-semibold hover:underline">회원가입</button>
+    </div>
+    <div class="mt-6 p-3 bg-indigo-50 rounded-xl text-center">
+      <p class="text-xs text-gray-400">데모 모드 — 아무 이메일/비밀번호나 입력하세요</p>
+    </div>
+  </div>
+</div>
+
+<!-- REGISTER SCREEN -->
+<div id="screen-register" class="min-h-screen flex items-center justify-center hidden">
+  <div class="w-full max-w-sm bg-white rounded-2xl shadow-xl p-8 card-enter">
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-3">🌱</div>
+      <h1 class="text-2xl font-bold text-gray-900">시작하기</h1>
+      <p class="text-sm text-gray-400 mt-1">Daily Growth Hub 회원가입</p>
+    </div>
+    <div class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">이름</label>
+        <input id="reg-name" type="text" placeholder="홍길동"
+          class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400" />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">이메일</label>
+        <input id="reg-email" type="email" placeholder="you@example.com"
+          class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400" />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">비밀번호 (8자 이상)</label>
+        <input id="reg-pw" type="password" placeholder="••••••••"
+          class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400" />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Day 1 시작일 <span class="text-gray-400 font-normal">(기본: 오늘)</span></label>
+        <input id="reg-start" type="date"
+          class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400" />
+      </div>
+      <button onclick="doRegister()"
+        class="w-full bg-indigo-500 text-white font-bold py-3 rounded-xl hover:bg-indigo-600 active:scale-95 transition text-sm">
+        시작하기
+      </button>
+    </div>
+    <div class="text-center mt-5">
+      <span class="text-sm text-gray-400">이미 계정이 있으신가요? </span>
+      <button onclick="showScreen('login')" class="text-sm text-indigo-500 font-semibold hover:underline">로그인</button>
+    </div>
+  </div>
+</div>
+
+<!-- DASHBOARD SCREEN -->
+<div id="screen-dashboard" class="hidden min-h-screen">
+  <!-- Navbar -->
+  <nav class="bg-white/90 backdrop-blur border-b border-gray-100 px-4 py-3 sticky top-0 z-10">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="text-xl">📚</span>
+        <span class="font-bold text-gray-900">Daily Growth Hub</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <span id="nav-streak" class="text-sm text-orange-500 font-semibold"></span>
+        <button onclick="showTab('dashboard','progress')" class="text-sm text-gray-500 hover:text-gray-800 transition">진행 기록</button>
+        <button onclick="showTab('dashboard','admin')" class="text-sm text-indigo-500 font-semibold hover:text-indigo-700 transition">관리자</button>
+        <button onclick="doLogout()" class="text-sm text-gray-400 hover:text-gray-600 transition">로그아웃</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Tabs -->
+  <div class="bg-white border-b">
+    <div class="max-w-5xl mx-auto flex">
+      <button id="tab-today" onclick="switchTab('today')" class="px-5 py-3 text-sm transition tab-active">오늘의 학습</button>
+      <button id="tab-progress" onclick="switchTab('progress')" class="px-5 py-3 text-sm text-gray-500 transition">진행 기록</button>
+      <button id="tab-admin" onclick="switchTab('admin')" class="px-5 py-3 text-sm text-gray-500 transition">관리자</button>
+    </div>
+  </div>
+
+  <!-- TAB: TODAY -->
+  <div id="tab-content-today" class="max-w-5xl mx-auto px-4 py-8">
+    <!-- Header -->
+    <div class="mb-7">
+      <div class="flex items-end justify-between mb-3">
+        <div>
+          <p id="today-date" class="text-sm text-gray-400"></p>
+          <h1 class="text-3xl font-extrabold text-gray-900 mt-0.5">
+            Day <span id="today-day">1</span>
+            <span id="today-greeting" class="text-gray-400 font-normal text-xl ml-2"></span>
+          </h1>
+        </div>
+        <div class="text-right">
+          <span id="today-score" class="text-4xl font-mono font-bold text-indigo-500">0/3</span>
+          <p class="text-xs text-gray-400 mt-0.5">완료</p>
+        </div>
+      </div>
+      <div class="w-full bg-gray-100 rounded-full h-2.5">
+        <div id="progress-bar" class="bg-indigo-500 h-2.5 rounded-full progress-bar" style="width:0%"></div>
+      </div>
+    </div>
+
+    <!-- All done banner -->
+    <div id="all-done-banner" class="hidden mb-6 bg-gradient-to-r from-green-400 to-emerald-500 text-white rounded-2xl p-5 text-center card-enter">
+      <div class="text-3xl mb-1">🎉</div>
+      <p class="font-bold text-lg">오늘 모든 학습 완료!</p>
+      <p id="banner-streak" class="text-sm opacity-90 mt-0.5"></p>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+      <!-- ETF CARD -->
+      <div id="card-etf" class="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex flex-col gap-3 card-enter transition-all" style="animation-delay:0ms">
+        <div class="flex items-center gap-2">
+          <span class="text-xl">📈</span>
+          <span class="text-xs font-bold uppercase tracking-widest text-indigo-500">ETF 스터디</span>
+          <span id="etf-day-badge" class="ml-auto text-xs text-gray-300 font-mono"></span>
+        </div>
+        <h3 id="etf-title" class="font-bold text-gray-900 text-base leading-snug"></h3>
+        <div id="etf-body" class="flex-1 bg-indigo-50 rounded-xl p-3 overflow-hidden max-h-48 markdown"></div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs text-gray-400">⏱ 10분 분량</span>
+        </div>
+        <button id="btn-etf" onclick="completeTask('etf')"
+          class="rounded-xl py-2.5 text-sm font-bold bg-indigo-500 text-white hover:bg-indigo-600 active:scale-95 transition">
+          학습 완료
+        </button>
+      </div>
+
+      <!-- ENGLISH CARD -->
+      <div id="card-english" class="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex flex-col gap-3 card-enter transition-all" style="animation-delay:80ms">
+        <div class="flex items-center gap-2">
+          <span class="text-xl">🗣</span>
+          <span class="text-xs font-bold uppercase tracking-widest text-blue-500">영어 스터디</span>
+          <span id="english-day-badge" class="ml-auto text-xs text-gray-300 font-mono"></span>
+        </div>
+        <h3 id="english-title" class="font-bold text-gray-900 text-base leading-snug"></h3>
+        <!-- YouTube 플레이리스트 클릭 플레이어 (임베드 차단 우회) -->
+        <a id="english-yt-link" href="#" target="_blank"
+          class="block rounded-xl overflow-hidden relative group cursor-pointer"
+          style="aspect-ratio:16/9; background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%)">
+          <div class="absolute inset-0 flex flex-col items-center justify-center gap-2">
+            <!-- YouTube 로고 모양 재생 버튼 -->
+            <div class="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:bg-red-500 transition-transform duration-200">
+              <svg viewBox="0 0 24 24" class="w-8 h-8 fill-white ml-1"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span id="english-day-label" class="text-white text-sm font-bold mt-1 drop-shadow"></span>
+            <span class="text-white/60 text-xs">클릭하면 YouTube에서 재생됩니다</span>
+          </div>
+          <!-- 호버 오버레이 -->
+          <div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition rounded-xl"></div>
+        </a>
+        <p id="english-desc" class="text-xs text-gray-400 line-clamp-2"></p>
+        <a id="english-yt-link2" href="#" target="_blank"
+          class="block text-center text-sm bg-red-500 text-white rounded-xl py-2.5 font-bold hover:bg-red-600 active:scale-95 transition">
+          ▶ YouTube 재생목록 전체 보기
+        </a>
+        <button id="btn-english" onclick="completeTask('english')"
+          class="rounded-xl py-2.5 text-sm font-bold bg-blue-500 text-white hover:bg-blue-600 active:scale-95 transition">
+          시청 완료
+        </button>
+      </div>
+
+      <!-- BIBLE CARD -->
+      <div id="card-bible" class="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex flex-col gap-3 card-enter transition-all" style="animation-delay:160ms">
+        <div class="flex items-center gap-2">
+          <span class="text-xl">📖</span>
+          <span class="text-xs font-bold uppercase tracking-widest text-amber-600">성경 읽기</span>
+          <span id="bible-day-badge" class="ml-auto text-xs text-gray-300 font-mono"></span>
+        </div>
+        <h3 id="bible-title" class="font-bold text-gray-900 text-base leading-snug"></h3>
+        <div id="bible-chapters" class="flex-1 bg-amber-50 rounded-xl p-3 space-y-2"></div>
+        <a id="bible-link" href="https://www.godpeople.com/?GO=bible&VER=kor&BID=PSA&CID=1&SID=1" target="_blank"
+          class="block text-center text-sm bg-amber-500 text-white rounded-xl py-2.5 font-bold hover:bg-amber-600 active:scale-95 transition">
+          📖 성경 읽으러 가기
+        </a>
+        <button id="btn-bible" onclick="completeTask('bible')"
+          class="rounded-xl py-2.5 text-sm font-bold bg-amber-500 text-white hover:bg-amber-600 active:scale-95 transition">
+          읽기 완료
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: PROGRESS -->
+  <div id="tab-content-progress" class="max-w-3xl mx-auto px-4 py-8 hidden">
+    <div class="grid grid-cols-2 gap-4 mb-6">
+      <div class="bg-white rounded-2xl p-6 text-center shadow-sm">
+        <div class="text-4xl mb-1">🔥</div>
+        <div id="streak-current" class="text-4xl font-extrabold text-orange-500">0일</div>
+        <div class="text-sm text-gray-400 mt-1">현재 연속 달성</div>
+      </div>
+      <div class="bg-white rounded-2xl p-6 text-center shadow-sm">
+        <div class="text-4xl mb-1">🏆</div>
+        <div id="streak-longest" class="text-4xl font-extrabold text-indigo-500">0일</div>
+        <div class="text-sm text-gray-400 mt-1">최장 연속 기록</div>
+      </div>
+    </div>
+    <div class="bg-white rounded-2xl p-6 shadow-sm">
+      <h2 class="font-bold text-gray-800 mb-4">달성 히트맵</h2>
+      <div id="heatmap-container" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+      <div class="flex items-center gap-4 mt-5 text-xs text-gray-400">
+        <div class="flex items-center gap-1.5"><div class="w-3 h-3 rounded bg-gray-100"></div> 미완료</div>
+        <div class="flex items-center gap-1.5"><div class="w-3 h-3 rounded bg-indigo-200"></div> 일부완료</div>
+        <div class="flex items-center gap-1.5"><div class="w-3 h-3 rounded bg-indigo-500"></div> 전체완료</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: ADMIN -->
+  <div id="tab-content-admin" class="max-w-5xl mx-auto px-4 py-8 hidden">
+    <!-- YouTube sync -->
+    <div class="bg-white rounded-2xl p-5 shadow-sm border border-red-100 mb-6">
+      <h2 class="font-bold text-gray-800 mb-3">🎬 영어 스터디 — YouTube 플레이리스트 동기화</h2>
+      <div class="flex gap-2">
+        <input id="yt-playlist" value="PLAkBgrW5qY0ROKRZQO-vpJQ6kYdYT5Hss"
+          class="flex-1 border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-300" />
+        <button onclick="simulateSync()"
+          class="bg-red-500 text-white px-4 py-2 rounded-xl text-sm font-bold hover:bg-red-600 transition">
+          ▶ 동기화
+        </button>
+      </div>
+      <p id="sync-status" class="text-xs text-gray-400 mt-2">YOUTUBE_API_KEY 환경변수가 설정되어 있어야 합니다.</p>
+    </div>
+
+    <!-- Content Table -->
+    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+      <div class="p-4 border-b flex items-center gap-3 flex-wrap">
+        <h2 class="font-bold text-gray-800">콘텐츠 목록</h2>
+        <span id="content-total" class="text-sm text-gray-400"></span>
+        <div class="ml-auto flex gap-2 flex-wrap">
+          <button onclick="filterContent('')" id="filter-all" class="text-xs px-3 py-1.5 rounded-full bg-indigo-500 text-white">전체</button>
+          <button onclick="filterContent('etf')" id="filter-etf" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">📈 ETF</button>
+          <button onclick="filterContent('english')" id="filter-english" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">🗣 영어</button>
+          <button onclick="filterContent('bible')" id="filter-bible" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">📖 성경</button>
+        </div>
+      </div>
+      <div id="admin-table-body" class="divide-y divide-gray-50"></div>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT MODAL -->
+<div id="edit-modal" class="fixed inset-0 bg-black/40 flex items-center justify-center z-50 hidden p-4">
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg p-6 card-enter">
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="font-bold text-gray-900">콘텐츠 편집</h3>
+      <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600 text-xl font-bold">×</button>
+    </div>
+    <div class="space-y-3">
+      <div>
+        <label class="block text-xs font-semibold text-gray-500 mb-1">제목</label>
+        <input id="edit-title" type="text" class="w-full border rounded-xl px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-300 focus:outline-none" />
+      </div>
+      <div>
+        <label class="block text-xs font-semibold text-gray-500 mb-1">Payload (JSON)</label>
+        <textarea id="edit-payload" rows="7"
+          class="w-full border rounded-xl px-3 py-2 text-xs font-mono focus:ring-2 focus:ring-indigo-300 focus:outline-none"></textarea>
+      </div>
+    </div>
+    <div class="flex gap-2 mt-4">
+      <button onclick="saveEdit()"
+        class="flex-1 bg-indigo-500 text-white font-bold py-2.5 rounded-xl hover:bg-indigo-600 transition text-sm">저장</button>
+      <button onclick="closeModal()"
+        class="px-5 bg-gray-100 text-gray-600 font-medium py-2.5 rounded-xl hover:bg-gray-200 transition text-sm">취소</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-sm px-5 py-3 rounded-full shadow-lg hidden z-50 transition"></div>
+
+<script>
+// ═══════════════════════════════════════════════
+//  DATA
+// ═══════════════════════════════════════════════
+const ETF_CONTENT = [
+  { title: 'ETF란 무엇인가?', body: '## ETF 기초\n\nETF(Exchange Traded Fund)는 주식처럼 거래소에서 실시간으로 거래되는 펀드입니다.\n\n**핵심 장점:**\n- 낮은 수수료 (평균 0.1~0.5%)\n- 분산투자 효과\n- 세금 효율성\n- 높은 유동성' },
+  { title: 'ETF vs 주식 vs 펀드 비교', body: '## 비교 분석\n\n**ETF:** 실시간 거래 + 낮은 수수료 + 분산투자\n**주식:** 실시간 거래 + 낮은 수수료 + 집중투자\n**펀드:** 종가 거래 + 높은 수수료 + 분산투자\n\n- 장기 투자: ETF 유리\n- 단기 트레이딩: 주식 유리' },
+  { title: 'ETF 종류: 주식형', body: '## 주식 ETF\n\nS&P 500, KOSPI 200 같은 주가지수를 추적합니다.\n\n**대표 ETF:**\n- TIGER 200 (국내)\n- SPY (S&P 500)\n- QQQ (나스닥 100)' },
+  { title: 'ETF 종류: 채권형', body: '## 채권 ETF\n\n안정적인 수익을 원하는 투자자에게 적합합니다.\n\n**특징:** 금리와 역방향 움직임\n**대표:** KODEX 국고채10년\n- 포트폴리오 안정화에 활용' },
+  { title: '포트폴리오 구성법', body: '## 코어-새틀라이트 전략\n\n- **코어(70~80%)**: 전세계 지수 ETF\n- **새틀라이트(20~30%)**: 섹터/테마 ETF\n\n균형 잡힌 분산투자의 기본 원칙입니다.' },
+];
+
+const ENGLISH_CONTENT = [
+  { title: 'Day 1 - 영어 공부 시작하기', videoId: 'WwiCVPIp3_0', desc: '영어 학습의 첫 걸음. 기초부터 차근차근 시작합니다.' },
+  { title: 'Day 2 - 기본 인사 표현', videoId: 'WwiCVPIp3_0', desc: '일상에서 자주 쓰는 인사 표현을 배워봅니다.' },
+  { title: 'Day 3 - 숫자와 날짜 읽기', videoId: 'WwiCVPIp3_0', desc: '숫자, 날짜, 시간을 영어로 말하는 방법.' },
+  { title: 'Day 4 - 자기소개하기', videoId: 'WwiCVPIp3_0', desc: '이름, 직업, 나라를 영어로 소개하는 방법.' },
+  { title: 'Day 5 - 감사와 사과 표현', videoId: 'WwiCVPIp3_0', desc: '감사함과 미안함을 표현하는 다양한 영어 문장.' },
+];
+
+const PSALM_TITLES = {
+  1:'복 있는 사람', 2:'여호와의 기름부음 받은 자', 3:'아침 기도', 4:'저녁 기도', 5:'의인의 기도',
+  6:'회개의 기도', 7:'하나님께 피함', 8:'창조의 영광', 9:'하나님을 찬양함', 10:'악인에 대한 기도',
+  11:'여호와를 피난처로 삼음', 12:'거짓된 세대', 13:'구원을 위한 간구', 14:'어리석은 자',
+  15:'여호와의 장막에 거할 자', 16:'여호와를 신뢰함', 17:'공의로운 자의 기도', 18:'구원의 시',
+  19:'하나님의 창조와 율법', 20:'승리를 위한 기도', 21:'왕의 승리', 22:'버림받은 자의 부르짖음',
+  23:'선한 목자', 24:'영광의 왕', 25:'여호와를 의지함',
+};
+
+const ADMIN_CONTENT = [
+  ...ETF_CONTENT.map((c,i) => ({ id:i+1, cat:'etf', catLabel:'ETF 스터디', catIcon:'📈', day:i+1, title:c.title, active:true, payload: JSON.stringify({body:c.body},null,2) })),
+  ...ENGLISH_CONTENT.map((c,i) => ({ id:100+i, cat:'english', catLabel:'영어 스터디', catIcon:'🗣', day:i+1, title:c.title, active:true, payload: JSON.stringify({videoId:c.videoId},null,2) })),
+  ...Array.from({length:5},(_,i) => {
+    const start=(i*3)+1; const end=Math.min(start+2,150);
+    const chs=Array.from({length:end-start+1},(_,j)=>start+j);
+    return { id:200+i, cat:'bible', catLabel:'성경 읽기', catIcon:'📖', day:i+1, title:`시편 ${start}편 ~ ${end}편`, active:true, payload: JSON.stringify({book:'Psalms',chapters:chs},null,2) };
+  }),
+];
+
+// ═══════════════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════════════
+let state = {
+  user: null,
+  startDate: null,
+  completed: {},   // { 'YYYY-MM-DD': { etf:bool, english:bool, bible:bool } }
+  streak: 0,
+  longestStreak: 0,
+  adminFilter: '',
+  editingId: null,
+};
+
+function loadState() {
+  try {
+    const s = localStorage.getItem('dgh_state');
+    if (s) state = { ...state, ...JSON.parse(s) };
+  } catch {}
+}
+
+function saveState() {
+  localStorage.setItem('dgh_state', JSON.stringify(state));
+}
+
+// ═══════════════════════════════════════════════
+//  UTILS
+// ═══════════════════════════════════════════════
+function today() {
+  return new Date().toISOString().split('T')[0];
+}
+
+function getDayIndex() {
+  if (!state.startDate) return 1;
+  const start = new Date(state.startDate);
+  const now = new Date();
+  const diff = Math.floor((now - start) / 86400000);
+  return Math.max(1, diff + 1);
+}
+
+function formatDate(d) {
+  return new Date(d).toLocaleDateString('ko-KR', { year:'numeric', month:'long', day:'numeric', weekday:'long' });
+}
+
+function getBibleChapters(dayIndex) {
+  const start = (dayIndex - 1) * 3 + 1;
+  const end = Math.min(start + 2, 150);
+  return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+}
+
+function showToast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.remove('hidden');
+  setTimeout(() => el.classList.add('hidden'), 2500);
+}
+
+// ═══════════════════════════════════════════════
+//  SCREENS
+// ═══════════════════════════════════════════════
+function showScreen(name) {
+  ['login','register','dashboard'].forEach(s =>
+    document.getElementById('screen-'+s).classList.toggle('hidden', s !== name)
+  );
+}
+
+function switchTab(name) {
+  ['today','progress','admin'].forEach(t => {
+    document.getElementById('tab-'+t).className = 'px-5 py-3 text-sm transition ' +
+      (t === name ? 'tab-active' : 'text-gray-500');
+    document.getElementById('tab-content-'+t).classList.toggle('hidden', t !== name);
+  });
+  if (name === 'progress') renderProgress();
+  if (name === 'admin') renderAdmin();
+}
+
+function showTab(screen, tab) {
+  showScreen(screen);
+  switchTab(tab);
+}
+
+// ═══════════════════════════════════════════════
+//  AUTH
+// ═══════════════════════════════════════════════
+function doLogin() {
+  const email = document.getElementById('login-email').value.trim() || 'user@example.com';
+  const name = email.split('@')[0];
+  state.user = { email, name };
+  if (!state.startDate) state.startDate = today();
+  saveState();
+  showScreen('dashboard');
+  renderDashboard();
+}
+
+function doRegister() {
+  const name = document.getElementById('reg-name').value.trim() || '사용자';
+  const email = document.getElementById('reg-email').value.trim() || 'user@example.com';
+  const startDate = document.getElementById('reg-start').value || today();
+  state.user = { email, name };
+  state.startDate = startDate;
+  saveState();
+  showScreen('dashboard');
+  renderDashboard();
+}
+
+function doLogout() {
+  state.user = null;
+  saveState();
+  showScreen('login');
+}
+
+// ═══════════════════════════════════════════════
+//  DASHBOARD
+// ═══════════════════════════════════════════════
+function renderDashboard() {
+  const dayIdx = getDayIndex();
+  const todayKey = today();
+  const done = state.completed[todayKey] || {};
+
+  // Header
+  document.getElementById('today-date').textContent = formatDate(todayKey);
+  document.getElementById('today-day').textContent = dayIdx;
+  document.getElementById('today-greeting').textContent =
+    `— 안녕하세요, ${state.user?.name || ''}님!`;
+
+  const completedCount = [done.etf, done.english, done.bible].filter(Boolean).length;
+  document.getElementById('today-score').textContent = `${completedCount}/3`;
+  document.getElementById('progress-bar').style.width = `${Math.round(completedCount / 3 * 100)}%`;
+
+  // Streak
+  calcStreak();
+  const streakEl = document.getElementById('nav-streak');
+  streakEl.textContent = state.streak > 0 ? `🔥 ${state.streak}일 연속` : '';
+
+  // All done
+  const allDone = completedCount === 3;
+  document.getElementById('all-done-banner').classList.toggle('hidden', !allDone);
+  if (allDone) {
+    document.getElementById('banner-streak').textContent =
+      `내일도 이 기세 이어가요. 연속 ${state.streak}일!`;
+  }
+
+  // ETF Card
+  const etfIdx = Math.min(dayIdx, ETF_CONTENT.length) - 1;
+  const etf = ETF_CONTENT[etfIdx];
+  document.getElementById('etf-day-badge').textContent = `Day ${dayIdx}`;
+  document.getElementById('etf-title').textContent = etf.title;
+  document.getElementById('etf-body').innerHTML = renderMarkdown(etf.body);
+  setCardDone('etf', done.etf);
+
+  // English Card — YouTube 플레이리스트 직접 링크 (임베드 차단 우회)
+  const PLAYLIST_ID = 'PLAkBgrW5qY0ROKRZQO-vpJQ6kYdYT5Hss';
+  // index는 1-based, YouTube 재생목록은 &index=N 으로 해당 순서 영상으로 이동
+  const ytUrl = `https://www.youtube.com/watch?list=${PLAYLIST_ID}&index=${dayIdx}`;
+  document.getElementById('english-day-badge').textContent = `Day ${dayIdx}`;
+  document.getElementById('english-title').textContent = `영어 스터디 Day ${dayIdx}`;
+  document.getElementById('english-desc').textContent = `재생목록 ${dayIdx}번째 영상 — 클릭하면 YouTube에서 바로 재생됩니다.`;
+  document.getElementById('english-day-label').textContent = `Day ${dayIdx} — 재생목록 ${dayIdx}번째 영상`;
+  document.getElementById('english-yt-link').href = ytUrl;
+  document.getElementById('english-yt-link2').href = `https://www.youtube.com/playlist?list=${PLAYLIST_ID}`;
+  setCardDone('english', done.english);
+
+  // Bible Card
+  const chapters = getBibleChapters(dayIdx);
+  const startCh = chapters[0], endCh = chapters[chapters.length - 1];
+  document.getElementById('bible-day-badge').textContent = `Day ${dayIdx}`;
+  document.getElementById('bible-title').textContent = `시편 ${startCh}편 ~ ${endCh}편`;
+  // 갓피플 성경 — 개역개정 한국어, 시편(PSA) 해당 장으로 바로 이동
+  document.getElementById('bible-link').href = `https://www.godpeople.com/?GO=bible&VER=kor&BID=PSA&CID=${startCh}&SID=1`;
+  const chContainer = document.getElementById('bible-chapters');
+  chContainer.innerHTML = chapters.map((ch, i) => `
+    <div class="flex items-start gap-2">
+      <span class="w-5 h-5 bg-amber-200 text-amber-800 rounded-full text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">${i+1}</span>
+      <span class="text-sm text-gray-700">
+        <span class="font-semibold">시편 ${ch}편</span>
+        ${PSALM_TITLES[ch] ? `<span class="text-gray-400"> — ${PSALM_TITLES[ch]}</span>` : ''}
+      </span>
+    </div>
+  `).join('');
+  setCardDone('bible', done.bible);
+}
+
+function renderMarkdown(text) {
+  return (text || '').split('\n').slice(0, 10).map(line => {
+    if (line.startsWith('## ')) return `<h2>${line.slice(3)}</h2>`;
+    if (/^\*\*.*\*\*$/.test(line.trim())) return `<p><strong>${line.replace(/\*\*/g,'')}</strong></p>`;
+    if (line.startsWith('- ')) return `<li>${line.slice(2)}</li>`;
+    if (line.trim()) return `<p>${line}</p>`;
+    return '';
+  }).join('');
+}
+
+function setCardDone(cat, isDone) {
+  const card = document.getElementById(`card-${cat}`);
+  const btn = document.getElementById(`btn-${cat}`);
+  if (isDone) {
+    card.classList.add('ring-2', 'ring-green-200', 'opacity-75');
+    btn.className = 'rounded-xl py-2.5 text-sm font-bold bg-green-100 text-green-700 cursor-default check-pop';
+    btn.textContent = '✅ 완료!';
+    btn.disabled = true;
+  } else {
+    card.classList.remove('ring-2', 'ring-green-200', 'opacity-75');
+    btn.disabled = false;
+    const configs = {
+      etf: ['bg-indigo-500 text-white hover:bg-indigo-600', '학습 완료'],
+      english: ['bg-blue-500 text-white hover:bg-blue-600', '시청 완료'],
+      bible: ['bg-amber-500 text-white hover:bg-amber-600', '읽기 완료'],
+    };
+    const [cls, label] = configs[cat] || [];
+    btn.className = `rounded-xl py-2.5 text-sm font-bold active:scale-95 transition ${cls}`;
+    btn.textContent = label;
+  }
+}
+
+function completeTask(cat) {
+  const todayKey = today();
+  if (!state.completed[todayKey]) state.completed[todayKey] = {};
+  state.completed[todayKey][cat] = true;
+  saveState();
+  calcStreak();
+  renderDashboard();
+  const labels = { etf: 'ETF 스터디', english: '영어 스터디', bible: '성경 읽기' };
+  showToast(`✅ ${labels[cat]} 완료!`);
+}
+
+// ═══════════════════════════════════════════════
+//  STREAK
+// ═══════════════════════════════════════════════
+function calcStreak() {
+  let streak = 0;
+  let d = new Date();
+  while (true) {
+    const key = d.toISOString().split('T')[0];
+    const done = state.completed[key];
+    const allDone = done && done.etf && done.english && done.bible;
+    if (!allDone) break;
+    streak++;
+    d.setDate(d.getDate() - 1);
+    if (streak > 365) break;
+  }
+  state.streak = streak;
+  state.longestStreak = Math.max(state.longestStreak, streak);
+  saveState();
+}
+
+// ═══════════════════════════════════════════════
+//  PROGRESS / HEATMAP
+// ═══════════════════════════════════════════════
+function renderProgress() {
+  calcStreak();
+  document.getElementById('streak-current').textContent = state.streak + '일';
+  document.getElementById('streak-longest').textContent = state.longestStreak + '일';
+
+  const container = document.getElementById('heatmap-container');
+  const now = new Date();
+  container.innerHTML = [-2,-1,0].map(offset => {
+    const d = new Date(now.getFullYear(), now.getMonth() + offset, 1);
+    return renderCalendarMonth(d.getFullYear(), d.getMonth());
+  }).join('');
+}
+
+function renderCalendarMonth(year, month) {
+  const startDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const todayKey = today();
+  const months = ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];
+  const days = ['일','월','화','수','목','금','토'];
+
+  let cells = days.map(d => `<div class="text-center text-xs text-gray-300 font-medium">${d}</div>`).join('');
+  for (let i = 0; i < startDay; i++) cells += '<div></div>';
+
+  for (let day = 1; day <= daysInMonth; day++) {
+    const key = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+    const done = state.completed[key] || {};
+    const count = [done.etf, done.english, done.bible].filter(Boolean).length;
+    const isToday = key === todayKey;
+    const color = count === 3 ? 'bg-indigo-500' : count > 0 ? 'bg-indigo-200' : 'bg-gray-100';
+    const ring = isToday ? 'ring-2 ring-indigo-400 ring-offset-1' : '';
+    const title = `${key}: ${count}/3 완료`;
+    cells += `<div class="aspect-square rounded-md ${color} ${ring} text-xs flex items-center justify-center text-white font-bold cursor-default" title="${title}">${count > 0 && count < 3 ? count : ''}</div>`;
+  }
+
+  return `
+    <div>
+      <p class="text-sm font-bold text-gray-600 mb-2">${year}년 ${months[month]}</p>
+      <div class="grid grid-cols-7 gap-1">${cells}</div>
+    </div>`;
+}
+
+// ═══════════════════════════════════════════════
+//  ADMIN
+// ═══════════════════════════════════════════════
+function filterContent(cat) {
+  state.adminFilter = cat;
+  ['all','etf','english','bible'].forEach(f => {
+    const btn = document.getElementById('filter-' + f);
+    if (!btn) return;
+    btn.className = ((!cat && f === 'all') || (cat && f === cat))
+      ? 'text-xs px-3 py-1.5 rounded-full bg-indigo-500 text-white'
+      : 'text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600';
+  });
+  renderAdmin();
+}
+
+function renderAdmin() {
+  const filtered = ADMIN_CONTENT.filter(c => !state.adminFilter || c.cat === state.adminFilter);
+  document.getElementById('content-total').textContent = `(${filtered.length}개)`;
+  document.getElementById('admin-table-body').innerHTML = filtered.map(item => `
+    <div class="flex items-center px-4 py-3 gap-3 hover:bg-gray-50 text-sm">
+      <span class="text-base">${item.catIcon}</span>
+      <span class="text-gray-500 w-20 shrink-0">${item.catLabel}</span>
+      <span class="font-mono text-gray-400 w-8 shrink-0">D${item.day}</span>
+      <span class="flex-1 font-medium text-gray-800 truncate">${item.title}</span>
+      <span class="px-2 py-0.5 rounded-full text-xs ${item.active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-400'} shrink-0">${item.active ? '활성' : '비활성'}</span>
+      <button onclick="openEdit(${item.id})" class="text-indigo-500 text-xs hover:underline shrink-0">편집</button>
+    </div>
+  `).join('');
+}
+
+function openEdit(id) {
+  const item = ADMIN_CONTENT.find(c => c.id === id);
+  if (!item) return;
+  state.editingId = id;
+  document.getElementById('edit-title').value = item.title;
+  document.getElementById('edit-payload').value = item.payload;
+  document.getElementById('edit-modal').classList.remove('hidden');
+}
+
+function closeModal() {
+  document.getElementById('edit-modal').classList.add('hidden');
+  state.editingId = null;
+}
+
+function saveEdit() {
+  const item = ADMIN_CONTENT.find(c => c.id === state.editingId);
+  if (item) {
+    item.title = document.getElementById('edit-title').value;
+    item.payload = document.getElementById('edit-payload').value;
+    showToast('✅ 저장됐습니다');
+    renderAdmin();
+    if (state.user) renderDashboard();
+  }
+  closeModal();
+}
+
+function simulateSync() {
+  const pid = document.getElementById('yt-playlist').value.trim();
+  const status = document.getElementById('sync-status');
+  status.textContent = '⏳ 동기화 중...';
+  status.classList.add('text-indigo-500');
+  setTimeout(() => {
+    status.textContent = `✅ 동기화 완료 (데모: 실제 API 키 필요) — 플레이리스트: ${pid.slice(0,20)}...`;
+    status.classList.remove('text-indigo-500');
+    status.classList.add('text-green-600');
+    showToast('YouTube 동기화 완료 (데모 모드)');
+  }, 1500);
+}
+
+// ═══════════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════════
+loadState();
+if (state.user) {
+  showScreen('dashboard');
+  renderDashboard();
+} else {
+  showScreen('login');
+}
+
+// Set today's date input default
+const regStart = document.getElementById('reg-start');
+if (regStart) regStart.value = today();
+</script>
+</body>
+</html>
