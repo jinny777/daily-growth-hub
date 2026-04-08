@@ -235,7 +235,7 @@
         </div>
         <h3 id="bible-title" class="font-bold text-gray-900 text-base leading-snug"></h3>
         <div id="bible-chapters" class="flex-1 bg-amber-50 rounded-xl p-3 space-y-2"></div>
-        <a id="bible-link" href="https://www.godpeople.com/?GO=bible&VER=kor&BID=PSA&CID=1&SID=1" target="_blank"
+        <a id="bible-link" href="https://www.bskorea.or.kr/bible/korbibReadpage.php?version=GAE&book=PSA&chap=1" target="_blank"
           class="block text-center text-sm bg-amber-500 text-white rounded-xl py-2.5 font-bold hover:bg-amber-600 active:scale-95 transition">
           📖 성경 읽으러 가기
         </a>
@@ -565,8 +565,8 @@ function renderDashboard() {
   const startCh = chapters[0], endCh = chapters[chapters.length - 1];
   document.getElementById('bible-day-badge').textContent = `Day ${dayIdx}`;
   document.getElementById('bible-title').textContent = `시편 ${startCh}편 ~ ${endCh}편`;
-  // 갓피플 성경 — 개역개정 한국어, 시편(PSA) 해당 장으로 바로 이동
-  document.getElementById('bible-link').href = `https://www.godpeople.com/?GO=bible&VER=kor&BID=PSA&CID=${startCh}&SID=1`;
+  // 대한성서공회 — 개역개정(GAE), 시편(PSA), 해당 장으로 바로 이동
+  document.getElementById('bible-link').href = `https://www.bskorea.or.kr/bible/korbibReadpage.php?version=GAE&book=PSA&chap=${startCh}`;
   const chContainer = document.getElementById('bible-chapters');
   chContainer.innerHTML = chapters.map((ch, i) => `
     <div class="flex items-start gap-2">
