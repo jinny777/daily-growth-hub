@@ -146,9 +146,17 @@
             <span id="today-greeting" class="text-gray-400 font-normal text-xl ml-2"></span>
           </h1>
         </div>
-        <div class="text-right">
-          <span id="today-score" class="text-4xl font-mono font-bold text-indigo-500">0/3</span>
-          <p class="text-xs text-gray-400 mt-0.5">완료</p>
+        <div class="flex items-center gap-3">
+          <!-- Day 네비게이션 -->
+          <div class="flex items-center gap-1 bg-gray-100 rounded-xl px-2 py-1">
+            <button onclick="shiftDay(-1)" class="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-white text-gray-500 hover:text-gray-900 transition font-bold text-lg" title="이전 날">◀</button>
+            <button onclick="resetToDay1()" class="text-xs px-2 py-1 text-indigo-500 font-bold hover:bg-white rounded-lg transition" title="오늘을 Day 1로 초기화">Day 1</button>
+            <button onclick="shiftDay(+1)" class="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-white text-gray-500 hover:text-gray-900 transition font-bold text-lg" title="다음 날">▶</button>
+          </div>
+          <div class="text-right">
+            <span id="today-score" class="text-4xl font-mono font-bold text-indigo-500">0/3</span>
+            <p class="text-xs text-gray-400 mt-0.5">완료</p>
+          </div>
         </div>
       </div>
       <div class="w-full bg-gray-100 rounded-full h-2.5">
@@ -377,6 +385,7 @@ let state = {
   longestStreak: 0,
   adminFilter: '',
   editingId: null,
+  dayOffset: 0,    // 수동 Day 이동값 (0 = 오늘, -1 = 어제, +1 = 내일)
 };
 
 function loadState() {
@@ -402,7 +411,29 @@ function getDayIndex() {
   const start = new Date(state.startDate);
   const now = new Date();
   const diff = Math.floor((now - start) / 86400000);
-  return Math.max(1, diff + 1);
+  return Math.max(1, diff + 1 + (state.dayOffset || 0));
+}
+
+function getViewDate() {
+  // dayOffset에 따른 표시 날짜 계산
+  const d = new Date();
+  d.setDate(d.getDate() + (state.dayOffset || 0));
+  return d.toISOString().split('T')[0];
+}
+
+function shiftDay(delta) {
+  state.dayOffset = (state.dayOffset || 0) + delta;
+  if (getDayIndex() < 1) state.dayOffset -= delta; // 1 미만 방지
+  saveState();
+  renderDashboard();
+}
+
+function resetToDay1() {
+  state.startDate = today();
+  state.dayOffset = 0;
+  saveState();
+  renderDashboard();
+  showToast('✅ Day 1로 초기화됐습니다');
 }
 
 function formatDate(d) {
@@ -453,7 +484,8 @@ function doLogin() {
   const email = document.getElementById('login-email').value.trim() || 'user@example.com';
   const name = email.split('@')[0];
   state.user = { email, name };
-  if (!state.startDate) state.startDate = today();
+  state.startDate = today();  // 로그인할 때마다 오늘을 Day 1로 설정
+  state.dayOffset = 0;
   saveState();
   showScreen('dashboard');
   renderDashboard();
@@ -481,11 +513,12 @@ function doLogout() {
 // ═══════════════════════════════════════════════
 function renderDashboard() {
   const dayIdx = getDayIndex();
-  const todayKey = today();
+  const todayKey = getViewDate();
   const done = state.completed[todayKey] || {};
 
   // Header
-  document.getElementById('today-date').textContent = formatDate(todayKey);
+  const isToday = todayKey === today();
+  document.getElementById('today-date').textContent = formatDate(todayKey) + (isToday ? ' (오늘)' : '');
   document.getElementById('today-day').textContent = dayIdx;
   document.getElementById('today-greeting').textContent =
     `— 안녕하세요, ${state.user?.name || ''}님!`;
@@ -580,7 +613,7 @@ function setCardDone(cat, isDone) {
 }
 
 function completeTask(cat) {
-  const todayKey = today();
+  const todayKey = getViewDate();
   if (!state.completed[todayKey]) state.completed[todayKey] = {};
   state.completed[todayKey][cat] = true;
   saveState();
