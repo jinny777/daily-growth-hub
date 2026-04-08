@@ -760,6 +760,12 @@ function simulateSync() {
 //  INIT
 // ═══════════════════════════════════════════════
 loadState();
+// 페이지 로드할 때마다 항상 오늘을 Day 1 기준으로 초기화
+// (dayOffset으로 앞뒤 이동은 가능, startDate는 항상 오늘)
+state.startDate = today();
+state.dayOffset = state.dayOffset || 0;
+saveState();
+
 if (state.user) {
   showScreen('dashboard');
   renderDashboard();
