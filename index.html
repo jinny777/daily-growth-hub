@@ -409,15 +409,22 @@
       </div>
     </div>
     <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
-      <div class="p-4 border-b flex items-center gap-2 flex-wrap">
-        <h2 class="font-bold text-gray-800">지원 내역</h2>
-        <div class="ml-auto flex gap-2 flex-wrap">
-          <button onclick="filterJobs('')"       id="jf-all"    class="text-xs px-3 py-1.5 rounded-full bg-blue-500 text-white">전체</button>
-          <button onclick="filterJobs('관심')"   id="jf-관심"   class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">관심</button>
-          <button onclick="filterJobs('지원완료')" id="jf-지원완료" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">지원완료</button>
-          <button onclick="filterJobs('서류통과')" id="jf-서류통과" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">서류통과</button>
-          <button onclick="filterJobs('최종합격')" id="jf-최종합격" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">최종합격</button>
+      <div class="p-4 border-b space-y-2">
+        <div class="flex items-center gap-2 flex-wrap">
+          <h2 class="font-bold text-gray-800">지원 내역</h2>
+          <span id="job-list-count" class="text-xs text-gray-400"></span>
+          <div class="ml-auto flex gap-2 flex-wrap">
+            <button onclick="filterJobs('')"        id="jf-all"    class="text-xs px-3 py-1.5 rounded-full bg-blue-500 text-white">전체</button>
+            <button onclick="filterJobs('관심')"    id="jf-관심"   class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">👀 관심</button>
+            <button onclick="filterJobs('지원예정')" id="jf-지원예정" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">📝 예정</button>
+            <button onclick="filterJobs('지원완료')" id="jf-지원완료" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">✉️ 지원완료</button>
+            <button onclick="filterJobs('서류통과')" id="jf-서류통과" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">✅ 서류통과</button>
+            <button onclick="filterJobs('최종합격')" id="jf-최종합격" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">🎉 합격</button>
+            <button onclick="filterJobs('불합격')"  id="jf-불합격"  class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">❌ 불합격</button>
+          </div>
         </div>
+        <!-- 채널 필터 -->
+        <div class="flex gap-2 flex-wrap" id="job-channel-filters"></div>
       </div>
       <div id="job-list" class="divide-y divide-gray-50"></div>
       <div id="job-empty" class="p-8 text-center text-sm text-gray-400 hidden">채용 공고를 추가해보세요 💼</div>
@@ -574,6 +581,35 @@
   </div>
 </div>
 
+<!-- JOB DETAIL MODAL -->
+<div id="job-detail-modal" class="fixed inset-0 bg-black/40 flex items-center justify-center z-50 hidden p-4">
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[85vh] flex flex-col card-enter">
+    <div class="flex items-center justify-between p-5 border-b">
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-2 flex-wrap">
+          <span id="jd-channel" class="text-xs px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 font-semibold"></span>
+          <span id="jd-status"  class="text-xs px-2 py-0.5 rounded-full font-semibold"></span>
+        </div>
+        <h3 id="jd-company"  class="font-bold text-gray-900 mt-1"></h3>
+        <p  id="jd-position" class="text-sm text-gray-500"></p>
+      </div>
+      <button onclick="closeJobDetail()" class="text-gray-400 hover:text-gray-600 text-2xl font-bold ml-3">×</button>
+    </div>
+    <div class="p-5 overflow-y-auto flex-1">
+      <div class="flex gap-4 text-xs text-gray-400 mb-4 flex-wrap">
+        <span id="jd-deadline"></span>
+        <span id="jd-applied-date"></span>
+      </div>
+      <div id="jd-url" class="mb-3"></div>
+      <div id="jd-notes" class="text-sm text-gray-700 whitespace-pre-wrap bg-gray-50 rounded-xl p-4 leading-relaxed"></div>
+    </div>
+    <div class="p-4 border-t flex gap-2 justify-between items-center">
+      <button id="jd-status-btn" onclick="openStatusModalFromDetail()" class="text-sm bg-indigo-500 text-white px-4 py-2 rounded-xl hover:bg-indigo-600 transition font-bold">상태 변경</button>
+      <button onclick="closeJobDetail()" class="text-sm bg-gray-100 text-gray-600 px-4 py-2 rounded-xl hover:bg-gray-200 transition">닫기</button>
+    </div>
+  </div>
+</div>
+
 <!-- STATUS CHANGE MODAL (Job / Program) -->
 <div id="status-modal" class="fixed inset-0 bg-black/40 flex items-center justify-center z-50 hidden p-4">
   <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm p-6 card-enter">
@@ -632,7 +668,7 @@ let state = {
   adminFilter: '', editingId: null, dayOffset: 0,
   prayers: [], prayerFilter: 'all',
   todos: [], todoFilter: 'all', todoCalYear: null, todoCalMonth: null,
-  jobs: [], jobFilter: '',
+  jobs: [], jobFilter: '', jobChannelFilter: '',
   programs: [], programFilter: '',
   books: [],
   aiStudy: [], aiTagFilter: '',
@@ -1013,8 +1049,45 @@ function showTodosForDate(date) {
 }
 
 // ══════════════════════════════════════════
-//  JOB - 메일 가져오기
+//  JOB - 채널 감지 & 자동 분류
 // ══════════════════════════════════════════
+const CHANNEL_RULES = [
+  { name:'사람인',   keywords:['사람인','saramin'] },
+  { name:'고용24',   keywords:['고용24','worknet','워크넷','고용센터','일자리 정보'] },
+  { name:'잡코리아', keywords:['잡코리아','jobkorea'] },
+  { name:'원티드',   keywords:['원티드','wanted'] },
+  { name:'링크드인', keywords:['linkedin','링크드인'] },
+  { name:'리멤버',   keywords:['리멤버','remember'] },
+  { name:'인크루트', keywords:['인크루트','incruit'] },
+  { name:'잡플래닛', keywords:['잡플래닛','jobplanet'] },
+  { name:'캐치',     keywords:['캐치','catch'] },
+];
+function detectChannel(company, notes) {
+  const text = ((company||'') + ' ' + (notes||'')).toLowerCase();
+  for (const r of CHANNEL_RULES) {
+    if (r.keywords.some(k => text.includes(k.toLowerCase()))) return r.name;
+  }
+  return '기타';
+}
+const APPLIED_KEYWORDS = ['이력서 열람','지원하신','입사지원','지원완료','지원 확인','지원서 확인','지원이 완료','열람하였','귀하의 이력서','지원서를 검토'];
+function autoClassifyStatus(position, notes) {
+  const text = ((position||'') + ' ' + (notes||''));
+  if (APPLIED_KEYWORDS.some(k => text.includes(k))) return '지원완료';
+  return '관심';
+}
+function stripHtml(html) {
+  if (!html) return '';
+  return html
+    .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
+    .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"')
+    .replace(/\s{3,}/g, '\n\n')
+    .trim()
+    .slice(0, 600);
+}
+
+// ── 메일 가져오기 ──
 function importJobsFromFile(event) {
   const file = event.target.files[0];
   if (!file) return;
@@ -1023,24 +1096,55 @@ function importJobsFromFile(event) {
     try {
       const imported = JSON.parse(e.target.result);
       if (!Array.isArray(imported)) throw new Error('배열 형식이 아닙니다');
-      // 기존 이메일 가져오기 항목 제거 후 추가 (중복 방지)
       const existingIds = new Set(state.jobs.map(j => j.id));
       let added = 0;
       imported.forEach(job => {
         if (!existingIds.has(job.id)) {
+          // HTML 정리
+          job.notes = stripHtml(job.notes);
+          // 채널 자동 감지
+          job.channel = detectChannel(job.company, job.notes);
+          // 지원완료 자동 분류
+          job.status = autoClassifyStatus(job.position, job.notes);
           state.jobs.unshift(job);
           added++;
         }
       });
-      saveState();
-      renderJobs();
+      saveState(); renderJobs();
       showToast(`✅ ${added}개 채용공고 가져오기 완료! (중복 ${imported.length - added}개 제외)`);
     } catch(err) {
       showToast('❌ 파일 읽기 오류: ' + err.message);
     }
-    event.target.value = ''; // 같은 파일 재선택 가능하도록 초기화
+    event.target.value = '';
   };
   reader.readAsText(file, 'utf-8');
+}
+
+// ── 상세보기 ──
+let currentDetailJobId = null;
+function openJobDetail(id) {
+  const j = state.jobs.find(x => x.id === id); if (!j) return;
+  currentDetailJobId = id;
+  const ch = j.channel || detectChannel(j.company, j.notes);
+  document.getElementById('jd-channel').textContent  = ch;
+  document.getElementById('jd-company').textContent  = j.company || '';
+  document.getElementById('jd-position').textContent = j.position || '';
+  const statusEl = document.getElementById('jd-status');
+  statusEl.textContent = j.status;
+  statusEl.className = `text-xs px-2 py-0.5 rounded-full font-semibold ${JOB_STATUS_COLORS[j.status]||'bg-gray-100 text-gray-600'}`;
+  document.getElementById('jd-deadline').textContent     = j.deadline     ? `마감: ${formatDateShort(j.deadline)}`     : '';
+  document.getElementById('jd-applied-date').textContent = j.appliedDate  ? `지원: ${formatDateShort(j.appliedDate)}`  : '';
+  const urlEl = document.getElementById('jd-url');
+  urlEl.innerHTML = j.url ? `<a href="${escHtml(j.url)}" target="_blank" class="text-xs text-blue-500 hover:underline break-all">${escHtml(j.url)}</a>` : '';
+  document.getElementById('jd-notes').textContent = j.notes ? stripHtml(j.notes) : '내용 없음';
+  document.getElementById('job-detail-modal').classList.remove('hidden');
+}
+function closeJobDetail() {
+  document.getElementById('job-detail-modal').classList.add('hidden');
+  currentDetailJobId = null;
+}
+function openStatusModalFromDetail() {
+  if (currentDetailJobId) { closeJobDetail(); openStatusModal('job', currentDetailJobId); }
 }
 
 // ══════════════════════════════════════════
@@ -1087,36 +1191,55 @@ function filterJobs(f) {
   if (activeBtn) activeBtn.className='text-xs px-3 py-1.5 rounded-full bg-blue-500 text-white';
   renderJobs();
 }
+function filterJobsByChannel(ch) {
+  state.jobChannelFilter = (state.jobChannelFilter === ch) ? '' : ch;
+  renderJobs();
+}
 function renderJobs() {
-  let list = state.jobs;
-  if (state.jobFilter) list = list.filter(j=>j.status===state.jobFilter);
-  list = [...list].sort((a,b)=>b.createdAt-a.createdAt);
+  // 채널 목록 동적 생성
+  const channels = [...new Set(state.jobs.map(j => j.channel || detectChannel(j.company, j.notes)))].sort();
+  const cfEl = document.getElementById('job-channel-filters');
+  if (cfEl) {
+    cfEl.innerHTML = channels.map(ch => `
+      <button onclick="filterJobsByChannel('${escHtml(ch)}')"
+        class="text-xs px-3 py-1 rounded-full border transition
+          ${state.jobChannelFilter===ch ? 'bg-blue-500 text-white border-blue-500' : 'bg-white text-gray-500 border-gray-200 hover:border-blue-300'}">
+        ${escHtml(ch)}
+      </button>`).join('');
+  }
+  let list = state.jobs.map(j => ({ ...j, _channel: j.channel || detectChannel(j.company, j.notes) }));
+  if (state.jobFilter)        list = list.filter(j => j.status === state.jobFilter);
+  if (state.jobChannelFilter) list = list.filter(j => j._channel === state.jobChannelFilter);
+  list = list.sort((a,b) => b.createdAt - a.createdAt);
   document.getElementById('job-total-count').textContent   = state.jobs.length;
   document.getElementById('job-applied-count').textContent = state.jobs.filter(j=>['지원완료','서류통과','면접예정','최종합격'].includes(j.status)).length;
   document.getElementById('job-pass-count').textContent    = state.jobs.filter(j=>['서류통과','면접예정','최종합격'].includes(j.status)).length;
   document.getElementById('job-final-count').textContent   = state.jobs.filter(j=>j.status==='최종합격').length;
+  const countEl = document.getElementById('job-list-count');
+  if (countEl) countEl.textContent = `(${list.length}개)`;
   const container=document.getElementById('job-list'); const empty=document.getElementById('job-empty');
   if (!list.length) { container.innerHTML=''; empty.classList.remove('hidden'); return; }
   empty.classList.add('hidden');
   container.innerHTML=list.map(j=>`
-    <div class="p-4 hover:bg-gray-50">
+    <div class="p-4 hover:bg-gray-50 cursor-pointer" onclick="openJobDetail('${j.id}')">
       <div class="flex items-start gap-3">
         <div class="flex-1 min-w-0">
           <div class="flex items-center gap-2 flex-wrap mb-1">
+            <span class="text-xs px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 font-semibold shrink-0">${escHtml(j._channel)}</span>
             <span class="font-bold text-gray-900">${escHtml(j.company)}</span>
-            <span class="text-sm text-gray-500">${escHtml(j.position)}</span>
-            <span class="text-xs px-2 py-0.5 rounded-full font-semibold ${JOB_STATUS_COLORS[j.status]||'bg-gray-100 text-gray-600'}">${j.status}</span>
+            <span class="text-xs px-2 py-0.5 rounded-full font-semibold ${JOB_STATUS_COLORS[j.status]||'bg-gray-100 text-gray-600'} shrink-0">${j.status}</span>
           </div>
-          <div class="flex gap-3 text-xs text-gray-400 flex-wrap">
+          <p class="text-sm text-gray-700 font-medium line-clamp-1">${escHtml(j.position)}</p>
+          <div class="flex gap-3 text-xs text-gray-400 mt-1 flex-wrap">
             ${j.deadline?`<span>마감: ${formatDateShort(j.deadline)}</span>`:''}
             ${j.appliedDate?`<span>지원: ${formatDateShort(j.appliedDate)}</span>`:''}
           </div>
-          ${j.notes?`<p class="text-xs text-gray-400 mt-1 line-clamp-2">${escHtml(j.notes)}</p>`:''}
-          <div class="flex gap-2 mt-2 flex-wrap">
-            <button onclick="openStatusModal('job','${j.id}')" class="text-xs text-indigo-500 hover:underline">상태변경</button>
-            ${j.url?`<a href="${escHtml(j.url)}" target="_blank" class="text-xs text-blue-500 hover:underline">공고보기</a>`:''}
-            <button onclick="deleteJob('${j.id}')" class="text-xs text-red-400 hover:underline">삭제</button>
-          </div>
+          ${j.notes?`<p class="text-xs text-gray-400 mt-1 line-clamp-2">${escHtml(stripHtml(j.notes))}</p>`:''}
+        </div>
+        <div class="flex flex-col gap-1 shrink-0" onclick="event.stopPropagation()">
+          <button onclick="openStatusModal('job','${j.id}')" class="text-xs text-indigo-500 hover:underline">상태변경</button>
+          ${j.url?`<a href="${escHtml(j.url)}" target="_blank" class="text-xs text-blue-500 hover:underline">공고보기</a>`:''}
+          <button onclick="deleteJob('${j.id}')" class="text-xs text-red-400 hover:underline">삭제</button>
         </div>
       </div>
     </div>`).join('');
