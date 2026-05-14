@@ -8,29 +8,21 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&display=swap');
   * { font-family: 'Pretendard', -apple-system, sans-serif; }
-
   .card-enter { animation: fadeSlideIn 0.4s ease both; }
-  @keyframes fadeSlideIn {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+  @keyframes fadeSlideIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
   .check-pop { animation: popBounce 0.35s cubic-bezier(.36,2,.61,.73) both; }
-  @keyframes popBounce {
-    0%   { transform: scale(0.5); opacity: 0; }
-    100% { transform: scale(1);   opacity: 1; }
-  }
+  @keyframes popBounce { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
   .progress-bar { transition: width 0.6s cubic-bezier(.4,0,.2,1); }
   .tab-active { border-bottom: 3px solid #6366f1; color: #6366f1; font-weight: 700; }
-  .markdown p  { margin-bottom: 4px; font-size: 13px; color: #4b5563; }
+  .markdown p { margin-bottom: 4px; font-size: 13px; color: #4b5563; }
   .markdown li { font-size: 13px; color: #4b5563; margin-left: 16px; list-style: disc; }
   .markdown h2 { font-size: 13px; font-weight: 700; color: #374151; margin-top: 6px; margin-bottom: 2px; }
+  .tab-scroll { overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; }
+  .tab-scroll::-webkit-scrollbar { display: none; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 9999px; font-size: 11px; font-weight: 600; }
 </style>
 </head>
 <body class="bg-gradient-to-br from-slate-50 to-indigo-50 min-h-screen">
-
-<!-- ═══════════════════════════════════════════════════
-     SCREENS
-═══════════════════════════════════════════════════ -->
 
 <!-- LOGIN SCREEN -->
 <div id="screen-login" class="min-h-screen flex items-center justify-center">
@@ -111,32 +103,35 @@
 <div id="screen-dashboard" class="hidden min-h-screen">
   <!-- Navbar -->
   <nav class="bg-white/90 backdrop-blur border-b border-gray-100 px-4 py-3 sticky top-0 z-10">
-    <div class="max-w-5xl mx-auto flex items-center justify-between">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
       <div class="flex items-center gap-2">
         <span class="text-xl">📚</span>
         <span class="font-bold text-gray-900">Daily Growth Hub</span>
       </div>
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-3">
         <span id="nav-streak" class="text-sm text-orange-500 font-semibold"></span>
-        <button onclick="showTab('dashboard','progress')" class="text-sm text-gray-500 hover:text-gray-800 transition">진행 기록</button>
-        <button onclick="showTab('dashboard','admin')" class="text-sm text-indigo-500 font-semibold hover:text-indigo-700 transition">관리자</button>
         <button onclick="doLogout()" class="text-sm text-gray-400 hover:text-gray-600 transition">로그아웃</button>
       </div>
     </div>
   </nav>
 
-  <!-- Tabs -->
-  <div class="bg-white border-b">
-    <div class="max-w-5xl mx-auto flex">
-      <button id="tab-today" onclick="switchTab('today')" class="px-5 py-3 text-sm transition tab-active">오늘의 학습</button>
-      <button id="tab-progress" onclick="switchTab('progress')" class="px-5 py-3 text-sm text-gray-500 transition">진행 기록</button>
-      <button id="tab-admin" onclick="switchTab('admin')" class="px-5 py-3 text-sm text-gray-500 transition">관리자</button>
+  <!-- Tabs - scrollable -->
+  <div class="bg-white border-b tab-scroll sticky top-[57px] z-10">
+    <div class="flex min-w-max">
+      <button id="tab-today"    onclick="switchTab('today')"    class="px-4 py-3 text-sm transition tab-active whitespace-nowrap">📖 학습</button>
+      <button id="tab-progress" onclick="switchTab('progress')" class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">📊 기록</button>
+      <button id="tab-prayer"   onclick="switchTab('prayer')"   class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">🙏 기도</button>
+      <button id="tab-todo"     onclick="switchTab('todo')"     class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">✅ TODO</button>
+      <button id="tab-job"      onclick="switchTab('job')"      class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">💼 취업</button>
+      <button id="tab-program"  onclick="switchTab('program')"  class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">📋 지원사업</button>
+      <button id="tab-book"     onclick="switchTab('book')"     class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">📚 독서</button>
+      <button id="tab-aistudy"  onclick="switchTab('aistudy')"  class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">🤖 AI스터디</button>
+      <button id="tab-admin"    onclick="switchTab('admin')"    class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">⚙️ 관리자</button>
     </div>
   </div>
 
-  <!-- TAB: TODAY -->
+  <!-- ── TAB: TODAY ── -->
   <div id="tab-content-today" class="max-w-5xl mx-auto px-4 py-8">
-    <!-- Header -->
     <div class="mb-7">
       <div class="flex items-end justify-between mb-3">
         <div>
@@ -147,11 +142,10 @@
           </h1>
         </div>
         <div class="flex items-center gap-3">
-          <!-- Day 네비게이션 -->
           <div class="flex items-center gap-1 bg-gray-100 rounded-xl px-2 py-1">
-            <button onclick="shiftDay(-1)" class="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-white text-gray-500 hover:text-gray-900 transition font-bold text-lg" title="이전 날">◀</button>
-            <button onclick="resetToDay1()" class="text-xs px-2 py-1 text-indigo-500 font-bold hover:bg-white rounded-lg transition" title="오늘을 Day 1로 초기화">Day 1</button>
-            <button onclick="shiftDay(+1)" class="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-white text-gray-500 hover:text-gray-900 transition font-bold text-lg" title="다음 날">▶</button>
+            <button onclick="shiftDay(-1)" class="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-white text-gray-500 hover:text-gray-900 transition font-bold text-lg">◀</button>
+            <button onclick="resetToDay1()" class="text-xs px-2 py-1 text-indigo-500 font-bold hover:bg-white rounded-lg transition">Day 1</button>
+            <button onclick="shiftDay(+1)" class="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-white text-gray-500 hover:text-gray-900 transition font-bold text-lg">▶</button>
           </div>
           <div class="text-right">
             <span id="today-score" class="text-4xl font-mono font-bold text-indigo-500">0/3</span>
@@ -163,17 +157,12 @@
         <div id="progress-bar" class="bg-indigo-500 h-2.5 rounded-full progress-bar" style="width:0%"></div>
       </div>
     </div>
-
-    <!-- All done banner -->
     <div id="all-done-banner" class="hidden mb-6 bg-gradient-to-r from-green-400 to-emerald-500 text-white rounded-2xl p-5 text-center card-enter">
       <div class="text-3xl mb-1">🎉</div>
       <p class="font-bold text-lg">오늘 모든 학습 완료!</p>
       <p id="banner-streak" class="text-sm opacity-90 mt-0.5"></p>
     </div>
-
-    <!-- Cards -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-
       <!-- ETF CARD -->
       <div id="card-etf" class="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex flex-col gap-3 card-enter transition-all" style="animation-delay:0ms">
         <div class="flex items-center gap-2">
@@ -183,15 +172,10 @@
         </div>
         <h3 id="etf-title" class="font-bold text-gray-900 text-base leading-snug"></h3>
         <div id="etf-body" class="flex-1 bg-indigo-50 rounded-xl p-3 overflow-hidden max-h-48 markdown"></div>
-        <div class="flex items-center gap-2">
-          <span class="text-xs text-gray-400">⏱ 10분 분량</span>
-        </div>
+        <div class="flex items-center gap-2"><span class="text-xs text-gray-400">⏱ 10분 분량</span></div>
         <button id="btn-etf" onclick="completeTask('etf')"
-          class="rounded-xl py-2.5 text-sm font-bold bg-indigo-500 text-white hover:bg-indigo-600 active:scale-95 transition">
-          학습 완료
-        </button>
+          class="rounded-xl py-2.5 text-sm font-bold bg-indigo-500 text-white hover:bg-indigo-600 active:scale-95 transition">학습 완료</button>
       </div>
-
       <!-- ENGLISH CARD -->
       <div id="card-english" class="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex flex-col gap-3 card-enter transition-all" style="animation-delay:80ms">
         <div class="flex items-center gap-2">
@@ -200,32 +184,23 @@
           <span id="english-day-badge" class="ml-auto text-xs text-gray-300 font-mono"></span>
         </div>
         <h3 id="english-title" class="font-bold text-gray-900 text-base leading-snug"></h3>
-        <!-- YouTube 플레이리스트 클릭 플레이어 (임베드 차단 우회) -->
         <a id="english-yt-link" href="#" target="_blank"
           class="block rounded-xl overflow-hidden relative group cursor-pointer"
           style="aspect-ratio:16/9; background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%)">
           <div class="absolute inset-0 flex flex-col items-center justify-center gap-2">
-            <!-- YouTube 로고 모양 재생 버튼 -->
             <div class="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:bg-red-500 transition-transform duration-200">
               <svg viewBox="0 0 24 24" class="w-8 h-8 fill-white ml-1"><path d="M8 5v14l11-7z"/></svg>
             </div>
             <span id="english-day-label" class="text-white text-sm font-bold mt-1 drop-shadow"></span>
             <span class="text-white/60 text-xs">클릭하면 YouTube에서 재생됩니다</span>
           </div>
-          <!-- 호버 오버레이 -->
-          <div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition rounded-xl"></div>
         </a>
         <p id="english-desc" class="text-xs text-gray-400 line-clamp-2"></p>
         <a id="english-yt-link2" href="#" target="_blank"
-          class="block text-center text-sm bg-red-500 text-white rounded-xl py-2.5 font-bold hover:bg-red-600 active:scale-95 transition">
-          ▶ YouTube 재생목록 전체 보기
-        </a>
+          class="block text-center text-sm bg-red-500 text-white rounded-xl py-2.5 font-bold hover:bg-red-600 active:scale-95 transition">▶ YouTube 재생목록 전체 보기</a>
         <button id="btn-english" onclick="completeTask('english')"
-          class="rounded-xl py-2.5 text-sm font-bold bg-blue-500 text-white hover:bg-blue-600 active:scale-95 transition">
-          시청 완료
-        </button>
+          class="rounded-xl py-2.5 text-sm font-bold bg-blue-500 text-white hover:bg-blue-600 active:scale-95 transition">시청 완료</button>
       </div>
-
       <!-- BIBLE CARD -->
       <div id="card-bible" class="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex flex-col gap-3 card-enter transition-all" style="animation-delay:160ms">
         <div class="flex items-center gap-2">
@@ -236,18 +211,14 @@
         <h3 id="bible-title" class="font-bold text-gray-900 text-base leading-snug"></h3>
         <div id="bible-chapters" class="flex-1 bg-amber-50 rounded-xl p-3 space-y-2"></div>
         <a id="bible-link" href="https://www.bskorea.or.kr/bible/korbibReadpage.php?version=GAE&book=PSA&chap=1" target="_blank"
-          class="block text-center text-sm bg-amber-500 text-white rounded-xl py-2.5 font-bold hover:bg-amber-600 active:scale-95 transition">
-          📖 성경 읽으러 가기
-        </a>
+          class="block text-center text-sm bg-amber-500 text-white rounded-xl py-2.5 font-bold hover:bg-amber-600 active:scale-95 transition">📖 성경 읽으러 가기</a>
         <button id="btn-bible" onclick="completeTask('bible')"
-          class="rounded-xl py-2.5 text-sm font-bold bg-amber-500 text-white hover:bg-amber-600 active:scale-95 transition">
-          읽기 완료
-        </button>
+          class="rounded-xl py-2.5 text-sm font-bold bg-amber-500 text-white hover:bg-amber-600 active:scale-95 transition">읽기 완료</button>
       </div>
     </div>
   </div>
 
-  <!-- TAB: PROGRESS -->
+  <!-- ── TAB: PROGRESS ── -->
   <div id="tab-content-progress" class="max-w-3xl mx-auto px-4 py-8 hidden">
     <div class="grid grid-cols-2 gap-4 mb-6">
       <div class="bg-white rounded-2xl p-6 text-center shadow-sm">
@@ -268,36 +239,298 @@
         <div class="flex items-center gap-1.5"><div class="w-3 h-3 rounded bg-gray-100"></div> 미완료</div>
         <div class="flex items-center gap-1.5"><div class="w-3 h-3 rounded bg-indigo-200"></div> 일부완료</div>
         <div class="flex items-center gap-1.5"><div class="w-3 h-3 rounded bg-indigo-500"></div> 전체완료</div>
+        <div class="flex items-center gap-1.5"><div class="w-3 h-3 rounded bg-amber-300"></div> TODO있음</div>
       </div>
     </div>
   </div>
 
-  <!-- TAB: ADMIN -->
+  <!-- ── TAB: PRAYER ── -->
+  <div id="tab-content-prayer" class="max-w-3xl mx-auto px-4 py-8 hidden">
+    <div class="grid grid-cols-3 gap-4 mb-6">
+      <div class="bg-white rounded-2xl p-4 text-center shadow-sm">
+        <div id="prayer-total-count" class="text-3xl font-extrabold text-purple-500">0</div>
+        <div class="text-xs text-gray-400 mt-1">전체 기도</div>
+      </div>
+      <div class="bg-white rounded-2xl p-4 text-center shadow-sm">
+        <div id="prayer-answered-count" class="text-3xl font-extrabold text-green-500">0</div>
+        <div class="text-xs text-gray-400 mt-1">응답 받음</div>
+      </div>
+      <div class="bg-white rounded-2xl p-4 text-center shadow-sm">
+        <div id="prayer-pending-count" class="text-3xl font-extrabold text-amber-500">0</div>
+        <div class="text-xs text-gray-400 mt-1">기도 중</div>
+      </div>
+    </div>
+    <div class="bg-white rounded-2xl shadow-sm p-5 mb-5">
+      <h2 class="font-bold text-gray-800 mb-3">🙏 새 기도 제목</h2>
+      <div class="space-y-3">
+        <div class="flex gap-2">
+          <input id="prayer-date" type="date" class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-300 w-44" />
+          <input id="prayer-title-input" type="text" placeholder="기도 제목 (한 줄 요약)" class="flex-1 border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-300" />
+        </div>
+        <textarea id="prayer-content" rows="3" placeholder="기도 내용을 자세히 작성하세요..."
+          class="w-full border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-300 resize-none"></textarea>
+        <button onclick="addPrayer()" class="w-full bg-purple-500 text-white font-bold py-2.5 rounded-xl hover:bg-purple-600 transition text-sm">기도 제목 저장</button>
+      </div>
+    </div>
+    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+      <div class="p-4 border-b flex items-center gap-2 flex-wrap">
+        <h2 class="font-bold text-gray-800">기도 목록</h2>
+        <div class="ml-auto flex gap-2">
+          <button onclick="filterPrayers('all')"      id="pf-all"      class="text-xs px-3 py-1.5 rounded-full bg-purple-500 text-white">전체</button>
+          <button onclick="filterPrayers('pending')"  id="pf-pending"  class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">기도중</button>
+          <button onclick="filterPrayers('answered')" id="pf-answered" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">응답됨</button>
+        </div>
+      </div>
+      <div id="prayer-list" class="divide-y divide-gray-50"></div>
+      <div id="prayer-empty" class="p-8 text-center text-sm text-gray-400 hidden">기도 제목을 추가해보세요 🙏</div>
+    </div>
+  </div>
+
+  <!-- ── TAB: TODO ── -->
+  <div id="tab-content-todo" class="max-w-5xl mx-auto px-4 py-8 hidden">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Left: Add + List -->
+      <div class="space-y-4">
+        <div class="bg-white rounded-2xl shadow-sm p-5">
+          <h2 class="font-bold text-gray-800 mb-3">✅ 할 일 추가</h2>
+          <div class="space-y-2">
+            <input id="todo-date" type="date" class="w-full border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300" />
+            <input id="todo-text" type="text" placeholder="할 일을 입력하세요"
+              class="w-full border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300"
+              onkeydown="if(event.key==='Enter')addTodo()" />
+            <select id="todo-category" class="w-full border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300">
+              <option value="📌 일반">📌 일반</option>
+              <option value="💼 업무">💼 업무</option>
+              <option value="📚 공부">📚 공부</option>
+              <option value="💪 건강">💪 건강</option>
+              <option value="🏠 개인">🏠 개인</option>
+            </select>
+            <button onclick="addTodo()" class="w-full bg-indigo-500 text-white font-bold py-2.5 rounded-xl hover:bg-indigo-600 transition text-sm">추가</button>
+          </div>
+        </div>
+        <div class="grid grid-cols-3 gap-2">
+          <div class="bg-white rounded-xl p-3 text-center shadow-sm">
+            <div id="todo-total-count" class="text-2xl font-bold text-gray-700">0</div>
+            <div class="text-xs text-gray-400">전체</div>
+          </div>
+          <div class="bg-white rounded-xl p-3 text-center shadow-sm">
+            <div id="todo-done-count" class="text-2xl font-bold text-green-500">0</div>
+            <div class="text-xs text-gray-400">완료</div>
+          </div>
+          <div class="bg-white rounded-xl p-3 text-center shadow-sm">
+            <div id="todo-pending-count" class="text-2xl font-bold text-amber-500">0</div>
+            <div class="text-xs text-gray-400">미완료</div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+          <div class="p-3 border-b flex gap-2 flex-wrap">
+            <button onclick="filterTodos('all')"     id="tf-all"     class="text-xs px-3 py-1.5 rounded-full bg-indigo-500 text-white">전체</button>
+            <button onclick="filterTodos('today')"   id="tf-today"   class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">오늘</button>
+            <button onclick="filterTodos('pending')" id="tf-pending" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">미완료</button>
+            <button onclick="filterTodos('done')"    id="tf-done"    class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">완료</button>
+          </div>
+          <div id="todo-list" class="divide-y divide-gray-50 max-h-96 overflow-y-auto"></div>
+          <div id="todo-empty" class="p-8 text-center text-sm text-gray-400 hidden">할 일을 추가해보세요 ✅</div>
+        </div>
+      </div>
+      <!-- Right: Calendar -->
+      <div class="bg-white rounded-2xl shadow-sm p-5">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="font-bold text-gray-800">📅 TODO 달력</h2>
+          <div class="flex gap-1">
+            <button onclick="prevTodoMonth()" class="w-7 h-7 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-sm font-bold">◀</button>
+            <button onclick="nextTodoMonth()" class="w-7 h-7 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-sm font-bold">▶</button>
+          </div>
+        </div>
+        <div id="todo-calendar"></div>
+        <div id="todo-cal-detail" class="mt-4 space-y-2 text-sm"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TAB: JOB ── -->
+  <div id="tab-content-job" class="max-w-4xl mx-auto px-4 py-8 hidden">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+      <div class="bg-white rounded-2xl p-4 text-center shadow-sm">
+        <div id="job-total-count" class="text-2xl font-extrabold text-gray-700">0</div>
+        <div class="text-xs text-gray-400 mt-1">전체 공고</div>
+      </div>
+      <div class="bg-white rounded-2xl p-4 text-center shadow-sm">
+        <div id="job-applied-count" class="text-2xl font-extrabold text-blue-500">0</div>
+        <div class="text-xs text-gray-400 mt-1">지원 완료</div>
+      </div>
+      <div class="bg-white rounded-2xl p-4 text-center shadow-sm">
+        <div id="job-pass-count" class="text-2xl font-extrabold text-green-500">0</div>
+        <div class="text-xs text-gray-400 mt-1">서류 통과</div>
+      </div>
+      <div class="bg-white rounded-2xl p-4 text-center shadow-sm">
+        <div id="job-final-count" class="text-2xl font-extrabold text-indigo-500">0</div>
+        <div class="text-xs text-gray-400 mt-1">최종 합격</div>
+      </div>
+    </div>
+    <div class="bg-white rounded-2xl shadow-sm p-5 mb-5">
+      <h2 class="font-bold text-gray-800 mb-3">💼 채용 공고 추가</h2>
+      <p class="text-xs text-gray-400 mb-3">💡 이메일로 받은 채용공고는 메모란에 내용을 붙여넣으세요</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <input id="job-company"  type="text" placeholder="회사명"      class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300" />
+        <input id="job-position" type="text" placeholder="포지션/직무" class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300" />
+        <div class="flex flex-col gap-1">
+          <label class="text-xs text-gray-500 font-medium">마감일</label>
+          <input id="job-deadline" type="date" class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300" />
+        </div>
+        <div class="flex flex-col gap-1">
+          <label class="text-xs text-gray-500 font-medium">지원일</label>
+          <input id="job-applied-date" type="date" class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300" />
+        </div>
+        <select id="job-status" class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300">
+          <option value="관심">👀 관심</option>
+          <option value="지원예정">📝 지원예정</option>
+          <option value="지원완료">✉️ 지원완료</option>
+          <option value="서류통과">✅ 서류통과</option>
+          <option value="면접예정">🗓 면접예정</option>
+          <option value="최종합격">🎉 최종합격</option>
+          <option value="불합격">❌ 불합격</option>
+        </select>
+        <input id="job-url" type="url" placeholder="공고 URL (선택)" class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300" />
+        <textarea id="job-notes" rows="3" placeholder="메모 / 이메일 공고 내용 붙여넣기..."
+          class="w-full border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300 resize-none md:col-span-2"></textarea>
+        <button onclick="addJob()" class="md:col-span-2 bg-blue-500 text-white font-bold py-2.5 rounded-xl hover:bg-blue-600 transition text-sm">공고 저장</button>
+      </div>
+    </div>
+    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+      <div class="p-4 border-b flex items-center gap-2 flex-wrap">
+        <h2 class="font-bold text-gray-800">지원 내역</h2>
+        <div class="ml-auto flex gap-2 flex-wrap">
+          <button onclick="filterJobs('')"       id="jf-all"    class="text-xs px-3 py-1.5 rounded-full bg-blue-500 text-white">전체</button>
+          <button onclick="filterJobs('관심')"   id="jf-관심"   class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">관심</button>
+          <button onclick="filterJobs('지원완료')" id="jf-지원완료" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">지원완료</button>
+          <button onclick="filterJobs('서류통과')" id="jf-서류통과" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">서류통과</button>
+          <button onclick="filterJobs('최종합격')" id="jf-최종합격" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">최종합격</button>
+        </div>
+      </div>
+      <div id="job-list" class="divide-y divide-gray-50"></div>
+      <div id="job-empty" class="p-8 text-center text-sm text-gray-400 hidden">채용 공고를 추가해보세요 💼</div>
+    </div>
+  </div>
+
+  <!-- ── TAB: PROGRAM ── -->
+  <div id="tab-content-program" class="max-w-4xl mx-auto px-4 py-8 hidden">
+    <div class="grid grid-cols-3 gap-4 mb-6">
+      <div class="bg-white rounded-2xl p-4 text-center shadow-sm">
+        <div id="prog-total-count" class="text-2xl font-extrabold text-gray-700">0</div>
+        <div class="text-xs text-gray-400 mt-1">전체</div>
+      </div>
+      <div class="bg-white rounded-2xl p-4 text-center shadow-sm">
+        <div id="prog-applied-count" class="text-2xl font-extrabold text-blue-500">0</div>
+        <div class="text-xs text-gray-400 mt-1">신청 완료</div>
+      </div>
+      <div class="bg-white rounded-2xl p-4 text-center shadow-sm">
+        <div id="prog-selected-count" class="text-2xl font-extrabold text-green-500">0</div>
+        <div class="text-xs text-gray-400 mt-1">선정됨</div>
+      </div>
+    </div>
+    <div class="bg-white rounded-2xl shadow-sm p-5 mb-5">
+      <h2 class="font-bold text-gray-800 mb-3">📋 지원사업 추가</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <input id="prog-name" type="text" placeholder="지원사업명" class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-300 md:col-span-2" />
+        <select id="prog-category" class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-300">
+          <option value="🚀 창업지원">🚀 창업지원</option>
+          <option value="🔬 R&D">🔬 R&D</option>
+          <option value="💼 취업지원">💼 취업지원</option>
+          <option value="📚 교육">📚 교육</option>
+          <option value="💰 금융/투자">💰 금융/투자</option>
+          <option value="📌 기타">📌 기타</option>
+        </select>
+        <input id="prog-deadline" type="date" class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-300" />
+        <input id="prog-amount" type="text" placeholder="지원 금액 (예: 5,000만원)" class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-300" />
+        <select id="prog-status" class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-300">
+          <option value="검토중">🔍 검토중</option>
+          <option value="신청완료">✉️ 신청완료</option>
+          <option value="선정">🎉 선정</option>
+          <option value="미선정">❌ 미선정</option>
+        </select>
+        <input id="prog-url" type="url" placeholder="공고 URL" class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-300 md:col-span-2" />
+        <textarea id="prog-notes" rows="2" placeholder="메모..."
+          class="w-full border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-300 resize-none md:col-span-2"></textarea>
+        <button onclick="addProgram()" class="md:col-span-2 bg-emerald-500 text-white font-bold py-2.5 rounded-xl hover:bg-emerald-600 transition text-sm">저장</button>
+      </div>
+    </div>
+    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+      <div class="p-4 border-b flex items-center gap-2 flex-wrap">
+        <h2 class="font-bold text-gray-800">지원사업 내역</h2>
+        <div class="ml-auto flex gap-2 flex-wrap">
+          <button onclick="filterPrograms('')"      id="pgf-all"    class="text-xs px-3 py-1.5 rounded-full bg-emerald-500 text-white">전체</button>
+          <button onclick="filterPrograms('검토중')" id="pgf-검토중" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">검토중</button>
+          <button onclick="filterPrograms('신청완료')" id="pgf-신청완료" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">신청완료</button>
+          <button onclick="filterPrograms('선정')"  id="pgf-선정"   class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">선정</button>
+        </div>
+      </div>
+      <div id="program-list" class="divide-y divide-gray-50"></div>
+      <div id="program-empty" class="p-8 text-center text-sm text-gray-400 hidden">지원사업을 추가해보세요 📋</div>
+    </div>
+  </div>
+
+  <!-- ── TAB: BOOK ── -->
+  <div id="tab-content-book" class="max-w-4xl mx-auto px-4 py-8 hidden">
+    <div class="bg-white rounded-2xl shadow-sm p-5 mb-5">
+      <h2 class="font-bold text-gray-800 mb-3">📚 도서 추가</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <input id="book-title"  type="text"   placeholder="책 제목"              class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-rose-300" />
+        <input id="book-author" type="text"   placeholder="저자"                 class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-rose-300" />
+        <div class="flex flex-col gap-1">
+          <label class="text-xs text-gray-500 font-medium">시작일</label>
+          <input id="book-start" type="date" class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-rose-300" />
+        </div>
+        <input id="book-pages" type="number" placeholder="총 페이지 수 (선택)"  class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-rose-300" />
+        <button onclick="addBook()" class="md:col-span-2 bg-rose-500 text-white font-bold py-2.5 rounded-xl hover:bg-rose-600 transition text-sm">도서 추가</button>
+      </div>
+    </div>
+    <div id="book-list" class="space-y-4"></div>
+    <div id="book-empty" class="bg-white rounded-2xl p-8 text-center text-sm text-gray-400 hidden">도서를 추가해보세요 📚</div>
+  </div>
+
+  <!-- ── TAB: AI STUDY ── -->
+  <div id="tab-content-aistudy" class="max-w-4xl mx-auto px-4 py-8 hidden">
+    <div class="bg-white rounded-2xl shadow-sm p-5 mb-5">
+      <h2 class="font-bold text-gray-800 mb-3">🤖 스터디 기록 추가</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div class="flex flex-col gap-1">
+          <label class="text-xs text-gray-500 font-medium">스터디 날짜</label>
+          <input id="ai-date" type="date" class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-violet-300" />
+        </div>
+        <input id="ai-title" type="text" placeholder="스터디 주제/제목" class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-violet-300" />
+        <input id="ai-url"  type="url"  placeholder="참고 URL (선택)" class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-violet-300 md:col-span-2" />
+        <input id="ai-tags" type="text" placeholder="태그 (쉼표 구분: GPT, LLM, 프롬프트)" class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-violet-300 md:col-span-2" />
+        <textarea id="ai-content" rows="4" placeholder="스터디 내용 정리..."
+          class="w-full border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-violet-300 resize-none md:col-span-2"></textarea>
+        <button onclick="addAiStudy()" class="md:col-span-2 bg-violet-500 text-white font-bold py-2.5 rounded-xl hover:bg-violet-600 transition text-sm">저장</button>
+      </div>
+    </div>
+    <div id="ai-tag-filter" class="flex flex-wrap gap-2 mb-4"></div>
+    <div id="ai-study-list" class="space-y-3"></div>
+    <div id="ai-empty" class="bg-white rounded-2xl p-8 text-center text-sm text-gray-400 hidden">스터디 내용을 기록해보세요 🤖</div>
+  </div>
+
+  <!-- ── TAB: ADMIN ── -->
   <div id="tab-content-admin" class="max-w-5xl mx-auto px-4 py-8 hidden">
-    <!-- YouTube sync -->
     <div class="bg-white rounded-2xl p-5 shadow-sm border border-red-100 mb-6">
       <h2 class="font-bold text-gray-800 mb-3">🎬 영어 스터디 — YouTube 플레이리스트 동기화</h2>
       <div class="flex gap-2">
         <input id="yt-playlist" value="PLAkBgrW5qY0ROKRZQO-vpJQ6kYdYT5Hss"
           class="flex-1 border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-300" />
-        <button onclick="simulateSync()"
-          class="bg-red-500 text-white px-4 py-2 rounded-xl text-sm font-bold hover:bg-red-600 transition">
-          ▶ 동기화
-        </button>
+        <button onclick="simulateSync()" class="bg-red-500 text-white px-4 py-2 rounded-xl text-sm font-bold hover:bg-red-600 transition">▶ 동기화</button>
       </div>
       <p id="sync-status" class="text-xs text-gray-400 mt-2">YOUTUBE_API_KEY 환경변수가 설정되어 있어야 합니다.</p>
     </div>
-
-    <!-- Content Table -->
     <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
       <div class="p-4 border-b flex items-center gap-3 flex-wrap">
         <h2 class="font-bold text-gray-800">콘텐츠 목록</h2>
         <span id="content-total" class="text-sm text-gray-400"></span>
         <div class="ml-auto flex gap-2 flex-wrap">
-          <button onclick="filterContent('')" id="filter-all" class="text-xs px-3 py-1.5 rounded-full bg-indigo-500 text-white">전체</button>
-          <button onclick="filterContent('etf')" id="filter-etf" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">📈 ETF</button>
+          <button onclick="filterContent('')"        id="filter-all"     class="text-xs px-3 py-1.5 rounded-full bg-indigo-500 text-white">전체</button>
+          <button onclick="filterContent('etf')"     id="filter-etf"     class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">📈 ETF</button>
           <button onclick="filterContent('english')" id="filter-english" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">🗣 영어</button>
-          <button onclick="filterContent('bible')" id="filter-bible" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">📖 성경</button>
+          <button onclick="filterContent('bible')"   id="filter-bible"   class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">📖 성경</button>
         </div>
       </div>
       <div id="admin-table-body" class="divide-y divide-gray-50"></div>
@@ -324,11 +557,20 @@
       </div>
     </div>
     <div class="flex gap-2 mt-4">
-      <button onclick="saveEdit()"
-        class="flex-1 bg-indigo-500 text-white font-bold py-2.5 rounded-xl hover:bg-indigo-600 transition text-sm">저장</button>
-      <button onclick="closeModal()"
-        class="px-5 bg-gray-100 text-gray-600 font-medium py-2.5 rounded-xl hover:bg-gray-200 transition text-sm">취소</button>
+      <button onclick="saveEdit()" class="flex-1 bg-indigo-500 text-white font-bold py-2.5 rounded-xl hover:bg-indigo-600 transition text-sm">저장</button>
+      <button onclick="closeModal()" class="px-5 bg-gray-100 text-gray-600 font-medium py-2.5 rounded-xl hover:bg-gray-200 transition text-sm">취소</button>
     </div>
+  </div>
+</div>
+
+<!-- STATUS CHANGE MODAL (Job / Program) -->
+<div id="status-modal" class="fixed inset-0 bg-black/40 flex items-center justify-center z-50 hidden p-4">
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm p-6 card-enter">
+    <div class="flex items-center justify-between mb-4">
+      <h3 id="status-modal-title" class="font-bold text-gray-900">상태 변경</h3>
+      <button onclick="closeStatusModal()" class="text-gray-400 hover:text-gray-600 text-xl font-bold">×</button>
+    </div>
+    <div id="status-modal-options" class="space-y-2"></div>
   </div>
 </div>
 
@@ -336,9 +578,9 @@
 <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-sm px-5 py-3 rounded-full shadow-lg hidden z-50 transition"></div>
 
 <script>
-// ═══════════════════════════════════════════════
+// ══════════════════════════════════════════
 //  DATA
-// ═══════════════════════════════════════════════
+// ══════════════════════════════════════════
 const ETF_CONTENT = [
   { title: 'ETF란 무엇인가?', body: '## ETF 기초\n\nETF(Exchange Traded Fund)는 주식처럼 거래소에서 실시간으로 거래되는 펀드입니다.\n\n**핵심 장점:**\n- 낮은 수수료 (평균 0.1~0.5%)\n- 분산투자 효과\n- 세금 효율성\n- 높은 유동성' },
   { title: 'ETF vs 주식 vs 펀드 비교', body: '## 비교 분석\n\n**ETF:** 실시간 거래 + 낮은 수수료 + 분산투자\n**주식:** 실시간 거래 + 낮은 수수료 + 집중투자\n**펀드:** 종가 거래 + 높은 수수료 + 분산투자\n\n- 장기 투자: ETF 유리\n- 단기 트레이딩: 주식 유리' },
@@ -346,7 +588,6 @@ const ETF_CONTENT = [
   { title: 'ETF 종류: 채권형', body: '## 채권 ETF\n\n안정적인 수익을 원하는 투자자에게 적합합니다.\n\n**특징:** 금리와 역방향 움직임\n**대표:** KODEX 국고채10년\n- 포트폴리오 안정화에 활용' },
   { title: '포트폴리오 구성법', body: '## 코어-새틀라이트 전략\n\n- **코어(70~80%)**: 전세계 지수 ETF\n- **새틀라이트(20~30%)**: 섹터/테마 ETF\n\n균형 잡힌 분산투자의 기본 원칙입니다.' },
 ];
-
 const ENGLISH_CONTENT = [
   { title: 'Day 1 - 영어 공부 시작하기', videoId: 'WwiCVPIp3_0', desc: '영어 학습의 첫 걸음. 기초부터 차근차근 시작합니다.' },
   { title: 'Day 2 - 기본 인사 표현', videoId: 'WwiCVPIp3_0', desc: '일상에서 자주 쓰는 인사 표현을 배워봅니다.' },
@@ -354,16 +595,14 @@ const ENGLISH_CONTENT = [
   { title: 'Day 4 - 자기소개하기', videoId: 'WwiCVPIp3_0', desc: '이름, 직업, 나라를 영어로 소개하는 방법.' },
   { title: 'Day 5 - 감사와 사과 표현', videoId: 'WwiCVPIp3_0', desc: '감사함과 미안함을 표현하는 다양한 영어 문장.' },
 ];
-
 const PSALM_TITLES = {
-  1:'복 있는 사람', 2:'여호와의 기름부음 받은 자', 3:'아침 기도', 4:'저녁 기도', 5:'의인의 기도',
-  6:'회개의 기도', 7:'하나님께 피함', 8:'창조의 영광', 9:'하나님을 찬양함', 10:'악인에 대한 기도',
-  11:'여호와를 피난처로 삼음', 12:'거짓된 세대', 13:'구원을 위한 간구', 14:'어리석은 자',
-  15:'여호와의 장막에 거할 자', 16:'여호와를 신뢰함', 17:'공의로운 자의 기도', 18:'구원의 시',
-  19:'하나님의 창조와 율법', 20:'승리를 위한 기도', 21:'왕의 승리', 22:'버림받은 자의 부르짖음',
-  23:'선한 목자', 24:'영광의 왕', 25:'여호와를 의지함',
+  1:'복 있는 사람',2:'여호와의 기름부음 받은 자',3:'아침 기도',4:'저녁 기도',5:'의인의 기도',
+  6:'회개의 기도',7:'하나님께 피함',8:'창조의 영광',9:'하나님을 찬양함',10:'악인에 대한 기도',
+  11:'여호와를 피난처로 삼음',12:'거짓된 세대',13:'구원을 위한 간구',14:'어리석은 자',
+  15:'여호와의 장막에 거할 자',16:'여호와를 신뢰함',17:'공의로운 자의 기도',18:'구원의 시',
+  19:'하나님의 창조와 율법',20:'승리를 위한 기도',21:'왕의 승리',22:'버림받은 자의 부르짖음',
+  23:'선한 목자',24:'영광의 왕',25:'여호와를 의지함',
 };
-
 const ADMIN_CONTENT = [
   ...ETF_CONTENT.map((c,i) => ({ id:i+1, cat:'etf', catLabel:'ETF 스터디', catIcon:'📈', day:i+1, title:c.title, active:true, payload: JSON.stringify({body:c.body},null,2) })),
   ...ENGLISH_CONTENT.map((c,i) => ({ id:100+i, cat:'english', catLabel:'영어 스터디', catIcon:'🗣', day:i+1, title:c.title, active:true, payload: JSON.stringify({videoId:c.videoId},null,2) })),
@@ -374,214 +613,150 @@ const ADMIN_CONTENT = [
   }),
 ];
 
-// ═══════════════════════════════════════════════
+// ══════════════════════════════════════════
 //  STATE
-// ═══════════════════════════════════════════════
+// ══════════════════════════════════════════
 let state = {
-  user: null,
-  startDate: null,
-  completed: {},   // { 'YYYY-MM-DD': { etf:bool, english:bool, bible:bool } }
-  streak: 0,
-  longestStreak: 0,
-  adminFilter: '',
-  editingId: null,
-  dayOffset: 0,    // 수동 Day 이동값 (0 = 오늘, -1 = 어제, +1 = 내일)
+  user: null, startDate: null, completed: {}, streak: 0, longestStreak: 0,
+  adminFilter: '', editingId: null, dayOffset: 0,
+  prayers: [], prayerFilter: 'all',
+  todos: [], todoFilter: 'all', todoCalYear: null, todoCalMonth: null,
+  jobs: [], jobFilter: '',
+  programs: [], programFilter: '',
+  books: [],
+  aiStudy: [], aiTagFilter: '',
+  statusModalType: null, statusModalId: null,
 };
 
 function loadState() {
-  try {
-    const s = localStorage.getItem('dgh_state');
-    if (s) state = { ...state, ...JSON.parse(s) };
-  } catch {}
+  try { const s = localStorage.getItem('dgh_state_v2'); if (s) state = { ...state, ...JSON.parse(s) }; } catch {}
 }
+function saveState() { localStorage.setItem('dgh_state_v2', JSON.stringify(state)); }
+function uid() { return Date.now() + Math.random().toString(36).slice(2,7); }
 
-function saveState() {
-  localStorage.setItem('dgh_state', JSON.stringify(state));
-}
-
-// ═══════════════════════════════════════════════
+// ══════════════════════════════════════════
 //  UTILS
-// ═══════════════════════════════════════════════
-function today() {
-  return new Date().toISOString().split('T')[0];
-}
-
+// ══════════════════════════════════════════
+function today() { return new Date().toISOString().split('T')[0]; }
 function getDayIndex() {
   if (!state.startDate) return 1;
-  const start = new Date(state.startDate);
-  const now = new Date();
-  const diff = Math.floor((now - start) / 86400000);
+  const diff = Math.floor((new Date() - new Date(state.startDate)) / 86400000);
   return Math.max(1, diff + 1 + (state.dayOffset || 0));
 }
-
 function getViewDate() {
-  // dayOffset에 따른 표시 날짜 계산
-  const d = new Date();
-  d.setDate(d.getDate() + (state.dayOffset || 0));
+  const d = new Date(); d.setDate(d.getDate() + (state.dayOffset || 0));
   return d.toISOString().split('T')[0];
 }
-
 function shiftDay(delta) {
   state.dayOffset = (state.dayOffset || 0) + delta;
-  if (getDayIndex() < 1) state.dayOffset -= delta; // 1 미만 방지
-  saveState();
-  renderDashboard();
+  if (getDayIndex() < 1) state.dayOffset -= delta;
+  saveState(); renderDashboard();
 }
-
-function resetToDay1() {
-  state.startDate = today();
-  state.dayOffset = 0;
-  saveState();
-  renderDashboard();
-  showToast('✅ Day 1로 초기화됐습니다');
-}
-
-function formatDate(d) {
-  return new Date(d).toLocaleDateString('ko-KR', { year:'numeric', month:'long', day:'numeric', weekday:'long' });
-}
-
+function resetToDay1() { state.startDate = today(); state.dayOffset = 0; saveState(); renderDashboard(); showToast('✅ Day 1로 초기화됐습니다'); }
+function formatDate(d) { return new Date(d).toLocaleDateString('ko-KR', { year:'numeric', month:'long', day:'numeric', weekday:'long' }); }
+function formatDateShort(d) { if (!d) return ''; return new Date(d).toLocaleDateString('ko-KR', { month:'short', day:'numeric' }); }
 function getBibleChapters(dayIndex) {
-  const start = (dayIndex - 1) * 3 + 1;
-  const end = Math.min(start + 2, 150);
+  const start = (dayIndex - 1) * 3 + 1; const end = Math.min(start + 2, 150);
   return Array.from({ length: end - start + 1 }, (_, i) => start + i);
 }
-
 function showToast(msg) {
-  const el = document.getElementById('toast');
-  el.textContent = msg;
-  el.classList.remove('hidden');
+  const el = document.getElementById('toast'); el.textContent = msg; el.classList.remove('hidden');
   setTimeout(() => el.classList.add('hidden'), 2500);
 }
 
-// ═══════════════════════════════════════════════
-//  SCREENS
-// ═══════════════════════════════════════════════
+// ══════════════════════════════════════════
+//  SCREENS & TABS
+// ══════════════════════════════════════════
 function showScreen(name) {
   ['login','register','dashboard'].forEach(s =>
     document.getElementById('screen-'+s).classList.toggle('hidden', s !== name)
   );
 }
-
+const ALL_TABS = ['today','progress','prayer','todo','job','program','book','aistudy','admin'];
 function switchTab(name) {
-  ['today','progress','admin'].forEach(t => {
-    document.getElementById('tab-'+t).className = 'px-5 py-3 text-sm transition ' +
-      (t === name ? 'tab-active' : 'text-gray-500');
-    document.getElementById('tab-content-'+t).classList.toggle('hidden', t !== name);
+  ALL_TABS.forEach(t => {
+    const btn = document.getElementById('tab-'+t);
+    const content = document.getElementById('tab-content-'+t);
+    if (btn) btn.className = 'px-4 py-3 text-sm transition whitespace-nowrap ' + (t===name ? 'tab-active' : 'text-gray-500');
+    if (content) content.classList.toggle('hidden', t !== name);
   });
   if (name === 'progress') renderProgress();
-  if (name === 'admin') renderAdmin();
+  if (name === 'admin')    renderAdmin();
+  if (name === 'prayer')   renderPrayers();
+  if (name === 'todo')     { renderTodos(); renderTodoCalendar(); }
+  if (name === 'job')      renderJobs();
+  if (name === 'program')  renderPrograms();
+  if (name === 'book')     renderBooks();
+  if (name === 'aistudy')  renderAiStudy();
 }
 
-function showTab(screen, tab) {
-  showScreen(screen);
-  switchTab(tab);
-}
-
-// ═══════════════════════════════════════════════
+// ══════════════════════════════════════════
 //  AUTH
-// ═══════════════════════════════════════════════
+// ══════════════════════════════════════════
 function doLogin() {
   const email = document.getElementById('login-email').value.trim() || 'user@example.com';
-  const name = email.split('@')[0];
-  state.user = { email, name };
-  state.startDate = today();  // 로그인할 때마다 오늘을 Day 1로 설정
-  state.dayOffset = 0;
-  saveState();
-  showScreen('dashboard');
-  renderDashboard();
+  state.user = { email, name: email.split('@')[0] };
+  state.startDate = today(); state.dayOffset = state.dayOffset || 0;
+  saveState(); showScreen('dashboard'); renderDashboard();
 }
-
 function doRegister() {
   const name = document.getElementById('reg-name').value.trim() || '사용자';
   const email = document.getElementById('reg-email').value.trim() || 'user@example.com';
   const startDate = document.getElementById('reg-start').value || today();
-  state.user = { email, name };
-  state.startDate = startDate;
-  saveState();
-  showScreen('dashboard');
-  renderDashboard();
+  state.user = { email, name }; state.startDate = startDate;
+  saveState(); showScreen('dashboard'); renderDashboard();
 }
+function doLogout() { state.user = null; saveState(); showScreen('login'); }
 
-function doLogout() {
-  state.user = null;
-  saveState();
-  showScreen('login');
-}
-
-// ═══════════════════════════════════════════════
+// ══════════════════════════════════════════
 //  DASHBOARD
-// ═══════════════════════════════════════════════
+// ══════════════════════════════════════════
 function renderDashboard() {
-  const dayIdx = getDayIndex();
-  const todayKey = getViewDate();
+  const dayIdx = getDayIndex(); const todayKey = getViewDate();
   const done = state.completed[todayKey] || {};
-
-  // Header
   const isToday = todayKey === today();
   document.getElementById('today-date').textContent = formatDate(todayKey) + (isToday ? ' (오늘)' : '');
   document.getElementById('today-day').textContent = dayIdx;
-  document.getElementById('today-greeting').textContent =
-    `— 안녕하세요, ${state.user?.name || ''}님!`;
-
+  document.getElementById('today-greeting').textContent = `— 안녕하세요, ${state.user?.name || ''}님!`;
   const completedCount = [done.etf, done.english, done.bible].filter(Boolean).length;
   document.getElementById('today-score').textContent = `${completedCount}/3`;
-  document.getElementById('progress-bar').style.width = `${Math.round(completedCount / 3 * 100)}%`;
-
-  // Streak
+  document.getElementById('progress-bar').style.width = `${Math.round(completedCount/3*100)}%`;
   calcStreak();
   const streakEl = document.getElementById('nav-streak');
   streakEl.textContent = state.streak > 0 ? `🔥 ${state.streak}일 연속` : '';
-
-  // All done
   const allDone = completedCount === 3;
   document.getElementById('all-done-banner').classList.toggle('hidden', !allDone);
-  if (allDone) {
-    document.getElementById('banner-streak').textContent =
-      `내일도 이 기세 이어가요. 연속 ${state.streak}일!`;
-  }
-
-  // ETF Card
-  const etfIdx = Math.min(dayIdx, ETF_CONTENT.length) - 1;
-  const etf = ETF_CONTENT[etfIdx];
+  if (allDone) document.getElementById('banner-streak').textContent = `내일도 이 기세 이어가요. 연속 ${state.streak}일!`;
+  // ETF
+  const etfIdx = Math.min(dayIdx, ETF_CONTENT.length) - 1; const etf = ETF_CONTENT[etfIdx];
   document.getElementById('etf-day-badge').textContent = `Day ${dayIdx}`;
   document.getElementById('etf-title').textContent = etf.title;
   document.getElementById('etf-body').innerHTML = renderMarkdown(etf.body);
   setCardDone('etf', done.etf);
-
-  // English Card — YouTube 플레이리스트 직접 링크 (임베드 차단 우회)
+  // English
   const PLAYLIST_ID = 'PLAkBgrW5qY0ROKRZQO-vpJQ6kYdYT5Hss';
-  // index는 1-based, YouTube 재생목록은 &index=N 으로 해당 순서 영상으로 이동
   const ytUrl = `https://www.youtube.com/watch?list=${PLAYLIST_ID}&index=${dayIdx}`;
   document.getElementById('english-day-badge').textContent = `Day ${dayIdx}`;
   document.getElementById('english-title').textContent = `영어 스터디 Day ${dayIdx}`;
-  document.getElementById('english-desc').textContent = `재생목록 ${dayIdx}번째 영상 — 클릭하면 YouTube에서 바로 재생됩니다.`;
+  document.getElementById('english-desc').textContent = `재생목록 ${dayIdx}번째 영상`;
   document.getElementById('english-day-label').textContent = `Day ${dayIdx} — 재생목록 ${dayIdx}번째 영상`;
   document.getElementById('english-yt-link').href = ytUrl;
   document.getElementById('english-yt-link2').href = `https://www.youtube.com/playlist?list=${PLAYLIST_ID}`;
   setCardDone('english', done.english);
-
-  // Bible Card
-  const chapters = getBibleChapters(dayIdx);
-  const startCh = chapters[0], endCh = chapters[chapters.length - 1];
+  // Bible
+  const chapters = getBibleChapters(dayIdx); const startCh = chapters[0], endCh = chapters[chapters.length-1];
   document.getElementById('bible-day-badge').textContent = `Day ${dayIdx}`;
   document.getElementById('bible-title').textContent = `시편 ${startCh}편 ~ ${endCh}편`;
-  // 대한성서공회 — 개역개정(GAE), 시편(PSA), 해당 장으로 바로 이동
   document.getElementById('bible-link').href = `https://www.bskorea.or.kr/bible/korbibReadpage.php?version=GAE&book=PSA&chap=${startCh}`;
-  const chContainer = document.getElementById('bible-chapters');
-  chContainer.innerHTML = chapters.map((ch, i) => `
+  document.getElementById('bible-chapters').innerHTML = chapters.map((ch,i) => `
     <div class="flex items-start gap-2">
       <span class="w-5 h-5 bg-amber-200 text-amber-800 rounded-full text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">${i+1}</span>
-      <span class="text-sm text-gray-700">
-        <span class="font-semibold">시편 ${ch}편</span>
-        ${PSALM_TITLES[ch] ? `<span class="text-gray-400"> — ${PSALM_TITLES[ch]}</span>` : ''}
-      </span>
-    </div>
-  `).join('');
+      <span class="text-sm text-gray-700"><span class="font-semibold">시편 ${ch}편</span>${PSALM_TITLES[ch]?`<span class="text-gray-400"> — ${PSALM_TITLES[ch]}</span>`:''}</span>
+    </div>`).join('');
   setCardDone('bible', done.bible);
 }
-
 function renderMarkdown(text) {
-  return (text || '').split('\n').slice(0, 10).map(line => {
+  return (text||'').split('\n').slice(0,10).map(line => {
     if (line.startsWith('## ')) return `<h2>${line.slice(3)}</h2>`;
     if (/^\*\*.*\*\*$/.test(line.trim())) return `<p><strong>${line.replace(/\*\*/g,'')}</strong></p>`;
     if (line.startsWith('- ')) return `<li>${line.slice(2)}</li>`;
@@ -589,193 +764,620 @@ function renderMarkdown(text) {
     return '';
   }).join('');
 }
-
 function setCardDone(cat, isDone) {
-  const card = document.getElementById(`card-${cat}`);
-  const btn = document.getElementById(`btn-${cat}`);
+  const card = document.getElementById(`card-${cat}`); const btn = document.getElementById(`btn-${cat}`);
   if (isDone) {
-    card.classList.add('ring-2', 'ring-green-200', 'opacity-75');
+    card.classList.add('ring-2','ring-green-200','opacity-75');
     btn.className = 'rounded-xl py-2.5 text-sm font-bold bg-green-100 text-green-700 cursor-default check-pop';
-    btn.textContent = '✅ 완료!';
-    btn.disabled = true;
+    btn.textContent = '✅ 완료!'; btn.disabled = true;
   } else {
-    card.classList.remove('ring-2', 'ring-green-200', 'opacity-75');
-    btn.disabled = false;
-    const configs = {
-      etf: ['bg-indigo-500 text-white hover:bg-indigo-600', '학습 완료'],
-      english: ['bg-blue-500 text-white hover:bg-blue-600', '시청 완료'],
-      bible: ['bg-amber-500 text-white hover:bg-amber-600', '읽기 완료'],
-    };
-    const [cls, label] = configs[cat] || [];
-    btn.className = `rounded-xl py-2.5 text-sm font-bold active:scale-95 transition ${cls}`;
-    btn.textContent = label;
+    card.classList.remove('ring-2','ring-green-200','opacity-75'); btn.disabled = false;
+    const configs = { etf:['bg-indigo-500 text-white hover:bg-indigo-600','학습 완료'], english:['bg-blue-500 text-white hover:bg-blue-600','시청 완료'], bible:['bg-amber-500 text-white hover:bg-amber-600','읽기 완료'] };
+    const [cls,label] = configs[cat]||[];
+    btn.className = `rounded-xl py-2.5 text-sm font-bold active:scale-95 transition ${cls}`; btn.textContent = label;
   }
 }
-
 function completeTask(cat) {
   const todayKey = getViewDate();
   if (!state.completed[todayKey]) state.completed[todayKey] = {};
-  state.completed[todayKey][cat] = true;
-  saveState();
-  calcStreak();
-  renderDashboard();
-  const labels = { etf: 'ETF 스터디', english: '영어 스터디', bible: '성경 읽기' };
+  state.completed[todayKey][cat] = true; saveState(); calcStreak(); renderDashboard();
+  const labels = { etf:'ETF 스터디', english:'영어 스터디', bible:'성경 읽기' };
   showToast(`✅ ${labels[cat]} 완료!`);
 }
 
-// ═══════════════════════════════════════════════
+// ══════════════════════════════════════════
 //  STREAK
-// ═══════════════════════════════════════════════
+// ══════════════════════════════════════════
 function calcStreak() {
-  let streak = 0;
-  let d = new Date();
+  let streak = 0; let d = new Date();
   while (true) {
-    const key = d.toISOString().split('T')[0];
-    const done = state.completed[key];
-    const allDone = done && done.etf && done.english && done.bible;
-    if (!allDone) break;
-    streak++;
-    d.setDate(d.getDate() - 1);
-    if (streak > 365) break;
+    const key = d.toISOString().split('T')[0]; const done = state.completed[key];
+    if (!(done && done.etf && done.english && done.bible)) break;
+    streak++; d.setDate(d.getDate()-1); if (streak>365) break;
   }
-  state.streak = streak;
-  state.longestStreak = Math.max(state.longestStreak, streak);
-  saveState();
+  state.streak = streak; state.longestStreak = Math.max(state.longestStreak, streak); saveState();
 }
 
-// ═══════════════════════════════════════════════
+// ══════════════════════════════════════════
 //  PROGRESS / HEATMAP
-// ═══════════════════════════════════════════════
+// ══════════════════════════════════════════
 function renderProgress() {
   calcStreak();
   document.getElementById('streak-current').textContent = state.streak + '일';
   document.getElementById('streak-longest').textContent = state.longestStreak + '일';
-
-  const container = document.getElementById('heatmap-container');
-  const now = new Date();
+  const container = document.getElementById('heatmap-container'); const now = new Date();
   container.innerHTML = [-2,-1,0].map(offset => {
-    const d = new Date(now.getFullYear(), now.getMonth() + offset, 1);
+    const d = new Date(now.getFullYear(), now.getMonth()+offset, 1);
     return renderCalendarMonth(d.getFullYear(), d.getMonth());
   }).join('');
 }
-
 function renderCalendarMonth(year, month) {
-  const startDay = new Date(year, month, 1).getDay();
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const startDay = new Date(year,month,1).getDay(); const daysInMonth = new Date(year,month+1,0).getDate();
   const todayKey = today();
   const months = ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];
   const days = ['일','월','화','수','목','금','토'];
-
-  let cells = days.map(d => `<div class="text-center text-xs text-gray-300 font-medium">${d}</div>`).join('');
-  for (let i = 0; i < startDay; i++) cells += '<div></div>';
-
-  for (let day = 1; day <= daysInMonth; day++) {
-    const key = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
-    const done = state.completed[key] || {};
-    const count = [done.etf, done.english, done.bible].filter(Boolean).length;
-    const isToday = key === todayKey;
-    const color = count === 3 ? 'bg-indigo-500' : count > 0 ? 'bg-indigo-200' : 'bg-gray-100';
-    const ring = isToday ? 'ring-2 ring-indigo-400 ring-offset-1' : '';
-    const title = `${key}: ${count}/3 완료`;
-    cells += `<div class="aspect-square rounded-md ${color} ${ring} text-xs flex items-center justify-center text-white font-bold cursor-default" title="${title}">${count > 0 && count < 3 ? count : ''}</div>`;
+  let cells = days.map(d=>`<div class="text-center text-xs text-gray-300 font-medium">${d}</div>`).join('');
+  for (let i=0;i<startDay;i++) cells+='<div></div>';
+  for (let day=1;day<=daysInMonth;day++) {
+    const key=`${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+    const done=state.completed[key]||{};
+    const count=[done.etf,done.english,done.bible].filter(Boolean).length;
+    const hasTodo=(state.todos||[]).some(t=>t.date===key);
+    const isToday=key===todayKey;
+    const color=count===3?'bg-indigo-500':count>0?'bg-indigo-200':hasTodo?'bg-amber-200':'bg-gray-100';
+    const textColor=count===3?'text-white':'text-gray-400';
+    const ring=isToday?'ring-2 ring-indigo-400 ring-offset-1':'';
+    cells+=`<div class="aspect-square rounded-md ${color} ${ring} ${textColor} text-xs flex items-center justify-center font-bold cursor-default" title="${key}: ${count}/3">${count>0&&count<3?count:day===new Date().getDate()&&isToday?'·':''}</div>`;
   }
-
-  return `
-    <div>
-      <p class="text-sm font-bold text-gray-600 mb-2">${year}년 ${months[month]}</p>
-      <div class="grid grid-cols-7 gap-1">${cells}</div>
-    </div>`;
+  return `<div><p class="text-sm font-bold text-gray-600 mb-2">${year}년 ${months[month]}</p><div class="grid grid-cols-7 gap-1">${cells}</div></div>`;
 }
 
-// ═══════════════════════════════════════════════
+// ══════════════════════════════════════════
+//  PRAYER
+// ══════════════════════════════════════════
+function addPrayer() {
+  const date  = document.getElementById('prayer-date').value || today();
+  const title = document.getElementById('prayer-title-input').value.trim();
+  const content = document.getElementById('prayer-content').value.trim();
+  if (!title) { showToast('⚠️ 기도 제목을 입력하세요'); return; }
+  state.prayers.unshift({ id:uid(), date, title, content, answered:false, answeredDate:null, createdAt:Date.now() });
+  saveState();
+  document.getElementById('prayer-title-input').value='';
+  document.getElementById('prayer-content').value='';
+  renderPrayers(); showToast('🙏 기도 제목이 저장됐습니다');
+}
+function togglePrayerAnswered(id) {
+  const p = state.prayers.find(x=>x.id===id); if (!p) return;
+  p.answered = !p.answered; p.answeredDate = p.answered ? today() : null;
+  saveState(); renderPrayers();
+  showToast(p.answered ? '🎉 기도 응답 감사합니다!' : '🙏 다시 기도 중으로 변경됐습니다');
+}
+function deletePrayer(id) {
+  if (!confirm('이 기도 제목을 삭제할까요?')) return;
+  state.prayers = state.prayers.filter(x=>x.id!==id); saveState(); renderPrayers();
+}
+function filterPrayers(f) {
+  state.prayerFilter = f;
+  ['all','pending','answered'].forEach(k => {
+    const btn = document.getElementById('pf-'+k);
+    if (btn) btn.className = 'text-xs px-3 py-1.5 rounded-full ' + (k===f?'bg-purple-500 text-white':'bg-gray-100 text-gray-600');
+  });
+  renderPrayers();
+}
+function renderPrayers() {
+  const f = state.prayerFilter;
+  let list = state.prayers;
+  if (f==='pending')  list = list.filter(p=>!p.answered);
+  if (f==='answered') list = list.filter(p=>p.answered);
+  const total    = state.prayers.length;
+  const answered = state.prayers.filter(p=>p.answered).length;
+  document.getElementById('prayer-total-count').textContent    = total;
+  document.getElementById('prayer-answered-count').textContent = answered;
+  document.getElementById('prayer-pending-count').textContent  = total - answered;
+  const container = document.getElementById('prayer-list');
+  const empty = document.getElementById('prayer-empty');
+  if (!list.length) { container.innerHTML=''; empty.classList.remove('hidden'); return; }
+  empty.classList.add('hidden');
+  container.innerHTML = list.map(p => `
+    <div class="p-4 hover:bg-gray-50 ${p.answered?'bg-green-50':''}">
+      <div class="flex items-start gap-3">
+        <button onclick="togglePrayerAnswered('${p.id}')"
+          class="mt-0.5 w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition
+            ${p.answered?'bg-green-500 border-green-500 text-white':'border-gray-300 hover:border-purple-400'}">
+          ${p.answered?'<svg viewBox="0 0 24 24" class="w-3 h-3 fill-white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>':''}
+        </button>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class="text-xs text-gray-400">${formatDateShort(p.date)}</span>
+            ${p.answered?`<span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold">✅ 응답 ${formatDateShort(p.answeredDate)}</span>`:'<span class="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full font-semibold">🙏 기도중</span>'}
+          </div>
+          <p class="font-semibold text-gray-800 mt-1">${escHtml(p.title)}</p>
+          ${p.content?`<p class="text-sm text-gray-500 mt-1 whitespace-pre-wrap">${escHtml(p.content)}</p>`:''}
+        </div>
+        <button onclick="deletePrayer('${p.id}')" class="text-gray-300 hover:text-red-400 text-lg shrink-0">×</button>
+      </div>
+    </div>`).join('');
+}
+
+// ══════════════════════════════════════════
+//  TODO
+// ══════════════════════════════════════════
+function addTodo() {
+  const date = document.getElementById('todo-date').value || today();
+  const text = document.getElementById('todo-text').value.trim();
+  const cat  = document.getElementById('todo-category').value;
+  if (!text) { showToast('⚠️ 할 일을 입력하세요'); return; }
+  state.todos.unshift({ id:uid(), date, text, category:cat, done:false, doneDate:null, createdAt:Date.now() });
+  saveState(); document.getElementById('todo-text').value='';
+  renderTodos(); renderTodoCalendar(); showToast('✅ 할 일이 추가됐습니다');
+}
+function toggleTodo(id) {
+  const t = state.todos.find(x=>x.id===id); if (!t) return;
+  t.done = !t.done; t.doneDate = t.done ? today() : null;
+  saveState(); renderTodos(); renderTodoCalendar();
+}
+function deleteTodo(id) {
+  state.todos = state.todos.filter(x=>x.id!==id); saveState(); renderTodos(); renderTodoCalendar();
+}
+function filterTodos(f) {
+  state.todoFilter = f;
+  ['all','today','pending','done'].forEach(k => {
+    const btn = document.getElementById('tf-'+k);
+    if (btn) btn.className = 'text-xs px-3 py-1.5 rounded-full ' + (k===f?'bg-indigo-500 text-white':'bg-gray-100 text-gray-600');
+  });
+  renderTodos();
+}
+function renderTodos() {
+  const f = state.todoFilter; const t = today();
+  let list = [...state.todos].sort((a,b) => a.date > b.date ? -1 : 1);
+  if (f==='today')   list = list.filter(x=>x.date===t);
+  if (f==='pending') list = list.filter(x=>!x.done);
+  if (f==='done')    list = list.filter(x=>x.done);
+  const total   = state.todos.length;
+  const done    = state.todos.filter(x=>x.done).length;
+  document.getElementById('todo-total-count').textContent   = total;
+  document.getElementById('todo-done-count').textContent    = done;
+  document.getElementById('todo-pending-count').textContent = total - done;
+  const container = document.getElementById('todo-list'); const empty = document.getElementById('todo-empty');
+  if (!list.length) { container.innerHTML=''; empty.classList.remove('hidden'); return; }
+  empty.classList.add('hidden');
+  container.innerHTML = list.map(x => `
+    <div class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 ${x.done?'opacity-60':''}">
+      <button onclick="toggleTodo('${x.id}')"
+        class="w-5 h-5 rounded border-2 flex items-center justify-center shrink-0 transition
+          ${x.done?'bg-green-500 border-green-500':'border-gray-300 hover:border-indigo-400'}">
+        ${x.done?'<svg viewBox="0 0 24 24" class="w-3 h-3 fill-white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>':''}
+      </button>
+      <div class="flex-1 min-w-0">
+        <span class="text-xs text-gray-400 mr-1">${formatDateShort(x.date)}</span>
+        <span class="text-xs text-gray-400 mr-2">${x.category||''}</span>
+        <span class="text-sm ${x.done?'line-through text-gray-400':'text-gray-800'}">${escHtml(x.text)}</span>
+      </div>
+      <button onclick="deleteTodo('${x.id}')" class="text-gray-300 hover:text-red-400 text-lg shrink-0">×</button>
+    </div>`).join('');
+}
+function prevTodoMonth() {
+  if (!state.todoCalYear) initTodoCal();
+  state.todoCalMonth--; if (state.todoCalMonth<0){state.todoCalMonth=11;state.todoCalYear--;}
+  saveState(); renderTodoCalendar();
+}
+function nextTodoMonth() {
+  if (!state.todoCalYear) initTodoCal();
+  state.todoCalMonth++; if (state.todoCalMonth>11){state.todoCalMonth=0;state.todoCalYear++;}
+  saveState(); renderTodoCalendar();
+}
+function initTodoCal() { const n=new Date(); state.todoCalYear=n.getFullYear(); state.todoCalMonth=n.getMonth(); }
+function renderTodoCalendar() {
+  if (!state.todoCalYear) initTodoCal();
+  const year=state.todoCalYear; const month=state.todoCalMonth;
+  const startDay=new Date(year,month,1).getDay(); const daysInMonth=new Date(year,month+1,0).getDate();
+  const todayKey=today();
+  const months=['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];
+  const days=['일','월','화','수','목','금','토'];
+  let html=`<p class="text-sm font-bold text-gray-700 mb-3">${year}년 ${months[month]}</p>`;
+  html+=`<div class="grid grid-cols-7 gap-1 mb-1">${days.map(d=>`<div class="text-center text-xs text-gray-400 font-medium">${d}</div>`).join('')}</div>`;
+  html+=`<div class="grid grid-cols-7 gap-1">`;
+  for (let i=0;i<startDay;i++) html+=`<div></div>`;
+  for (let day=1;day<=daysInMonth;day++) {
+    const key=`${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+    const todos=state.todos.filter(t=>t.date===key);
+    const doneAll=todos.length&&todos.every(t=>t.done);
+    const hasPending=todos.some(t=>!t.done);
+    const isToday=key===todayKey;
+    const bg=doneAll?'bg-indigo-500 text-white':hasPending?'bg-amber-400 text-white':isToday?'bg-indigo-100 text-indigo-700':'bg-gray-50 text-gray-500';
+    const ring=isToday?'ring-2 ring-indigo-400':''
+    html+=`<button onclick="showTodosForDate('${key}')"
+      class="aspect-square rounded-lg ${bg} ${ring} text-xs flex items-center justify-center font-medium hover:opacity-80 transition">${day}</button>`;
+  }
+  html+=`</div>`;
+  html+=`<div class="flex gap-3 mt-3 text-xs text-gray-400"><div class="flex items-center gap-1"><div class="w-3 h-3 rounded bg-amber-400"></div>미완료있음</div><div class="flex items-center gap-1"><div class="w-3 h-3 rounded bg-indigo-500"></div>모두완료</div></div>`;
+  document.getElementById('todo-calendar').innerHTML=html;
+}
+function showTodosForDate(date) {
+  const todos=state.todos.filter(t=>t.date===date);
+  const container=document.getElementById('todo-cal-detail');
+  if (!todos.length) { container.innerHTML=`<p class="text-xs text-gray-400">${formatDateShort(date)} — 할 일 없음</p>`; return; }
+  container.innerHTML=`<p class="text-xs font-semibold text-gray-600 mb-2">${formatDateShort(date)}</p>`
+    +todos.map(t=>`<div class="flex items-center gap-2 text-sm ${t.done?'line-through text-gray-400':'text-gray-700'}"><span>${t.done?'✅':'⬜'}</span>${escHtml(t.text)}</div>`).join('');
+}
+
+// ══════════════════════════════════════════
+//  JOB
+// ══════════════════════════════════════════
+const JOB_STATUS_COLORS = {
+  '관심':'bg-gray-100 text-gray-600','지원예정':'bg-blue-100 text-blue-700',
+  '지원완료':'bg-indigo-100 text-indigo-700','서류통과':'bg-green-100 text-green-700',
+  '면접예정':'bg-amber-100 text-amber-700','최종합격':'bg-emerald-500 text-white',
+  '불합격':'bg-red-100 text-red-600',
+};
+const JOB_STATUSES = ['관심','지원예정','지원완료','서류통과','면접예정','최종합격','불합격'];
+function addJob() {
+  const company  = document.getElementById('job-company').value.trim();
+  const position = document.getElementById('job-position').value.trim();
+  if (!company || !position) { showToast('⚠️ 회사명과 포지션을 입력하세요'); return; }
+  state.jobs.unshift({
+    id: uid(), createdAt: Date.now(),
+    company, position,
+    deadline:     document.getElementById('job-deadline').value,
+    appliedDate:  document.getElementById('job-applied-date').value,
+    status:       document.getElementById('job-status').value,
+    url:          document.getElementById('job-url').value,
+    notes:        document.getElementById('job-notes').value,
+  });
+  saveState();
+  ['job-company','job-position','job-url','job-notes','job-deadline','job-applied-date'].forEach(id => document.getElementById(id).value='');
+  document.getElementById('job-status').value='관심';
+  renderJobs(); showToast('💼 채용 공고가 저장됐습니다');
+}
+function updateJobStatus(id, status) {
+  const j = state.jobs.find(x=>x.id===id); if (!j) return;
+  j.status = status; if (status==='지원완료'&&!j.appliedDate) j.appliedDate=today();
+  saveState(); renderJobs(); closeStatusModal(); showToast(`상태: ${status}`);
+}
+function deleteJob(id) {
+  if (!confirm('이 공고를 삭제할까요?')) return;
+  state.jobs = state.jobs.filter(x=>x.id!==id); saveState(); renderJobs();
+}
+function filterJobs(f) {
+  state.jobFilter = f;
+  document.querySelectorAll('[id^="jf-"]').forEach(btn => btn.className='text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600');
+  const activeBtn = document.getElementById('jf-'+(f||'all'));
+  if (activeBtn) activeBtn.className='text-xs px-3 py-1.5 rounded-full bg-blue-500 text-white';
+  renderJobs();
+}
+function renderJobs() {
+  let list = state.jobs;
+  if (state.jobFilter) list = list.filter(j=>j.status===state.jobFilter);
+  list = [...list].sort((a,b)=>b.createdAt-a.createdAt);
+  document.getElementById('job-total-count').textContent   = state.jobs.length;
+  document.getElementById('job-applied-count').textContent = state.jobs.filter(j=>['지원완료','서류통과','면접예정','최종합격'].includes(j.status)).length;
+  document.getElementById('job-pass-count').textContent    = state.jobs.filter(j=>['서류통과','면접예정','최종합격'].includes(j.status)).length;
+  document.getElementById('job-final-count').textContent   = state.jobs.filter(j=>j.status==='최종합격').length;
+  const container=document.getElementById('job-list'); const empty=document.getElementById('job-empty');
+  if (!list.length) { container.innerHTML=''; empty.classList.remove('hidden'); return; }
+  empty.classList.add('hidden');
+  container.innerHTML=list.map(j=>`
+    <div class="p-4 hover:bg-gray-50">
+      <div class="flex items-start gap-3">
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 flex-wrap mb-1">
+            <span class="font-bold text-gray-900">${escHtml(j.company)}</span>
+            <span class="text-sm text-gray-500">${escHtml(j.position)}</span>
+            <span class="text-xs px-2 py-0.5 rounded-full font-semibold ${JOB_STATUS_COLORS[j.status]||'bg-gray-100 text-gray-600'}">${j.status}</span>
+          </div>
+          <div class="flex gap-3 text-xs text-gray-400 flex-wrap">
+            ${j.deadline?`<span>마감: ${formatDateShort(j.deadline)}</span>`:''}
+            ${j.appliedDate?`<span>지원: ${formatDateShort(j.appliedDate)}</span>`:''}
+          </div>
+          ${j.notes?`<p class="text-xs text-gray-400 mt-1 line-clamp-2">${escHtml(j.notes)}</p>`:''}
+          <div class="flex gap-2 mt-2 flex-wrap">
+            <button onclick="openStatusModal('job','${j.id}')" class="text-xs text-indigo-500 hover:underline">상태변경</button>
+            ${j.url?`<a href="${escHtml(j.url)}" target="_blank" class="text-xs text-blue-500 hover:underline">공고보기</a>`:''}
+            <button onclick="deleteJob('${j.id}')" class="text-xs text-red-400 hover:underline">삭제</button>
+          </div>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+// ══════════════════════════════════════════
+//  PROGRAM
+// ══════════════════════════════════════════
+const PROG_STATUS_COLORS = {
+  '검토중':'bg-gray-100 text-gray-600','신청완료':'bg-blue-100 text-blue-700',
+  '선정':'bg-emerald-500 text-white','미선정':'bg-red-100 text-red-600',
+};
+const PROG_STATUSES = ['검토중','신청완료','선정','미선정'];
+function addProgram() {
+  const name = document.getElementById('prog-name').value.trim();
+  if (!name) { showToast('⚠️ 지원사업명을 입력하세요'); return; }
+  state.programs.unshift({
+    id:uid(), createdAt:Date.now(), name,
+    category: document.getElementById('prog-category').value,
+    deadline: document.getElementById('prog-deadline').value,
+    amount:   document.getElementById('prog-amount').value,
+    status:   document.getElementById('prog-status').value,
+    url:      document.getElementById('prog-url').value,
+    notes:    document.getElementById('prog-notes').value,
+  });
+  saveState();
+  ['prog-name','prog-amount','prog-url','prog-notes','prog-deadline'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('prog-status').value='검토중';
+  renderPrograms(); showToast('📋 지원사업이 저장됐습니다');
+}
+function updateProgramStatus(id, status) {
+  const p = state.programs.find(x=>x.id===id); if (!p) return;
+  p.status = status; saveState(); renderPrograms(); closeStatusModal(); showToast(`상태: ${status}`);
+}
+function deleteProgram(id) {
+  if (!confirm('이 지원사업을 삭제할까요?')) return;
+  state.programs = state.programs.filter(x=>x.id!==id); saveState(); renderPrograms();
+}
+function filterPrograms(f) {
+  state.programFilter = f;
+  document.querySelectorAll('[id^="pgf-"]').forEach(btn=>btn.className='text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600');
+  const btn=document.getElementById('pgf-'+(f||'all'));
+  if (btn) btn.className='text-xs px-3 py-1.5 rounded-full bg-emerald-500 text-white';
+  renderPrograms();
+}
+function renderPrograms() {
+  let list = state.programs;
+  if (state.programFilter) list=list.filter(p=>p.status===state.programFilter);
+  list=[...list].sort((a,b)=>b.createdAt-a.createdAt);
+  document.getElementById('prog-total-count').textContent    = state.programs.length;
+  document.getElementById('prog-applied-count').textContent  = state.programs.filter(p=>['신청완료','선정'].includes(p.status)).length;
+  document.getElementById('prog-selected-count').textContent = state.programs.filter(p=>p.status==='선정').length;
+  const container=document.getElementById('program-list'); const empty=document.getElementById('program-empty');
+  if (!list.length) { container.innerHTML=''; empty.classList.remove('hidden'); return; }
+  empty.classList.add('hidden');
+  container.innerHTML=list.map(p=>`
+    <div class="p-4 hover:bg-gray-50">
+      <div class="flex items-start gap-3">
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 flex-wrap mb-1">
+            <span class="font-bold text-gray-900">${escHtml(p.name)}</span>
+            <span class="text-xs text-gray-400">${p.category||''}</span>
+            <span class="text-xs px-2 py-0.5 rounded-full font-semibold ${PROG_STATUS_COLORS[p.status]||'bg-gray-100 text-gray-600'}">${p.status}</span>
+          </div>
+          <div class="flex gap-3 text-xs text-gray-400 flex-wrap">
+            ${p.deadline?`<span>마감: ${formatDateShort(p.deadline)}</span>`:''}
+            ${p.amount?`<span>지원금액: ${escHtml(p.amount)}</span>`:''}
+          </div>
+          ${p.notes?`<p class="text-xs text-gray-400 mt-1 line-clamp-2">${escHtml(p.notes)}</p>`:''}
+          <div class="flex gap-2 mt-2 flex-wrap">
+            <button onclick="openStatusModal('program','${p.id}')" class="text-xs text-indigo-500 hover:underline">상태변경</button>
+            ${p.url?`<a href="${escHtml(p.url)}" target="_blank" class="text-xs text-blue-500 hover:underline">공고보기</a>`:''}
+            <button onclick="deleteProgram('${p.id}')" class="text-xs text-red-400 hover:underline">삭제</button>
+          </div>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+// ══════════════════════════════════════════
+//  STATUS MODAL (shared by Job & Program)
+// ══════════════════════════════════════════
+function openStatusModal(type, id) {
+  state.statusModalType=type; state.statusModalId=id;
+  const statuses = type==='job' ? JOB_STATUSES : PROG_STATUSES;
+  const current  = type==='job'
+    ? state.jobs.find(x=>x.id===id)?.status
+    : state.programs.find(x=>x.id===id)?.status;
+  document.getElementById('status-modal-title').textContent = type==='job'?'채용 상태 변경':'지원사업 상태 변경';
+  document.getElementById('status-modal-options').innerHTML = statuses.map(s=>`
+    <button onclick="${type==='job'?'updateJobStatus':'updateProgramStatus'}('${id}','${s}')"
+      class="w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition
+        ${s===current?'bg-indigo-500 text-white':'bg-gray-50 hover:bg-gray-100 text-gray-700'}">${s}</button>`).join('');
+  document.getElementById('status-modal').classList.remove('hidden');
+}
+function closeStatusModal() {
+  document.getElementById('status-modal').classList.add('hidden');
+  state.statusModalType=null; state.statusModalId=null;
+}
+
+// ══════════════════════════════════════════
+//  BOOK
+// ══════════════════════════════════════════
+function addBook() {
+  const title = document.getElementById('book-title').value.trim();
+  if (!title) { showToast('⚠️ 책 제목을 입력하세요'); return; }
+  state.books.push({
+    id:uid(), createdAt:Date.now(), title,
+    author: document.getElementById('book-author').value.trim(),
+    startDate: document.getElementById('book-start').value || today(),
+    pages: document.getElementById('book-pages').value || '',
+    readDates: [], done:false, doneDate:null,
+  });
+  saveState();
+  ['book-title','book-author','book-pages'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('book-start').value='';
+  renderBooks(); showToast('📚 도서가 추가됐습니다');
+}
+function addReadDate(bookId) {
+  const b = state.books.find(x=>x.id===bookId); if (!b) return;
+  const t = today();
+  if (!b.readDates.includes(t)) { b.readDates.push(t); b.readDates.sort(); }
+  saveState(); renderBooks(); showToast('📖 오늘 독서 체크!');
+}
+function markBookDone(bookId) {
+  const b = state.books.find(x=>x.id===bookId); if (!b) return;
+  b.done = !b.done; b.doneDate = b.done ? today() : null;
+  saveState(); renderBooks(); showToast(b.done?'🎉 독서 완료!':'독서 완료 취소');
+}
+function deleteBook(id) {
+  if (!confirm('이 도서를 삭제할까요?')) return;
+  state.books = state.books.filter(x=>x.id!==id); saveState(); renderBooks();
+}
+function renderBooks() {
+  const list = [...state.books].sort((a,b)=>b.createdAt-a.createdAt);
+  const container=document.getElementById('book-list'); const empty=document.getElementById('book-empty');
+  if (!list.length) { container.innerHTML=''; empty.classList.remove('hidden'); return; }
+  empty.classList.add('hidden');
+  container.innerHTML=list.map(b=>{
+    const readCount=b.readDates.length;
+    const pct=b.pages?Math.min(100,Math.round(readCount/parseInt(b.pages)*300)):null;
+    return `<div class="bg-white rounded-2xl shadow-sm p-5 ${b.done?'ring-2 ring-green-200':''}">
+      <div class="flex items-start justify-between gap-3">
+        <div class="flex-1">
+          <div class="flex items-center gap-2 flex-wrap">
+            <h3 class="font-bold text-gray-900">${escHtml(b.title)}</h3>
+            ${b.done?'<span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold">✅ 완독</span>':''}
+          </div>
+          ${b.author?`<p class="text-sm text-gray-500 mt-0.5">${escHtml(b.author)}</p>`:''}
+          <div class="flex gap-3 text-xs text-gray-400 mt-1 flex-wrap">
+            <span>시작: ${formatDateShort(b.startDate)}</span>
+            ${b.pages?`<span>총 ${b.pages}p</span>`:''}
+            <span>독서일수: ${readCount}일</span>
+            ${b.done&&b.doneDate?`<span>완독: ${formatDateShort(b.doneDate)}</span>`:''}
+          </div>
+          ${readCount>0?`<div class="mt-2 flex flex-wrap gap-1">${b.readDates.slice(-10).map(d=>`<span class="text-xs bg-rose-100 text-rose-600 px-2 py-0.5 rounded-full">${formatDateShort(d)}</span>`).join('')}${readCount>10?`<span class="text-xs text-gray-400">+${readCount-10}일</span>`:''}</div>`:''}
+        </div>
+        <div class="shrink-0 text-right">
+          <div class="text-2xl font-bold text-rose-500">${readCount}<span class="text-sm text-gray-400">일</span></div>
+        </div>
+      </div>
+      <div class="flex gap-2 mt-3 flex-wrap">
+        <button onclick="addReadDate('${b.id}')" class="text-xs bg-rose-500 text-white px-3 py-1.5 rounded-full hover:bg-rose-600 transition font-semibold">📖 오늘 읽음</button>
+        <button onclick="markBookDone('${b.id}')" class="text-xs ${b.done?'bg-gray-200 text-gray-600':'bg-green-500 text-white'} px-3 py-1.5 rounded-full hover:opacity-80 transition font-semibold">${b.done?'완독취소':'🎉 완독'}</button>
+        <button onclick="deleteBook('${b.id}')" class="text-xs text-red-400 hover:underline px-2">삭제</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ══════════════════════════════════════════
+//  AI STUDY
+// ══════════════════════════════════════════
+function addAiStudy() {
+  const date  = document.getElementById('ai-date').value || today();
+  const title = document.getElementById('ai-title').value.trim();
+  if (!title) { showToast('⚠️ 주제를 입력하세요'); return; }
+  const tagsRaw = document.getElementById('ai-tags').value;
+  const tags = tagsRaw.split(',').map(t=>t.trim()).filter(Boolean);
+  state.aiStudy.unshift({
+    id:uid(), createdAt:Date.now(), date, title,
+    content: document.getElementById('ai-content').value.trim(),
+    url:     document.getElementById('ai-url').value.trim(),
+    tags,
+  });
+  saveState();
+  ['ai-title','ai-content','ai-url','ai-tags'].forEach(id=>document.getElementById(id).value='');
+  renderAiStudy(); showToast('🤖 스터디 내용이 저장됐습니다');
+}
+function deleteAiStudy(id) {
+  state.aiStudy=state.aiStudy.filter(x=>x.id!==id); saveState(); renderAiStudy();
+}
+function filterByTag(tag) {
+  state.aiTagFilter = state.aiTagFilter===tag ? '' : tag;
+  renderAiStudy();
+}
+function renderAiStudy() {
+  // Build tag list
+  const allTags=[...new Set(state.aiStudy.flatMap(x=>x.tags))].sort();
+  document.getElementById('ai-tag-filter').innerHTML=
+    allTags.map(t=>`<button onclick="filterByTag('${escHtml(t)}')"
+      class="text-xs px-3 py-1.5 rounded-full border transition ${state.aiTagFilter===t?'bg-violet-500 text-white border-violet-500':'bg-white text-gray-600 border-gray-200 hover:border-violet-300'}">${escHtml(t)}</button>`).join('');
+  let list=[...state.aiStudy];
+  if (state.aiTagFilter) list=list.filter(x=>x.tags.includes(state.aiTagFilter));
+  // Group by date
+  const byDate={};
+  list.forEach(x=>{ if(!byDate[x.date]) byDate[x.date]=[]; byDate[x.date].push(x); });
+  const sortedDates=Object.keys(byDate).sort((a,b)=>b>a?1:-1);
+  const container=document.getElementById('ai-study-list'); const empty=document.getElementById('ai-empty');
+  if (!sortedDates.length) { container.innerHTML=''; empty.classList.remove('hidden'); return; }
+  empty.classList.add('hidden');
+  container.innerHTML=sortedDates.map(date=>`
+    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+      <div class="px-5 py-3 bg-violet-50 border-b border-violet-100">
+        <span class="font-bold text-violet-700 text-sm">📅 ${formatDate(date)}</span>
+        <span class="text-xs text-violet-400 ml-2">${byDate[date].length}개</span>
+      </div>
+      ${byDate[date].map(x=>`
+        <div class="p-4 border-b border-gray-50 last:border-0">
+          <div class="flex items-start gap-3">
+            <div class="flex-1 min-w-0">
+              <p class="font-semibold text-gray-900">${escHtml(x.title)}</p>
+              ${x.url?`<a href="${escHtml(x.url)}" target="_blank" class="text-xs text-blue-500 hover:underline break-all">${escHtml(x.url)}</a>`:''}
+              ${x.content?`<p class="text-sm text-gray-600 mt-1 whitespace-pre-wrap">${escHtml(x.content)}</p>`:''}
+              ${x.tags.length?`<div class="flex gap-1 flex-wrap mt-2">${x.tags.map(t=>`<span class="text-xs bg-violet-100 text-violet-700 px-2 py-0.5 rounded-full">${escHtml(t)}</span>`).join('')}</div>`:''}
+            </div>
+            <button onclick="deleteAiStudy('${x.id}')" class="text-gray-300 hover:text-red-400 text-lg shrink-0">×</button>
+          </div>
+        </div>`).join('')}
+    </div>`).join('');
+}
+
+// ══════════════════════════════════════════
 //  ADMIN
-// ═══════════════════════════════════════════════
+// ══════════════════════════════════════════
 function filterContent(cat) {
-  state.adminFilter = cat;
-  ['all','etf','english','bible'].forEach(f => {
-    const btn = document.getElementById('filter-' + f);
-    if (!btn) return;
-    btn.className = ((!cat && f === 'all') || (cat && f === cat))
-      ? 'text-xs px-3 py-1.5 rounded-full bg-indigo-500 text-white'
-      : 'text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600';
+  state.adminFilter=cat;
+  ['all','etf','english','bible'].forEach(f=>{
+    const btn=document.getElementById('filter-'+f); if (!btn) return;
+    btn.className=((!cat&&f==='all')||(cat&&f===cat))
+      ?'text-xs px-3 py-1.5 rounded-full bg-indigo-500 text-white'
+      :'text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600';
   });
   renderAdmin();
 }
-
 function renderAdmin() {
-  const filtered = ADMIN_CONTENT.filter(c => !state.adminFilter || c.cat === state.adminFilter);
-  document.getElementById('content-total').textContent = `(${filtered.length}개)`;
-  document.getElementById('admin-table-body').innerHTML = filtered.map(item => `
+  const filtered=ADMIN_CONTENT.filter(c=>!state.adminFilter||c.cat===state.adminFilter);
+  document.getElementById('content-total').textContent=`(${filtered.length}개)`;
+  document.getElementById('admin-table-body').innerHTML=filtered.map(item=>`
     <div class="flex items-center px-4 py-3 gap-3 hover:bg-gray-50 text-sm">
       <span class="text-base">${item.catIcon}</span>
       <span class="text-gray-500 w-20 shrink-0">${item.catLabel}</span>
       <span class="font-mono text-gray-400 w-8 shrink-0">D${item.day}</span>
       <span class="flex-1 font-medium text-gray-800 truncate">${item.title}</span>
-      <span class="px-2 py-0.5 rounded-full text-xs ${item.active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-400'} shrink-0">${item.active ? '활성' : '비활성'}</span>
+      <span class="px-2 py-0.5 rounded-full text-xs ${item.active?'bg-green-100 text-green-700':'bg-gray-100 text-gray-400'} shrink-0">${item.active?'활성':'비활성'}</span>
       <button onclick="openEdit(${item.id})" class="text-indigo-500 text-xs hover:underline shrink-0">편집</button>
-    </div>
-  `).join('');
+    </div>`).join('');
 }
-
 function openEdit(id) {
-  const item = ADMIN_CONTENT.find(c => c.id === id);
-  if (!item) return;
-  state.editingId = id;
-  document.getElementById('edit-title').value = item.title;
-  document.getElementById('edit-payload').value = item.payload;
+  const item=ADMIN_CONTENT.find(c=>c.id===id); if (!item) return;
+  state.editingId=id;
+  document.getElementById('edit-title').value=item.title;
+  document.getElementById('edit-payload').value=item.payload;
   document.getElementById('edit-modal').classList.remove('hidden');
 }
-
-function closeModal() {
-  document.getElementById('edit-modal').classList.add('hidden');
-  state.editingId = null;
-}
-
+function closeModal() { document.getElementById('edit-modal').classList.add('hidden'); state.editingId=null; }
 function saveEdit() {
-  const item = ADMIN_CONTENT.find(c => c.id === state.editingId);
-  if (item) {
-    item.title = document.getElementById('edit-title').value;
-    item.payload = document.getElementById('edit-payload').value;
-    showToast('✅ 저장됐습니다');
-    renderAdmin();
-    if (state.user) renderDashboard();
-  }
+  const item=ADMIN_CONTENT.find(c=>c.id===state.editingId);
+  if (item) { item.title=document.getElementById('edit-title').value; item.payload=document.getElementById('edit-payload').value; showToast('✅ 저장됐습니다'); renderAdmin(); if (state.user) renderDashboard(); }
   closeModal();
 }
-
 function simulateSync() {
-  const pid = document.getElementById('yt-playlist').value.trim();
-  const status = document.getElementById('sync-status');
-  status.textContent = '⏳ 동기화 중...';
-  status.classList.add('text-indigo-500');
-  setTimeout(() => {
-    status.textContent = `✅ 동기화 완료 (데모: 실제 API 키 필요) — 플레이리스트: ${pid.slice(0,20)}...`;
-    status.classList.remove('text-indigo-500');
-    status.classList.add('text-green-600');
-    showToast('YouTube 동기화 완료 (데모 모드)');
-  }, 1500);
+  const pid=document.getElementById('yt-playlist').value.trim(); const status=document.getElementById('sync-status');
+  status.textContent='⏳ 동기화 중...'; status.className='text-xs text-indigo-500 mt-2';
+  setTimeout(()=>{ status.textContent=`✅ 동기화 완료 (데모) — 플레이리스트: ${pid.slice(0,20)}...`; status.className='text-xs text-green-600 mt-2'; showToast('YouTube 동기화 완료 (데모)'); },1500);
 }
 
-// ═══════════════════════════════════════════════
+// ══════════════════════════════════════════
+//  HELPERS
+// ══════════════════════════════════════════
+function escHtml(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ══════════════════════════════════════════
 //  INIT
-// ═══════════════════════════════════════════════
+// ══════════════════════════════════════════
 loadState();
-// 페이지 로드할 때마다 항상 오늘을 Day 1 기준으로 초기화
-// (dayOffset으로 앞뒤 이동은 가능, startDate는 항상 오늘)
 state.startDate = today();
 state.dayOffset = state.dayOffset || 0;
+if (!state.todoCalYear) initTodoCal();
 saveState();
 
-if (state.user) {
-  showScreen('dashboard');
-  renderDashboard();
-} else {
-  showScreen('login');
-}
+if (state.user) { showScreen('dashboard'); renderDashboard(); }
+else { showScreen('login'); }
 
-// Set today's date input default
 const regStart = document.getElementById('reg-start');
 if (regStart) regStart.value = today();
+
+// Set default dates for new entry forms
+['prayer-date','todo-date','ai-date','book-start'].forEach(id => {
+  const el = document.getElementById(id); if (el && !el.value) el.value = today();
+});
 </script>
 </body>
 </html>
