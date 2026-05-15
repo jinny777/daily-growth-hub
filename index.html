@@ -108,8 +108,13 @@
         <span class="text-xl">📚</span>
         <span class="font-bold text-gray-900">Daily Growth Hub</span>
       </div>
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2">
         <span id="nav-streak" class="text-sm text-orange-500 font-semibold"></span>
+        <button onclick="exportAllData()" class="text-xs bg-gray-100 text-gray-600 px-3 py-1.5 rounded-lg hover:bg-gray-200 transition font-medium" title="전체 데이터 백업">💾 백업</button>
+        <label class="cursor-pointer text-xs bg-gray-100 text-gray-600 px-3 py-1.5 rounded-lg hover:bg-gray-200 transition font-medium" title="백업 파일로 복원">
+          📥 복원
+          <input type="file" accept=".json" onchange="importAllData(event)" class="hidden" />
+        </label>
         <button onclick="doLogout()" class="text-sm text-gray-400 hover:text-gray-600 transition">로그아웃</button>
       </div>
     </div>
@@ -610,7 +615,7 @@
     </div>
     <!-- 내용: HTML 렌더 -->
     <div id="jd-content-render" class="flex-1 overflow-hidden">
-      <iframe id="jd-iframe" sandbox="allow-same-origin"
+      <iframe id="jd-iframe" sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
         class="w-full h-full border-0 rounded-b-2xl" style="min-height:420px"></iframe>
     </div>
     <!-- 내용: 텍스트 -->
@@ -1199,14 +1204,18 @@ function openJobDetail(id) {
   const rawNotes = j.notes || '';
   const isHtml   = /<[a-zA-Z][^>]*>/.test(rawNotes);
 
-  // iframe에 HTML 렌더링
+  // iframe에 HTML 렌더링 (모든 링크 새 탭으로 열기)
   const iframe = document.getElementById('jd-iframe');
   if (isHtml) {
-    // 원본 HTML이 있으면 그대로 렌더
-    iframe.srcdoc = rawNotes;
+    // <base target="_blank"> 삽입 → 이메일 내 모든 링크가 새 탭으로 열림
+    let html = rawNotes;
+    if (!/<base/i.test(html)) {
+      html = html.replace(/(<head[^>]*>)/i, '$1<base target="_blank">');
+      if (!/<head/i.test(html)) html = '<base target="_blank">' + html;
+    }
+    iframe.srcdoc = html;
   } else {
-    // 텍스트면 간단한 HTML로 감싸서 렌더
-    iframe.srcdoc = `<html><body style="font-family:sans-serif;font-size:14px;line-height:1.7;padding:16px;color:#374151;white-space:pre-wrap;">${escHtml(rawNotes)}</body></html>`;
+    iframe.srcdoc = `<html><head><base target="_blank"></head><body style="font-family:sans-serif;font-size:14px;line-height:1.7;padding:16px;color:#374151;white-space:pre-wrap;">${escHtml(rawNotes)}</body></html>`;
   }
 
   // 텍스트 탭에는 태그 제거된 버전
@@ -1602,6 +1611,46 @@ function simulateSync() {
   const pid=document.getElementById('yt-playlist').value.trim(); const status=document.getElementById('sync-status');
   status.textContent='⏳ 동기화 중...'; status.className='text-xs text-indigo-500 mt-2';
   setTimeout(()=>{ status.textContent=`✅ 동기화 완료 (데모) — 플레이리스트: ${pid.slice(0,20)}...`; status.className='text-xs text-green-600 mt-2'; showToast('YouTube 동기화 완료 (데모)'); },1500);
+}
+
+// ══════════════════════════════════════════
+//  백업 / 복원
+// ══════════════════════════════════════════
+function exportAllData() {
+  const backup = {
+    version: 2,
+    exportedAt: new Date().toISOString(),
+    state: state,
+  };
+  const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  const date = new Date().toISOString().slice(0,10);
+  a.href     = url;
+  a.download = `daily-growth-hub-backup-${date}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('💾 백업 파일이 다운로드됐습니다');
+}
+function importAllData(event) {
+  const file = event.target.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const backup = JSON.parse(e.target.result);
+      const imported = backup.state || backup;
+      if (!imported.user && !imported.prayers && !imported.jobs) throw new Error('올바른 백업 파일이 아닙니다');
+      if (!confirm('현재 데이터를 백업 파일로 덮어쓸까요?\n기존 데이터는 사라집니다.')) return;
+      state = { ...state, ...imported };
+      saveState();
+      renderDashboard();
+      showToast('✅ 데이터 복원 완료!');
+    } catch(err) {
+      showToast('❌ 복원 실패: ' + err.message);
+    }
+    event.target.value = '';
+  };
+  reader.readAsText(file, 'utf-8');
 }
 
 // ══════════════════════════════════════════
