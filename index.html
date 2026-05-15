@@ -618,8 +618,14 @@
       <pre id="jd-notes-text" class="text-sm text-gray-700 whitespace-pre-wrap leading-relaxed font-sans"></pre>
     </div>
     <!-- 푸터 -->
-    <div class="p-3 border-t flex gap-2 justify-between items-center bg-gray-50 rounded-b-2xl">
-      <button onclick="openStatusModalFromDetail()" class="text-sm bg-indigo-500 text-white px-4 py-2 rounded-xl hover:bg-indigo-600 transition font-bold">상태 변경</button>
+    <div class="p-3 border-t flex gap-2 justify-between items-center bg-gray-50 rounded-b-2xl flex-wrap">
+      <div class="flex gap-2">
+        <button onclick="openStatusModalFromDetail()" class="text-sm bg-indigo-500 text-white px-4 py-2 rounded-xl hover:bg-indigo-600 transition font-bold">상태 변경</button>
+        <a id="jd-apply-btn" href="#" target="_blank"
+          class="hidden text-sm bg-blue-500 text-white px-4 py-2 rounded-xl hover:bg-blue-600 transition font-bold">
+          🔗 채용공고 바로가기
+        </a>
+      </div>
       <button onclick="closeJobDetail()" class="text-sm bg-gray-200 text-gray-600 px-4 py-2 rounded-xl hover:bg-gray-300 transition font-medium">닫기</button>
     </div>
   </div>
@@ -1090,6 +1096,33 @@ function autoClassifyStatus(position, notes) {
   if (APPLIED_KEYWORDS.some(k => text.includes(k))) return '지원완료';
   return '관심';
 }
+function extractJobUrlFromHtml(html) {
+  if (!html) return '';
+  // 채용사이트 URL 패턴 우선
+  const sitePatterns = [
+    /https?:\/\/[^\s"'<>]*saramin\.co\.kr\/[^\s"'<>]*/i,
+    /https?:\/\/[^\s"'<>]*jobkorea\.co\.kr\/[^\s"'<>]*Recruit[^\s"'<>]*/i,
+    /https?:\/\/[^\s"'<>]*wanted\.co\.kr\/wd\/[^\s"'<>]*/i,
+    /https?:\/\/[^\s"'<>]*work\.go\.kr\/[^\s"'<>]*/i,
+    /https?:\/\/[^\s"'<>]*incruit\.com\/[^\s"'<>]*job[^\s"'<>]*/i,
+    /https?:\/\/[^\s"'<>]*jobplanet\.co\.kr\/[^\s"'<>]*job[^\s"'<>]*/i,
+    /https?:\/\/[^\s"'<>]*remember\.co\/[^\s"'<>]*job[^\s"'<>]*/i,
+    /https?:\/\/[^\s"'<>]*linkedin\.com\/[^\s"'<>]*jobs[^\s"'<>]*/i,
+  ];
+  for (const p of sitePatterns) {
+    const m = html.match(p);
+    if (m) return m[0].replace(/['">\s]+$/, '');
+  }
+  // 지원하기 버튼 텍스트 근처 href
+  const btnTexts = ['지원하기','공고보기','공고 보기','바로가기','채용공고','상세보기'];
+  for (const txt of btnTexts) {
+    const re = new RegExp(`href=["']([^"']+)["'][^>]*>[^<]*${txt}`, 'i');
+    const m = html.match(re);
+    if (m && m[1].startsWith('http')) return m[1];
+  }
+  return '';
+}
+
 function stripHtml(html) {
   if (!html) return '';
   return html
@@ -1149,8 +1182,19 @@ function openJobDetail(id) {
   statusEl.className = `text-xs px-2 py-0.5 rounded-full font-bold ${JOB_STATUS_COLORS[j.status]||'bg-gray-100 text-gray-600'}`;
   document.getElementById('jd-deadline').textContent     = j.deadline    ? `📅 마감: ${formatDateShort(j.deadline)}`    : '';
   document.getElementById('jd-applied-date').textContent = j.appliedDate ? `✉️ 지원: ${formatDateShort(j.appliedDate)}` : '';
+  // URL 처리 - 헤더 링크 + 하단 버튼
   const urlInline = document.getElementById('jd-url-inline');
-  urlInline.innerHTML = j.url ? `<a href="${escHtml(j.url)}" target="_blank" class="text-blue-500 hover:underline">🔗 공고 바로가기</a>` : '';
+  const applyBtn  = document.getElementById('jd-apply-btn');
+  // iframe에서 링크 추출 시도 (notes에 href 있는 경우)
+  const extractedUrl = j.url || extractJobUrlFromHtml(j.notes || '');
+  if (extractedUrl) {
+    urlInline.innerHTML = `<a href="${escHtml(extractedUrl)}" target="_blank" class="text-blue-500 hover:underline font-medium">🔗 공고 바로가기</a>`;
+    applyBtn.href = extractedUrl;
+    applyBtn.classList.remove('hidden');
+  } else {
+    urlInline.innerHTML = '';
+    applyBtn.classList.add('hidden');
+  }
 
   const rawNotes = j.notes || '';
   const isHtml   = /<[a-zA-Z][^>]*>/.test(rawNotes);
