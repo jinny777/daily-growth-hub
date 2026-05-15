@@ -662,9 +662,9 @@
       <button onclick="closeSyncModal()" class="text-gray-400 hover:text-gray-600 text-xl font-bold">×</button>
     </div>
     <div class="bg-blue-50 rounded-xl p-3 mb-4 text-xs text-blue-700 leading-relaxed">
-      💡 <strong>GitHub Gist</strong>를 저장소로 사용합니다.<br>
-      토큰 발급 시 <strong class="text-red-600">gist 권한 필수 체크!</strong><br>
-      <a href="https://github.com/settings/tokens" target="_blank" class="underline font-bold">→ github.com/settings/tokens 에서 토큰 발급</a>
+      💡 GitHub <strong>repo 권한</strong> 토큰으로 동작합니다.<br>
+      기존에 발급한 토큰을 그대로 사용하시면 됩니다.<br>
+      어떤 PC에서든 같은 데이터를 불러올 수 있습니다.
     </div>
     <div class="space-y-3">
       <div>
@@ -1660,20 +1660,18 @@ function simulateSync() {
 }
 
 // ══════════════════════════════════════════
-//  클라우드 동기화 (GitHub Gist)
+//  클라우드 동기화 (GitHub Repo Contents API)
+//  repo 권한 토큰으로 동작
 // ══════════════════════════════════════════
-const GIST_FILENAME = 'daily-growth-hub-data.json';
+const SYNC_REPO = 'jinny777/daily-growth-hub';
+const SYNC_FILE = 'sync-data.json';
 
 function getSyncToken() { return localStorage.getItem('dgh_sync_token') || ''; }
-function getSyncGistId() { return localStorage.getItem('dgh_sync_gist_id') || ''; }
 
 function openSyncModal() {
-  const token  = getSyncToken();
-  const gistId = getSyncGistId();
-  document.getElementById('sync-token').value = token;
-  document.getElementById('sync-gist-id').value = gistId;
-  document.getElementById('sync-gist-row').classList.toggle('hidden', !gistId);
-  document.getElementById('sync-other-pc-row').classList.toggle('hidden', !!gistId);
+  document.getElementById('sync-token').value = getSyncToken();
+  document.getElementById('sync-gist-row').classList.add('hidden');
+  document.getElementById('sync-other-pc-row').classList.add('hidden');
   document.getElementById('sync-status-msg').textContent = '';
   document.getElementById('sync-modal').classList.remove('hidden');
 }
@@ -1683,17 +1681,8 @@ function saveSyncSettings() {
   if (!token) { document.getElementById('sync-status-msg').textContent = '⚠️ 토큰을 입력하세요'; return; }
   localStorage.setItem('dgh_sync_token', token);
   updateSyncButtons();
-  document.getElementById('sync-status-msg').textContent = '✅ 저장됐습니다. 이제 ☁️ 저장 버튼을 눌러보세요!';
+  document.getElementById('sync-status-msg').textContent = '✅ 저장됐습니다. ☁️ 저장 버튼을 눌러보세요!';
   setTimeout(closeSyncModal, 1500);
-}
-function setGistId() {
-  const id = document.getElementById('sync-gist-id-input').value.trim();
-  if (!id) return;
-  localStorage.setItem('dgh_sync_gist_id', id);
-  document.getElementById('sync-gist-id').value = id;
-  document.getElementById('sync-gist-row').classList.remove('hidden');
-  document.getElementById('sync-other-pc-row').classList.add('hidden');
-  document.getElementById('sync-status-msg').textContent = '✅ Gist ID 적용됨. ☁️ 불러오기를 눌러주세요.';
 }
 function updateSyncButtons() {
   const hasToken = !!getSyncToken();
@@ -1701,59 +1690,70 @@ function updateSyncButtons() {
   document.getElementById('btn-cloud-load').classList.toggle('hidden', !hasToken);
 }
 
+function utf8ToBase64(str) {
+  return btoa(unescape(encodeURIComponent(str)));
+}
+function base64ToUtf8(b64) {
+  return decodeURIComponent(escape(atob(b64.replace(/\n/g, ''))));
+}
+
 async function cloudSave() {
-  const token  = getSyncToken();
+  const token = getSyncToken();
   if (!token) { openSyncModal(); return; }
   const btn = document.getElementById('btn-cloud-save');
   btn.textContent = '☁️ 저장중...'; btn.disabled = true;
   try {
-    const content = JSON.stringify({ version:2, savedAt: new Date().toISOString(), state }, null, 2);
-    const gistId  = getSyncGistId();
-    const body    = { description:'Daily Growth Hub 데이터', public:false,
-                      files:{ [GIST_FILENAME]:{ content } } };
+    const content = JSON.stringify({ version:2, savedAt:new Date().toISOString(), state }, null, 2);
+    const encoded = utf8ToBase64(content);
+
+    // 기존 파일 SHA 확인 (업데이트 시 필요)
+    let sha = '';
+    const getRes = await fetch(
+      `https://api.github.com/repos/${SYNC_REPO}/contents/${SYNC_FILE}`,
+      { headers:{ 'Authorization':`token ${token}` } }
+    );
+    if (getRes.ok) { const f = await getRes.json(); sha = f.sha; }
+
+    const body = { message:`sync ${new Date().toISOString()}`, content:encoded };
+    if (sha) body.sha = sha;
+
     const res = await fetch(
-      gistId ? `https://api.github.com/gists/${gistId}` : 'https://api.github.com/gists',
-      { method: gistId ? 'PATCH' : 'POST',
-        headers:{ 'Authorization':`token ${token}`, 'Content-Type':'application/json' },
+      `https://api.github.com/repos/${SYNC_REPO}/contents/${SYNC_FILE}`,
+      { method:'PUT', headers:{ 'Authorization':`token ${token}`, 'Content-Type':'application/json' },
         body: JSON.stringify(body) }
     );
     if (res.status === 401) throw new Error('토큰이 잘못됐습니다. 토큰을 다시 확인해주세요.');
-    if (res.status === 403) throw new Error('gist 권한이 없습니다. 토큰 재발급 시 gist 체크박스를 선택해주세요.');
-    if (!res.ok) throw new Error(`GitHub API 오류 ${res.status}`);
-    const result = await res.json();
-    const gid = result.id;
-    localStorage.setItem('dgh_sync_gist_id', gid);
-    // Gist ID를 alert로 바로 표시
-    alert(`✅ 클라우드 저장 완료!\n\nGist ID (다른 PC에서 입력):\n${gid}\n\n복사해두세요!`);
-    showToast('☁️ 저장 완료!');
+    if (!res.ok) throw new Error(`저장 실패 (${res.status})`);
+    showToast('☁️ 클라우드 저장 완료!');
   } catch(e) {
-    showToast('❌ 저장 실패: ' + e.message);
+    showToast('❌ ' + e.message);
   }
   btn.textContent = '☁️ 저장'; btn.disabled = false;
 }
 
 async function cloudLoad() {
-  const token  = getSyncToken();
-  const gistId = getSyncGistId();
+  const token = getSyncToken();
   if (!token) { openSyncModal(); return; }
-  if (!gistId) { showToast('⚠️ 먼저 ☁️ 저장을 한 번 해주세요'); return; }
   const btn = document.getElementById('btn-cloud-load');
   btn.textContent = '☁️ 불러오는중...'; btn.disabled = true;
   try {
-    const res = await fetch(`https://api.github.com/gists/${gistId}`,
-      { headers:{ 'Authorization':`token ${token}` } });
-    if (!res.ok) throw new Error(`GitHub API 오류 ${res.status}`);
-    const gist    = await res.json();
-    const content = gist.files[GIST_FILENAME]?.content;
-    if (!content) throw new Error('데이터 파일을 찾을 수 없습니다');
+    const res = await fetch(
+      `https://api.github.com/repos/${SYNC_REPO}/contents/${SYNC_FILE}`,
+      { headers:{ 'Authorization':`token ${token}`, 'Cache-Control':'no-cache' } }
+    );
+    if (res.status === 404) throw new Error('저장된 데이터가 없습니다. 먼저 ☁️ 저장을 해주세요.');
+    if (res.status === 401) throw new Error('토큰이 잘못됐습니다.');
+    if (!res.ok) throw new Error(`불러오기 실패 (${res.status})`);
+    const file    = await res.json();
+    const content = base64ToUtf8(file.content);
     const backup  = JSON.parse(content);
     const loaded  = backup.state || backup;
+    if (!confirm('현재 데이터를 클라우드 데이터로 덮어쓸까요?')) return;
     state = { ...state, ...loaded };
-    saveState();
-    renderDashboard();
-    showToast('☁️ 클라우드에서 불러오기 완료!');
+    saveState(); renderDashboard();
+    showToast('☁️ 불러오기 완료!');
   } catch(e) {
-    showToast('❌ 불러오기 실패: ' + e.message);
+    showToast('❌ ' + e.message);
   }
   btn.textContent = '☁️ 불러오기'; btn.disabled = false;
 }
