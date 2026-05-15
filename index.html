@@ -663,8 +663,8 @@
     </div>
     <div class="bg-blue-50 rounded-xl p-3 mb-4 text-xs text-blue-700 leading-relaxed">
       💡 <strong>GitHub Gist</strong>를 저장소로 사용합니다.<br>
-      어떤 PC에서든 같은 데이터를 불러올 수 있습니다.<br>
-      토큰은 이 기기 브라우저에만 저장되며 외부로 전송되지 않습니다.
+      토큰 발급 시 <strong class="text-red-600">gist 권한 필수 체크!</strong><br>
+      <a href="https://github.com/settings/tokens" target="_blank" class="underline font-bold">→ github.com/settings/tokens 에서 토큰 발급</a>
     </div>
     <div class="space-y-3">
       <div>
@@ -1717,10 +1717,15 @@ async function cloudSave() {
         headers:{ 'Authorization':`token ${token}`, 'Content-Type':'application/json' },
         body: JSON.stringify(body) }
     );
+    if (res.status === 401) throw new Error('토큰이 잘못됐습니다. 토큰을 다시 확인해주세요.');
+    if (res.status === 403) throw new Error('gist 권한이 없습니다. 토큰 재발급 시 gist 체크박스를 선택해주세요.');
     if (!res.ok) throw new Error(`GitHub API 오류 ${res.status}`);
     const result = await res.json();
-    localStorage.setItem('dgh_sync_gist_id', result.id);
-    showToast('☁️ 클라우드 저장 완료! Gist ID: ' + result.id.slice(0,8) + '...');
+    const gid = result.id;
+    localStorage.setItem('dgh_sync_gist_id', gid);
+    // Gist ID를 alert로 바로 표시
+    alert(`✅ 클라우드 저장 완료!\n\nGist ID (다른 PC에서 입력):\n${gid}\n\n복사해두세요!`);
+    showToast('☁️ 저장 완료!');
   } catch(e) {
     showToast('❌ 저장 실패: ' + e.message);
   }
