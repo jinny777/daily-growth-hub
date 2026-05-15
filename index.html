@@ -582,30 +582,45 @@
 </div>
 
 <!-- JOB DETAIL MODAL -->
-<div id="job-detail-modal" class="fixed inset-0 bg-black/40 flex items-center justify-center z-50 hidden p-4">
-  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[85vh] flex flex-col card-enter">
-    <div class="flex items-center justify-between p-5 border-b">
+<div id="job-detail-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden p-3">
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[92vh] flex flex-col">
+    <!-- 헤더 -->
+    <div class="flex items-start justify-between p-4 border-b gap-3">
       <div class="flex-1 min-w-0">
-        <div class="flex items-center gap-2 flex-wrap">
-          <span id="jd-channel" class="text-xs px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 font-semibold"></span>
-          <span id="jd-status"  class="text-xs px-2 py-0.5 rounded-full font-semibold"></span>
+        <div class="flex items-center gap-2 flex-wrap mb-1">
+          <span id="jd-channel" class="text-xs px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 font-bold"></span>
+          <span id="jd-status"  class="text-xs px-2 py-0.5 rounded-full font-bold"></span>
         </div>
-        <h3 id="jd-company"  class="font-bold text-gray-900 mt-1"></h3>
-        <p  id="jd-position" class="text-sm text-gray-500"></p>
+        <h3 id="jd-company"  class="font-extrabold text-gray-900 text-base leading-snug"></h3>
+        <p  id="jd-position" class="text-sm text-gray-500 mt-0.5 line-clamp-2"></p>
+        <div class="flex gap-3 text-xs text-gray-400 mt-1 flex-wrap">
+          <span id="jd-deadline"></span>
+          <span id="jd-applied-date"></span>
+          <span id="jd-url-inline"></span>
+        </div>
       </div>
-      <button onclick="closeJobDetail()" class="text-gray-400 hover:text-gray-600 text-2xl font-bold ml-3">×</button>
+      <button onclick="closeJobDetail()" class="text-gray-400 hover:text-gray-600 text-2xl font-bold shrink-0 mt-0.5">×</button>
     </div>
-    <div class="p-5 overflow-y-auto flex-1">
-      <div class="flex gap-4 text-xs text-gray-400 mb-4 flex-wrap">
-        <span id="jd-deadline"></span>
-        <span id="jd-applied-date"></span>
-      </div>
-      <div id="jd-url" class="mb-3"></div>
-      <div id="jd-notes" class="text-sm text-gray-700 whitespace-pre-wrap bg-gray-50 rounded-xl p-4 leading-relaxed"></div>
+    <!-- 탭 전환 (HTML 렌더 / 텍스트) -->
+    <div class="flex border-b px-4">
+      <button id="jd-tab-render" onclick="switchJobDetailTab('render')"
+        class="px-4 py-2.5 text-sm font-semibold text-indigo-600 border-b-2 border-indigo-500">📄 공고 내용</button>
+      <button id="jd-tab-text" onclick="switchJobDetailTab('text')"
+        class="px-4 py-2.5 text-sm text-gray-400 hover:text-gray-600">📝 텍스트</button>
     </div>
-    <div class="p-4 border-t flex gap-2 justify-between items-center">
-      <button id="jd-status-btn" onclick="openStatusModalFromDetail()" class="text-sm bg-indigo-500 text-white px-4 py-2 rounded-xl hover:bg-indigo-600 transition font-bold">상태 변경</button>
-      <button onclick="closeJobDetail()" class="text-sm bg-gray-100 text-gray-600 px-4 py-2 rounded-xl hover:bg-gray-200 transition">닫기</button>
+    <!-- 내용: HTML 렌더 -->
+    <div id="jd-content-render" class="flex-1 overflow-hidden">
+      <iframe id="jd-iframe" sandbox="allow-same-origin"
+        class="w-full h-full border-0 rounded-b-2xl" style="min-height:420px"></iframe>
+    </div>
+    <!-- 내용: 텍스트 -->
+    <div id="jd-content-text" class="flex-1 overflow-y-auto p-4 hidden">
+      <pre id="jd-notes-text" class="text-sm text-gray-700 whitespace-pre-wrap leading-relaxed font-sans"></pre>
+    </div>
+    <!-- 푸터 -->
+    <div class="p-3 border-t flex gap-2 justify-between items-center bg-gray-50 rounded-b-2xl">
+      <button onclick="openStatusModalFromDetail()" class="text-sm bg-indigo-500 text-white px-4 py-2 rounded-xl hover:bg-indigo-600 transition font-bold">상태 변경</button>
+      <button onclick="closeJobDetail()" class="text-sm bg-gray-200 text-gray-600 px-4 py-2 rounded-xl hover:bg-gray-300 transition font-medium">닫기</button>
     </div>
   </div>
 </div>
@@ -1131,16 +1146,44 @@ function openJobDetail(id) {
   document.getElementById('jd-position').textContent = j.position || '';
   const statusEl = document.getElementById('jd-status');
   statusEl.textContent = j.status;
-  statusEl.className = `text-xs px-2 py-0.5 rounded-full font-semibold ${JOB_STATUS_COLORS[j.status]||'bg-gray-100 text-gray-600'}`;
-  document.getElementById('jd-deadline').textContent     = j.deadline     ? `마감: ${formatDateShort(j.deadline)}`     : '';
-  document.getElementById('jd-applied-date').textContent = j.appliedDate  ? `지원: ${formatDateShort(j.appliedDate)}`  : '';
-  const urlEl = document.getElementById('jd-url');
-  urlEl.innerHTML = j.url ? `<a href="${escHtml(j.url)}" target="_blank" class="text-xs text-blue-500 hover:underline break-all">${escHtml(j.url)}</a>` : '';
-  document.getElementById('jd-notes').textContent = j.notes ? stripHtml(j.notes) : '내용 없음';
+  statusEl.className = `text-xs px-2 py-0.5 rounded-full font-bold ${JOB_STATUS_COLORS[j.status]||'bg-gray-100 text-gray-600'}`;
+  document.getElementById('jd-deadline').textContent     = j.deadline    ? `📅 마감: ${formatDateShort(j.deadline)}`    : '';
+  document.getElementById('jd-applied-date').textContent = j.appliedDate ? `✉️ 지원: ${formatDateShort(j.appliedDate)}` : '';
+  const urlInline = document.getElementById('jd-url-inline');
+  urlInline.innerHTML = j.url ? `<a href="${escHtml(j.url)}" target="_blank" class="text-blue-500 hover:underline">🔗 공고 바로가기</a>` : '';
+
+  const rawNotes = j.notes || '';
+  const isHtml   = /<[a-zA-Z][^>]*>/.test(rawNotes);
+
+  // iframe에 HTML 렌더링
+  const iframe = document.getElementById('jd-iframe');
+  if (isHtml) {
+    // 원본 HTML이 있으면 그대로 렌더
+    iframe.srcdoc = rawNotes;
+  } else {
+    // 텍스트면 간단한 HTML로 감싸서 렌더
+    iframe.srcdoc = `<html><body style="font-family:sans-serif;font-size:14px;line-height:1.7;padding:16px;color:#374151;white-space:pre-wrap;">${escHtml(rawNotes)}</body></html>`;
+  }
+
+  // 텍스트 탭에는 태그 제거된 버전
+  document.getElementById('jd-notes-text').textContent = isHtml ? stripHtml(rawNotes) : rawNotes;
+
+  switchJobDetailTab('render');
   document.getElementById('job-detail-modal').classList.remove('hidden');
+}
+function switchJobDetailTab(tab) {
+  const isRender = tab === 'render';
+  document.getElementById('jd-content-render').classList.toggle('hidden', !isRender);
+  document.getElementById('jd-content-text').classList.toggle('hidden', isRender);
+  document.getElementById('jd-tab-render').className = 'px-4 py-2.5 text-sm font-semibold ' +
+    (isRender ? 'text-indigo-600 border-b-2 border-indigo-500' : 'text-gray-400 hover:text-gray-600');
+  document.getElementById('jd-tab-text').className = 'px-4 py-2.5 text-sm font-semibold ' +
+    (!isRender ? 'text-indigo-600 border-b-2 border-indigo-500' : 'text-gray-400 hover:text-gray-600');
 }
 function closeJobDetail() {
   document.getElementById('job-detail-modal').classList.add('hidden');
+  // iframe 초기화 (메모리 절약)
+  document.getElementById('jd-iframe').srcdoc = '';
   currentDetailJobId = null;
 }
 function openStatusModalFromDetail() {
