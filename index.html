@@ -1153,12 +1153,9 @@ function importJobsFromFile(event) {
       let added = 0;
       imported.forEach(job => {
         if (!existingIds.has(job.id)) {
-          // HTML 정리
-          job.notes = stripHtml(job.notes);
-          // 채널 자동 감지
-          job.channel = detectChannel(job.company, job.notes);
-          // 지원완료 자동 분류
-          job.status = autoClassifyStatus(job.position, job.notes);
+          // HTML 원본 보존 (렌더링용) - stripHtml 하지 않음
+          job.channel = job.channel || detectChannel(job.company, job.notes);
+          job.status  = job.status  || autoClassifyStatus(job.position, job.notes);
           state.jobs.unshift(job);
           added++;
         }
