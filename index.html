@@ -1676,13 +1676,30 @@ function openSyncModal() {
   document.getElementById('sync-modal').classList.remove('hidden');
 }
 function closeSyncModal() { document.getElementById('sync-modal').classList.add('hidden'); }
-function saveSyncSettings() {
+async function saveSyncSettings() {
   const token = document.getElementById('sync-token').value.trim();
-  if (!token) { document.getElementById('sync-status-msg').textContent = '⚠️ 토큰을 입력하세요'; return; }
-  localStorage.setItem('dgh_sync_token', token);
-  updateSyncButtons();
-  document.getElementById('sync-status-msg').textContent = '✅ 저장됐습니다. ☁️ 저장 버튼을 눌러보세요!';
-  setTimeout(closeSyncModal, 1500);
+  const msg   = document.getElementById('sync-status-msg');
+  if (!token) { msg.textContent = '⚠️ 토큰을 입력하세요'; return; }
+  msg.textContent = '🔍 토큰 확인 중...';
+  try {
+    const res = await fetch('https://api.github.com/user', {
+      headers: { 'Authorization': `token ${token}` }
+    });
+    if (!res.ok) throw new Error('토큰이 유효하지 않습니다 (' + res.status + ')');
+    const scopes = res.headers.get('x-oauth-scopes') || '';
+    const hasRepo = scopes.includes('repo') || scopes.includes('public_repo');
+    if (!hasRepo) {
+      msg.innerHTML = `⚠️ 권한 부족! 현재 권한: <b>${scopes||'없음'}</b><br><span class="text-red-600">토큰에 <b>repo</b> 권한을 추가해주세요</span>`;
+      return;
+    }
+    const user = await res.json();
+    localStorage.setItem('dgh_sync_token', token);
+    updateSyncButtons();
+    msg.innerHTML = `✅ <b>${user.login}</b> 인증 성공! (권한: ${scopes})<br>이제 ☁️ 저장 버튼을 눌러보세요!`;
+    setTimeout(closeSyncModal, 2500);
+  } catch(e) {
+    msg.textContent = '❌ ' + e.message;
+  }
 }
 function updateSyncButtons() {
   const hasToken = !!getSyncToken();
