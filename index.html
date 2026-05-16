@@ -1720,8 +1720,19 @@ async function cloudSave() {
   const btn = document.getElementById('btn-cloud-save');
   btn.textContent = '☁️ 저장중...'; btn.disabled = true;
   try {
-    const content = JSON.stringify({ version:2, savedAt:new Date().toISOString(), state }, null, 2);
+    // 클라우드 저장용 경량 state (HTML 제거하여 용량 절약)
+    const lightState = {
+      ...state,
+      jobs: (state.jobs||[]).map(j => ({
+        ...j,
+        notes: j.notes ? stripHtml(j.notes).slice(0, 300) : ''
+      }))
+    };
+    const content = JSON.stringify({ version:2, savedAt:new Date().toISOString(), state: lightState });
     const encoded = utf8ToBase64(content);
+    const sizeMB  = (encoded.length / 1024 / 1024).toFixed(2);
+    if (parseFloat(sizeMB) > 50) throw new Error(`데이터가 너무 큽니다 (${sizeMB}MB)`);
+    console.log(`클라우드 저장 크기: ${sizeMB}MB`);
 
     // 기존 파일 SHA 확인 (업데이트 시 필요)
     let sha = '';
