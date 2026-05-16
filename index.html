@@ -1016,6 +1016,21 @@ function addPrayer() {
   document.getElementById('prayer-content').value='';
   renderPrayers(); showToast('🙏 기도 제목이 저장됐습니다');
 }
+function togglePrayerItem(prayerId, idx) {
+  const p = state.prayers.find(x=>x.id===prayerId); if (!p) return;
+  if (!p.checkedItems) p.checkedItems = {};
+  p.checkedItems[idx] = !p.checkedItems[idx];
+  saveState(); renderPrayers();
+}
+function parsePrayerItems(content) {
+  if (!content) return [];
+  return content.split('\n')
+    .map(line => line.trim())
+    .filter(line => line.length > 0)
+    .map(line => line.replace(/^[\d]+[.)\s]+/, '').replace(/^[-•*]\s*/, '').trim())
+    .filter(line => line.length > 0);
+}
+
 function togglePrayerAnswered(id) {
   const p = state.prayers.find(x=>x.id===id); if (!p) return;
   if (!p.answered) {
@@ -1103,7 +1118,31 @@ function renderPrayers() {
             : '<span class="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full font-semibold">기도 중</span>'}
         </div>
         <p class="font-bold text-sm ${p.answered?'text-green-800':'text-gray-800'}">${escHtml(p.title)}</p>
-        ${p.content?`<p class="text-sm mt-1 whitespace-pre-wrap leading-relaxed ${p.answered?'text-green-700':'text-gray-500'}">${escHtml(p.content)}</p>`:''}
+        ${p.content ? (() => {
+          const items = parsePrayerItems(p.content);
+          const checked = p.checkedItems || {};
+          const doneCount = items.filter((_,i)=>checked[i]).length;
+          if (items.length <= 1) {
+            return `<p class="text-sm mt-1 whitespace-pre-wrap leading-relaxed ${p.answered?'text-green-700':'text-gray-500'}">${escHtml(p.content)}</p>`;
+          }
+          return `
+            <div class="mt-2 space-y-1">
+              <div class="flex items-center gap-1 mb-1">
+                <span class="text-xs text-gray-400">${doneCount}/${items.length} 응답</span>
+                <div class="flex-1 bg-gray-200 rounded-full h-1 ml-1">
+                  <div class="h-1 rounded-full ${p.answered?'bg-green-400':'bg-purple-400'} transition-all" style="width:${items.length?Math.round(doneCount/items.length*100):0}%"></div>
+                </div>
+              </div>
+              ${items.map((item,i) => `
+                <div class="flex items-start gap-2 cursor-pointer group" onclick="togglePrayerItem('${p.id}',${i})">
+                  <div class="shrink-0 mt-0.5 w-4 h-4 rounded border flex items-center justify-center transition
+                    ${checked[i] ? (p.answered?'bg-green-400 border-green-400':'bg-purple-400 border-purple-400') : 'border-gray-300 group-hover:border-purple-300'}">
+                    ${checked[i]?'<svg viewBox="0 0 24 24" class="w-3 h-3 fill-white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>':''}
+                  </div>
+                  <span class="text-sm ${checked[i]?'line-through text-gray-400':(p.answered?'text-green-700':'text-gray-600')}">${escHtml(item)}</span>
+                </div>`).join('')}
+            </div>`;
+        })() : ''}
       </div>
       <button onclick="deletePrayer('${p.id}')" class="text-gray-300 hover:text-red-400 text-xl shrink-0">×</button>
     </div>`;
