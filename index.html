@@ -444,58 +444,81 @@
   </div>
 
   <!-- ── TAB: PROGRAM ── -->
-  <div id="tab-content-program" class="max-w-4xl mx-auto px-4 py-8 hidden">
-    <div class="grid grid-cols-3 gap-4 mb-6">
+  <div id="tab-content-program" class="max-w-5xl mx-auto px-4 py-8 hidden">
+    <!-- 요약 통계 -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
       <div class="bg-white rounded-2xl p-4 text-center shadow-sm">
         <div id="prog-total-count" class="text-2xl font-extrabold text-gray-700">0</div>
         <div class="text-xs text-gray-400 mt-1">전체</div>
+      </div>
+      <div class="bg-white rounded-2xl p-4 text-center shadow-sm">
+        <div id="prog-deadline-soon" class="text-2xl font-extrabold text-red-500">0</div>
+        <div class="text-xs text-gray-400 mt-1">마감 임박 (7일)</div>
       </div>
       <div class="bg-white rounded-2xl p-4 text-center shadow-sm">
         <div id="prog-applied-count" class="text-2xl font-extrabold text-blue-500">0</div>
         <div class="text-xs text-gray-400 mt-1">신청 완료</div>
       </div>
       <div class="bg-white rounded-2xl p-4 text-center shadow-sm">
-        <div id="prog-selected-count" class="text-2xl font-extrabold text-green-500">0</div>
+        <div id="prog-selected-count" class="text-2xl font-extrabold text-emerald-500">0</div>
         <div class="text-xs text-gray-400 mt-1">선정됨</div>
       </div>
     </div>
+
+    <!-- 검색 + 추가 -->
     <div class="bg-white rounded-2xl shadow-sm p-5 mb-5">
       <h2 class="font-bold text-gray-800 mb-3">📋 지원사업 추가</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
         <input id="prog-name" type="text" placeholder="지원사업명" class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-300 md:col-span-2" />
         <select id="prog-category" class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-300">
-          <option value="🚀 창업지원">🚀 창업지원</option>
-          <option value="🔬 R&D">🔬 R&D</option>
-          <option value="💼 취업지원">💼 취업지원</option>
-          <option value="📚 교육">📚 교육</option>
-          <option value="💰 금융/투자">💰 금융/투자</option>
-          <option value="📌 기타">📌 기타</option>
+          <option value="사업화자금">💰 사업화자금</option>
+          <option value="R&D">🔬 R&D</option>
+          <option value="글로벌">🌐 글로벌</option>
+          <option value="창업교육">📚 창업교육</option>
+          <option value="기타">📌 기타</option>
         </select>
         <input id="prog-deadline" type="date" class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-300" />
-        <input id="prog-amount" type="text" placeholder="지원 금액 (예: 5,000만원)" class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-300" />
+        <input id="prog-amount"   type="text" placeholder="지원 금액 (예: 최대 5,000만원)" class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-300" />
+        <input id="prog-org"      type="text" placeholder="주관기관" class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-300" />
         <select id="prog-status" class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-300">
           <option value="검토중">🔍 검토중</option>
           <option value="신청완료">✉️ 신청완료</option>
           <option value="선정">🎉 선정</option>
           <option value="미선정">❌ 미선정</option>
         </select>
-        <input id="prog-url" type="url" placeholder="공고 URL" class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-300 md:col-span-2" />
-        <textarea id="prog-notes" rows="2" placeholder="메모..."
+        <input id="prog-url"   type="url"  placeholder="공고 URL" class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-300 md:col-span-2" />
+        <textarea id="prog-notes" rows="2" placeholder="공고 요약 / 메모..."
           class="w-full border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-300 resize-none md:col-span-2"></textarea>
         <button onclick="addProgram()" class="md:col-span-2 bg-emerald-500 text-white font-bold py-2.5 rounded-xl hover:bg-emerald-600 transition text-sm">저장</button>
       </div>
     </div>
+
+    <!-- 검색 + 필터 -->
     <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
-      <div class="p-4 border-b flex items-center gap-2 flex-wrap">
-        <h2 class="font-bold text-gray-800">지원사업 내역</h2>
-        <div class="ml-auto flex gap-2 flex-wrap">
-          <button onclick="filterPrograms('')"      id="pgf-all"    class="text-xs px-3 py-1.5 rounded-full bg-emerald-500 text-white">전체</button>
-          <button onclick="filterPrograms('검토중')" id="pgf-검토중" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">검토중</button>
-          <button onclick="filterPrograms('신청완료')" id="pgf-신청완료" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">신청완료</button>
-          <button onclick="filterPrograms('선정')"  id="pgf-선정"   class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">선정</button>
+      <div class="p-4 border-b space-y-3">
+        <div class="flex gap-2">
+          <input id="prog-search" type="text" placeholder="🔍 지원사업 검색..."
+            oninput="renderPrograms()"
+            class="flex-1 border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-300" />
+        </div>
+        <!-- 카테고리 필터 (startup-support 방식) -->
+        <div class="flex gap-2 flex-wrap">
+          <button onclick="filterProgCat('')"          id="pgcat-all"    class="text-xs px-3 py-1.5 rounded-full bg-emerald-500 text-white font-semibold">전체</button>
+          <button onclick="filterProgCat('사업화자금')" id="pgcat-사업화자금" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">💰 사업화자금</button>
+          <button onclick="filterProgCat('R&D')"       id="pgcat-R&D"    class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">🔬 R&D</button>
+          <button onclick="filterProgCat('글로벌')"    id="pgcat-글로벌" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">🌐 글로벌</button>
+          <button onclick="filterProgCat('창업교육')"  id="pgcat-창업교육" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">📚 창업교육</button>
+          <button onclick="filterProgCat('기타')"      id="pgcat-기타"   class="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600">📌 기타</button>
+        </div>
+        <!-- 상태 필터 -->
+        <div class="flex gap-2 flex-wrap">
+          <button onclick="filterPrograms('')"        id="pgf-all"    class="text-xs px-3 py-1.5 rounded-full border border-emerald-500 text-emerald-600 font-semibold">전체</button>
+          <button onclick="filterPrograms('검토중')"  id="pgf-검토중" class="text-xs px-3 py-1.5 rounded-full border border-gray-200 text-gray-500">검토중</button>
+          <button onclick="filterPrograms('신청완료')" id="pgf-신청완료" class="text-xs px-3 py-1.5 rounded-full border border-gray-200 text-gray-500">신청완료</button>
+          <button onclick="filterPrograms('선정')"    id="pgf-선정"   class="text-xs px-3 py-1.5 rounded-full border border-gray-200 text-gray-500">선정</button>
         </div>
       </div>
-      <div id="program-list" class="divide-y divide-gray-50"></div>
+      <div id="program-list" class="grid grid-cols-1 md:grid-cols-2 gap-0 divide-y divide-gray-50"></div>
       <div id="program-empty" class="p-8 text-center text-sm text-gray-400 hidden">지원사업을 추가해보세요 📋</div>
     </div>
   </div>
@@ -744,7 +767,7 @@ let state = {
   prayers: [], prayerFilter: 'all',
   todos: [], todoFilter: 'all', todoCalYear: null, todoCalMonth: null,
   jobs: [], jobFilter: '', jobChannelFilter: '',
-  programs: [], programFilter: '',
+  programs: [], programFilter: '', programCatFilter: '',
   books: [],
   aiStudy: [], aiTagFilter: '',
   statusModalType: null, statusModalId: null,
@@ -1394,12 +1417,39 @@ const PROG_STATUS_COLORS = {
   '검토중':'bg-gray-100 text-gray-600','신청완료':'bg-blue-100 text-blue-700',
   '선정':'bg-emerald-500 text-white','미선정':'bg-red-100 text-red-600',
 };
+const PROG_CAT_COLORS = {
+  '사업화자금':'bg-orange-500 text-white','R&D':'bg-purple-500 text-white',
+  '글로벌':'bg-blue-500 text-white','창업교육':'bg-emerald-500 text-white','기타':'bg-gray-200 text-gray-600',
+};
 const PROG_STATUSES = ['검토중','신청완료','선정','미선정'];
+
+function calcDaysLeft(deadline) {
+  if (!deadline) return null;
+  const diff = Math.ceil((new Date(deadline) - new Date(today())) / 86400000);
+  return diff;
+}
+function dDayBadge(deadline) {
+  const d = calcDaysLeft(deadline);
+  if (d === null) return '';
+  if (d < 0)  return `<span class="text-xs px-2 py-0.5 rounded-full bg-gray-200 text-gray-500 font-bold">마감</span>`;
+  if (d === 0) return `<span class="text-xs px-2 py-0.5 rounded-full bg-red-500 text-white font-bold">D-DAY</span>`;
+  if (d <= 7)  return `<span class="text-xs px-2 py-0.5 rounded-full bg-red-100 text-red-600 font-bold">D-${d}</span>`;
+  if (d <= 30) return `<span class="text-xs px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 font-bold">D-${d}</span>`;
+  return `<span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-500 font-bold">D-${d}</span>`;
+}
+function makeGoogleCalendarUrl(p) {
+  const title   = encodeURIComponent(`[마감] ${p.name}`);
+  const details = encodeURIComponent(`${p.notes||''}\n\n주관기관: ${p.org||''}\n카테고리: ${p.category||''}\n지원규모: ${p.amount||''}\n\n${p.url||''}`);
+  const date    = (p.deadline||'').replace(/-/g,'');
+  return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${date}/${date}&details=${details}`;
+}
+
 function addProgram() {
   const name = document.getElementById('prog-name').value.trim();
   if (!name) { showToast('⚠️ 지원사업명을 입력하세요'); return; }
   state.programs.unshift({
     id:uid(), createdAt:Date.now(), name,
+    org:      document.getElementById('prog-org').value.trim(),
     category: document.getElementById('prog-category').value,
     deadline: document.getElementById('prog-deadline').value,
     amount:   document.getElementById('prog-amount').value,
@@ -1408,7 +1458,7 @@ function addProgram() {
     notes:    document.getElementById('prog-notes').value,
   });
   saveState();
-  ['prog-name','prog-amount','prog-url','prog-notes','prog-deadline'].forEach(id=>document.getElementById(id).value='');
+  ['prog-name','prog-org','prog-amount','prog-url','prog-notes','prog-deadline'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('prog-status').value='검토중';
   renderPrograms(); showToast('📋 지원사업이 저장됐습니다');
 }
@@ -1422,40 +1472,62 @@ function deleteProgram(id) {
 }
 function filterPrograms(f) {
   state.programFilter = f;
-  document.querySelectorAll('[id^="pgf-"]').forEach(btn=>btn.className='text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600');
+  document.querySelectorAll('[id^="pgf-"]').forEach(btn=>btn.className='text-xs px-3 py-1.5 rounded-full border border-gray-200 text-gray-500');
   const btn=document.getElementById('pgf-'+(f||'all'));
-  if (btn) btn.className='text-xs px-3 py-1.5 rounded-full bg-emerald-500 text-white';
+  if (btn) btn.className='text-xs px-3 py-1.5 rounded-full border border-emerald-500 text-emerald-600 font-semibold';
+  renderPrograms();
+}
+function filterProgCat(cat) {
+  state.programCatFilter = cat;
+  document.querySelectorAll('[id^="pgcat-"]').forEach(btn=>btn.className='text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-600');
+  const btn=document.getElementById('pgcat-'+(cat||'all'));
+  if (btn) btn.className='text-xs px-3 py-1.5 rounded-full bg-emerald-500 text-white font-semibold';
   renderPrograms();
 }
 function renderPrograms() {
+  const search = (document.getElementById('prog-search')?.value||'').toLowerCase();
   let list = state.programs;
-  if (state.programFilter) list=list.filter(p=>p.status===state.programFilter);
-  list=[...list].sort((a,b)=>b.createdAt-a.createdAt);
+  if (state.programFilter)    list=list.filter(p=>p.status===state.programFilter);
+  if (state.programCatFilter) list=list.filter(p=>p.category===state.programCatFilter);
+  if (search) list=list.filter(p=>(p.name+p.org+p.notes).toLowerCase().includes(search));
+  // D-Day 순 정렬 (마감 임박 우선, 마감된 건 뒤로)
+  list=[...list].sort((a,b)=>{
+    const da=calcDaysLeft(a.deadline)??9999, db=calcDaysLeft(b.deadline)??9999;
+    if (da<0&&db>=0) return 1; if (db<0&&da>=0) return -1;
+    return da-db;
+  });
+  const soon = state.programs.filter(p=>{ const d=calcDaysLeft(p.deadline); return d!==null&&d>=0&&d<=7; }).length;
   document.getElementById('prog-total-count').textContent    = state.programs.length;
+  document.getElementById('prog-deadline-soon').textContent  = soon;
   document.getElementById('prog-applied-count').textContent  = state.programs.filter(p=>['신청완료','선정'].includes(p.status)).length;
   document.getElementById('prog-selected-count').textContent = state.programs.filter(p=>p.status==='선정').length;
   const container=document.getElementById('program-list'); const empty=document.getElementById('program-empty');
   if (!list.length) { container.innerHTML=''; empty.classList.remove('hidden'); return; }
   empty.classList.add('hidden');
   container.innerHTML=list.map(p=>`
-    <div class="p-4 hover:bg-gray-50">
-      <div class="flex items-start gap-3">
+    <div class="p-4 hover:bg-gray-50 border-b border-gray-50">
+      <div class="flex items-start justify-between gap-3">
         <div class="flex-1 min-w-0">
           <div class="flex items-center gap-2 flex-wrap mb-1">
-            <span class="font-bold text-gray-900">${escHtml(p.name)}</span>
-            <span class="text-xs text-gray-400">${p.category||''}</span>
-            <span class="text-xs px-2 py-0.5 rounded-full font-semibold ${PROG_STATUS_COLORS[p.status]||'bg-gray-100 text-gray-600'}">${p.status}</span>
+            <span class="text-xs px-2 py-0.5 rounded-full font-semibold ${PROG_CAT_COLORS[p.category]||'bg-gray-200 text-gray-600'}">${p.category||'기타'}</span>
+            ${p.status==='선정'?'<span class="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-bold">🎉 선정</span>':p.status==='신청완료'?'<span class="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">✉️ 신청완료</span>':''}
           </div>
-          <div class="flex gap-3 text-xs text-gray-400 flex-wrap">
-            ${p.deadline?`<span>마감: ${formatDateShort(p.deadline)}</span>`:''}
-            ${p.amount?`<span>지원금액: ${escHtml(p.amount)}</span>`:''}
+          <h3 class="font-bold text-gray-900 text-sm leading-snug">${escHtml(p.name)}</h3>
+          ${p.org?`<p class="text-xs text-gray-500 mt-0.5">🏢 ${escHtml(p.org)}</p>`:''}
+          <div class="flex gap-3 text-xs text-gray-400 mt-1 flex-wrap">
+            ${p.deadline?`<span>📅 마감: ${formatDateShort(p.deadline)}</span>`:''}
+            ${p.amount?`<span class="text-emerald-600 font-semibold">${escHtml(p.amount)}</span>`:''}
           </div>
           ${p.notes?`<p class="text-xs text-gray-400 mt-1 line-clamp-2">${escHtml(p.notes)}</p>`:''}
           <div class="flex gap-2 mt-2 flex-wrap">
             <button onclick="openStatusModal('program','${p.id}')" class="text-xs text-indigo-500 hover:underline">상태변경</button>
             ${p.url?`<a href="${escHtml(p.url)}" target="_blank" class="text-xs text-blue-500 hover:underline">공고보기</a>`:''}
+            ${p.deadline?`<a href="${makeGoogleCalendarUrl(p)}" target="_blank" class="text-xs text-gray-400 hover:text-gray-600">📅 캘린더</a>`:''}
             <button onclick="deleteProgram('${p.id}')" class="text-xs text-red-400 hover:underline">삭제</button>
           </div>
+        </div>
+        <div class="shrink-0 text-right">
+          ${dDayBadge(p.deadline)}
         </div>
       </div>
     </div>`).join('');
