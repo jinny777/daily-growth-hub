@@ -1010,38 +1010,70 @@ function filterPrayers(f) {
   renderPrayers();
 }
 function renderPrayers() {
-  const f = state.prayerFilter;
-  let list = state.prayers;
-  if (f==='pending')  list = list.filter(p=>!p.answered);
-  if (f==='answered') list = list.filter(p=>p.answered);
+  const f        = state.prayerFilter;
   const total    = state.prayers.length;
   const answered = state.prayers.filter(p=>p.answered).length;
   document.getElementById('prayer-total-count').textContent    = total;
   document.getElementById('prayer-answered-count').textContent = answered;
   document.getElementById('prayer-pending-count').textContent  = total - answered;
+
   const container = document.getElementById('prayer-list');
-  const empty = document.getElementById('prayer-empty');
-  if (!list.length) { container.innerHTML=''; empty.classList.remove('hidden'); return; }
+  const empty     = document.getElementById('prayer-empty');
+
+  const pendingList  = state.prayers.filter(p=>!p.answered).sort((a,b)=>b.createdAt-a.createdAt);
+  const answeredList = state.prayers.filter(p=>p.answered).sort((a,b)=>new Date(b.answeredDate)-new Date(a.answeredDate));
+
+  const showPending  = f==='all' || f==='pending';
+  const showAnswered = f==='all' || f==='answered';
+  const dp = showPending  ? pendingList  : [];
+  const da = showAnswered ? answeredList : [];
+
+  if (!dp.length && !da.length) { container.innerHTML=''; empty.classList.remove('hidden'); return; }
   empty.classList.add('hidden');
-  container.innerHTML = list.map(p => `
-    <div class="p-4 hover:bg-gray-50 ${p.answered?'bg-green-50':''}">
-      <div class="flex items-start gap-3">
-        <button onclick="togglePrayerAnswered('${p.id}')"
-          class="mt-0.5 w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition
-            ${p.answered?'bg-green-500 border-green-500 text-white':'border-gray-300 hover:border-purple-400'}">
-          ${p.answered?'<svg viewBox="0 0 24 24" class="w-3 h-3 fill-white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>':''}
-        </button>
-        <div class="flex-1 min-w-0">
-          <div class="flex items-center gap-2 flex-wrap">
-            <span class="text-xs text-gray-400">${formatDateShort(p.date)}</span>
-            ${p.answered?`<span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold">✅ 응답 ${formatDateShort(p.answeredDate)}</span>`:'<span class="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full font-semibold">🙏 기도중</span>'}
-          </div>
-          <p class="font-semibold text-gray-800 mt-1">${escHtml(p.title)}</p>
-          ${p.content?`<p class="text-sm text-gray-500 mt-1 whitespace-pre-wrap">${escHtml(p.content)}</p>`:''}
+
+  const card = (p) => `
+    <div class="flex items-start gap-3 p-3 rounded-xl border transition
+      ${p.answered ? 'bg-green-50 border-green-200' : 'bg-white border-gray-100 hover:border-purple-200'}">
+      <button onclick="togglePrayerAnswered('${p.id}')"
+        title="${p.answered?'기도중으로 변경':'응답 받음으로 표시'}"
+        class="shrink-0 w-8 h-8 rounded-full border-2 flex items-center justify-center transition text-lg
+          ${p.answered ? 'bg-green-500 border-green-500 hover:bg-green-600' : 'border-purple-300 bg-purple-50 hover:bg-purple-100'}">
+        ${p.answered ? '✅' : '🙏'}
+      </button>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-2 flex-wrap mb-1">
+          <span class="text-xs text-gray-400">기도일: ${formatDateShort(p.date)}</span>
+          ${p.answered
+            ? `<span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-bold">🎉 응답일: ${formatDateShort(p.answeredDate)}</span>`
+            : '<span class="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full font-semibold">기도 중</span>'}
         </div>
-        <button onclick="deletePrayer('${p.id}')" class="text-gray-300 hover:text-red-400 text-lg shrink-0">×</button>
+        <p class="font-bold text-sm ${p.answered?'text-green-800':'text-gray-800'}">${escHtml(p.title)}</p>
+        ${p.content?`<p class="text-sm mt-1 whitespace-pre-wrap leading-relaxed ${p.answered?'text-green-700':'text-gray-500'}">${escHtml(p.content)}</p>`:''}
       </div>
-    </div>`).join('');
+      <button onclick="deletePrayer('${p.id}')" class="text-gray-300 hover:text-red-400 text-xl shrink-0">×</button>
+    </div>`;
+
+  let html = '';
+
+  if (dp.length) html += `
+    <div class="p-4 ${da.length?'border-b border-gray-200':''}">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="font-bold text-purple-700 text-sm">🙏 기도 중</span>
+        <span class="text-xs bg-purple-100 text-purple-600 px-2 py-0.5 rounded-full font-semibold">${dp.length}개</span>
+      </div>
+      <div class="space-y-2">${dp.map(card).join('')}</div>
+    </div>`;
+
+  if (da.length) html += `
+    <div class="p-4 bg-green-50">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="font-bold text-green-700 text-sm">✅ 기도 응답</span>
+        <span class="text-xs bg-green-100 text-green-600 px-2 py-0.5 rounded-full font-semibold">${da.length}개</span>
+      </div>
+      <div class="space-y-2">${da.map(card).join('')}</div>
+    </div>`;
+
+  container.innerHTML = html;
 }
 
 // ══════════════════════════════════════════
