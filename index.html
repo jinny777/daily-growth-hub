@@ -2070,7 +2070,7 @@ async function cloudLoad() {
   try {
     const res = await fetch(
       `https://api.github.com/repos/${SYNC_REPO}/contents/${SYNC_FILE}`,
-      { headers:{ 'Authorization':`token ${token}`, 'Cache-Control':'no-cache' } }
+      { headers:{ 'Authorization':`token ${token}` } }
     );
     if (res.status === 404) throw new Error('저장된 데이터가 없습니다. 먼저 ☁️ 저장을 해주세요.');
     if (res.status === 401) throw new Error('토큰이 잘못됐습니다.');
