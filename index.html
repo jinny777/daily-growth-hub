@@ -465,6 +465,18 @@
       </div>
     </div>
 
+    <!-- 공고 가져오기 -->
+    <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 mb-5 flex items-center gap-4 flex-wrap">
+      <div class="flex-1">
+        <p class="font-bold text-emerald-800 text-sm">📡 지원사업 공고 자동 수집</p>
+        <p class="text-xs text-emerald-600 mt-0.5">Python 스크립트 실행 후 생성된 programs_import.json 파일을 선택하세요</p>
+      </div>
+      <label class="cursor-pointer bg-emerald-500 text-white text-sm font-bold px-4 py-2 rounded-xl hover:bg-emerald-600 transition">
+        📂 공고 가져오기
+        <input type="file" accept=".json" onchange="importPrograms(event)" class="hidden" />
+      </label>
+    </div>
+
     <!-- 검색 + 추가 -->
     <div class="bg-white rounded-2xl shadow-sm p-5 mb-5">
       <h2 class="font-bold text-gray-800 mb-3">📋 지원사업 추가</h2>
@@ -1641,6 +1653,26 @@ function makeGoogleCalendarUrl(p) {
   const details = encodeURIComponent(`${p.notes||''}\n\n주관기관: ${p.org||''}\n카테고리: ${p.category||''}\n지원규모: ${p.amount||''}\n\n${p.url||''}`);
   const date    = (p.deadline||'').replace(/-/g,'');
   return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${date}/${date}&details=${details}`;
+}
+
+function importPrograms(event) {
+  const file = event.target.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const imported = JSON.parse(e.target.result);
+      if (!Array.isArray(imported)) throw new Error('올바른 형식이 아닙니다');
+      const existingIds = new Set(state.programs.map(p=>p.id));
+      let added = 0;
+      imported.forEach(p => {
+        if (!existingIds.has(p.id)) { state.programs.unshift(p); added++; }
+      });
+      saveState(); renderPrograms();
+      showToast(`✅ ${added}개 지원사업 공고 가져오기 완료!`);
+    } catch(err) { showToast('❌ 파일 오류: ' + err.message); }
+    event.target.value = '';
+  };
+  reader.readAsText(file, 'utf-8');
 }
 
 function addProgram() {
