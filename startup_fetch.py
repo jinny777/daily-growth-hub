@@ -71,6 +71,7 @@ def fetch_kstartup():
             'deadline': parse_date(deadline),
             'amount':   '',
             'status':   '검토중',
+            'source':   'K-startup',
             'url':      f'https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?pbancSn={sn}',
             'notes':    f'K-Startup 공고 #{sn}',
         })
@@ -105,6 +106,7 @@ def fetch_bizinfo():
             'deadline': parse_date(deadline),
             'amount':   '',
             'status':   '검토중',
+            'source':   'Bizinfo',
             'url':      link,
             'notes':    '기업마당 공고',
         })
