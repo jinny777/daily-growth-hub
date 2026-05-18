@@ -54,27 +54,41 @@ def fetch_kstartup():
     if not data:
         return results
 
-    # 공고 항목 파싱
-    pattern = r'pbancSn=(\d+)[^"]*"[^>]*>([^<]+)</a>.*?기관[^:]*:\s*([^<\n]+).*?마감[^:]*:\s*([^\n<]+)'
-    matches = re.findall(pattern, data, re.DOTALL)
-
-    for m in matches[:10]:
-        sn, title, org, deadline = m
-        title = re.sub(r'\s+', ' ', title).strip()
-        org   = re.sub(r'\s+', ' ', org).strip()
-        deadline = re.sub(r'\s+', ' ', deadline).strip()
-        if not title: continue
+    # 각 공고 블록 분리: go_view(N) 기준
+    blocks = re.split(r"go_view\((\d+)\)", data)
+    # blocks = [before, sn1, block1, sn2, block2, ...]
+    for i in range(1, len(blocks)-1, 2):
+        sn    = blocks[i]
+        block = blocks[i+1]
+        # 제목
+        t = re.search(r'class="tit">([^<]+)</p>', block)
+        # 기관 (두번째 <li> — 첫번째는 제목 반복)
+        lis = re.findall(r'<li>([^<]+)</li>', block)
+        org = ''
+        for li in lis:
+            li = li.strip()
+            if li and not li.startswith('조회') and not (t and li in t.group(1)):
+                org = li
+                break
+        # 마감일
+        d = re.search(r'마감일자\s*(\d{4}-\d{2}-\d{2})', block)
+        if not t: continue
+        title    = re.sub(r'\s+', ' ', t.group(1)).strip()
+        deadline = d.group(1) if d else ''
         results.append({
             'name':     title,
             'org':      org,
             'category': classify_category(title),
-            'deadline': parse_date(deadline),
+            'deadline': deadline,
             'amount':   '',
             'status':   '검토중',
             'source':   'K-startup',
             'url':      f'https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?pbancSn={sn}',
-            'notes':    f'K-Startup 공고 #{sn}',
+            'notes':    'K-Startup 공고',
         })
+        if len(results) >= 15:
+            break
+
     print(f"  → {len(results)}개 수집")
     return results
 
@@ -87,29 +101,45 @@ def fetch_bizinfo():
     if not data:
         return results
 
-    # title 파싱
-    titles = re.findall(r'class="tit"[^>]*>\s*<a[^>]*>([^<]+)</a>', data)
-    orgs   = re.findall(r'class="agency"[^>]*>([^<]+)<', data)
-    dates  = re.findall(r'(\d{4}[.\-/]\d{2}[.\-/]\d{2})\s*~\s*(\d{4}[.\-/]\d{2}[.\-/]\d{2})', data)
-    urls_m = re.findall(r'href="(/web/lay1/bbs/[^"]+pblancId=\d+[^"]*)"', data)
+    # 각 행(tr) 파싱
+    rows = re.split(r'<tr[\s>]', data)
+    for row in rows:
+        # 제목 링크
+        m_url   = re.search(r'href=\s*"(/sii/siia/selectSIIA200Detail\.do\?[^"]+pblancId=([^"&\s]+)[^"]*)"', row)
+        m_title = re.search(r'title="([^"]+)\s*페이지 이동"', row)
+        if not m_url or not m_title: continue
 
-    for i, title in enumerate(titles[:15]):
-        title = title.strip()
+        title = m_title.group(1).strip()
+        link  = 'https://www.bizinfo.go.kr' + m_url.group(1)
+
+        # 날짜 범위에서 마감일
+        m_date = re.search(r'(\d{4}-\d{2}-\d{2})\s*~\s*(\d{4}-\d{2}-\d{2})', row)
+        deadline = m_date.group(2) if m_date else ''
+
+        # 기관명 (마감일 뒤 두번째 <td>)
+        tds = re.findall(r'<td[^>]*>([^<]+)</td>', row)
+        org = ''
+        for td in tds:
+            td = td.strip()
+            if td and not re.match(r'\d{4}-\d{2}-\d{2}', td) and td not in ['경영','기술','시설','인력','수출','기타'] and len(td) > 1:
+                org = td
+                break
+
         if not title: continue
-        deadline = dates[i][1] if i < len(dates) else ''
-        org = orgs[i].strip() if i < len(orgs) else ''
-        link = 'https://www.bizinfo.go.kr' + urls_m[i] if i < len(urls_m) else 'https://www.bizinfo.go.kr'
         results.append({
             'name':     title,
             'org':      org,
             'category': classify_category(title),
-            'deadline': parse_date(deadline),
+            'deadline': deadline,
             'amount':   '',
             'status':   '검토중',
             'source':   'Bizinfo',
             'url':      link,
             'notes':    '기업마당 공고',
         })
+        if len(results) >= 15:
+            break
+
     print(f"  → {len(results)}개 수집")
     return results
 
@@ -142,6 +172,7 @@ def add_seed_data():
             'deadline': (today + timedelta(days=14)).strftime('%Y-%m-%d'),
             'amount': '최대 1억원',
             'status': '검토중',
+            'source': 'K-startup',
             'url': 'https://www.k-startup.go.kr',
             'notes': '예비창업자 ~ 창업 3년 이내 대상. 사업화 자금 및 멘토링 지원',
         },
@@ -152,6 +183,7 @@ def add_seed_data():
             'deadline': (today + timedelta(days=21)).strftime('%Y-%m-%d'),
             'amount': '최대 3억원',
             'status': '검토중',
+            'source': 'K-startup',
             'url': 'https://www.k-startup.go.kr',
             'notes': '창업 3~7년 이내 도약기 스타트업 대상',
         },
@@ -162,6 +194,7 @@ def add_seed_data():
             'deadline': (today + timedelta(days=30)).strftime('%Y-%m-%d'),
             'amount': '해외진출 지원',
             'status': '검토중',
+            'source': 'K-startup',
             'url': 'https://www.kotra.or.kr',
             'notes': '해외 시장 진출을 위한 현지화 및 네트워킹 지원',
         },
@@ -172,6 +205,7 @@ def add_seed_data():
             'deadline': (today + timedelta(days=45)).strftime('%Y-%m-%d'),
             'amount': '최대 5,000만원',
             'status': '검토중',
+            'source': 'Bizinfo',
             'url': 'https://www.bizinfo.go.kr',
             'notes': '제조 중소기업 스마트공장 구축 지원',
         },
@@ -182,6 +216,7 @@ def add_seed_data():
             'deadline': (today + timedelta(days=10)).strftime('%Y-%m-%d'),
             'amount': '최대 2억원',
             'status': '검토중',
+            'source': 'Bizinfo',
             'url': 'https://www.bizinfo.go.kr',
             'notes': '기술창업기업 R&D 자금 및 사업화 연계',
         },
@@ -192,6 +227,7 @@ def add_seed_data():
             'deadline': (today + timedelta(days=7)).strftime('%Y-%m-%d'),
             'amount': '최대 4,000만원',
             'status': '검토중',
+            'source': 'K-startup',
             'url': 'https://www.k-startup.go.kr',
             'notes': '예비창업자 대상 사업화 지원 및 멘토링',
         },
@@ -202,6 +238,7 @@ def add_seed_data():
             'deadline': (today + timedelta(days=60)).strftime('%Y-%m-%d'),
             'amount': '기관별 상이',
             'status': '검토중',
+            'source': 'K-startup',
             'url': 'https://www.k-startup.go.kr',
             'notes': '창업 교육 프로그램 운영 기관 지원',
         },
@@ -212,6 +249,7 @@ def add_seed_data():
             'deadline': (today + timedelta(days=25)).strftime('%Y-%m-%d'),
             'amount': '매칭 투자',
             'status': '검토중',
+            'source': 'Bizinfo',
             'url': 'https://www.kvic.or.kr',
             'notes': '해외 VC 및 엑셀러레이터 연계 투자 유치 지원',
         },
@@ -240,17 +278,17 @@ def main():
     output = []
     for i, p in enumerate(all_results):
         output.append({
-            'id': f'fetched_{int(time.time()*1000)+i}',
+            'id':        f'fetched_{int(time.time()*1000)+i}',
             'createdAt': int(time.time()*1000) - i*1000,
-            'name':     p.get('name',''),
-            'org':      p.get('org',''),
-            'category': p.get('category','기타'),
-            'deadline': p.get('deadline',''),
-            'amount':   p.get('amount',''),
-            'status':   p.get('status','검토중'),
-            'url':      p.get('url',''),
-            'notes':    p.get('notes',''),
-            'programCatFilter': '',
+            'name':      p.get('name',''),
+            'org':       p.get('org',''),
+            'category':  p.get('category','기타'),
+            'deadline':  p.get('deadline',''),
+            'amount':    p.get('amount',''),
+            'status':    p.get('status','검토중'),
+            'source':    p.get('source',''),
+            'url':       p.get('url',''),
+            'notes':     p.get('notes',''),
         })
 
     out_path = 'programs_import.json'

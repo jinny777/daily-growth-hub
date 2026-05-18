@@ -471,6 +471,9 @@
         <p class="font-bold text-emerald-800 text-sm">📡 지원사업 공고 자동 수집</p>
         <p class="text-xs text-emerald-600 mt-0.5">Python 스크립트 실행 후 생성된 programs_import.json 파일을 선택하세요</p>
       </div>
+      <button onclick="openNotiSettings()" class="cursor-pointer bg-blue-500 text-white text-sm font-bold px-4 py-2 rounded-xl hover:bg-blue-600 transition">
+        🔔 알림설정
+      </button>
       <label class="cursor-pointer bg-emerald-500 text-white text-sm font-bold px-4 py-2 rounded-xl hover:bg-emerald-600 transition">
         📂 공고 가져오기
         <input type="file" accept=".json" onchange="importPrograms(event)" class="hidden" />
@@ -703,6 +706,222 @@
   </div>
 </div>
 
+<!-- 알림설정 패널 -->
+<div id="noti-settings-panel" class="fixed inset-0 bg-blue-50 z-50 overflow-y-auto hidden">
+  <div class="max-w-lg mx-auto px-4 py-8">
+    <!-- 헤더 -->
+    <div class="flex items-center gap-3 mb-1">
+      <button onclick="closeNotiSettings()" class="text-gray-400 hover:text-gray-600 text-xl">←</button>
+    </div>
+    <div class="text-center mb-6">
+      <p class="text-2xl mb-1">⚙️</p>
+      <h2 class="text-lg font-bold text-gray-800">내 맞춤형 알림 설정</h2>
+      <p class="text-xs text-gray-500 mt-1">기업 정보를 입력하시면 가장 적합한 지원사업을 추천해드립니다</p>
+    </div>
+
+    <!-- 이메일 -->
+    <div class="bg-white rounded-2xl p-5 mb-4 shadow-sm">
+      <div class="flex items-center gap-2 mb-3">
+        <span>✉️</span>
+        <span class="font-semibold text-sm text-gray-700">알림 받을 이메일</span>
+      </div>
+      <input id="noti-email" type="email" placeholder="example@company.com"
+        class="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300" />
+    </div>
+
+    <!-- 기업 프로필 -->
+    <div class="bg-white rounded-2xl p-5 mb-4 shadow-sm">
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-2">
+          <span>🏢</span>
+          <span class="font-semibold text-sm text-gray-700">기업 프로필</span>
+        </div>
+        <span class="text-xs text-red-500 font-medium">필수</span>
+      </div>
+      <div class="space-y-3">
+        <div>
+          <label class="text-xs text-gray-500 mb-1 block">업종</label>
+          <select id="noti-biz-type" class="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300">
+            <option value="">업종을 선택해주세요</option>
+            <option value="IT/SW">IT/소프트웨어</option>
+            <option value="제조">제조업</option>
+            <option value="바이오">바이오/헬스케어</option>
+            <option value="유통">유통/물류</option>
+            <option value="서비스">서비스업</option>
+            <option value="콘텐츠">콘텐츠/미디어</option>
+            <option value="농식품">농식품</option>
+            <option value="기타">기타</option>
+          </select>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-xs text-gray-500 mb-1 block">기업 규모</label>
+            <select id="noti-biz-size" class="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300">
+              <option value="">기업 규모</option>
+              <option value="예비창업">예비창업자</option>
+              <option value="초기">초기창업 (3년 이내)</option>
+              <option value="도약">도약기 (3~7년)</option>
+              <option value="성장">성장기 (7년 이상)</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-xs text-gray-500 mb-1 block">투자 단계</label>
+            <select id="noti-invest-stage" class="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300">
+              <option value="">투자 단계</option>
+              <option value="미투자">미투자</option>
+              <option value="시드">시드</option>
+              <option value="프리A">프리 시리즈 A</option>
+              <option value="시리즈A">시리즈 A</option>
+              <option value="시리즈B+">시리즈 B 이상</option>
+            </select>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-xs text-gray-500 mb-1 block">업력 (창업 후 기간)</label>
+            <select id="noti-biz-age" class="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300">
+              <option value="">업력 선택</option>
+              <option value="예비">예비창업</option>
+              <option value="1년미만">1년 미만</option>
+              <option value="1-3년">1~3년</option>
+              <option value="3-7년">3~7년</option>
+              <option value="7년이상">7년 이상</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-xs text-gray-500 mb-1 block">위치 (지역명)</label>
+            <select id="noti-region" class="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300">
+              <option value="">지역 선택</option>
+              <option value="서울">서울</option>
+              <option value="경기">경기</option>
+              <option value="인천">인천</option>
+              <option value="부산">부산</option>
+              <option value="대구">대구</option>
+              <option value="광주">광주</option>
+              <option value="대전">대전</option>
+              <option value="울산">울산</option>
+              <option value="세종">세종</option>
+              <option value="강원">강원</option>
+              <option value="충북">충북</option>
+              <option value="충남">충남</option>
+              <option value="전북">전북</option>
+              <option value="전남">전남</option>
+              <option value="경북">경북</option>
+              <option value="경남">경남</option>
+              <option value="제주">제주</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 관심 카테고리 -->
+    <div class="bg-white rounded-2xl p-5 mb-4 shadow-sm">
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-2">
+          <span>🎯</span>
+          <span class="font-semibold text-sm text-gray-700">관심 지원사업 카테고리</span>
+        </div>
+        <span class="text-xs text-blue-500 font-medium">다중 선택</span>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-blue-50 transition">
+          <input type="checkbox" id="ncat-자금지원" value="사업화자금" class="noti-cat-cb w-4 h-4 rounded accent-blue-500" />
+          <span class="text-sm text-gray-700">💰 자금지원</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-blue-50 transition">
+          <input type="checkbox" id="ncat-RD" value="R&D" class="noti-cat-cb w-4 h-4 rounded accent-blue-500" />
+          <span class="text-sm font-medium" style="color:#7c3aed">→ R&amp;D/기술개발</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-blue-50 transition">
+          <input type="checkbox" id="ncat-글로벌" value="글로벌" class="noti-cat-cb w-4 h-4 rounded accent-blue-500" />
+          <span class="text-sm text-gray-700">🌐 글로벌 진출</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-blue-50 transition">
+          <input type="checkbox" id="ncat-교육" value="창업교육" class="noti-cat-cb w-4 h-4 rounded accent-orange-400" />
+          <span class="text-sm font-medium text-orange-500">📚 창업교육/컨설팅</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-blue-50 transition col-span-2">
+          <input type="checkbox" id="ncat-기타" value="기타" class="noti-cat-cb w-4 h-4 rounded accent-blue-500" />
+          <span class="text-sm text-gray-700">📌 기타 (세제, 특허, 인증)</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- 알림 방식 설정 -->
+    <div class="bg-white rounded-2xl p-5 mb-6 shadow-sm">
+      <div class="flex items-center gap-2 mb-4">
+        <span>🔔</span>
+        <span class="font-semibold text-sm text-gray-700">알림 방식 설정</span>
+      </div>
+
+      <!-- 알림 채널 -->
+      <p class="text-xs font-semibold text-gray-500 mb-3">알림 채널</p>
+      <div class="grid grid-cols-2 gap-3 mb-5">
+        <label class="flex items-start gap-3 cursor-pointer border border-gray-100 rounded-xl p-3 hover:border-blue-300 transition">
+          <input type="checkbox" id="nch-email" class="mt-0.5 w-4 h-4 accent-blue-500" />
+          <div>
+            <p class="text-sm font-semibold text-gray-700">✉️ 이메일</p>
+            <p class="text-xs text-gray-400">이메일로 알림 받기</p>
+          </div>
+        </label>
+        <label class="flex items-start gap-3 cursor-pointer border border-gray-100 rounded-xl p-3 hover:border-blue-300 transition">
+          <input type="checkbox" id="nch-kakao" class="mt-0.5 w-4 h-4 accent-blue-500" />
+          <div>
+            <p class="text-sm font-semibold text-gray-700">💬 카카오톡</p>
+            <p class="text-xs text-gray-400">카카오톡 메시지</p>
+          </div>
+        </label>
+        <label class="flex items-start gap-3 cursor-pointer border border-gray-100 rounded-xl p-3 hover:border-blue-300 transition">
+          <input type="checkbox" id="nch-push" class="mt-0.5 w-4 h-4 accent-blue-500" />
+          <div>
+            <p class="text-sm font-semibold text-gray-700">📱 앱 푸시</p>
+            <p class="text-xs text-gray-400">브라우저 푸시 알림</p>
+          </div>
+        </label>
+        <label class="flex items-start gap-3 cursor-pointer border border-gray-100 rounded-xl p-3 hover:border-blue-300 transition">
+          <input type="checkbox" id="nch-calendar" class="mt-0.5 w-4 h-4 accent-blue-500" />
+          <div>
+            <p class="text-sm font-semibold text-gray-700">📅 캘린더 동기화</p>
+            <p class="text-xs text-gray-400">구글 캘린더 연동</p>
+          </div>
+        </label>
+      </div>
+
+      <!-- 알림 주기 -->
+      <p class="text-xs font-semibold text-gray-500 mb-3">알림 주기</p>
+      <div class="space-y-2">
+        <label class="flex items-center gap-3 cursor-pointer border border-gray-100 rounded-xl p-3 hover:border-blue-300 transition">
+          <input type="radio" name="noti-freq" value="daily" id="nfreq-daily" class="w-4 h-4 accent-blue-500" />
+          <div>
+            <p class="text-sm font-semibold text-gray-700">매일</p>
+            <p class="text-xs text-gray-400">매일 새로운 공고 알림</p>
+          </div>
+        </label>
+        <label id="nfreq-weekly-label" class="flex items-center gap-3 cursor-pointer border-2 border-blue-400 rounded-xl p-3 bg-blue-50 transition">
+          <input type="radio" name="noti-freq" value="weekly" id="nfreq-weekly" checked class="w-4 h-4 accent-blue-500" />
+          <div>
+            <p class="text-sm font-semibold text-blue-700">주간</p>
+            <p class="text-xs text-blue-400">주 1회 요약 알림</p>
+          </div>
+        </label>
+        <label class="flex items-center gap-3 cursor-pointer border border-gray-100 rounded-xl p-3 hover:border-blue-300 transition">
+          <input type="radio" name="noti-freq" value="deadline" id="nfreq-deadline" class="w-4 h-4 accent-blue-500" />
+          <div>
+            <p class="text-sm font-semibold text-gray-700">마감일 하루 전</p>
+            <p class="text-xs text-gray-400">마감 1일 전 긴급 알림</p>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- 저장 버튼 -->
+    <button onclick="saveNotiSettings()" class="w-full bg-blue-600 text-white font-bold py-3.5 rounded-2xl hover:bg-blue-700 transition text-sm shadow-md">
+      저장 &amp; 적용하기
+    </button>
+  </div>
+</div>
+
 <!-- STATUS CHANGE MODAL (Job / Program) -->
 <div id="status-modal" class="fixed inset-0 bg-black/40 flex items-center justify-center z-50 hidden p-4">
   <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm p-6 card-enter">
@@ -857,6 +1076,12 @@ let state = {
   books: [],
   aiStudy: [], aiTagFilter: '',
   statusModalType: null, statusModalId: null,
+  notiSettings: {
+    email: '', bizType: '', bizSize: '', investStage: '', bizAge: '', region: '',
+    categories: [],
+    channels: { email: true, kakao: false, push: false, calendar: false },
+    frequency: 'weekly',
+  },
 };
 
 function loadState() {
@@ -1682,6 +1907,84 @@ function makeGoogleCalendarUrl(p) {
   return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${date}/${date}&details=${details}`;
 }
 
+// ══════════════════════════════════════════
+//  알림설정
+// ══════════════════════════════════════════
+function openNotiSettings() {
+  const s = state.notiSettings || {};
+  // 폼 값 복원
+  document.getElementById('noti-email').value          = s.email || '';
+  document.getElementById('noti-biz-type').value       = s.bizType || '';
+  document.getElementById('noti-biz-size').value       = s.bizSize || '';
+  document.getElementById('noti-invest-stage').value   = s.investStage || '';
+  document.getElementById('noti-biz-age').value        = s.bizAge || '';
+  document.getElementById('noti-region').value         = s.region || '';
+  // 카테고리 체크박스
+  document.querySelectorAll('.noti-cat-cb').forEach(cb => {
+    cb.checked = (s.categories || []).includes(cb.value);
+  });
+  // 채널
+  const ch = s.channels || {};
+  document.getElementById('nch-email').checked    = ch.email    !== false;
+  document.getElementById('nch-kakao').checked    = !!ch.kakao;
+  document.getElementById('nch-push').checked     = !!ch.push;
+  document.getElementById('nch-calendar').checked = !!ch.calendar;
+  // 주기
+  const freq = s.frequency || 'weekly';
+  document.querySelectorAll('[name="noti-freq"]').forEach(r => { r.checked = r.value === freq; });
+  updateFreqStyle();
+  document.getElementById('noti-settings-panel').classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+function closeNotiSettings() {
+  document.getElementById('noti-settings-panel').classList.add('hidden');
+  document.body.style.overflow = '';
+}
+function updateFreqStyle() {
+  ['daily','weekly','deadline'].forEach(v => {
+    const lbl = document.getElementById(`nfreq-${v}`)?.closest('label');
+    if (!lbl) return;
+    const active = document.getElementById(`nfreq-${v}`)?.checked;
+    lbl.className = active
+      ? 'flex items-center gap-3 cursor-pointer border-2 border-blue-400 rounded-xl p-3 bg-blue-50 transition'
+      : 'flex items-center gap-3 cursor-pointer border border-gray-100 rounded-xl p-3 hover:border-blue-300 transition';
+  });
+}
+document.addEventListener('change', e => {
+  if (e.target.name === 'noti-freq') updateFreqStyle();
+});
+function saveNotiSettings() {
+  const categories = [...document.querySelectorAll('.noti-cat-cb:checked')].map(cb => cb.value);
+  const freq = [...document.querySelectorAll('[name="noti-freq"]')].find(r => r.checked)?.value || 'weekly';
+  const pushEnabled = document.getElementById('nch-push').checked;
+
+  state.notiSettings = {
+    email:        document.getElementById('noti-email').value.trim(),
+    bizType:      document.getElementById('noti-biz-type').value,
+    bizSize:      document.getElementById('noti-biz-size').value,
+    investStage:  document.getElementById('noti-invest-stage').value,
+    bizAge:       document.getElementById('noti-biz-age').value,
+    region:       document.getElementById('noti-region').value,
+    categories,
+    channels: {
+      email:    document.getElementById('nch-email').checked,
+      kakao:    document.getElementById('nch-kakao').checked,
+      push:     pushEnabled,
+      calendar: document.getElementById('nch-calendar').checked,
+    },
+    frequency: freq,
+  };
+  saveState();
+
+  // 브라우저 푸시 권한 요청
+  if (pushEnabled && 'Notification' in window && Notification.permission === 'default') {
+    Notification.requestPermission();
+  }
+
+  closeNotiSettings();
+  showToast('✅ 알림 설정이 저장됐습니다');
+}
+
 function importPrograms(event) {
   const file = event.target.files[0]; if (!file) return;
   const reader = new FileReader();
@@ -1690,16 +1993,58 @@ function importPrograms(event) {
       const imported = JSON.parse(e.target.result);
       if (!Array.isArray(imported)) throw new Error('올바른 형식이 아닙니다');
       const existingIds = new Set(state.programs.map(p=>p.id));
-      let added = 0;
+      const newItems = [];
       imported.forEach(p => {
-        if (!existingIds.has(p.id)) { state.programs.unshift(p); added++; }
+        if (!existingIds.has(p.id)) { state.programs.unshift(p); newItems.push(p); }
       });
       saveState(); renderPrograms();
-      showToast(`✅ ${added}개 지원사업 공고 가져오기 완료!`);
+      showToast(`✅ ${newItems.length}개 지원사업 공고 가져오기 완료!`);
+
+      // 캘린더 동기화 설정 시 ICS 자동 다운로드
+      if (state.notiSettings?.channels?.calendar && newItems.length > 0) {
+        const withDeadline = newItems.filter(p => p.deadline);
+        if (withDeadline.length > 0) {
+          setTimeout(() => {
+            if (confirm(`📅 ${withDeadline.length}개 공고 마감일을 Google 캘린더에 추가할까요?`)) {
+              downloadICS(withDeadline);
+            }
+          }, 500);
+        }
+      }
+
+      // 브라우저 푸시 알림
+      if (state.notiSettings?.channels?.push && 'Notification' in window && Notification.permission === 'granted') {
+        new Notification('지원사업 공고 업데이트', {
+          body: `${newItems.length}개 새 공고가 추가됐습니다`,
+          icon: 'https://jinny777.github.io/daily-growth-hub/favicon.ico',
+        });
+      }
     } catch(err) { showToast('❌ 파일 오류: ' + err.message); }
     event.target.value = '';
   };
   reader.readAsText(file, 'utf-8');
+}
+
+function downloadICS(programs) {
+  const lines = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Daily Growth Hub//KR'];
+  programs.forEach(p => {
+    if (!p.deadline) return;
+    const dt = p.deadline.replace(/-/g,'');
+    const uid = `dgh-${p.id}@dailygrowthhub`;
+    const title = (p.name||'').replace(/[,;\\]/g,'\\$&');
+    const desc  = `주관: ${p.org||''} | 카테고리: ${p.category||''} | ${p.url||''}`.replace(/[,;\\]/g,'\\$&');
+    lines.push('BEGIN:VEVENT',`UID:${uid}`,`DTSTART;VALUE=DATE:${dt}`,`DTEND;VALUE=DATE:${dt}`,
+      `SUMMARY:[마감] ${title}`,`DESCRIPTION:${desc}`,
+      'BEGIN:VALARM','TRIGGER:-P1D','ACTION:DISPLAY',`DESCRIPTION:내일 마감: ${title}`,'END:VALARM',
+      'END:VEVENT');
+  });
+  lines.push('END:VCALENDAR');
+  const blob = new Blob([lines.join('\r\n')], { type: 'text/calendar;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'programs_deadline.ics';
+  a.click();
+  showToast('📅 ICS 파일 다운로드 완료! Google 캘린더에서 가져오기 하세요');
 }
 
 function addProgram() {
