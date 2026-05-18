@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>한 달 저녁 식단 달력</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+      background: #f5f6fa;
+      padding: 24px;
+      color: #2d3436;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 22px;
+      margin-bottom: 6px;
+      color: #2d3436;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 13px;
+      color: #636e72;
+      margin-bottom: 20px;
+    }
+
+    .print-btn {
+      display: block;
+      margin: 0 auto 20px;
+      padding: 10px 28px;
+      background: #6c5ce7;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .print-btn:hover { background: #5a4bd1; }
+
+    .weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .weekday {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 0;
+      border-radius: 6px;
+      color: #fff;
+    }
+    .weekday:nth-child(1) { background: #b2bec3; }
+    .weekday:nth-child(2), .weekday:nth-child(3),
+    .weekday:nth-child(4), .weekday:nth-child(5),
+    .weekday:nth-child(6) { background: #6c5ce7; }
+    .weekday:nth-child(7) { background: #e17055; }
+
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+    }
+
+    .day {
+      background: #fff;
+      border-radius: 10px;
+      padding: 10px 9px;
+      min-height: 140px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .day.empty { background: transparent; box-shadow: none; }
+
+    .day-num {
+      font-size: 15px;
+      font-weight: 700;
+      color: #6c5ce7;
+      margin-bottom: 2px;
+    }
+
+    .meal-row {
+      font-size: 11px;
+      line-height: 1.35;
+      padding: 2px 5px;
+      border-radius: 4px;
+      color: #fff;
+      font-weight: 700;
+    }
+    .carb  { background: #f39c12; }
+    .prot  { background: #2980b9; }
+    .veg   { background: #27ae60; }
+    .nut   { background: #8e44ad; }
+    .fruit { background: #e84393; }
+
+    .legend {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+      font-size: 12px;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .legend-dot {
+      width: 12px; height: 12px;
+      border-radius: 3px;
+    }
+
+    @media print {
+      body { background: #fff; padding: 10px; }
+      .print-btn { display: none; }
+      .day { box-shadow: 0 0 0 1px #e0e0e0; min-height: 110px; }
+      .meal-row { font-size: 9.5px; font-weight: 700; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .day-num { font-size: 13px; font-weight: 700; }
+      h1 { font-size: 18px; font-weight: 700; }
+    }
+  </style>
+</head>
+<body>
+
+<h1>한 달 저녁 식단 달력</h1>
+<p class="subtitle">야채 + 과일 + 단백질 + 탄수화물 / 연어·소고기·브로콜리·오리훈제·새우 제외</p>
+<button class="print-btn" onclick="window.print()">🖨️ 인쇄 / PDF 저장</button>
+
+<div class="weekdays">
+  <div class="weekday">월</div>
+  <div class="weekday">화</div>
+  <div class="weekday">수</div>
+  <div class="weekday">목</div>
+  <div class="weekday">금</div>
+  <div class="weekday">토</div>
+  <div class="weekday">일</div>
+</div>
+
+<div class="calendar">
+
+  <!-- 1 -->
+  <div class="day">
+    <div class="day-num">1일</div>
+    <div class="meal-row carb">잡곡밥 2숟</div>
+    <div class="meal-row prot">닭가슴살 + 계란 2개</div>
+    <div class="meal-row veg">시금치 데친거</div>
+    <div class="meal-row nut">아몬드 8알</div>
+    <div class="meal-row fruit">바나나</div>
+  </div>
+
+  <!-- 2 -->
+  <div class="day">
+    <div class="day-num">2일</div>
+    <div class="meal-row carb">고구마 1개</div>
+    <div class="meal-row prot">두부구이 + 계란 1개</div>
+    <div class="meal-row veg">양배추쌈</div>
+    <div class="meal-row nut">호두 5알</div>
+    <div class="meal-row fruit">사과 ½개</div>
+  </div>
+
+  <!-- 3 -->
+  <div class="day">
+    <div class="day-num">3일</div>
+    <div class="meal-row carb">현미밥 2숟</div>
+    <div class="meal-row prot">닭가슴살 + 계란 2개</div>
+    <div class="meal-row veg">콩나물무침</div>
+    <div class="meal-row nut">아몬드 8알</div>
+    <div class="meal-row fruit">블루베리 한줌</div>
+  </div>
+
+  <!-- 4 -->
+  <div class="day">
+    <div class="day-num">4일</div>
+    <div class="meal-row carb">잡곡밥 2숟</div>
+    <div class="meal-row prot">고등어구이 + 계란 1개</div>
+    <div class="meal-row veg">상추 + 오이</div>
+    <div class="meal-row nut">호두 5알</div>
+    <div class="meal-row fruit">귤 1개</div>
+  </div>
+
+  <!-- 5 -->
+  <div class="day">
+    <div class="day-num">5일</div>
+    <div class="meal-row carb">고구마 1개</div>
+    <div class="meal-row prot">닭가슴살 + 두부조림</div>
+    <div class="meal-row veg">파프리카볶음</div>
+    <div class="meal-row nut">아몬드 8알</div>
+    <div class="meal-row fruit">키위 1개</div>
+  </div>
+
+  <!-- 6 -->
+  <div class="day">
+    <div class="day-num">6일</div>
+    <div class="meal-row carb">현미밥 2숟</div>
+    <div class="meal-row prot">계란 2개 + 참치캔</div>
+    <div class="meal-row veg">버섯볶음</div>
+    <div class="meal-row nut">캐슈넛 8알</div>
+    <div class="meal-row fruit">딸기 8알</div>
+  </div>
+
+  <!-- 7 -->
+  <div class="day">
+    <div class="day-num">7일</div>
+    <div class="meal-row carb">잡곡밥 2숟</div>
+    <div class="meal-row prot">닭가슴살 + 계란 1개</div>
+    <div class="meal-row veg">청경채 데친거</div>
+    <div class="meal-row nut">아몬드 8알</div>
+    <div class="meal-row fruit">바나나 ½개</div>
+  </div>
+
+  <!-- 8 -->
+  <div class="day">
+    <div class="day-num">8일</div>
+    <div class="meal-row carb">고구마 1개</div>
+    <div class="meal-row prot">두부조림 + 계란 2개</div>
+    <div class="meal-row veg">시금치 데친거</div>
+    <div class="meal-row nut">호두 5알</div>
+    <div class="meal-row fruit">사과 ½개</div>
+  </div>
+
+  <!-- 9 -->
+  <div class="day">
+    <div class="day-num">9일</div>
+    <div class="meal-row carb">현미밥 2숟</div>
+    <div class="meal-row prot">닭가슴살 + 계란 1개</div>
+    <div class="meal-row veg">오이 + 당근 스틱</div>
+    <div class="meal-row nut">아몬드 8알</div>
+    <div class="meal-row fruit">포도 한줌</div>
+  </div>
+
+  <!-- 10 -->
+  <div class="day">
+    <div class="day-num">10일</div>
+    <div class="meal-row carb">잡곡밥 2숟</div>
+    <div class="meal-row prot">고등어구이 + 두부</div>
+    <div class="meal-row veg">깻잎 + 양상추</div>
+    <div class="meal-row nut">호두 5알</div>
+    <div class="meal-row fruit">키위 1개</div>
+  </div>
+
+  <!-- 11 -->
+  <div class="day">
+    <div class="day-num">11일</div>
+    <div class="meal-row carb">고구마 1개</div>
+    <div class="meal-row prot">닭가슴살 + 계란 2개</div>
+    <div class="meal-row veg">버섯볶음</div>
+    <div class="meal-row nut">아몬드 8알</div>
+    <div class="meal-row fruit">귤 1개</div>
+  </div>
+
+  <!-- 12 -->
+  <div class="day">
+    <div class="day-num">12일</div>
+    <div class="meal-row carb">현미밥 2숟</div>
+    <div class="meal-row prot">참치캔 + 계란 1개</div>
+    <div class="meal-row veg">아욱국 (맑은)</div>
+    <div class="meal-row nut">캐슈넛 8알</div>
+    <div class="meal-row fruit">블루베리 한줌</div>
+  </div>
+
+  <!-- 13 -->
+  <div class="day">
+    <div class="day-num">13일</div>
+    <div class="meal-row carb">잡곡밥 2숟</div>
+    <div class="meal-row prot">닭가슴살 + 두부구이</div>
+    <div class="meal-row veg">콩나물무침</div>
+    <div class="meal-row nut">아몬드 8알</div>
+    <div class="meal-row fruit">바나나</div>
+  </div>
+
+  <!-- 14 -->
+  <div class="day">
+    <div class="day-num">14일</div>
+    <div class="meal-row carb">고구마 1개</div>
+    <div class="meal-row prot">계란 2개 + 두부조림</div>
+    <div class="meal-row veg">파프리카 + 오이</div>
+    <div class="meal-row nut">호두 5알</div>
+    <div class="meal-row fruit">딸기 8알</div>
+  </div>
+
+  <!-- 15 -->
+  <div class="day">
+    <div class="day-num">15일</div>
+    <div class="meal-row carb">현미밥 2숟</div>
+    <div class="meal-row prot">닭가슴살 + 계란 2개</div>
+    <div class="meal-row veg">시금치 데친거</div>
+    <div class="meal-row nut">아몬드 8알</div>
+    <div class="meal-row fruit">사과 ½개</div>
+  </div>
+
+  <!-- 16 -->
+  <div class="day">
+    <div class="day-num">16일</div>
+    <div class="meal-row carb">잡곡밥 2숟</div>
+    <div class="meal-row prot">고등어구이 + 계란 1개</div>
+    <div class="meal-row veg">상추 + 깻잎</div>
+    <div class="meal-row nut">호두 5알</div>
+    <div class="meal-row fruit">키위 1개</div>
+  </div>
+
+  <!-- 17 -->
+  <div class="day">
+    <div class="day-num">17일</div>
+    <div class="meal-row carb">고구마 1개</div>
+    <div class="meal-row prot">두부조림 + 계란 2개</div>
+    <div class="meal-row veg">청경채 데친거</div>
+    <div class="meal-row nut">아몬드 8알</div>
+    <div class="meal-row fruit">귤 1개</div>
+  </div>
+
+  <!-- 18 -->
+  <div class="day">
+    <div class="day-num">18일</div>
+    <div class="meal-row carb">현미밥 2숟</div>
+    <div class="meal-row prot">닭가슴살 + 참치캔</div>
+    <div class="meal-row veg">버섯볶음</div>
+    <div class="meal-row nut">캐슈넛 8알</div>
+    <div class="meal-row fruit">포도 한줌</div>
+  </div>
+
+  <!-- 19 -->
+  <div class="day">
+    <div class="day-num">19일</div>
+    <div class="meal-row carb">잡곡밥 2숟</div>
+    <div class="meal-row prot">계란 2개 + 두부구이</div>
+    <div class="meal-row veg">양배추쌈</div>
+    <div class="meal-row nut">아몬드 8알</div>
+    <div class="meal-row fruit">블루베리 한줌</div>
+  </div>
+
+  <!-- 20 -->
+  <div class="day">
+    <div class="day-num">20일</div>
+    <div class="meal-row carb">고구마 1개</div>
+    <div class="meal-row prot">닭가슴살 + 계란 1개</div>
+    <div class="meal-row veg">오이 + 당근 스틱</div>
+    <div class="meal-row nut">호두 5알</div>
+    <div class="meal-row fruit">바나나 ½개</div>
+  </div>
+
+  <!-- 21 -->
+  <div class="day">
+    <div class="day-num">21일</div>
+    <div class="meal-row carb">현미밥 2숟</div>
+    <div class="meal-row prot">고등어구이 + 계란 2개</div>
+    <div class="meal-row veg">콩나물무침</div>
+    <div class="meal-row nut">아몬드 8알</div>
+    <div class="meal-row fruit">딸기 8알</div>
+  </div>
+
+  <!-- 22 -->
+  <div class="day">
+    <div class="day-num">22일</div>
+    <div class="meal-row carb">잡곡밥 2숟</div>
+    <div class="meal-row prot">닭가슴살 + 두부조림</div>
+    <div class="meal-row veg">시금치 데친거</div>
+    <div class="meal-row nut">호두 5알</div>
+    <div class="meal-row fruit">사과 ½개</div>
+  </div>
+
+  <!-- 23 -->
+  <div class="day">
+    <div class="day-num">23일</div>
+    <div class="meal-row carb">고구마 1개</div>
+    <div class="meal-row prot">계란 2개 + 참치캔</div>
+    <div class="meal-row veg">파프리카볶음</div>
+    <div class="meal-row nut">아몬드 8알</div>
+    <div class="meal-row fruit">키위 1개</div>
+  </div>
+
+  <!-- 24 -->
+  <div class="day">
+    <div class="day-num">24일</div>
+    <div class="meal-row carb">현미밥 2숟</div>
+    <div class="meal-row prot">닭가슴살 + 계란 1개</div>
+    <div class="meal-row veg">아욱국 (맑은)</div>
+    <div class="meal-row nut">캐슈넛 8알</div>
+    <div class="meal-row fruit">귤 1개</div>
+  </div>
+
+  <!-- 25 -->
+  <div class="day">
+    <div class="day-num">25일</div>
+    <div class="meal-row carb">잡곡밥 2숟</div>
+    <div class="meal-row prot">두부구이 + 계란 2개</div>
+    <div class="meal-row veg">청경채 데친거</div>
+    <div class="meal-row nut">아몬드 8알</div>
+    <div class="meal-row fruit">블루베리 한줌</div>
+  </div>
+
+  <!-- 26 -->
+  <div class="day">
+    <div class="day-num">26일</div>
+    <div class="meal-row carb">고구마 1개</div>
+    <div class="meal-row prot">닭가슴살 + 고등어구이</div>
+    <div class="meal-row veg">상추 + 깻잎</div>
+    <div class="meal-row nut">호두 5알</div>
+    <div class="meal-row fruit">바나나</div>
+  </div>
+
+  <!-- 27 -->
+  <div class="day">
+    <div class="day-num">27일</div>
+    <div class="meal-row carb">현미밥 2숟</div>
+    <div class="meal-row prot">계란 2개 + 두부조림</div>
+    <div class="meal-row veg">버섯볶음</div>
+    <div class="meal-row nut">아몬드 8알</div>
+    <div class="meal-row fruit">포도 한줌</div>
+  </div>
+
+  <!-- 28 -->
+  <div class="day">
+    <div class="day-num">28일</div>
+    <div class="meal-row carb">잡곡밥 2숟</div>
+    <div class="meal-row prot">닭가슴살 + 참치캔</div>
+    <div class="meal-row veg">콩나물무침</div>
+    <div class="meal-row nut">캐슈넛 8알</div>
+    <div class="meal-row fruit">딸기 8알</div>
+  </div>
+
+  <!-- 29 -->
+  <div class="day">
+    <div class="day-num">29일</div>
+    <div class="meal-row carb">고구마 1개</div>
+    <div class="meal-row prot">계란 2개 + 두부구이</div>
+    <div class="meal-row veg">오이 + 당근 스틱</div>
+    <div class="meal-row nut">아몬드 8알</div>
+    <div class="meal-row fruit">키위 1개</div>
+  </div>
+
+  <!-- 30 -->
+  <div class="day">
+    <div class="day-num">30일</div>
+    <div class="meal-row carb">현미밥 2숟</div>
+    <div class="meal-row prot">닭가슴살 + 계란 1개</div>
+    <div class="meal-row veg">시금치 데친거</div>
+    <div class="meal-row nut">호두 5알</div>
+    <div class="meal-row fruit">사과 ½개</div>
+  </div>
+
+  <!-- 빈칸 -->
+  <div class="day empty"></div>
+  <div class="day empty"></div>
+  <div class="day empty"></div>
+  <div class="day empty"></div>
+
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#f39c12"></div> 탄수화물</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#2980b9"></div> 단백질</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#27ae60"></div> 채소</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#8e44ad"></div> 견과류</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#e84393"></div> 과일</div>
+</div>
+
+</body>
+</html>

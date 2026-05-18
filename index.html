@@ -469,13 +469,16 @@
     <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 mb-5 flex items-center gap-4 flex-wrap">
       <div class="flex-1">
         <p class="font-bold text-emerald-800 text-sm">📡 지원사업 공고 자동 수집</p>
-        <p class="text-xs text-emerald-600 mt-0.5">Python 스크립트 실행 후 생성된 programs_import.json 파일을 선택하세요</p>
+        <p class="text-xs text-emerald-600 mt-0.5">GitHub Actions가 매일 오전 9시에 자동 수집합니다</p>
       </div>
       <button onclick="openNotiSettings()" class="cursor-pointer bg-blue-500 text-white text-sm font-bold px-4 py-2 rounded-xl hover:bg-blue-600 transition">
         🔔 알림설정
       </button>
+      <button id="auto-fetch-btn" onclick="autoFetchPrograms()" class="cursor-pointer bg-indigo-500 text-white text-sm font-bold px-4 py-2 rounded-xl hover:bg-indigo-600 transition">
+        🔄 최신 공고 불러오기
+      </button>
       <label class="cursor-pointer bg-emerald-500 text-white text-sm font-bold px-4 py-2 rounded-xl hover:bg-emerald-600 transition">
-        📂 공고 가져오기
+        📂 파일로 가져오기
         <input type="file" accept=".json" onchange="importPrograms(event)" class="hidden" />
       </label>
     </div>
@@ -1905,6 +1908,51 @@ function makeGoogleCalendarUrl(p) {
   const details = encodeURIComponent(`${p.notes||''}\n\n주관기관: ${p.org||''}\n카테고리: ${p.category||''}\n지원규모: ${p.amount||''}\n\n${p.url||''}`);
   const date    = (p.deadline||'').replace(/-/g,'');
   return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${date}/${date}&details=${details}`;
+}
+
+// ══════════════════════════════════════════
+//  자동 공고 수집 (GitHub Actions 연동)
+// ══════════════════════════════════════════
+const PROGRAMS_JSON_URL = 'https://raw.githubusercontent.com/jinny777/daily-growth-hub/main/programs_import.json';
+
+async function autoFetchPrograms() {
+  const btn = document.getElementById('auto-fetch-btn');
+  const orig = btn.textContent;
+  btn.textContent = '⏳ 불러오는 중...';
+  btn.disabled = true;
+  try {
+    const res = await fetch(PROGRAMS_JSON_URL + '?t=' + Date.now());
+    if (!res.ok) throw new Error(`서버 응답 오류 (${res.status})`);
+    const imported = await res.json();
+    if (!Array.isArray(imported)) throw new Error('형식 오류');
+    const existingIds = new Set(state.programs.map(p => p.id));
+    let added = 0;
+    imported.forEach(p => {
+      if (!existingIds.has(p.id)) { state.programs.unshift(p); added++; }
+    });
+    saveState(); renderPrograms();
+    if (added > 0) {
+      showToast(`✅ ${added}개 새 공고가 업데이트됐습니다!`);
+      // 캘린더 동기화 설정 시
+      if (state.notiSettings?.channels?.calendar) {
+        const withDeadline = imported.filter(p => p.deadline && !existingIds.has(p.id));
+        if (withDeadline.length > 0) {
+          setTimeout(() => {
+            if (confirm(`📅 ${withDeadline.length}개 공고 마감일을 Google 캘린더에 추가할까요?`)) {
+              downloadICS(withDeadline);
+            }
+          }, 500);
+        }
+      }
+    } else {
+      showToast('공고가 이미 최신 상태입니다');
+    }
+  } catch(e) {
+    showToast('❌ 불러오기 실패: ' + e.message);
+  } finally {
+    btn.textContent = orig;
+    btn.disabled = false;
+  }
 }
 
 // ══════════════════════════════════════════

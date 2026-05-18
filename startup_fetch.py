@@ -300,7 +300,9 @@ def main():
     print("  1. https://jinny777.github.io/daily-growth-hub/ 접속")
     print("  2. 📋 지원사업 탭 클릭")
     print("  3. '📂 공고 가져오기' 버튼 클릭 → programs_import.json 선택")
-    input("\n아무 키나 누르면 종료합니다.")
+    import sys
+    if sys.stdin.isatty():
+        input("\n아무 키나 누르면 종료합니다.")
 
 if __name__ == '__main__':
     main()
