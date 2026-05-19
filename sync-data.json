@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-19T07:04:35.044Z",
+  "savedAt": "2026-05-19T07:05:13.167Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -30,6 +30,24 @@
     ],
     "prayerFilter": "all",
     "todos": [
+      {
+        "id": "1779174295823kyxei",
+        "date": "2026-05-19",
+        "text": "링크드인, 리멤버,메리웰 매각 공고",
+        "category": "📌 일반",
+        "done": false,
+        "doneDate": null,
+        "createdAt": 1779174295823
+      },
+      {
+        "id": "1779174282259fxvk2",
+        "date": "2026-05-19",
+        "text": "ict  콤플렉스 신청",
+        "category": "📌 일반",
+        "done": false,
+        "doneDate": null,
+        "createdAt": 1779174282259
+      },
       {
         "id": "177916827484470y59",
         "date": "2026-05-19",
