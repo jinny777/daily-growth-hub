@@ -370,14 +370,17 @@
 
   <!-- ── TAB: JOB ── -->
   <div id="tab-content-job" class="max-w-4xl mx-auto px-4 py-8 hidden">
-    <!-- 메일 가져오기 -->
+    <!-- 채용공고 가져오기 -->
     <div class="bg-blue-50 border border-blue-200 rounded-2xl p-4 mb-5 flex items-center gap-4 flex-wrap">
       <div class="flex-1">
-        <p class="font-bold text-blue-800 text-sm">📧 네이버 메일 채용공고 가져오기</p>
-        <p class="text-xs text-blue-500 mt-0.5">Python 스크립트 실행 후 생성된 jobs_import.json 파일을 선택하세요</p>
+        <p class="font-bold text-blue-800 text-sm">📡 채용공고 자동 수집</p>
+        <p class="text-xs text-blue-500 mt-0.5">GitHub Actions가 매일 오전 10시에 50플러스 · Remember 공고를 자동 수집합니다</p>
       </div>
+      <button id="auto-fetch-jobs-btn" onclick="autoFetchJobs()" class="cursor-pointer bg-indigo-500 text-white text-sm font-bold px-4 py-2 rounded-xl hover:bg-indigo-600 transition">
+        🔄 최신 채용공고 불러오기
+      </button>
       <label class="cursor-pointer bg-blue-500 text-white text-sm font-bold px-4 py-2 rounded-xl hover:bg-blue-600 transition">
-        📂 파일 선택
+        📂 파일로 가져오기
         <input type="file" accept=".json" onchange="importJobsFromFile(event)" class="hidden" />
       </label>
     </div>
@@ -1999,6 +2002,37 @@ async function autoFetchPrograms() {
     } else {
       showToast('공고가 이미 최신 상태입니다');
     }
+  } catch(e) {
+    showToast('❌ 불러오기 실패: ' + e.message);
+  } finally {
+    btn.textContent = orig;
+    btn.disabled = false;
+  }
+}
+
+// ══════════════════════════════════════════
+//  채용공고 자동 불러오기
+// ══════════════════════════════════════════
+const JOBS_JSON_URL = 'https://raw.githubusercontent.com/jinny777/daily-growth-hub/main/jobs_import.json';
+
+async function autoFetchJobs() {
+  const btn = document.getElementById('auto-fetch-jobs-btn');
+  const orig = btn.textContent;
+  btn.textContent = '⏳ 불러오는 중...';
+  btn.disabled = true;
+  try {
+    const res = await fetch(JOBS_JSON_URL + '?t=' + Date.now());
+    if (!res.ok) throw new Error(`오류 (${res.status})`);
+    const imported = await res.json();
+    if (!Array.isArray(imported)) throw new Error('형식 오류');
+    const existingIds = new Set(state.jobs.map(j => j.id));
+    let added = 0;
+    imported.forEach(job => {
+      if (!existingIds.has(job.id)) { state.jobs.unshift(job); added++; }
+    });
+    saveState(); renderJobs();
+    if (added > 0) showToast(`✅ ${added}개 새 채용공고가 추가됐습니다!`);
+    else showToast('채용공고가 이미 최신 상태입니다');
   } catch(e) {
     showToast('❌ 불러오기 실패: ' + e.message);
   } finally {

@@ -1,0 +1,38 @@
+name: 채용공고 자동 수집
+
+on:
+  schedule:
+    - cron: '0 1 * * *'   # 매일 오전 10시 KST (UTC 01:00)
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Playwright 설치
+        run: |
+          pip install playwright
+          python -m playwright install chromium
+          python -m playwright install-deps chromium
+
+      - name: 채용공고 수집
+        run: python web_job_fetch.py
+        env:
+          PYTHONIOENCODING: utf-8
+
+      - name: jobs_import.json 커밋 & 푸시
+        run: |
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git add jobs_import.json
+          git diff --staged --quiet || git commit -m "chore: 채용공고 자동 업데이트 $(date +'%Y-%m-%d')"
+          git push
