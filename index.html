@@ -4,6 +4,14 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Daily Growth Hub</title>
+<!-- PWA -->
+<link rel="manifest" href="/daily-growth-hub/manifest.json" />
+<meta name="theme-color" content="#6366f1" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="성장허브" />
+<link rel="apple-touch-icon" href="/daily-growth-hub/icon-192.png" />
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&display=swap');
@@ -2688,6 +2696,11 @@ else { showScreen('login'); }
 
 const regStart = document.getElementById('reg-start');
 if (regStart) regStart.value = today();
+
+// 서비스 워커 등록 (PWA)
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/daily-growth-hub/sw.js').catch(() => {});
+}
 
 // Set default dates for new entry forms
 ['prayer-date','todo-date','ai-date','book-start'].forEach(id => {
