@@ -10,6 +10,8 @@ echo   Daily Growth Hub - 자동 Push
 echo ===================================
 echo.
 
+git pull --rebase origin main
+
 git add .
 
 git diff --staged --quiet
@@ -21,8 +23,6 @@ if %errorlevel% == 0 (
 set "msg=Update %date% %time:~0,5%"
 git commit -m "%msg%"
 
-echo.
-echo GitHub에 업로드 중...
 git push origin main
 
 if %errorlevel% == 0 (
