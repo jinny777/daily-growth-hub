@@ -6,89 +6,66 @@
 
 ---
 
-## 기능
+## 새 PC에서 시작하기 (한 번만)
 
-- 🙏 기도 제목 작성 및 응답 체크
-- ✅ TODO 할 일 관리 + 달력 표기
-- 💼 채용공고 관리 (네이버 메일 자동 수집)
-- 📋 지원사업 공고 관리 (D-Day, 구글 캘린더 연동)
-- 📚 독서 기록
-- 🤖 AI 스터디 내용 정리
-
----
-
-## 다른 PC에서 작업하기
-
-### 1. 사전 준비 (최초 1회)
-
-**Git 설치**
-- https://git-scm.com/download/win 에서 다운로드 후 설치
-
-**Python 설치** (스크립트 실행 시 필요)
-- https://python.org 에서 다운로드
-- 설치 시 **Add Python to PATH** 반드시 체크
-
-**VS Code 설치** (선택)
-- https://code.visualstudio.com
+### 1. 사전 설치
+- [Git](https://git-scm.com/download/win) 설치
+- [Python](https://python.org) 설치 (설치 시 **Add Python to PATH** 체크)
 
 ### 2. 저장소 클론
-
 ```powershell
 git clone https://github.com/jinny777/daily-growth-hub.git
 cd daily-growth-hub
 ```
 
-### 3. 코드 수정 후 배포
+### 3. 자동 셋업 실행
+`setup.bat` 파일을 **더블클릭** → Python 패키지, Git 설정 자동 완료
 
-```powershell
-git add .
-git commit -m "변경 내용 설명"
-git remote set-url origin https://jinny777:토큰@github.com/jinny777/daily-growth-hub.git
-git push origin main
-git remote set-url origin https://github.com/jinny777/daily-growth-hub.git
-```
-
-> 토큰: https://github.com/settings/tokens 에서 발급 (repo 권한 필요)
+### 4. 웹사이트에서 데이터 동기화
+1. https://jinny777.github.io/daily-growth-hub/ 접속
+2. **⚙️ 동기화** → GitHub 토큰 입력 → 저장
+3. 이후 접속 시 자동으로 데이터 불러와짐
 
 ---
 
-## Python 스크립트
+## 매일 사용법
 
-### 네이버 메일 채용공고 수집
-```powershell
-python naver_job_fetch.py
-```
-- 네이버 IMAP 연결 → 채용공고 폴더 → jobs_import.json 생성
-- 웹사이트 💼 취업 탭 → 📂 파일 선택 → jobs_import.json
-
-### 지원사업 공고 수집
-```powershell
-python startup_fetch.py
-```
-- K-Startup, 기업마당 공고 수집 → programs_import.json 생성
-- 웹사이트 📋 지원사업 탭 → 📂 공고 가져오기 → programs_import.json
+| 작업 | 방법 |
+|------|------|
+| 코드 변경 후 업로드 | `push.bat` 더블클릭 |
+| 자동 감지 push | PowerShell에서 `.\auto-push.ps1` 실행 |
+| 채용공고 수집 | `python web_job_fetch.py` |
+| 지원사업 공고 수집 | `python startup_fetch.py` |
 
 ---
 
-## 데이터 동기화 (다른 PC에서 동일 데이터 사용)
+## 자동화 (GitHub Actions)
 
-1. 이 PC: 웹사이트 상단 **⚙️ 동기화** → GitHub 토큰 입력 → **☁️ 저장**
-2. 다른 PC: 웹사이트 접속 후 **⚙️ 동기화** → 같은 토큰 입력 → **☁️ 불러오기**
+| 작업 | 실행 시간 |
+|------|----------|
+| 지원사업 공고 수집 | 매일 오전 9시 |
+| 채용공고 수집 | 매일 오전 10시 |
 
-또는
-
-1. 이 PC: 상단 **💾** 클릭 → 백업 JSON 다운로드
-2. 다른 PC: 상단 **📥** 클릭 → 백업 JSON 선택
+→ 웹사이트에서 **🔄 최신 공고 불러오기** 클릭으로 즉시 반영
 
 ---
 
-## 파일 구조
+## 기능
 
-```
-daily-growth-hub/
-├── index.html          # 메인 웹앱 (모든 기능 포함)
-├── sync-data.json      # 클라우드 동기화 데이터 (자동 생성)
-├── naver_job_fetch.py  # 네이버 메일 채용공고 수집 스크립트
-├── startup_fetch.py    # 지원사업 공고 수집 스크립트
-└── README.md           # 이 파일
-```
+- 🙏 기도 제목 작성 및 응답 체크
+- ✅ TODO 할 일 관리 + 달력 표기
+- 💼 채용공고 관리 (50플러스, Remember 자동 수집)
+- 📋 지원사업 공고 관리 (K-startup, Bizinfo 자동 수집)
+- 📚 독서 기록
+- 🤖 AI 스터디 내용 정리
+- 🔔 맞춤형 알림 설정 + Google 캘린더 연동
+- ☁️ GitHub 자동 동기화 (다른 PC에서 동일 데이터)
+- 📱 PWA 지원 (스마트폰 홈화면에 앱으로 설치)
+
+---
+
+## GitHub 토큰 발급
+
+https://github.com/settings/tokens → Generate new token (classic)
+
+필요 권한: **repo** ✅ **workflow** ✅ **gist** ✅
