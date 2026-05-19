@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-19T07:15:05.065Z",
+  "savedAt": "2026-05-19T07:15:52.611Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -30,6 +30,15 @@
     ],
     "prayerFilter": "all",
     "todos": [
+      {
+        "id": "1779174936845v66ut",
+        "date": "2026-05-20",
+        "text": "기술임치 신청",
+        "category": "📌 일반",
+        "done": false,
+        "doneDate": null,
+        "createdAt": 1779174936845
+      },
       {
         "id": "1779174295823kyxei",
         "date": "2026-05-19",
