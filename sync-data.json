@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-19T07:15:52.611Z",
+  "savedAt": "2026-05-19T07:16:14.440Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -30,6 +30,15 @@
     ],
     "prayerFilter": "all",
     "todos": [
+      {
+        "id": "1779174958461x39sv",
+        "date": "2026-05-20",
+        "text": "킹고스프링 엑셀러레이팅 프로그램",
+        "category": "📌 일반",
+        "done": false,
+        "doneDate": null,
+        "createdAt": 1779174958462
+      },
       {
         "id": "1779174936845v66ut",
         "date": "2026-05-20",
