@@ -1090,7 +1090,51 @@ let state = {
 function loadState() {
   try { const s = localStorage.getItem('dgh_state_v2'); if (s) state = { ...state, ...JSON.parse(s) }; } catch {}
 }
-function saveState() { localStorage.setItem('dgh_state_v2', JSON.stringify(state)); }
+function saveState() {
+  localStorage.setItem('dgh_state_v2', JSON.stringify(state));
+  scheduleAutoSave();
+}
+
+// 자동 저장 (데이터 변경 후 15초 뒤 클라우드에 저장)
+let _autoSaveTimer = null;
+function scheduleAutoSave() {
+  if (!getSyncToken()) return;
+  clearTimeout(_autoSaveTimer);
+  _autoSaveTimer = setTimeout(silentCloudSave, 15000);
+}
+async function silentCloudSave() {
+  const token = getSyncToken(); if (!token) return;
+  try {
+    let sha = '';
+    const getRes = await fetch(`https://api.github.com/repos/${SYNC_REPO}/contents/${SYNC_FILE}`,
+      { headers: { 'Authorization': `token ${token}` } });
+    if (getRes.ok) { const f = await getRes.json(); sha = f.sha; }
+    const body = { message: 'auto-sync', content: utf8ToBase64(JSON.stringify({ version:2, savedAt: new Date().toISOString(), state }, null, 2)) };
+    if (sha) body.sha = sha;
+    await fetch(`https://api.github.com/repos/${SYNC_REPO}/contents/${SYNC_FILE}`,
+      { method:'PUT', headers:{ 'Authorization':`token ${token}`, 'Content-Type':'application/json' }, body: JSON.stringify(body) });
+  } catch(e) { /* 백그라운드 저장 실패 시 무시 */ }
+}
+async function silentCloudLoad() {
+  const token = getSyncToken(); if (!token) return;
+  try {
+    const res = await fetch(`https://api.github.com/repos/${SYNC_REPO}/contents/${SYNC_FILE}`,
+      { headers: { 'Authorization': `token ${token}` } });
+    if (!res.ok) return;
+    const file = await res.json();
+    const backup = JSON.parse(base64ToUtf8(file.content));
+    const loaded = backup.state || backup;
+    const remoteTime = new Date(backup.savedAt || 0).getTime();
+    const localTime  = new Date(localStorage.getItem('dgh_last_sync') || 0).getTime();
+    if (remoteTime > localTime) {
+      state = { ...state, ...loaded };
+      localStorage.setItem('dgh_last_sync', backup.savedAt || new Date().toISOString());
+      saveState();
+      renderDashboard();
+      showToast('☁️ 클라우드에서 최신 데이터를 불러왔습니다');
+    }
+  } catch(e) { /* 자동 로드 실패 시 무시 */ }
+}
 function uid() { return Date.now() + Math.random().toString(36).slice(2,7); }
 
 // ══════════════════════════════════════════
@@ -2569,6 +2613,7 @@ async function cloudLoad() {
     const loaded  = backup.state || backup;
     if (!confirm('현재 데이터를 클라우드 데이터로 덮어쓸까요?')) return;
     state = { ...state, ...loaded };
+    localStorage.setItem('dgh_last_sync', backup.savedAt || new Date().toISOString());
     saveState(); renderDashboard();
     showToast('☁️ 불러오기 완료!');
   } catch(e) {
@@ -2634,7 +2679,11 @@ if (!state.todoCalYear) initTodoCal();
 saveState();
 
 updateSyncButtons();
-if (state.user) { showScreen('dashboard'); renderDashboard(); }
+if (state.user) {
+  showScreen('dashboard'); renderDashboard();
+  // 토큰이 있으면 클라우드에서 최신 데이터 자동 로드
+  silentCloudLoad();
+}
 else { showScreen('login'); }
 
 const regStart = document.getElementById('reg-start');
