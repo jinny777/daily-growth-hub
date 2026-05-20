@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-20T05:59:48.411Z",
+  "savedAt": "2026-05-20T06:39:31.932Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -80,8 +80,8 @@
         "date": "2026-05-19",
         "text": "리멤버. 그룹바이 추가",
         "category": "📌 일반",
-        "done": false,
-        "doneDate": null,
+        "done": true,
+        "doneDate": "2026-05-20",
         "createdAt": 1779168274844
       },
       {
@@ -89,8 +89,8 @@
         "date": "2026-05-19",
         "text": "학점인정신청",
         "category": "📌 일반",
-        "done": false,
-        "doneDate": null,
+        "done": true,
+        "doneDate": "2026-05-20",
         "createdAt": 1779150139815
       },
       {
