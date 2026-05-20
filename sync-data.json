@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-20T06:55:06.947Z",
+  "savedAt": "2026-05-20T06:58:46.465Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -30,6 +30,15 @@
     ],
     "prayerFilter": "all",
     "todos": [
+      {
+        "id": "1779260309380bl9od",
+        "date": "2026-05-20",
+        "text": "종합소득세 신고",
+        "category": "📌 일반",
+        "done": false,
+        "doneDate": null,
+        "createdAt": 1779260309380
+      },
       {
         "id": "17792592694370pvpf",
         "date": "2026-05-21",
