@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-20T06:41:00.036Z",
+  "savedAt": "2026-05-20T06:41:25.151Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -30,6 +30,15 @@
     ],
     "prayerFilter": "all",
     "todos": [
+      {
+        "id": "17792592694370pvpf",
+        "date": "2026-05-21",
+        "text": "웨딩위더스그룹 전화",
+        "category": "📌 일반",
+        "done": false,
+        "doneDate": null,
+        "createdAt": 1779259269437
+      },
       {
         "id": "17792592414926zehf",
         "date": "2026-05-20",
