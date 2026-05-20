@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-20T05:22:43.442Z",
+  "savedAt": "2026-05-20T05:26:44.170Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -35,8 +35,8 @@
         "date": "2026-05-19",
         "text": "학점인정등록",
         "category": "📌 일반",
-        "done": false,
-        "doneDate": null,
+        "done": true,
+        "doneDate": "2026-05-20",
         "createdAt": 1779148645750
       },
       {
@@ -44,8 +44,8 @@
         "date": "2026-05-19",
         "text": "인공지능협회지원",
         "category": "📌 일반",
-        "done": false,
-        "doneDate": null,
+        "done": true,
+        "doneDate": "2026-05-20",
         "createdAt": 1779148635691
       },
       {
@@ -53,8 +53,8 @@
         "date": "2026-05-16",
         "text": "daily growth hub 기능 작업",
         "category": "📌 일반",
-        "done": false,
-        "doneDate": null,
+        "done": true,
+        "doneDate": "2026-05-20",
         "createdAt": 1778926533634
       }
     ],
