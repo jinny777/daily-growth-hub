@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-20T07:47:40.262Z",
+  "savedAt": "2026-05-20T07:53:08.845Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -30,6 +30,15 @@
     ],
     "prayerFilter": "all",
     "todos": [
+      {
+        "id": "1779263571751zban5",
+        "date": "2026-05-20",
+        "text": "사회복지사 실습처 찾기",
+        "category": "📌 일반",
+        "done": false,
+        "doneDate": null,
+        "createdAt": 1779263571751
+      },
       {
         "id": "1779262136681vn85v",
         "date": "2026-05-20",
