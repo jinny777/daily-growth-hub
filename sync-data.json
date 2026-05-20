@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-20T06:39:31.932Z",
+  "savedAt": "2026-05-20T06:41:00.036Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -30,6 +30,15 @@
     ],
     "prayerFilter": "all",
     "todos": [
+      {
+        "id": "17792592414926zehf",
+        "date": "2026-05-20",
+        "text": "파트너 모집 팩스 이메일링",
+        "category": "📌 일반",
+        "done": false,
+        "doneDate": null,
+        "createdAt": 1779259241492
+      },
       {
         "id": "17792567727884apon",
         "date": "2026-05-20",
