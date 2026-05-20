@@ -1152,14 +1152,20 @@ async function silentCloudLoad() {
     const file = await res.json();
     const backup = JSON.parse(base64ToUtf8(file.content));
     const loaded = backup.state || backup;
-    const remoteTime = new Date(backup.savedAt || 0).getTime();
-    const localTime  = new Date(localStorage.getItem('dgh_last_sync') || 0).getTime();
-    if (remoteTime > localTime) {
+
+    const remoteTime  = new Date(backup.savedAt || 0).getTime();
+    const localTime   = new Date(localStorage.getItem('dgh_last_sync') || 0).getTime();
+    const remoteTodos = (loaded.todos?.length || 0) + (loaded.prayers?.length || 0);
+    const localTodos  = (state.todos?.length || 0)  + (state.prayers?.length || 0);
+
+    // 클라우드가 더 최신이거나, 로컬보다 데이터가 많으면 자동 로드
+    if (remoteTime > localTime || remoteTodos > localTodos) {
       state = { ...state, ...loaded };
       localStorage.setItem('dgh_last_sync', backup.savedAt || new Date().toISOString());
       saveState();
       renderDashboard();
-      showToast('☁️ 클라우드에서 최신 데이터를 불러왔습니다');
+      if (name === 'todo') { renderTodos(); renderTodoCalendar(); }
+      showToast('☁️ 최신 데이터를 불러왔습니다 (TODO ' + (loaded.todos?.length||0) + '개)');
     }
   } catch(e) { /* 자동 로드 실패 시 무시 */ }
 }
