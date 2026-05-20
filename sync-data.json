@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-20T07:45:13.762Z",
+  "savedAt": "2026-05-20T07:45:58.388Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -6544,6 +6544,7 @@
     "programFilter": "",
     "programCatFilter": "기타",
     "programSiteFilter": "",
+    "projects": [],
     "books": [
       {
         "id": "1779058404759ztmik",
