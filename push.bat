@@ -1,12 +1,8 @@
 @echo off
 chcp 65001 >nul
-
-set "REPO=c:\Users\khjye\OneDrive\바탕 화면\AI Project\daily-growth-hub\daily-growth-hub"
-cd /d "%REPO%"
-
 echo.
 echo ===================================
-echo   Daily Growth Hub - 자동 Push
+echo   Daily Growth Hub - 배포 (Push)
 echo ===================================
 echo.
 
@@ -20,17 +16,20 @@ if %errorlevel% == 0 (
     goto done
 )
 
-set "msg=Update %date% %time:~0,5%"
-git commit -m "%msg%"
+set /p MSG="커밋 메시지 입력 (빈칸=자동): "
+if "%MSG%"=="" set "MSG=Update %date% %time:~0,5%"
 
+git commit -m "%MSG%"
 git push origin main
 
 if %errorlevel% == 0 (
     echo.
-    echo 완료! GitHub에 업로드됐습니다.
+    echo [완료] GitHub에 배포됐습니다!
+    echo https://jinny777.github.io/daily-growth-hub/
 ) else (
     echo.
-    echo 오류가 발생했습니다.
+    echo [오류] push 실패. 토큰 로그인이 필요할 수 있습니다.
+    echo git remote set-url origin https://jinny777:토큰@github.com/jinny777/daily-growth-hub.git
 )
 
 :done
