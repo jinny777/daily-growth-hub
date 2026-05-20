@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "savedAt": "2026-05-20T04:51:24.952Z",
+  "savedAt": "2026-05-20T05:22:43.442Z",
   "state": {
     "user": {
       "email": "user@example.com",
       "name": "user"
     },
-    "startDate": "2026-05-19",
+    "startDate": "2026-05-20",
     "completed": {},
     "streak": 0,
     "longestStreak": 0,
