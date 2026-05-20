@@ -1115,11 +1115,28 @@ function scheduleAutoSave() {
 }
 async function silentCloudSave() {
   const token = getSyncToken(); if (!token) return;
+  // 실제 데이터가 없는 빈 상태면 클라우드 덮어쓰기 방지
+  const hasData = (state.todos?.length || 0) + (state.prayers?.length || 0) +
+                  (state.jobs?.length || 0) + (state.programs?.length || 0) +
+                  (state.books?.length || 0) > 0;
+  if (!hasData) return;
   try {
     let sha = '';
     const getRes = await fetch(`https://api.github.com/repos/${SYNC_REPO}/contents/${SYNC_FILE}`,
       { headers: { 'Authorization': `token ${token}` } });
-    if (getRes.ok) { const f = await getRes.json(); sha = f.sha; }
+    if (getRes.ok) {
+      const f = await getRes.json();
+      sha = f.sha;
+      // 클라우드가 더 많은 데이터를 가지고 있으면 저장 안 함
+      try {
+        const cloudState = JSON.parse(base64ToUtf8(f.content))?.state || {};
+        const cloudData = (cloudState.todos?.length || 0) + (cloudState.prayers?.length || 0) +
+                          (cloudState.jobs?.length || 0) + (cloudState.programs?.length || 0);
+        const localData  = (state.todos?.length || 0) + (state.prayers?.length || 0) +
+                           (state.jobs?.length || 0) + (state.programs?.length || 0);
+        if (cloudData > localData) return;
+      } catch {}
+    }
     const body = { message: 'auto-sync', content: utf8ToBase64(JSON.stringify({ version:2, savedAt: new Date().toISOString(), state }, null, 2)) };
     if (sha) body.sha = sha;
     await fetch(`https://api.github.com/repos/${SYNC_REPO}/contents/${SYNC_FILE}`,
