@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-20T06:41:25.151Z",
+  "savedAt": "2026-05-20T06:55:06.947Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -89,8 +89,8 @@
         "date": "2026-05-19",
         "text": "ict  콤플렉스 신청",
         "category": "📌 일반",
-        "done": false,
-        "doneDate": null,
+        "done": true,
+        "doneDate": "2026-05-20",
         "createdAt": 1779174282259
       },
       {
