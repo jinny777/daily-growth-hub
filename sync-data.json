@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-20T05:49:00.842Z",
+  "savedAt": "2026-05-20T05:59:48.411Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -30,6 +30,15 @@
     ],
     "prayerFilter": "all",
     "todos": [
+      {
+        "id": "17792567727884apon",
+        "date": "2026-05-20",
+        "text": "다우오피스 변경신청",
+        "category": "📌 일반",
+        "done": false,
+        "doneDate": null,
+        "createdAt": 1779256772788
+      },
       {
         "id": "1779174958461x39sv",
         "date": "2026-05-20",
