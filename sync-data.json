@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-20T07:46:36.941Z",
+  "savedAt": "2026-05-20T07:47:40.262Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -6551,7 +6551,14 @@
         "color": "#6366f1",
         "createdAt": 1779263172096,
         "collapsed": false,
-        "tasks": []
+        "tasks": [
+          {
+            "id": "1779263243863jj0ke",
+            "text": "ai스터디 학습 내용을 브런치와 연동 발행",
+            "done": false,
+            "createdAt": 1779263243863
+          }
+        ]
       }
     ],
     "books": [
