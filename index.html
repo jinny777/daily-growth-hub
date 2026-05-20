@@ -645,6 +645,15 @@
         <input id="ai-tags" type="text" placeholder="태그 (쉼표 구분: GPT, LLM, 프롬프트)" class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-violet-300 md:col-span-2" />
         <textarea id="ai-content" rows="4" placeholder="스터디 내용 정리..."
           class="w-full border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-violet-300 resize-none md:col-span-2"></textarea>
+        <!-- 파일 첨부 -->
+        <div class="md:col-span-2">
+          <label class="flex items-center gap-2 cursor-pointer border-2 border-dashed border-violet-200 rounded-xl px-4 py-3 hover:border-violet-400 hover:bg-violet-50 transition">
+            <svg class="w-5 h-5 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"/></svg>
+            <span class="text-sm text-violet-500 font-medium">파일 첨부 (이미지, PDF, 문서 — 최대 3MB)</span>
+            <input id="ai-files" type="file" multiple accept="image/*,.pdf,.doc,.docx,.txt,.ppt,.pptx,.xls,.xlsx" onchange="previewAiFiles(event)" class="hidden" />
+          </label>
+          <div id="ai-file-preview" class="mt-2 space-y-1"></div>
+        </div>
         <button onclick="addAiStudy()" class="md:col-span-2 bg-violet-500 text-white font-bold py-2.5 rounded-xl hover:bg-violet-600 transition text-sm">저장</button>
       </div>
     </div>
@@ -2616,6 +2625,34 @@ function renderBooks() {
 // ══════════════════════════════════════════
 //  AI STUDY
 // ══════════════════════════════════════════
+// 파일 미리보기 (저장 전)
+let _aiPendingFiles = [];
+function previewAiFiles(event) {
+  const files = [...event.target.files];
+  const preview = document.getElementById('ai-file-preview');
+  _aiPendingFiles = [];
+  preview.innerHTML = '';
+  const MAX = 3 * 1024 * 1024;
+  files.forEach(file => {
+    if (file.size > MAX) {
+      preview.innerHTML += `<p class="text-xs text-red-500">❌ ${file.name} — 3MB 초과</p>`;
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = e => {
+      _aiPendingFiles.push({ name: file.name, type: file.type, size: file.size, data: e.target.result });
+      const isImg = file.type.startsWith('image/');
+      preview.innerHTML += `
+        <div class="flex items-center gap-2 bg-violet-50 rounded-lg px-3 py-1.5">
+          ${isImg ? `<img src="${e.target.result}" class="w-10 h-10 object-cover rounded" />` : '<span class="text-lg">📄</span>'}
+          <span class="text-xs text-gray-600 flex-1 truncate">${file.name}</span>
+          <span class="text-xs text-gray-400">${(file.size/1024).toFixed(0)}KB</span>
+        </div>`;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
 function addAiStudy() {
   const date  = document.getElementById('ai-date').value || today();
   const title = document.getElementById('ai-title').value.trim();
@@ -2626,10 +2663,14 @@ function addAiStudy() {
     id:uid(), createdAt:Date.now(), date, title,
     content: document.getElementById('ai-content').value.trim(),
     url:     document.getElementById('ai-url').value.trim(),
+    files:   [..._aiPendingFiles],
     tags,
   });
   saveState();
   ['ai-title','ai-content','ai-url','ai-tags'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('ai-files').value = '';
+  document.getElementById('ai-file-preview').innerHTML = '';
+  _aiPendingFiles = [];
   renderAiStudy(); showToast('🤖 스터디 내용이 저장됐습니다');
 }
 function deleteAiStudy(id) {
@@ -2668,6 +2709,21 @@ function renderAiStudy() {
               ${x.url?`<a href="${escHtml(x.url)}" target="_blank" class="text-xs text-blue-500 hover:underline break-all">${escHtml(x.url)}</a>`:''}
               ${x.content?`<p class="text-sm text-gray-600 mt-1 whitespace-pre-wrap">${escHtml(x.content)}</p>`:''}
               ${x.tags.length?`<div class="flex gap-1 flex-wrap mt-2">${x.tags.map(t=>`<span class="text-xs bg-violet-100 text-violet-700 px-2 py-0.5 rounded-full">${escHtml(t)}</span>`).join('')}</div>`:''}
+              ${(x.files||[]).length ? `
+              <div class="mt-3 space-y-1">
+                <p class="text-xs text-gray-400 font-semibold">📎 첨부파일 ${x.files.length}개</p>
+                <div class="flex flex-wrap gap-2">
+                  ${x.files.map(f => f.type.startsWith('image/') ? `
+                    <a href="${f.data}" download="${escHtml(f.name)}" target="_blank">
+                      <img src="${f.data}" class="w-20 h-20 object-cover rounded-xl border border-gray-100 hover:opacity-80 transition" title="${escHtml(f.name)}" />
+                    </a>` : `
+                    <a href="${f.data}" download="${escHtml(f.name)}"
+                      class="flex items-center gap-1.5 bg-gray-50 hover:bg-violet-50 border border-gray-200 rounded-xl px-3 py-1.5 text-xs text-gray-600 hover:text-violet-600 transition">
+                      <span>📄</span><span class="max-w-32 truncate">${escHtml(f.name)}</span>
+                      <span class="text-gray-300">${(f.size/1024).toFixed(0)}KB</span>
+                    </a>`).join('')}
+                </div>
+              </div>` : ''}
             </div>
             <button onclick="deleteAiStudy('${x.id}')" class="text-gray-300 hover:text-red-400 text-lg shrink-0">×</button>
           </div>
