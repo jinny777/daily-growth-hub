@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-20T07:54:05.656Z",
+  "savedAt": "2026-05-20T07:54:31.716Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -6572,6 +6572,12 @@
             "text": "ai 스튜디오 커뮤니티 구현",
             "done": false,
             "createdAt": 1779263629887
+          },
+          {
+            "id": "17792636561515j1ha",
+            "text": "이메일 발송구현",
+            "done": false,
+            "createdAt": 1779263656151
           }
         ]
       }
