@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-21T06:02:14.832Z",
+  "savedAt": "2026-05-21T06:55:12.188Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -6553,6 +6553,35 @@
     "programFilter": "",
     "programCatFilter": "기타",
     "programSiteFilter": "",
+    "projects": [
+      {
+        "id": "1779263172096u7s04",
+        "name": "daily growth hub",
+        "color": "#6366f1",
+        "createdAt": 1779263172096,
+        "collapsed": false,
+        "tasks": [
+          {
+            "id": "1779263243863jj0ke",
+            "text": "ai스터디 학습 내용을 브런치와 연동 발행",
+            "done": false,
+            "createdAt": 1779263243863
+          },
+          {
+            "id": "1779263629887yw4w0",
+            "text": "ai 스튜디오 커뮤니티 구현",
+            "done": false,
+            "createdAt": 1779263629887
+          },
+          {
+            "id": "17792636561515j1ha",
+            "text": "이메일 발송구현",
+            "done": false,
+            "createdAt": 1779263656151
+          }
+        ]
+      }
+    ],
     "books": [
       {
         "id": "1779058404759ztmik",
@@ -6600,35 +6629,6 @@
         "calendar": false
       },
       "frequency": "weekly"
-    },
-    "projects": [
-      {
-        "id": "1779263172096u7s04",
-        "name": "daily growth hub",
-        "color": "#6366f1",
-        "createdAt": 1779263172096,
-        "collapsed": false,
-        "tasks": [
-          {
-            "id": "1779263243863jj0ke",
-            "text": "ai스터디 학습 내용을 브런치와 연동 발행",
-            "done": false,
-            "createdAt": 1779263243863
-          },
-          {
-            "id": "1779263629887yw4w0",
-            "text": "ai 스튜디오 커뮤니티 구현",
-            "done": false,
-            "createdAt": 1779263629887
-          },
-          {
-            "id": "17792636561515j1ha",
-            "text": "이메일 발송구현",
-            "done": false,
-            "createdAt": 1779263656151
-          }
-        ]
-      }
-    ]
+    }
   }
 }
