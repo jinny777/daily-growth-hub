@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-21T00:17:21.325Z",
+  "savedAt": "2026-05-21T00:25:42.224Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -6593,6 +6593,17 @@
         "readDates": [],
         "done": true,
         "doneDate": "2026-05-17"
+      },
+      {
+        "id": "1779323126606izeon",
+        "createdAt": 1779323126606,
+        "title": "커뮤니티 빌더들",
+        "author": "백영선",
+        "startDate": "2026-05-21",
+        "pages": "",
+        "readDates": [],
+        "done": false,
+        "doneDate": null
       }
     ],
     "aiStudy": [],
