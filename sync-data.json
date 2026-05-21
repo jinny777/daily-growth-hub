@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-21T06:55:35.509Z",
+  "savedAt": "2026-05-21T06:58:31.268Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -30,6 +30,15 @@
     ],
     "prayerFilter": "all",
     "todos": [
+      {
+        "id": "17793466953271xrhn",
+        "date": "2026-05-21",
+        "text": "반얀트리 웨딩 팩스보내기",
+        "category": "📌 일반",
+        "done": false,
+        "doneDate": null,
+        "createdAt": 1779346695327
+      },
       {
         "id": "1779263571751zban5",
         "date": "2026-05-22",
@@ -6578,6 +6587,18 @@
             "text": "이메일 발송구현",
             "done": false,
             "createdAt": 1779263656151
+          },
+          {
+            "id": "1779346556119sa8k1",
+            "text": "오픈뱅킹 송금부분 스테이블 코인으로 가한지 검토",
+            "done": false,
+            "createdAt": 1779346556119
+          },
+          {
+            "id": "1779346634568lar8m",
+            "text": "프로젝트별 세부 기능 to do 작업",
+            "done": false,
+            "createdAt": 1779346634568
           }
         ]
       }
