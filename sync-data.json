@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-21T01:15:16.377Z",
+  "savedAt": "2026-05-21T01:30:08.056Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -32,7 +32,7 @@
     "todos": [
       {
         "id": "1779263571751zban5",
-        "date": "2026-05-20",
+        "date": "2026-05-21",
         "text": "사회복지사 실습처 찾기",
         "category": "📌 일반",
         "done": false,
@@ -41,7 +41,7 @@
       },
       {
         "id": "1779262136681vn85v",
-        "date": "2026-05-20",
+        "date": "2026-05-21",
         "text": "경력기술서 수정",
         "category": "📌 일반",
         "done": false,
@@ -50,7 +50,7 @@
       },
       {
         "id": "1779260309380bl9od",
-        "date": "2026-05-20",
+        "date": "2026-05-23",
         "text": "종합소득세 신고",
         "category": "📌 일반",
         "done": false,
@@ -86,7 +86,7 @@
       },
       {
         "id": "1779174958461x39sv",
-        "date": "2026-05-20",
+        "date": "2026-05-21",
         "text": "킹고스프링 엑셀러레이팅 프로그램",
         "category": "📌 일반",
         "done": false,
@@ -95,7 +95,7 @@
       },
       {
         "id": "1779174936845v66ut",
-        "date": "2026-05-20",
+        "date": "2026-05-23",
         "text": "기술임치 신청",
         "category": "📌 일반",
         "done": false,
@@ -157,7 +157,7 @@
         "createdAt": 1778926533634
       }
     ],
-    "todoFilter": "all",
+    "todoFilter": "today",
     "todoCalYear": 2026,
     "todoCalMonth": 4,
     "jobs": [
