@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-21T07:00:01.398Z",
+  "savedAt": "2026-05-21T07:02:37.382Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -30,6 +30,15 @@
     ],
     "prayerFilter": "all",
     "todos": [
+      {
+        "id": "1779346940007q0smc",
+        "date": "2026-05-21",
+        "text": "채널별 이력서 업데이트",
+        "category": "📌 일반",
+        "done": false,
+        "doneDate": null,
+        "createdAt": 1779346940007
+      },
       {
         "id": "17793467852526u97b",
         "date": "2026-05-21",
