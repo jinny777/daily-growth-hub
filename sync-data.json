@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-21T00:25:42.224Z",
+  "savedAt": "2026-05-21T00:31:05.646Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -107,8 +107,8 @@
         "date": "2026-05-19",
         "text": "링크드인, 리멤버,메리웰 매각 공고",
         "category": "📌 일반",
-        "done": false,
-        "doneDate": null,
+        "done": true,
+        "doneDate": "2026-05-21",
         "createdAt": 1779174295823
       },
       {
