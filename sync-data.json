@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-21T06:58:31.268Z",
+  "savedAt": "2026-05-21T07:00:01.398Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -30,6 +30,15 @@
     ],
     "prayerFilter": "all",
     "todos": [
+      {
+        "id": "17793467852526u97b",
+        "date": "2026-05-21",
+        "text": "사내이사 검토",
+        "category": "📌 일반",
+        "done": false,
+        "doneDate": null,
+        "createdAt": 1779346785252
+      },
       {
         "id": "17793466953271xrhn",
         "date": "2026-05-21",
