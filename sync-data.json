@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-22T09:50:50.454Z",
+  "savedAt": "2026-05-22T09:53:46.460Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -32,7 +32,7 @@
     "todos": [
       {
         "id": "177940812796367fiy",
-        "date": "2026-05-21",
+        "date": "2026-05-23",
         "text": "서비스 테스트",
         "category": "📌 일반",
         "done": false,
@@ -44,8 +44,8 @@
         "date": "2026-05-21",
         "text": "채널별 이력서 업데이트",
         "category": "📌 일반",
-        "done": false,
-        "doneDate": null,
+        "done": true,
+        "doneDate": "2026-05-22",
         "createdAt": 1779346940007
       },
       {
@@ -68,7 +68,7 @@
       },
       {
         "id": "1779263571751zban5",
-        "date": "2026-05-22",
+        "date": "2026-05-26",
         "text": "사회복지사 실습처 찾기",
         "category": "📌 일반",
         "done": false,
@@ -95,7 +95,7 @@
       },
       {
         "id": "17792592694370pvpf",
-        "date": "2026-05-21",
+        "date": "2026-05-26",
         "text": "웨딩위더스그룹 전화",
         "category": "📌 일반",
         "done": false,
@@ -125,8 +125,8 @@
         "date": "2026-05-22",
         "text": "킹고스프링 엑셀러레이팅 프로그램",
         "category": "📌 일반",
-        "done": false,
-        "doneDate": null,
+        "done": true,
+        "doneDate": "2026-05-22",
         "createdAt": 1779174958462
       },
       {
