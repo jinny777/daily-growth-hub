@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-21T23:24:57.948Z",
+  "savedAt": "2026-05-22T00:02:23.607Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -30,6 +30,15 @@
     ],
     "prayerFilter": "all",
     "todos": [
+      {
+        "id": "177940812796367fiy",
+        "date": "2026-05-21",
+        "text": "서비스 테스트",
+        "category": "📌 일반",
+        "done": false,
+        "doneDate": null,
+        "createdAt": 1779408127963
+      },
       {
         "id": "1779346940007q0smc",
         "date": "2026-05-21",
