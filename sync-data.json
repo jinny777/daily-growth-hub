@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-22T10:37:13.356Z",
+  "savedAt": "2026-05-22T10:46:06.121Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -30,6 +30,15 @@
     ],
     "prayerFilter": "all",
     "todos": [
+      {
+        "id": "1779446750505vom7p",
+        "date": "2026-05-22",
+        "text": "그룹바이 업데이트",
+        "category": "📌 일반",
+        "done": false,
+        "doneDate": null,
+        "createdAt": 1779446750505
+      },
       {
         "id": "177940812796367fiy",
         "date": "2026-05-23",
@@ -5679,7 +5688,7 @@
       }
     ],
     "jobFilter": "",
-    "jobChannelFilter": "",
+    "jobChannelFilter": "원티드",
     "programs": [
       {
         "id": "fetched_1779417448490",
