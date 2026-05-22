@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-22T00:22:00.703Z",
+  "savedAt": "2026-05-22T00:22:19.896Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -197,6 +197,90 @@
     "todoCalYear": 2026,
     "todoCalMonth": 4,
     "jobs": [
+      {
+        "id": "wanted_19e43660037c8d0b",
+        "createdAt": 1747958400000,
+        "company": "원티드긱스",
+        "position": "[강남] 서비스 기획 및 디자이너 (프리랜서)",
+        "deadline": "",
+        "appliedDate": "",
+        "status": "관심",
+        "channel": "원티드",
+        "url": "https://www.wanted.co.kr/gigs",
+        "notes": "프리랜서 프로젝트\n• 서비스 기획자/PM·PO\n• 필요 스킬: MS오피스, Claude, Gemini\n• 메인(서비스 연계) 콘솔 기획, 통합 UI 기획"
+      },
+      {
+        "id": "wanted_19e14b8761685121_2",
+        "createdAt": 1747267200000,
+        "company": "미리디 (미리캔버스)",
+        "position": "글로벌 사업개발 매니저",
+        "deadline": "2026-05-26",
+        "appliedDate": "",
+        "status": "관심",
+        "channel": "원티드",
+        "url": "https://www.wanted.co.kr/jobsfeed",
+        "notes": "서울 • 경력 3년 이상\n응답률 높음 • 마감일 26.05.26"
+      },
+      {
+        "id": "wanted_19e14b8761685121_1",
+        "createdAt": 1747267200000,
+        "company": "웨이브릿지",
+        "position": "플랫폼운영팀장",
+        "deadline": "2026-05-17",
+        "appliedDate": "",
+        "status": "관심",
+        "channel": "원티드",
+        "url": "https://www.wanted.co.kr/jobsfeed",
+        "notes": "서울 • 경력 8년-16년\n응답률 평균이상 • 마감일 26.05.17"
+      },
+      {
+        "id": "wanted_19e38c539c284f25_2",
+        "createdAt": 1747872000000,
+        "company": "아이엠지베이스",
+        "position": "프로덕트 오너 (PO)",
+        "deadline": "",
+        "appliedDate": "",
+        "status": "관심",
+        "channel": "원티드",
+        "url": "https://www.wanted.co.kr/jobsfeed",
+        "notes": "경기 • 경력 5년 이상\n응답률 매우높음 • 상시채용"
+      },
+      {
+        "id": "wanted_19e38c539c284f25_1",
+        "createdAt": 1747872000000,
+        "company": "모빌린트",
+        "position": "[AI반도체] Project Manager",
+        "deadline": "2026-06-30",
+        "appliedDate": "",
+        "status": "관심",
+        "channel": "원티드",
+        "url": "https://www.wanted.co.kr/jobsfeed",
+        "notes": "서울 • 경력 3년 이상\n마감일: 2026-06-30"
+      },
+      {
+        "id": "wanted_19e3e13312e542c8",
+        "createdAt": 1747958400000,
+        "company": "톤28",
+        "position": "신사업 개발 Lead (식품_건기식)",
+        "deadline": "",
+        "appliedDate": "",
+        "status": "관심",
+        "channel": "원티드",
+        "url": "https://www.wanted.co.kr/jobsfeed",
+        "notes": "제조 / 신사업 개발 Lead\n• 건기식/이너뷰티 영역 신사업 기회 정의\n• 기능성 원료·제형·포뮬러 기반 제품 콘셉트 설계\n• 제조사, 원료사, 인증 외부 이해관계 조율"
+      },
+      {
+        "id": "wanted_19e4859408960d75",
+        "createdAt": 1748044800000,
+        "company": "다비오",
+        "position": "사업기획 매니저",
+        "deadline": "",
+        "appliedDate": "",
+        "status": "관심",
+        "channel": "원티드",
+        "url": "https://www.wanted.co.kr/jobsfeed",
+        "notes": "IT, 컨텐츠 / 사업기획 매니저\n• 시장 조사 및 분석\n• 사업 기획 및 구조 설계\n• 사업 제안 및 기획 검증"
+      },
       {
         "id": "web_1779176770972",
         "createdAt": 1779176712914,
