@@ -2108,7 +2108,7 @@ function renderJobs() {
   if (!list.length) { container.innerHTML=''; empty.classList.remove('hidden'); return; }
   empty.classList.add('hidden');
   container.innerHTML=list.map(j=>`
-    <div class="p-4 hover:bg-gray-50 cursor-pointer" onclick="openJobDetail('${j.id}')">
+    <div class="p-4 hover:bg-gray-50" onclick="openJobDetail('${j.id}')" style="cursor:pointer">
       <div class="flex items-start gap-3">
         <div class="flex-1 min-w-0">
           <div class="flex items-center gap-2 flex-wrap mb-1">
@@ -2116,7 +2116,11 @@ function renderJobs() {
             <span class="font-bold text-gray-900">${escHtml(j.company)}</span>
             <span class="text-xs px-2 py-0.5 rounded-full font-semibold ${JOB_STATUS_COLORS[j.status]||'bg-gray-100 text-gray-600'} shrink-0">${j.status}</span>
           </div>
-          <p class="text-sm text-gray-700 font-medium line-clamp-1">${escHtml(j.position)}</p>
+          ${j.url
+            ? `<a href="${escHtml(j.url)}" target="_blank" rel="noopener"
+                onclick="event.stopPropagation()"
+                class="text-sm text-blue-700 font-semibold hover:underline line-clamp-1 block">${escHtml(j.position)}</a>`
+            : `<p class="text-sm text-gray-700 font-medium line-clamp-1">${escHtml(j.position)}</p>`}
           <div class="flex gap-3 text-xs text-gray-400 mt-1 flex-wrap">
             ${j.deadline?`<span>마감: ${formatDateShort(j.deadline)}</span>`:''}
             ${j.appliedDate?`<span>지원: ${formatDateShort(j.appliedDate)}</span>`:''}
@@ -2125,7 +2129,7 @@ function renderJobs() {
         </div>
         <div class="flex flex-col gap-1 shrink-0" onclick="event.stopPropagation()">
           <button onclick="openStatusModal('job','${j.id}')" class="text-xs text-indigo-500 hover:underline">상태변경</button>
-          ${j.url?`<a href="${escHtml(j.url)}" target="_blank" class="text-xs text-blue-500 hover:underline">공고보기</a>`:''}
+          ${j.url?`<a href="${escHtml(j.url)}" target="_blank" rel="noopener" class="text-xs bg-blue-500 text-white px-2 py-1 rounded-lg hover:bg-blue-600 transition font-semibold">공고보기 →</a>`:''}
           <button onclick="deleteJob('${j.id}')" class="text-xs text-red-400 hover:underline">삭제</button>
         </div>
       </div>
