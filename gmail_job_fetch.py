@@ -80,7 +80,7 @@ def get_body(msg):
 
 # ── Wanted API로 실제 공고 URL 검색 ──────────────
 def search_wanted_url(company, position):
-    """Wanted 검색 API로 실제 공고 URL 반환"""
+    """Wanted 일반 채용공고 API로 실제 공고 URL 반환"""
     try:
         query = f"{company} {position}"
         encoded = urllib.parse.quote(query)
@@ -97,21 +97,49 @@ def search_wanted_url(company, position):
                 j_company = job.get('company', {}).get('name', '')
                 j_position = job.get('position', '')
                 j_id = job.get('id', '')
-                # 회사명 또는 포지션 유사도 체크
                 if j_company and company[:4] in j_company:
                     return f"https://www.wanted.co.kr/wd/{j_id}", j_company, j_position
                 if j_position and position[:6] in j_position:
                     return f"https://www.wanted.co.kr/wd/{j_id}", j_company, j_position
-    except Exception as e:
+    except Exception:
+        pass
+    q = urllib.parse.quote(f"{company} {position}")
+    return f"https://www.wanted.co.kr/search?query={q}", company, position
+
+def search_wantedgigs_url(company, position):
+    """Wanted Gigs API로 실제 긱스 공고 URL 반환"""
+    try:
+        query = f"{company} {position}"
+        encoded = urllib.parse.quote(query)
+        api_url = f"https://www.wanted.co.kr/api/chaos/gigs/v2/list?limit=5&offset=0&query={encoded}"
+        req = urllib.request.Request(api_url, headers={
+            'User-Agent': 'Mozilla/5.0',
+            'Accept': 'application/json',
+            'Referer': 'https://www.wanted.co.kr/gigs',
+        })
+        with urllib.request.urlopen(req, context=ssl_ctx, timeout=10) as res:
+            data = json.loads(res.read().decode('utf-8'))
+            gigs = data.get('data', {}).get('gigs', []) or data.get('data', {}).get('jobs', [])
+            for gig in gigs:
+                j_company = gig.get('company', {}).get('name', '') or gig.get('clientName', '')
+                j_title   = gig.get('title', '') or gig.get('position', '')
+                j_id      = gig.get('id', '')
+                if j_id and (
+                    (j_company and company[:4] in j_company) or
+                    (j_title   and position[:6] in j_title)
+                ):
+                    return f"https://www.wanted.co.kr/gigs/{j_id}", j_company, j_title
+    except Exception:
         pass
     # 검색 페이지 URL로 대체
     q = urllib.parse.quote(f"{company} {position}")
-    return f"https://www.wanted.co.kr/search?query={q}", company, position
+    return f"https://www.wanted.co.kr/gigs?query={q}", company, position
 
 # ── 이메일에서 공고 파싱 ──────────────────────────
 def parse_jobs_from_email(subject, body_text, msg_id, sender=""):
     jobs = []
     channel = "원티드긱스" if 'gigs' in sender.lower() else "원티드"
+    get_url = search_wantedgigs_url if channel == "원티드긱스" else search_wanted_url
 
     # "이 회사에서 원하고 있어요" - 단일 기업 추천
     if "이 회사에서" in subject or "딱 맞는 채용공고" in subject:
@@ -129,7 +157,7 @@ def parse_jobs_from_email(subject, body_text, msg_id, sender=""):
                     company = line
             if company and position and company not in seen:
                 seen.add(company)
-                url, real_co, real_pos = search_wanted_url(company, position)
+                url, real_co, real_pos = get_url(company, position)
                 jobs.append({
                     "id": f"wanted_{msg_id}_{len(jobs)}",
                     "createdAt": int(time.time()*1000) - len(jobs)*100,
@@ -174,7 +202,7 @@ def parse_jobs_from_email(subject, body_text, msg_id, sender=""):
                 if len(parts) == 3:
                     dl = f"20{parts[0]}-{parts[1]}-{parts[2]}"
                 dl_idx += 1
-            url, _, _ = search_wanted_url(company, position)
+            url, _, _ = get_url(company, position)
             jobs.append({
                 "id": f"wanted_{msg_id}_{i}",
                 "createdAt": int(time.time()*1000) - i*100,
