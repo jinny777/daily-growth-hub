@@ -109,8 +109,9 @@ def search_wanted_url(company, position):
     return f"https://www.wanted.co.kr/search?query={q}", company, position
 
 # ── 이메일에서 공고 파싱 ──────────────────────────
-def parse_jobs_from_email(subject, body_text, msg_id):
+def parse_jobs_from_email(subject, body_text, msg_id, sender=""):
     jobs = []
+    channel = "원티드긱스" if 'gigs' in sender.lower() else "원티드"
 
     # "이 회사에서 원하고 있어요" - 단일 기업 추천
     if "이 회사에서" in subject or "딱 맞는 채용공고" in subject:
@@ -137,11 +138,11 @@ def parse_jobs_from_email(subject, body_text, msg_id):
                     "deadline": "",
                     "appliedDate": "",
                     "status": "관심",
-                    "channel": "원티드",
+                    "channel": channel,
                     "url": url,
                     "notes": extract_notes(sect),
                 })
-                print(f"    → {company}: {position[:30]} | {url[:60]}")
+                print(f"    → [{channel}] {company}: {position[:30]} | {url[:60]}")
                 time.sleep(0.5)  # API 속도 제한
 
     # "포지션 알림" - 여러 공고 목록
@@ -182,11 +183,11 @@ def parse_jobs_from_email(subject, body_text, msg_id):
                 "deadline": dl,
                 "appliedDate": "",
                 "status": "관심",
-                "channel": "원티드",
+                "channel": channel,
                 "url": url,
                 "notes": f"{loc} • 경력 {exp}",
             })
-            print(f"    → {company}: {position[:30]} | {url[:60]}")
+            print(f"    → [{channel}] {company}: {position[:30]} | {url[:60]}")
             time.sleep(0.5)
     return jobs
 
@@ -246,9 +247,10 @@ def main():
             if not msg_data or not msg_data[0]: continue
             msg = email.message_from_bytes(msg_data[0][1])
             subject  = decode_str(msg['Subject'])
+            sender   = decode_str(msg['From'])
             body     = strip_html(get_body(msg))
-            print(f"\n  [{subject[:45]}]")
-            jobs = parse_jobs_from_email(subject, body, eid.decode())
+            print(f"\n  [{subject[:45]}] from={sender[:40]}")
+            jobs = parse_jobs_from_email(subject, body, eid.decode(), sender)
             for j in jobs:
                 if j['id'] not in seen_ids:
                     all_jobs.append(j)
