@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-23T10:25:28.687Z",
+  "savedAt": "2026-05-23T10:33:03.270Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -7900,54 +7900,6 @@
     "programFilter": "",
     "programCatFilter": "기타",
     "programSiteFilter": "Bizinfo",
-    "books": [
-      {
-        "id": "1779058404759ztmik",
-        "createdAt": 1779058404759,
-        "title": "그 순간",
-        "author": "오타 K",
-        "startDate": "2026-05-17",
-        "pages": "185",
-        "readDates": [],
-        "done": true,
-        "doneDate": "2026-05-17"
-      },
-      {
-        "id": "1779323126606izeon",
-        "createdAt": 1779323126606,
-        "title": "커뮤니티 빌더들",
-        "author": "백영선",
-        "startDate": "2026-05-21",
-        "pages": "",
-        "readDates": [],
-        "done": false,
-        "doneDate": null
-      }
-    ],
-    "aiStudy": [],
-    "aiTagFilter": "",
-    "statusModalType": null,
-    "statusModalId": null,
-    "notiSettings": {
-      "email": "khjyeon@naver.com",
-      "bizType": "IT/SW",
-      "bizSize": "도약",
-      "investStage": "미투자",
-      "bizAge": "3-7년",
-      "region": "서울",
-      "categories": [
-        "사업화자금",
-        "R&D",
-        "창업교육"
-      ],
-      "channels": {
-        "email": true,
-        "kakao": false,
-        "push": false,
-        "calendar": false
-      },
-      "frequency": "weekly"
-    },
     "projects": [
       {
         "id": "1779263172096u7s04",
@@ -7995,6 +7947,54 @@
         ],
         "notesOpen": false
       }
-    ]
+    ],
+    "books": [
+      {
+        "id": "1779058404759ztmik",
+        "createdAt": 1779058404759,
+        "title": "그 순간",
+        "author": "오타 K",
+        "startDate": "2026-05-17",
+        "pages": "185",
+        "readDates": [],
+        "done": true,
+        "doneDate": "2026-05-17"
+      },
+      {
+        "id": "1779323126606izeon",
+        "createdAt": 1779323126606,
+        "title": "커뮤니티 빌더들",
+        "author": "백영선",
+        "startDate": "2026-05-21",
+        "pages": "",
+        "readDates": [],
+        "done": false,
+        "doneDate": null
+      }
+    ],
+    "aiStudy": [],
+    "aiTagFilter": "",
+    "statusModalType": null,
+    "statusModalId": null,
+    "notiSettings": {
+      "email": "khjyeon@naver.com",
+      "bizType": "IT/SW",
+      "bizSize": "도약",
+      "investStage": "미투자",
+      "bizAge": "3-7년",
+      "region": "서울",
+      "categories": [
+        "사업화자금",
+        "R&D",
+        "창업교육"
+      ],
+      "channels": {
+        "email": true,
+        "kakao": false,
+        "push": false,
+        "calendar": false
+      },
+      "frequency": "weekly"
+    }
   }
 }
