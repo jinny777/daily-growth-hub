@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-23T06:39:42.060Z",
+  "savedAt": "2026-05-23T06:40:38.019Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -7944,7 +7944,8 @@
             "done": false,
             "createdAt": 1779513846029
           }
-        ]
+        ],
+        "notesOpen": false
       }
     ],
     "books": [
