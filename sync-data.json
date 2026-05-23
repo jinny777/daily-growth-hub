@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-23T22:46:24.502Z",
+  "savedAt": "2026-05-23T22:54:26.362Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -6516,7 +6516,7 @@
       }
     ],
     "jobFilter": "",
-    "jobChannelFilter": "GroupBy",
+    "jobChannelFilter": "Remember",
     "programs": [
       {
         "id": "fetched_1779417448490",
@@ -7899,7 +7899,7 @@
     ],
     "programFilter": "",
     "programCatFilter": "기타",
-    "programSiteFilter": "Bizinfo",
+    "programSiteFilter": "K-startup",
     "projects": [
       {
         "id": "1779263172096u7s04",
@@ -7915,30 +7915,18 @@
             "createdAt": 1779263629887
           },
           {
-            "id": "17792636561515j1ha",
-            "text": "이메일 발송구현",
-            "done": false,
-            "createdAt": 1779263656151,
-            "notesOpen": true,
-            "notes": "홍보 메일링 기능 "
-          },
-          {
-            "id": "1779346556119sa8k1",
-            "text": "오픈뱅킹 송금부분 스테이블 코인으로 가한지 검토",
-            "done": false,
-            "createdAt": 1779346556119
-          },
-          {
-            "id": "1779346634568lar8m",
-            "text": "프로젝트별 세부 기능 to do 작업",
-            "done": false,
-            "createdAt": 1779346634568
-          },
-          {
             "id": "1779513846029fmh3k",
             "text": "learnlog",
             "done": false,
             "createdAt": 1779513846029
+          },
+          {
+            "id": "177957682980746z4c",
+            "text": "contentflow",
+            "done": false,
+            "createdAt": 1779576829807,
+            "notesOpen": true,
+            "notes": "블로그 생성 기능 "
           }
         ],
         "notesOpen": false
