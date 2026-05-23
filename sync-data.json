@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-23T22:56:48.124Z",
+  "savedAt": "2026-05-23T22:57:08.293Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -7927,6 +7927,12 @@
             "text": "ai wedding",
             "done": false,
             "createdAt": 1779576920507
+          },
+          {
+            "id": "1779577012525gtpxo",
+            "text": "ai wedding  커뮤니티 기능",
+            "done": false,
+            "createdAt": 1779577012525
           }
         ],
         "notesOpen": false
