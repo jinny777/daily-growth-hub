@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-23T07:14:50.869Z",
+  "savedAt": "2026-05-23T10:25:28.687Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -7900,54 +7900,6 @@
     "programFilter": "",
     "programCatFilter": "기타",
     "programSiteFilter": "Bizinfo",
-    "projects": [
-      {
-        "id": "1779263172096u7s04",
-        "name": "daily growth hub",
-        "color": "#6366f1",
-        "createdAt": 1779263172096,
-        "collapsed": false,
-        "tasks": [
-          {
-            "id": "1779263243863jj0ke",
-            "text": "ai스터디 학습 내용을 브런치와 연동 발행",
-            "done": false,
-            "createdAt": 1779263243863
-          },
-          {
-            "id": "1779263629887yw4w0",
-            "text": "ai 스튜디오 커뮤니티 구현",
-            "done": false,
-            "createdAt": 1779263629887
-          },
-          {
-            "id": "17792636561515j1ha",
-            "text": "이메일 발송구현",
-            "done": false,
-            "createdAt": 1779263656151
-          },
-          {
-            "id": "1779346556119sa8k1",
-            "text": "오픈뱅킹 송금부분 스테이블 코인으로 가한지 검토",
-            "done": false,
-            "createdAt": 1779346556119
-          },
-          {
-            "id": "1779346634568lar8m",
-            "text": "프로젝트별 세부 기능 to do 작업",
-            "done": false,
-            "createdAt": 1779346634568
-          },
-          {
-            "id": "1779513846029fmh3k",
-            "text": "learnlog",
-            "done": false,
-            "createdAt": 1779513846029
-          }
-        ],
-        "notesOpen": false
-      }
-    ],
     "books": [
       {
         "id": "1779058404759ztmik",
@@ -7995,6 +7947,54 @@
         "calendar": false
       },
       "frequency": "weekly"
-    }
+    },
+    "projects": [
+      {
+        "id": "1779263172096u7s04",
+        "name": "daily growth hub",
+        "color": "#6366f1",
+        "createdAt": 1779263172096,
+        "collapsed": false,
+        "tasks": [
+          {
+            "id": "1779263243863jj0ke",
+            "text": "ai스터디 학습 내용을 브런치와 연동 발행",
+            "done": false,
+            "createdAt": 1779263243863
+          },
+          {
+            "id": "1779263629887yw4w0",
+            "text": "ai 스튜디오 커뮤니티 구현",
+            "done": false,
+            "createdAt": 1779263629887
+          },
+          {
+            "id": "17792636561515j1ha",
+            "text": "이메일 발송구현",
+            "done": false,
+            "createdAt": 1779263656151
+          },
+          {
+            "id": "1779346556119sa8k1",
+            "text": "오픈뱅킹 송금부분 스테이블 코인으로 가한지 검토",
+            "done": false,
+            "createdAt": 1779346556119
+          },
+          {
+            "id": "1779346634568lar8m",
+            "text": "프로젝트별 세부 기능 to do 작업",
+            "done": false,
+            "createdAt": 1779346634568
+          },
+          {
+            "id": "1779513846029fmh3k",
+            "text": "learnlog",
+            "done": false,
+            "createdAt": 1779513846029
+          }
+        ],
+        "notesOpen": false
+      }
+    ]
   }
 }
