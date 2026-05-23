@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-23T22:54:26.362Z",
+  "savedAt": "2026-05-23T22:55:36.096Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -7909,12 +7909,6 @@
         "collapsed": false,
         "tasks": [
           {
-            "id": "1779263629887yw4w0",
-            "text": "ai 스튜디오 커뮤니티 구현",
-            "done": false,
-            "createdAt": 1779263629887
-          },
-          {
             "id": "1779513846029fmh3k",
             "text": "learnlog",
             "done": false,
@@ -7926,7 +7920,13 @@
             "done": false,
             "createdAt": 1779576829807,
             "notesOpen": true,
-            "notes": "블로그 생성 기능 "
+            "notes": "인스타그램에서 생성된 내용 기반 블로그 생성 기능 ,\n이미지 생성 "
+          },
+          {
+            "id": "1779576920507yefuh",
+            "text": "ai wedding",
+            "done": false,
+            "createdAt": 1779576920507
           }
         ],
         "notesOpen": false
