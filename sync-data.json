@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-23T05:23:54.110Z",
+  "savedAt": "2026-05-23T05:24:21.847Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -7937,6 +7937,12 @@
             "text": "프로젝트별 세부 기능 to do 작업",
             "done": false,
             "createdAt": 1779346634568
+          },
+          {
+            "id": "1779513846029fmh3k",
+            "text": "learnlog",
+            "done": false,
+            "createdAt": 1779513846029
           }
         ]
       }
