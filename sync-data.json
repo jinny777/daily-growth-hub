@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-23T22:35:53.280Z",
+  "savedAt": "2026-05-23T22:38:12.509Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -7918,7 +7918,9 @@
             "id": "17792636561515j1ha",
             "text": "이메일 발송구현",
             "done": false,
-            "createdAt": 1779263656151
+            "createdAt": 1779263656151,
+            "notesOpen": true,
+            "notes": "홍보 메일링 기능 "
           },
           {
             "id": "1779346556119sa8k1",
