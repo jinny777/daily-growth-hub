@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-24T14:34:25.508Z",
+  "savedAt": "2026-05-24T14:35:00.680Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -30,6 +30,14 @@
     ],
     "prayerFilter": "all",
     "sites": [
+      {
+        "id": "1779633284796dk2g5",
+        "name": "learnlog",
+        "url": "https://jinny777.github.io/learnlog-prototype/",
+        "category": "업무",
+        "notes": "",
+        "createdAt": 1779633284796
+      },
       {
         "id": "1779633249886xxqp4",
         "name": "contenflow",
