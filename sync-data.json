@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-24T14:36:16.676Z",
+  "savedAt": "2026-05-24T14:38:42.593Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -7948,19 +7948,15 @@
             "done": false,
             "createdAt": 1779576829807,
             "notesOpen": true,
-            "notes": "인스타그램에서 생성된 내용 기반 블로그 생성 기능 ,\n이미지 생성 "
+            "notes": "인스타그램에서 생성된 내용 기반 블로그 생성 기능 ,\n이미지 생성 \n유튜브 말씀 생성하기 보완 "
           },
           {
             "id": "1779576920507yefuh",
             "text": "ai wedding",
             "done": false,
-            "createdAt": 1779576920507
-          },
-          {
-            "id": "1779577012525gtpxo",
-            "text": "ai wedding  커뮤니티 기능",
-            "done": false,
-            "createdAt": 1779577012525
+            "createdAt": 1779576920507,
+            "notesOpen": true,
+            "notes": "커뮤니티 기능 "
           }
         ],
         "notesOpen": false
