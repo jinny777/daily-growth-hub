@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-24T13:37:18.956Z",
+  "savedAt": "2026-05-24T14:14:34.333Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -30,6 +30,15 @@
     ],
     "prayerFilter": "all",
     "todos": [
+      {
+        "id": "17796320587830kfdf",
+        "date": "2026-05-25",
+        "text": "핀테크지원센타 멘토링 신청",
+        "category": "📌 일반",
+        "done": false,
+        "doneDate": null,
+        "createdAt": 1779632058783
+      },
       {
         "id": "1779446750505vom7p",
         "date": "2026-05-22",
