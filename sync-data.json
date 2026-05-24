@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-24T14:14:34.333Z",
+  "savedAt": "2026-05-24T14:33:35.309Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -29,6 +29,8 @@
       }
     ],
     "prayerFilter": "all",
+    "sites": [],
+    "siteFilter": "",
     "todos": [
       {
         "id": "17796320587830kfdf",
