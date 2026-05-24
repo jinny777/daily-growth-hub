@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-24T14:35:00.680Z",
+  "savedAt": "2026-05-24T14:36:16.676Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -7990,7 +7990,18 @@
         "doneDate": null
       }
     ],
-    "aiStudy": [],
+    "aiStudy": [
+      {
+        "id": "1779633359628h3z0i",
+        "createdAt": 1779633359628,
+        "date": "2026-05-23",
+        "title": "skill 만들기",
+        "content": "Skill 만들기 \n\n내가 주제를 제시하면, 그 주제를 구체화해 웹/앱의 전체 구조를 설계하고 최종적으로 프로토타입 제작까지 진행하려고 해. 기획서 작성부터 시작해서, UX/UI를 충분히 고려한 화면 설계가 이루어져야 해. 이 과정을 단계별로 안내해주는 Skill을 만들고 싶어. 우선 해당 Skill의 기본 구조를 설계해줘.",
+        "url": "",
+        "files": [],
+        "tags": []
+      }
+    ],
     "aiTagFilter": "",
     "statusModalType": null,
     "statusModalId": null,
