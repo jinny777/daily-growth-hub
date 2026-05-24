@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-24T14:33:35.309Z",
+  "savedAt": "2026-05-24T14:34:25.508Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -29,7 +29,16 @@
       }
     ],
     "prayerFilter": "all",
-    "sites": [],
+    "sites": [
+      {
+        "id": "1779633249886xxqp4",
+        "name": "contenflow",
+        "url": "https://contentpilot-69x2.onrender.com/api/login",
+        "category": "업무",
+        "notes": "",
+        "createdAt": 1779633249886
+      }
+    ],
     "siteFilter": "",
     "todos": [
       {
