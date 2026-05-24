@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-23T22:57:08.293Z",
+  "savedAt": "2026-05-24T12:50:15.389Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -7900,44 +7900,6 @@
     "programFilter": "",
     "programCatFilter": "기타",
     "programSiteFilter": "K-startup",
-    "projects": [
-      {
-        "id": "1779263172096u7s04",
-        "name": "daily growth hub",
-        "color": "#6366f1",
-        "createdAt": 1779263172096,
-        "collapsed": false,
-        "tasks": [
-          {
-            "id": "1779513846029fmh3k",
-            "text": "learnlog",
-            "done": false,
-            "createdAt": 1779513846029
-          },
-          {
-            "id": "177957682980746z4c",
-            "text": "contentflow",
-            "done": false,
-            "createdAt": 1779576829807,
-            "notesOpen": true,
-            "notes": "인스타그램에서 생성된 내용 기반 블로그 생성 기능 ,\n이미지 생성 "
-          },
-          {
-            "id": "1779576920507yefuh",
-            "text": "ai wedding",
-            "done": false,
-            "createdAt": 1779576920507
-          },
-          {
-            "id": "1779577012525gtpxo",
-            "text": "ai wedding  커뮤니티 기능",
-            "done": false,
-            "createdAt": 1779577012525
-          }
-        ],
-        "notesOpen": false
-      }
-    ],
     "books": [
       {
         "id": "1779058404759ztmik",
@@ -7985,6 +7947,44 @@
         "calendar": false
       },
       "frequency": "weekly"
-    }
+    },
+    "projects": [
+      {
+        "id": "1779263172096u7s04",
+        "name": "daily growth hub",
+        "color": "#6366f1",
+        "createdAt": 1779263172096,
+        "collapsed": false,
+        "tasks": [
+          {
+            "id": "1779513846029fmh3k",
+            "text": "learnlog",
+            "done": false,
+            "createdAt": 1779513846029
+          },
+          {
+            "id": "177957682980746z4c",
+            "text": "contentflow",
+            "done": false,
+            "createdAt": 1779576829807,
+            "notesOpen": true,
+            "notes": "인스타그램에서 생성된 내용 기반 블로그 생성 기능 ,\n이미지 생성 "
+          },
+          {
+            "id": "1779576920507yefuh",
+            "text": "ai wedding",
+            "done": false,
+            "createdAt": 1779576920507
+          },
+          {
+            "id": "1779577012525gtpxo",
+            "text": "ai wedding  커뮤니티 기능",
+            "done": false,
+            "createdAt": 1779577012525
+          }
+        ],
+        "notesOpen": false
+      }
+    ]
   }
 }
