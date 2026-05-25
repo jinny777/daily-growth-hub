@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-25T02:47:05.605Z",
+  "savedAt": "2026-05-25T23:37:01.162Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -29,25 +29,6 @@
       }
     ],
     "prayerFilter": "all",
-    "sites": [
-      {
-        "id": "1779633284796dk2g5",
-        "name": "learnlog",
-        "url": "https://jinny777.github.io/learnlog-prototype/",
-        "category": "업무",
-        "notes": "",
-        "createdAt": 1779633284796
-      },
-      {
-        "id": "1779633249886xxqp4",
-        "name": "contenflow",
-        "url": "https://contentpilot-69x2.onrender.com/api/login",
-        "category": "업무",
-        "notes": "",
-        "createdAt": 1779633249886
-      }
-    ],
-    "siteFilter": "",
     "todos": [
       {
         "id": "17796320587830kfdf",
@@ -7928,40 +7909,6 @@
     "programFilter": "",
     "programCatFilter": "기타",
     "programSiteFilter": "K-startup",
-    "projects": [
-      {
-        "id": "1779263172096u7s04",
-        "name": "daily growth hub",
-        "color": "#6366f1",
-        "createdAt": 1779263172096,
-        "collapsed": false,
-        "tasks": [
-          {
-            "id": "1779513846029fmh3k",
-            "text": "learnlog",
-            "done": false,
-            "createdAt": 1779513846029
-          },
-          {
-            "id": "177957682980746z4c",
-            "text": "contentflow",
-            "done": false,
-            "createdAt": 1779576829807,
-            "notesOpen": true,
-            "notes": "인스타그램에서 생성된 내용 기반 블로그 생성 기능 ,\n이미지 생성 \n유튜브 말씀 생성하기 보완 "
-          },
-          {
-            "id": "1779576920507yefuh",
-            "text": "ai wedding",
-            "done": false,
-            "createdAt": 1779576920507,
-            "notesOpen": true,
-            "notes": "커뮤니티 기능 "
-          }
-        ],
-        "notesOpen": false
-      }
-    ],
     "books": [
       {
         "id": "1779058404759ztmik",
@@ -8020,6 +7967,59 @@
         "calendar": false
       },
       "frequency": "weekly"
-    }
+    },
+    "sites": [
+      {
+        "id": "1779633284796dk2g5",
+        "name": "learnlog",
+        "url": "https://jinny777.github.io/learnlog-prototype/",
+        "category": "업무",
+        "notes": "",
+        "createdAt": 1779633284796
+      },
+      {
+        "id": "1779633249886xxqp4",
+        "name": "contenflow",
+        "url": "https://contentpilot-69x2.onrender.com/api/login",
+        "category": "업무",
+        "notes": "",
+        "createdAt": 1779633249886
+      }
+    ],
+    "siteFilter": "",
+    "projects": [
+      {
+        "id": "1779263172096u7s04",
+        "name": "daily growth hub",
+        "color": "#6366f1",
+        "createdAt": 1779263172096,
+        "collapsed": false,
+        "tasks": [
+          {
+            "id": "1779513846029fmh3k",
+            "text": "learnlog",
+            "done": false,
+            "createdAt": 1779513846029
+          },
+          {
+            "id": "177957682980746z4c",
+            "text": "contentflow",
+            "done": false,
+            "createdAt": 1779576829807,
+            "notesOpen": true,
+            "notes": "인스타그램에서 생성된 내용 기반 블로그 생성 기능 ,\n이미지 생성 \n유튜브 말씀 생성하기 보완 "
+          },
+          {
+            "id": "1779576920507yefuh",
+            "text": "ai wedding",
+            "done": false,
+            "createdAt": 1779576920507,
+            "notesOpen": true,
+            "notes": "커뮤니티 기능 "
+          }
+        ],
+        "notesOpen": false
+      }
+    ]
   }
 }
