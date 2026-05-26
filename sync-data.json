@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-26T23:14:14.193Z",
+  "savedAt": "2026-05-26T23:16:06.969Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -135,8 +135,8 @@
         "date": "2026-05-26",
         "text": "웨딩위더스그룹 전화",
         "category": "📌 일반",
-        "done": false,
-        "doneDate": null,
+        "done": true,
+        "doneDate": "2026-05-26",
         "createdAt": 1779259269437
       },
       {
