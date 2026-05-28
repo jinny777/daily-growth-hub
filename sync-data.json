@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-28T02:54:16.603Z",
+  "savedAt": "2026-05-28T03:31:17.796Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -14,6 +14,15 @@
     "editingId": null,
     "dayOffset": 0,
     "prayers": [
+      {
+        "id": "1779939061637m4g6m",
+        "date": "2026-05-28",
+        "title": "사업문제 해결",
+        "content": "사업문제를 해결할수 있는 지혜와 돕는손길을 붙여주시고 길을 열어주셔서 빚을 청산하고 온전한 십일조를 드릴수 있게",
+        "answered": false,
+        "answeredDate": null,
+        "createdAt": 1779939061637
+      },
       {
         "id": "1778923776647oee31",
         "date": "2026-05-16",
