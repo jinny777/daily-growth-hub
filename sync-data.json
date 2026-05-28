@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-28T03:32:05.435Z",
+  "savedAt": "2026-05-28T03:32:31.488Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -7969,6 +7969,21 @@
           }
         ],
         "notesOpen": false
+      },
+      {
+        "id": "1779939127047sg1qu",
+        "name": "ai wedding",
+        "color": "#10b981",
+        "createdAt": 1779939127047,
+        "collapsed": false,
+        "tasks": [
+          {
+            "id": "17799391358895fsev",
+            "text": "커뮤니티 기능",
+            "done": false,
+            "createdAt": 1779939135889
+          }
+        ]
       }
     ],
     "books": [
