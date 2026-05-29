@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-29T03:34:34.352Z",
+  "savedAt": "2026-05-29T03:35:31.655Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -7989,6 +7989,12 @@
             "text": "발명아이디어 확인",
             "done": false,
             "createdAt": 1780025658592
+          },
+          {
+            "id": "1780025715874o4ypl",
+            "text": "유튜브 말씀",
+            "done": false,
+            "createdAt": 1780025715874
           }
         ]
       }
