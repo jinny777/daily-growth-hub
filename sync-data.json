@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-29T03:35:31.655Z",
+  "savedAt": "2026-05-29T03:52:56.927Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -7944,22 +7944,7 @@
         "color": "#6366f1",
         "createdAt": 1779263172096,
         "collapsed": false,
-        "tasks": [
-          {
-            "id": "1779513846029fmh3k",
-            "text": "learnlog",
-            "done": false,
-            "createdAt": 1779513846029
-          },
-          {
-            "id": "1779576920507yefuh",
-            "text": "ai wedding",
-            "done": false,
-            "createdAt": 1779576920507,
-            "notesOpen": true,
-            "notes": "커뮤니티 기능 "
-          }
-        ],
+        "tasks": [],
         "notesOpen": false
       },
       {
@@ -7997,6 +7982,14 @@
             "createdAt": 1780025715874
           }
         ]
+      },
+      {
+        "id": "17800267586607tdiq",
+        "name": "learnlog",
+        "color": "#3b82f6",
+        "createdAt": 1780026758660,
+        "collapsed": false,
+        "tasks": []
       }
     ],
     "books": [
