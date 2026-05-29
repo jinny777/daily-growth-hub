@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-29T03:52:56.927Z",
+  "savedAt": "2026-05-29T03:53:17.319Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -7988,6 +7988,14 @@
         "name": "learnlog",
         "color": "#3b82f6",
         "createdAt": 1780026758660,
+        "collapsed": false,
+        "tasks": []
+      },
+      {
+        "id": "1780026780830lk8ov",
+        "name": "runningrecord",
+        "color": "#6366f1",
+        "createdAt": 1780026780830,
         "collapsed": false,
         "tasks": []
       }
