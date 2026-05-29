@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-29T00:28:04.165Z",
+  "savedAt": "2026-05-29T03:34:34.352Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -7952,14 +7952,6 @@
             "createdAt": 1779513846029
           },
           {
-            "id": "177957682980746z4c",
-            "text": "contentflow",
-            "done": false,
-            "createdAt": 1779576829807,
-            "notesOpen": true,
-            "notes": "인스타그램에서 생성된 내용 기반 블로그 생성 기능 ,\n이미지 생성 \n유튜브 말씀 생성하기 보완 "
-          },
-          {
             "id": "1779576920507yefuh",
             "text": "ai wedding",
             "done": false,
@@ -7982,6 +7974,21 @@
             "text": "커뮤니티 기능",
             "done": false,
             "createdAt": 1779939135889
+          }
+        ]
+      },
+      {
+        "id": "1780025635632zcgk7",
+        "name": "conteneflow",
+        "color": "#f59e0b",
+        "createdAt": 1780025635632,
+        "collapsed": false,
+        "tasks": [
+          {
+            "id": "1780025658592obxtb",
+            "text": "발명아이디어 확인",
+            "done": false,
+            "createdAt": 1780025658592
           }
         ]
       }
