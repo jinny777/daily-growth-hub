@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-29T03:53:17.319Z",
+  "savedAt": "2026-05-29T04:00:57.218Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -7944,7 +7944,20 @@
         "color": "#6366f1",
         "createdAt": 1779263172096,
         "collapsed": false,
-        "tasks": [],
+        "tasks": [
+          {
+            "id": "1780027235493qq7pm",
+            "text": "산성헤리스톤 뉴스 클리핑",
+            "done": false,
+            "createdAt": 1780027235493
+          },
+          {
+            "id": "17800272415870ebb9",
+            "text": "분양대출 스터디",
+            "done": false,
+            "createdAt": 1780027241587
+          }
+        ],
         "notesOpen": false
       },
       {
