@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-05-31T10:07:51.439Z",
+  "savedAt": "2026-05-31T13:38:09.569Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -39,6 +39,14 @@
     ],
     "prayerFilter": "all",
     "sites": [
+      {
+        "id": "1780234673013nrf5b",
+        "name": "runningrecord",
+        "url": "https://runningrecord.onrender.com",
+        "category": "기타",
+        "notes": "",
+        "createdAt": 1780234673013
+      },
       {
         "id": "1779633284796dk2g5",
         "name": "learnlog",
