@@ -1310,7 +1310,7 @@ async function silentCloudSave() {
   // 실제 데이터가 없는 빈 상태면 클라우드 덮어쓰기 방지
   const hasData = (state.todos?.length || 0) + (state.prayers?.length || 0) +
                   (state.jobs?.length || 0) + (state.programs?.length || 0) +
-                  (state.books?.length || 0) > 0;
+                  (state.books?.length || 0) + (state.newsCategories?.length || 0) > 0;
   if (!hasData) return;
   try {
     let sha = '';
@@ -1323,13 +1323,16 @@ async function silentCloudSave() {
       try {
         const cloudState = JSON.parse(base64ToUtf8(f.content))?.state || {};
         const cloudData = (cloudState.todos?.length || 0) + (cloudState.prayers?.length || 0) +
-                          (cloudState.jobs?.length || 0) + (cloudState.programs?.length || 0);
+                          (cloudState.jobs?.length || 0) + (cloudState.programs?.length || 0) +
+                          (cloudState.newsCategories?.length || 0);
         const localData  = (state.todos?.length || 0) + (state.prayers?.length || 0) +
-                           (state.jobs?.length || 0) + (state.programs?.length || 0);
+                           (state.jobs?.length || 0) + (state.programs?.length || 0) +
+                           (state.newsCategories?.length || 0);
         if (cloudData > localData) return;
       } catch {}
     }
-    const body = { message: 'auto-sync', content: utf8ToBase64(JSON.stringify({ version:2, savedAt: new Date().toISOString(), state }, null, 2)) };
+    const syncState = { ...state, newsCache: {}, _progDeadlineFilter: null };
+    const body = { message: 'auto-sync', content: utf8ToBase64(JSON.stringify({ version:2, savedAt: new Date().toISOString(), state: syncState }, null, 2)) };
     if (sha) body.sha = sha;
     await fetch(`https://api.github.com/repos/${SYNC_REPO}/contents/${SYNC_FILE}`,
       { method:'PUT', headers:{ 'Authorization':`token ${token}`, 'Content-Type':'application/json' }, body: JSON.stringify(body) });
@@ -1347,8 +1350,8 @@ async function silentCloudLoad() {
 
     const remoteTime  = new Date(backup.savedAt || 0).getTime();
     const localTime   = new Date(localStorage.getItem('dgh_last_sync') || 0).getTime();
-    const remoteTodos = (loaded.todos?.length || 0) + (loaded.prayers?.length || 0);
-    const localTodos  = (state.todos?.length || 0)  + (state.prayers?.length || 0);
+    const remoteTodos = (loaded.todos?.length || 0) + (loaded.prayers?.length || 0) + (loaded.newsCategories?.length || 0);
+    const localTodos  = (state.todos?.length || 0)  + (state.prayers?.length || 0)  + (state.newsCategories?.length || 0);
 
     // 클라우드가 더 최신이거나, 로컬보다 데이터가 많으면 자동 로드
     if (remoteTime > localTime || remoteTodos > localTodos) {
@@ -3452,13 +3455,15 @@ async function cloudSave() {
   const btn = document.getElementById('btn-cloud-save');
   btn.textContent = '☁️ 저장중...'; btn.disabled = true;
   try {
-    // 클라우드 저장용 경량 state (HTML 제거하여 용량 절약)
+    // 클라우드 저장용 경량 state (HTML 제거 + 뉴스 캐시 제외로 용량 절약)
     const lightState = {
       ...state,
       jobs: (state.jobs||[]).map(j => ({
         ...j,
         notes: j.notes ? stripHtml(j.notes).slice(0, 300) : ''
-      }))
+      })),
+      newsCache: {},          // 뉴스 기사 캐시는 용량이 크므로 동기화 제외 (각 기기에서 재수집)
+      _progDeadlineFilter: null,
     };
     const content = JSON.stringify({ version:2, savedAt:new Date().toISOString(), state: lightState });
     const encoded = utf8ToBase64(content);
