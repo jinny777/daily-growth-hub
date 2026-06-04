@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-06-04T13:15:19.164Z",
+  "savedAt": "2026-06-04T13:23:55.116Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -65,7 +65,20 @@
       }
     ],
     "siteFilter": "",
-    "recipes": [],
+    "recipes": [
+      {
+        "id": "1780579419407ttu2p",
+        "url": "https://youtu.be/Ii6ifJPjrq4?si=aSrSUrWRGuXjZVO7",
+        "videoId": "Ii6ifJPjrq4",
+        "title": "또띠아 샌드위치 이렇게 드시면 살빠져요 ㅣ 또띠아랩 ㅣ 또띠아 요리 만들기",
+        "ingredients": "00:00 - 00:23 또띠아 요리\n04:09 - 09:37 크래미마요 또띠아랩\n09:38 - 12:44 에그그릭 또띠아샌드위치\n12:45 - 17:20 불고기 또띠아랩",
+        "steps": "00:24 - 04:08 매콤 닭가슴살 또띠아 샌드위치",
+        "servings": "",
+        "time": "",
+        "tags": [],
+        "createdAt": 1780579419407
+      }
+    ],
     "todos": [
       {
         "id": "17796320587830kfdf",
