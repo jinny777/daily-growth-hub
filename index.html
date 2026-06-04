@@ -506,6 +506,37 @@
 
   <!-- ── TAB: PROGRAM ── -->
   <div id="tab-content-program" class="max-w-5xl mx-auto px-4 py-8 hidden">
+    <!-- 오늘의 지원사업 요약 (DailySummary — startup-support) -->
+    <div class="bg-white rounded-2xl shadow-sm p-4 mb-4">
+      <h3 class="text-sm font-semibold text-gray-700 mb-3">오늘의 지원사업 요약</h3>
+      <div class="grid grid-cols-4 gap-2">
+        <button onclick="setProgDeadlineFilter('today')" id="pgd-today"
+          class="text-center py-2 px-1 rounded-xl hover:bg-red-50 transition group">
+          <div id="prog-today-count" class="text-xl font-extrabold text-red-500 group-hover:scale-110 transition-transform">0</div>
+          <div class="text-xs text-gray-400 mt-0.5">오늘 마감</div>
+        </button>
+        <button onclick="setProgDeadlineFilter('week')" id="pgd-week"
+          class="text-center py-2 px-1 rounded-xl hover:bg-orange-50 transition group">
+          <div id="prog-week-count" class="text-xl font-extrabold text-orange-500 group-hover:scale-110 transition-transform">0</div>
+          <div class="text-xs text-gray-400 mt-0.5">이번 주</div>
+        </button>
+        <button onclick="setProgDeadlineFilter('month')" id="pgd-month"
+          class="text-center py-2 px-1 rounded-xl hover:bg-yellow-50 transition group">
+          <div id="prog-month-count" class="text-xl font-extrabold text-yellow-600 group-hover:scale-110 transition-transform">0</div>
+          <div class="text-xs text-gray-400 mt-0.5">이번 달</div>
+        </button>
+        <button onclick="setProgDeadlineFilter('new')" id="pgd-new"
+          class="text-center py-2 px-1 rounded-xl hover:bg-emerald-50 transition group">
+          <div id="prog-new-count" class="text-xl font-extrabold text-emerald-500 group-hover:scale-110 transition-transform">0</div>
+          <div class="text-xs text-gray-400 mt-0.5">신규 등록</div>
+        </button>
+      </div>
+      <div id="prog-deadline-filter-bar" class="hidden mt-2 flex items-center gap-2 text-xs text-gray-500">
+        <span id="prog-deadline-filter-label" class="bg-gray-100 px-2.5 py-1 rounded-full font-medium"></span>
+        <button onclick="clearProgDeadlineFilter()" class="text-indigo-500 hover:underline">전체 보기</button>
+      </div>
+    </div>
+
     <!-- 요약 통계 -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
       <div class="bg-white rounded-2xl p-4 text-center shadow-sm">
@@ -2551,6 +2582,14 @@ function filterProgSite(site) {
   state.programSiteFilter = site;
   renderPrograms();
 }
+function setProgDeadlineFilter(type) {
+  state._progDeadlineFilter = (state._progDeadlineFilter === type) ? null : type;
+  renderPrograms();
+}
+function clearProgDeadlineFilter() {
+  state._progDeadlineFilter = null;
+  renderPrograms();
+}
 function renderPrograms() {
   const search = (document.getElementById('prog-search')?.value||'').toLowerCase();
   const el = id => document.getElementById(id);
@@ -2601,6 +2640,19 @@ function renderPrograms() {
   if (state.programCatFilter)  list = list.filter(p => p.category === state.programCatFilter);
   if (search) list = list.filter(p => (p.name+p.org+(p.notes||'')).toLowerCase().includes(search));
 
+  // DailySummary 필터
+  const todayDate = new Date(); todayDate.setHours(0,0,0,0);
+  const endOfMonth = new Date(todayDate.getFullYear(), todayDate.getMonth()+1, 0);
+  const threeDaysAgo = new Date(todayDate); threeDaysAgo.setDate(todayDate.getDate()-3);
+  if (state._progDeadlineFilter === 'today')
+    list = list.filter(p => calcDaysLeft(p.deadline) === 0);
+  else if (state._progDeadlineFilter === 'week')
+    list = list.filter(p => { const d=calcDaysLeft(p.deadline); return d!==null&&d>=0&&d<=7; });
+  else if (state._progDeadlineFilter === 'month')
+    list = list.filter(p => { if (!p.deadline) return false; const d=new Date(p.deadline); return d>=todayDate&&d<=endOfMonth; });
+  else if (state._progDeadlineFilter === 'new')
+    list = list.filter(p => p.createdAt >= threeDaysAgo.getTime());
+
   // 마감순 정렬
   list = [...list].sort((a,b) => {
     const da=calcDaysLeft(a.deadline)??9999, db=calcDaysLeft(b.deadline)??9999;
@@ -2610,11 +2662,35 @@ function renderPrograms() {
 
   // 통계 업데이트
   const soon = state.programs.filter(p=>{ const d=calcDaysLeft(p.deadline); return d!==null&&d>=0&&d<=7; }).length;
+  const todayCount  = state.programs.filter(p => calcDaysLeft(p.deadline) === 0).length;
+  const weekCount   = state.programs.filter(p => { const d=calcDaysLeft(p.deadline); return d!==null&&d>=0&&d<=7; }).length;
+  const monthCount  = state.programs.filter(p => { if (!p.deadline) return false; const d=new Date(p.deadline); return d>=todayDate&&d<=endOfMonth; }).length;
+  const newCount    = state.programs.filter(p => p.createdAt >= threeDaysAgo.getTime()).length;
+  el('prog-today-count')    && (el('prog-today-count').textContent    = todayCount);
+  el('prog-week-count')     && (el('prog-week-count').textContent     = weekCount);
+  el('prog-month-count')    && (el('prog-month-count').textContent    = monthCount);
+  el('prog-new-count')      && (el('prog-new-count').textContent      = newCount);
   el('prog-total-count')    && (el('prog-total-count').textContent    = state.programs.length);
   el('prog-deadline-soon')  && (el('prog-deadline-soon').textContent  = soon);
   el('prog-applied-count')  && (el('prog-applied-count').textContent  = state.programs.filter(p=>['신청완료','선정'].includes(p.status)).length);
   el('prog-selected-count') && (el('prog-selected-count').textContent = state.programs.filter(p=>p.status==='선정').length);
   el('prog-filtered-label') && (el('prog-filtered-label').textContent = `총 ${list.length}건`);
+
+  // DailySummary 필터 버튼 활성화
+  const dlFilter = state._progDeadlineFilter;
+  ['today','week','month','new'].forEach(k => {
+    const btn = document.getElementById('pgd-'+k);
+    if (btn) btn.className = (dlFilter===k)
+      ? 'text-center py-2 px-1 rounded-xl bg-indigo-50 border border-indigo-200 transition group'
+      : 'text-center py-2 px-1 rounded-xl hover:bg-gray-50 transition group';
+  });
+  const filterBar = el('prog-deadline-filter-bar');
+  const filterLabel = el('prog-deadline-filter-label');
+  if (filterBar && filterLabel) {
+    const labels = {today:'오늘 마감',week:'이번 주 마감',month:'이번 달 마감',new:'신규 등록'};
+    if (dlFilter) { filterBar.classList.remove('hidden'); filterLabel.textContent = labels[dlFilter]||''; }
+    else filterBar.classList.add('hidden');
+  }
 
   const container = document.getElementById('program-list');
   const empty = document.getElementById('program-empty');
