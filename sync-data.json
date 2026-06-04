@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-06-04T13:23:55.116Z",
+  "savedAt": "2026-06-04T13:26:04.464Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -8078,7 +8078,52 @@
       }
     ],
     "aiTagFilter": "",
-    "newsCategories": [],
+    "newsCategories": [
+      {
+        "id": "nc_ai",
+        "name": "AI/기술",
+        "color": "indigo",
+        "keywords": [
+          "인공지능",
+          "AI",
+          "챗GPT",
+          "LLM"
+        ]
+      },
+      {
+        "id": "nc_startup",
+        "name": "창업/스타트업",
+        "color": "green",
+        "keywords": [
+          "스타트업",
+          "창업",
+          "유니콘",
+          "벤처투자"
+        ]
+      },
+      {
+        "id": "nc_economy",
+        "name": "경제/금융",
+        "color": "orange",
+        "keywords": [
+          "금리",
+          "주식",
+          "경제",
+          "투자"
+        ]
+      },
+      {
+        "id": "nc_global",
+        "name": "글로벌",
+        "color": "blue",
+        "keywords": [
+          "글로벌",
+          "해외진출",
+          "수출",
+          "미국"
+        ]
+      }
+    ],
     "newsCache": {},
     "newsCatFilter": "",
     "statusModalType": null,
