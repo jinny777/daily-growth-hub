@@ -144,6 +144,7 @@
       <button id="tab-todo"     onclick="switchTab('todo')"     class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">✅ TODO</button>
       <button id="tab-job"      onclick="switchTab('job')"      class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">💼 취업</button>
       <button id="tab-program"  onclick="switchTab('program')"  class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">📋 지원사업</button>
+      <button id="tab-news"     onclick="switchTab('news')"     class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">📰 뉴스클리핑</button>
       <button id="tab-book"     onclick="switchTab('book')"     class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">📚 독서</button>
       <button id="tab-aistudy"  onclick="switchTab('aistudy')"  class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">🤖 AI스터디</button>
       <button id="tab-admin"    onclick="switchTab('admin')"    class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">⚙️ 관리자</button>
@@ -655,6 +656,104 @@
       </div>
       <div id="program-list" class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4"></div>
       <div id="program-empty" class="p-8 text-center text-sm text-gray-400 hidden">지원사업을 추가해보세요 📋</div>
+    </div>
+  </div>
+
+  <!-- ── TAB: NEWS CLIPPING ── -->
+  <div id="tab-content-news" class="max-w-5xl mx-auto px-4 py-8 hidden">
+
+    <!-- 카테고리 관리 패널 -->
+    <div class="bg-white rounded-2xl shadow-sm p-5 mb-5">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h2 class="font-bold text-gray-800">📰 뉴스클리핑</h2>
+          <p class="text-xs text-gray-400 mt-0.5">카테고리별 키워드를 설정하면 관련 뉴스를 자동 수집합니다</p>
+        </div>
+        <button onclick="openNewsCatModal(null)"
+          class="bg-indigo-500 text-white text-sm font-bold px-4 py-2 rounded-xl hover:bg-indigo-600 transition">
+          + 카테고리 추가
+        </button>
+      </div>
+      <div id="news-cat-chips" class="flex flex-wrap gap-2"></div>
+    </div>
+
+    <!-- 뉴스 피드 -->
+    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+      <!-- 카테고리 필터 탭 -->
+      <div class="overflow-x-auto border-b">
+        <div id="news-cat-tabs" class="flex gap-2 px-4 py-3 whitespace-nowrap">
+          <button onclick="setNewsCatFilter('')" id="ncat-all"
+            class="text-sm px-4 py-1.5 rounded-full bg-indigo-600 text-white font-semibold shrink-0">전체</button>
+        </div>
+      </div>
+
+      <!-- 상태바: 수집 시각 + 새로고침 -->
+      <div class="flex items-center justify-between px-4 py-2.5 bg-gray-50 border-b">
+        <span id="news-fetch-status" class="text-xs text-gray-400">뉴스를 수집해보세요</span>
+        <div class="flex gap-2">
+          <button onclick="fetchAllNews()" id="news-fetch-btn"
+            class="flex items-center gap-1.5 bg-indigo-500 text-white text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-indigo-600 transition">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            전체 수집
+          </button>
+        </div>
+      </div>
+
+      <!-- 로딩 -->
+      <div id="news-loading" class="hidden p-8 text-center">
+        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-500 mx-auto mb-2"></div>
+        <p id="news-loading-text" class="text-sm text-gray-400">뉴스 수집 중...</p>
+      </div>
+
+      <!-- 기사 목록 -->
+      <div id="news-article-list" class="divide-y divide-gray-50"></div>
+      <div id="news-empty" class="p-10 text-center text-sm text-gray-400">
+        <div class="text-3xl mb-2">📰</div>
+        <p>카테고리와 키워드를 설정하고<br>전체 수집 버튼을 눌러보세요</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 뉴스 카테고리 편집 모달 -->
+  <div id="news-cat-modal" class="hidden fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-xl w-full max-w-md p-6">
+      <h3 id="news-cat-modal-title" class="font-bold text-gray-800 mb-4">카테고리 추가</h3>
+      <input type="hidden" id="news-cat-edit-id" value="" />
+      <div class="space-y-3 mb-4">
+        <div>
+          <label class="text-xs font-semibold text-gray-500 mb-1 block">카테고리명</label>
+          <input id="news-cat-name" type="text" placeholder="예: AI/기술, 창업, 경제"
+            class="w-full border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300" />
+        </div>
+        <div>
+          <label class="text-xs font-semibold text-gray-500 mb-1 block">색상</label>
+          <div id="news-cat-color-picker" class="flex gap-2 flex-wrap">
+            <button onclick="selectNewsCatColor('indigo')" data-color="indigo"  class="w-7 h-7 rounded-full bg-indigo-500 ring-2 ring-offset-1 ring-indigo-500"></button>
+            <button onclick="selectNewsCatColor('blue')"   data-color="blue"    class="w-7 h-7 rounded-full bg-blue-500"></button>
+            <button onclick="selectNewsCatColor('green')"  data-color="green"   class="w-7 h-7 rounded-full bg-green-500"></button>
+            <button onclick="selectNewsCatColor('orange')" data-color="orange"  class="w-7 h-7 rounded-full bg-orange-500"></button>
+            <button onclick="selectNewsCatColor('pink')"   data-color="pink"    class="w-7 h-7 rounded-full bg-pink-500"></button>
+            <button onclick="selectNewsCatColor('purple')" data-color="purple"  class="w-7 h-7 rounded-full bg-purple-500"></button>
+            <button onclick="selectNewsCatColor('red')"    data-color="red"     class="w-7 h-7 rounded-full bg-red-500"></button>
+            <button onclick="selectNewsCatColor('sky')"    data-color="sky"     class="w-7 h-7 rounded-full bg-sky-500"></button>
+          </div>
+        </div>
+        <div>
+          <label class="text-xs font-semibold text-gray-500 mb-1 block">키워드 (Enter로 추가)</label>
+          <div class="flex gap-2 mb-2">
+            <input id="news-kw-input" type="text" placeholder="키워드 입력 후 Enter"
+              onkeydown="if(event.key==='Enter'){event.preventDefault();addNewsKeywordModal()}"
+              class="flex-1 border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300" />
+            <button onclick="addNewsKeywordModal()"
+              class="bg-indigo-100 text-indigo-700 text-sm font-bold px-3 py-2 rounded-xl hover:bg-indigo-200 transition">추가</button>
+          </div>
+          <div id="news-kw-chips" class="flex flex-wrap gap-1.5 min-h-[28px]"></div>
+        </div>
+      </div>
+      <div class="flex gap-2 justify-end">
+        <button onclick="closeNewsCatModal()" class="px-4 py-2 text-sm text-gray-600 border rounded-xl hover:bg-gray-50">취소</button>
+        <button onclick="saveNewsCat()" class="px-4 py-2 text-sm font-bold text-white bg-indigo-500 rounded-xl hover:bg-indigo-600">저장</button>
+      </div>
     </div>
   </div>
 
@@ -1181,6 +1280,7 @@ let state = {
   projects: [],
   books: [],
   aiStudy: [], aiTagFilter: '',
+  newsCategories: [], newsCache: {}, newsCatFilter: '',
   statusModalType: null, statusModalId: null,
   notiSettings: {
     email: '', bizType: '', bizSize: '', investStage: '', bizAge: '', region: '',
@@ -1301,7 +1401,7 @@ function showScreen(name) {
     document.getElementById('screen-'+s).classList.toggle('hidden', s !== name)
   );
 }
-const ALL_TABS = ['today','sites','prayer','todo','job','program','book','aistudy','admin'];
+const ALL_TABS = ['today','sites','prayer','todo','job','program','news','book','aistudy','admin'];
 function switchTab(name) {
   ALL_TABS.forEach(t => {
     const btn = document.getElementById('tab-'+t);
@@ -1315,6 +1415,7 @@ function switchTab(name) {
   if (name === 'todo')     { renderProjects(); renderTodos(); renderTodoCalendar(); }
   if (name === 'job')      renderJobs();
   if (name === 'program')  renderPrograms();
+  if (name === 'news')     renderNewsTab();
   if (name === 'book')     renderBooks();
   if (name === 'aistudy')  renderAiStudy();
 }
@@ -2889,6 +2990,310 @@ function deleteAiStudy(id) {
 function filterByTag(tag) {
   state.aiTagFilter = state.aiTagFilter===tag ? '' : tag;
   renderAiStudy();
+}
+
+// ══════════════════════════════════════════
+//  NEWS CLIPPING
+// ══════════════════════════════════════════
+const NEWS_DEFAULT_CATS = [
+  {id:'nc_ai',      name:'AI/기술',    color:'indigo', keywords:['인공지능','AI','챗GPT','LLM']},
+  {id:'nc_startup', name:'창업/스타트업', color:'green',  keywords:['스타트업','창업','유니콘','벤처투자']},
+  {id:'nc_economy', name:'경제/금융',   color:'orange', keywords:['금리','주식','경제','투자']},
+  {id:'nc_global',  name:'글로벌',     color:'blue',   keywords:['글로벌','해외진출','수출','미국']},
+];
+const NEWS_CAT_COLOR_MAP = {
+  indigo:'bg-indigo-500', blue:'bg-blue-500', green:'bg-green-500', orange:'bg-orange-500',
+  pink:'bg-pink-500', purple:'bg-purple-500', red:'bg-red-500', sky:'bg-sky-500',
+};
+const NEWS_CAT_TEXT_MAP = {
+  indigo:'text-indigo-600 bg-indigo-50', blue:'text-blue-600 bg-blue-50', green:'text-green-600 bg-green-50',
+  orange:'text-orange-600 bg-orange-50', pink:'text-pink-600 bg-pink-50', purple:'text-purple-600 bg-purple-50',
+  red:'text-red-600 bg-red-50', sky:'text-sky-600 bg-sky-50',
+};
+let _newsCatColorSelected = 'indigo';
+let _newsKwList = [];
+
+function initNewsDefaults() {
+  if (!state.newsCategories || state.newsCategories.length === 0) {
+    state.newsCategories = JSON.parse(JSON.stringify(NEWS_DEFAULT_CATS));
+    saveState();
+  }
+}
+
+function renderNewsTab() {
+  initNewsDefaults();
+  renderNewsCatChips();
+  renderNewsCatTabs();
+  renderNewsArticles();
+}
+
+function renderNewsCatChips() {
+  const el = document.getElementById('news-cat-chips');
+  if (!el) return;
+  if (!state.newsCategories.length) {
+    el.innerHTML = '<span class="text-xs text-gray-400">아직 카테고리가 없습니다. 추가해보세요!</span>';
+    return;
+  }
+  el.innerHTML = state.newsCategories.map(cat => `
+    <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-200 bg-gray-50 text-sm">
+      <span class="w-2.5 h-2.5 rounded-full ${NEWS_CAT_COLOR_MAP[cat.color]||'bg-gray-400'} shrink-0"></span>
+      <span class="font-semibold text-gray-700">${escHtml(cat.name)}</span>
+      <span class="text-xs text-gray-400">${cat.keywords.map(k=>`#${k}`).join(' ')}</span>
+      <button onclick="openNewsCatModal('${cat.id}')" class="ml-1 text-gray-400 hover:text-indigo-500 transition text-xs">✏️</button>
+      <button onclick="deleteNewsCat('${cat.id}')" class="text-gray-300 hover:text-red-400 transition text-xs">✕</button>
+    </div>
+  `).join('');
+}
+
+function renderNewsCatTabs() {
+  const tabsEl = document.getElementById('news-cat-tabs');
+  if (!tabsEl) return;
+  const extra = state.newsCategories.map(cat => {
+    const active = state.newsCatFilter === cat.id;
+    const cached = state.newsCache && state.newsCache[cat.id];
+    const count = cached ? `(${cached.articles.length})` : '';
+    return `<button onclick="setNewsCatFilter('${cat.id}')" id="ncat-${cat.id}"
+      class="text-sm px-4 py-1.5 rounded-full font-semibold shrink-0 transition ${active
+        ? (NEWS_CAT_COLOR_MAP[cat.color]||'bg-indigo-500') + ' text-white'
+        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}">${escHtml(cat.name)} ${count}</button>`;
+  }).join('');
+  const allActive = !state.newsCatFilter;
+  tabsEl.innerHTML = `<button onclick="setNewsCatFilter('')" id="ncat-all"
+    class="text-sm px-4 py-1.5 rounded-full font-semibold shrink-0 transition ${allActive?'bg-indigo-600 text-white':'bg-gray-100 text-gray-600 hover:bg-gray-200'}">전체</button>` + extra;
+}
+
+function renderNewsArticles() {
+  const listEl = document.getElementById('news-article-list');
+  const emptyEl = document.getElementById('news-empty');
+  if (!listEl || !emptyEl) return;
+
+  let articles = [];
+  const cache = state.newsCache || {};
+  const cats = state.newsCategories || [];
+
+  if (state.newsCatFilter) {
+    articles = cache[state.newsCatFilter]?.articles || [];
+  } else {
+    const seen = new Set();
+    cats.forEach(cat => {
+      (cache[cat.id]?.articles || []).forEach(a => {
+        if (!seen.has(a.link)) { seen.add(a.link); articles.push({...a, catId: cat.id}); }
+      });
+    });
+    articles.sort((a,b) => new Date(b.pubDate) - new Date(a.pubDate));
+  }
+
+  if (!articles.length) {
+    listEl.innerHTML = '';
+    emptyEl.classList.remove('hidden');
+    return;
+  }
+  emptyEl.classList.add('hidden');
+
+  const catMap = {};
+  cats.forEach(c => catMap[c.id] = c);
+
+  listEl.innerHTML = articles.map(a => {
+    const cat = catMap[a.catId];
+    const catBadge = cat
+      ? `<span class="text-xs px-2 py-0.5 rounded-full font-semibold ${NEWS_CAT_TEXT_MAP[cat.color]||'text-gray-600 bg-gray-100'}">${escHtml(cat.name)}</span>`
+      : '';
+    const kwBadge = a.keyword
+      ? `<span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">#${escHtml(a.keyword)}</span>`
+      : '';
+    const date = a.pubDate ? new Date(a.pubDate).toLocaleDateString('ko-KR',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}) : '';
+    const summary = a.description ? a.description.slice(0, 220) + (a.description.length > 220 ? '...' : '') : '';
+    return `
+    <div class="px-4 py-4 hover:bg-gray-50 transition">
+      <div class="flex items-start justify-between gap-2 mb-1.5">
+        <a href="${escHtml(a.link)}" target="_blank" rel="noopener"
+          class="font-semibold text-sm text-gray-900 hover:text-indigo-600 leading-snug flex-1">${escHtml(a.title)}</a>
+        <span class="text-xs text-gray-400 shrink-0 mt-0.5">${date}</span>
+      </div>
+      ${summary ? `<p class="text-xs text-gray-500 leading-relaxed mb-2 line-clamp-3">${escHtml(summary)}</p>` : ''}
+      <div class="flex items-center gap-1.5 flex-wrap">
+        ${catBadge}${kwBadge}
+        ${a.source ? `<span class="text-xs text-gray-400">· ${escHtml(a.source)}</span>` : ''}
+        <a href="${escHtml(a.link)}" target="_blank" rel="noopener"
+          class="ml-auto text-xs text-indigo-500 hover:underline shrink-0">기사 보기 →</a>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function setNewsCatFilter(catId) {
+  state.newsCatFilter = catId;
+  renderNewsCatTabs();
+  renderNewsArticles();
+}
+
+async function fetchAllNews() {
+  initNewsDefaults();
+  if (!state.newsCategories.length) { showToast('⚠️ 카테고리를 먼저 추가해주세요'); return; }
+  const btn = document.getElementById('news-fetch-btn');
+  const loadingEl = document.getElementById('news-loading');
+  const loadingText = document.getElementById('news-loading-text');
+  const statusEl = document.getElementById('news-fetch-status');
+  if (btn) btn.disabled = true;
+  if (loadingEl) loadingEl.classList.remove('hidden');
+  document.getElementById('news-article-list').innerHTML = '';
+  document.getElementById('news-empty').classList.add('hidden');
+
+  let total = 0;
+  for (const cat of state.newsCategories) {
+    if (loadingText) loadingText.textContent = `"${cat.name}" 수집 중...`;
+    try {
+      const articles = await fetchNewsByCategory(cat);
+      if (!state.newsCache) state.newsCache = {};
+      state.newsCache[cat.id] = { articles, fetchedAt: Date.now() };
+      total += articles.length;
+      saveState();
+      renderNewsCatTabs();
+    } catch(e) {
+      console.warn('뉴스 수집 실패:', cat.name, e);
+    }
+  }
+  if (loadingEl) loadingEl.classList.add('hidden');
+  if (btn) btn.disabled = false;
+  if (statusEl) statusEl.textContent = `마지막 수집: ${new Date().toLocaleString('ko-KR')} · 총 ${total}건`;
+  renderNewsArticles();
+  showToast(`📰 뉴스 ${total}건을 수집했습니다`);
+}
+
+async function fetchNewsByCategory(cat) {
+  if (!cat.keywords || !cat.keywords.length) return [];
+  const query = cat.keywords.join(' OR ');
+  const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=ko&gl=KR&ceid=KR:ko`;
+  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}&count=30`;
+
+  const res = await fetch(apiUrl);
+  if (!res.ok) throw new Error('RSS fetch failed');
+  const data = await res.json();
+  if (data.status !== 'ok') throw new Error(data.message || 'RSS error');
+
+  const seen = new Set();
+  return (data.items || [])
+    .filter(item => { if (seen.has(item.link)) return false; seen.add(item.link); return true; })
+    .map(item => ({
+      title:       stripHtmlTags(item.title || ''),
+      link:        item.link || '',
+      pubDate:     item.pubDate || '',
+      description: stripHtmlTags(item.description || item.content || ''),
+      source:      item.author || extractSourceFromTitle(item.title || ''),
+      keyword:     findMatchingKeyword(item.title + ' ' + (item.description||''), cat.keywords),
+      catId:       cat.id,
+    }));
+}
+
+function stripHtmlTags(str) {
+  return str.replace(/<[^>]*>/g, '').replace(/&nbsp;/g,' ').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').trim();
+}
+
+function extractSourceFromTitle(title) {
+  const m = title.match(/-\s*([^-]+)$/);
+  return m ? m[1].trim() : '';
+}
+
+function findMatchingKeyword(text, keywords) {
+  return keywords.find(kw => text.toLowerCase().includes(kw.toLowerCase())) || keywords[0] || '';
+}
+
+// ── 카테고리 모달 ──
+function openNewsCatModal(catId) {
+  initNewsDefaults();
+  const modal = document.getElementById('news-cat-modal');
+  const title = document.getElementById('news-cat-modal-title');
+  document.getElementById('news-cat-edit-id').value = catId || '';
+  _newsKwList = [];
+  _newsCatColorSelected = 'indigo';
+
+  if (catId) {
+    const cat = state.newsCategories.find(c => c.id === catId);
+    if (!cat) return;
+    title.textContent = '카테고리 편집';
+    document.getElementById('news-cat-name').value = cat.name;
+    _newsCatColorSelected = cat.color || 'indigo';
+    _newsKwList = [...cat.keywords];
+  } else {
+    title.textContent = '카테고리 추가';
+    document.getElementById('news-cat-name').value = '';
+    _newsCatColorSelected = 'indigo';
+    _newsKwList = [];
+  }
+  renderNewsCatColorPicker();
+  renderNewsKwChips();
+  modal.classList.remove('hidden');
+}
+
+function closeNewsCatModal() {
+  document.getElementById('news-cat-modal').classList.add('hidden');
+  document.getElementById('news-kw-input').value = '';
+}
+
+function selectNewsCatColor(color) {
+  _newsCatColorSelected = color;
+  renderNewsCatColorPicker();
+}
+
+function renderNewsCatColorPicker() {
+  document.querySelectorAll('#news-cat-color-picker button[data-color]').forEach(btn => {
+    const c = btn.dataset.color;
+    btn.className = `w-7 h-7 rounded-full ${NEWS_CAT_COLOR_MAP[c]||'bg-gray-400'} transition` +
+      (c === _newsCatColorSelected ? ' ring-2 ring-offset-2 ring-indigo-500 scale-110' : '');
+  });
+}
+
+function addNewsKeywordModal() {
+  const input = document.getElementById('news-kw-input');
+  const kw = input.value.trim();
+  if (!kw) return;
+  if (!_newsKwList.includes(kw)) { _newsKwList.push(kw); renderNewsKwChips(); }
+  input.value = '';
+  input.focus();
+}
+
+function removeNewsKwModal(kw) {
+  _newsKwList = _newsKwList.filter(k => k !== kw);
+  renderNewsKwChips();
+}
+
+function renderNewsKwChips() {
+  const el = document.getElementById('news-kw-chips');
+  if (!el) return;
+  el.innerHTML = _newsKwList.length
+    ? _newsKwList.map(kw => `
+        <span class="flex items-center gap-1 text-xs bg-indigo-100 text-indigo-700 px-2.5 py-1 rounded-full font-medium">
+          #${escHtml(kw)}
+          <button onclick="removeNewsKwModal('${escHtml(kw)}')" class="text-indigo-400 hover:text-red-500 leading-none ml-0.5">✕</button>
+        </span>`).join('')
+    : '<span class="text-xs text-gray-400">키워드를 추가해주세요</span>';
+}
+
+function saveNewsCat() {
+  const name = document.getElementById('news-cat-name').value.trim();
+  if (!name) { showToast('⚠️ 카테고리명을 입력해주세요'); return; }
+  if (!_newsKwList.length) { showToast('⚠️ 키워드를 1개 이상 추가해주세요'); return; }
+  const editId = document.getElementById('news-cat-edit-id').value;
+  if (editId) {
+    const cat = state.newsCategories.find(c => c.id === editId);
+    if (cat) { cat.name = name; cat.color = _newsCatColorSelected; cat.keywords = [..._newsKwList]; }
+  } else {
+    state.newsCategories.push({ id: uid(), name, color: _newsCatColorSelected, keywords: [..._newsKwList] });
+  }
+  saveState();
+  closeNewsCatModal();
+  renderNewsTab();
+  showToast('✅ 카테고리가 저장됐습니다');
+}
+
+function deleteNewsCat(catId) {
+  if (!confirm('이 카테고리를 삭제할까요?')) return;
+  state.newsCategories = state.newsCategories.filter(c => c.id !== catId);
+  if (state.newsCache) delete state.newsCache[catId];
+  if (state.newsCatFilter === catId) state.newsCatFilter = '';
+  saveState();
+  renderNewsTab();
+  showToast('카테고리가 삭제됐습니다');
 }
 function renderAiStudy() {
   // Build tag list
