@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-06-04T23:59:27.335Z",
+  "savedAt": "2026-06-04T23:59:52.701Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -38,6 +38,47 @@
       }
     ],
     "prayerFilter": "all",
+    "sites": [
+      {
+        "id": "1780234673013nrf5b",
+        "name": "runningrecord",
+        "url": "https://runningrecord.onrender.com",
+        "category": "기타",
+        "notes": "",
+        "createdAt": 1780234673013
+      },
+      {
+        "id": "1779633284796dk2g5",
+        "name": "learnlog",
+        "url": "https://jinny777.github.io/learnlog-prototype/",
+        "category": "업무",
+        "notes": "",
+        "createdAt": 1779633284796
+      },
+      {
+        "id": "1779633249886xxqp4",
+        "name": "contenflow",
+        "url": "https://contentpilot-69x2.onrender.com/api/login",
+        "category": "업무",
+        "notes": "",
+        "createdAt": 1779633249886
+      }
+    ],
+    "siteFilter": "",
+    "recipes": [
+      {
+        "id": "1780579419407ttu2p",
+        "url": "https://youtu.be/Ii6ifJPjrq4?si=aSrSUrWRGuXjZVO7",
+        "videoId": "Ii6ifJPjrq4",
+        "title": "또띠아 샌드위치 이렇게 드시면 살빠져요 ㅣ 또띠아랩 ㅣ 또띠아 요리 만들기",
+        "ingredients": "00:00 - 00:23 또띠아 요리\n04:09 - 09:37 크래미마요 또띠아랩\n09:38 - 12:44 에그그릭 또띠아샌드위치\n12:45 - 17:20 불고기 또띠아랩",
+        "steps": "00:24 - 04:08 매콤 닭가슴살 또띠아 샌드위치",
+        "servings": "",
+        "time": "",
+        "tags": [],
+        "createdAt": 1780579419407
+      }
+    ],
     "todos": [
       {
         "id": "17796320587830kfdf",
@@ -7918,106 +7959,6 @@
     "programFilter": "",
     "programCatFilter": "기타",
     "programSiteFilter": "K-startup",
-    "books": [
-      {
-        "id": "1779058404759ztmik",
-        "createdAt": 1779058404759,
-        "title": "그 순간",
-        "author": "오타 K",
-        "startDate": "2026-05-17",
-        "pages": "185",
-        "readDates": [],
-        "done": true,
-        "doneDate": "2026-05-17"
-      },
-      {
-        "id": "1779323126606izeon",
-        "createdAt": 1779323126606,
-        "title": "커뮤니티 빌더들",
-        "author": "백영선",
-        "startDate": "2026-05-21",
-        "pages": "",
-        "readDates": [],
-        "done": false,
-        "doneDate": null
-      }
-    ],
-    "aiStudy": [
-      {
-        "id": "1779633359628h3z0i",
-        "createdAt": 1779633359628,
-        "date": "2026-05-23",
-        "title": "skill 만들기",
-        "content": "Skill 만들기 \n\n내가 주제를 제시하면, 그 주제를 구체화해 웹/앱의 전체 구조를 설계하고 최종적으로 프로토타입 제작까지 진행하려고 해. 기획서 작성부터 시작해서, UX/UI를 충분히 고려한 화면 설계가 이루어져야 해. 이 과정을 단계별로 안내해주는 Skill을 만들고 싶어. 우선 해당 Skill의 기본 구조를 설계해줘.",
-        "url": "",
-        "files": [],
-        "tags": []
-      }
-    ],
-    "aiTagFilter": "",
-    "statusModalType": null,
-    "statusModalId": null,
-    "notiSettings": {
-      "email": "khjyeon@naver.com",
-      "bizType": "IT/SW",
-      "bizSize": "도약",
-      "investStage": "미투자",
-      "bizAge": "3-7년",
-      "region": "서울",
-      "categories": [
-        "사업화자금",
-        "R&D",
-        "창업교육"
-      ],
-      "channels": {
-        "email": true,
-        "kakao": false,
-        "push": false,
-        "calendar": false
-      },
-      "frequency": "weekly"
-    },
-    "sites": [
-      {
-        "id": "1780234673013nrf5b",
-        "name": "runningrecord",
-        "url": "https://runningrecord.onrender.com",
-        "category": "기타",
-        "notes": "",
-        "createdAt": 1780234673013
-      },
-      {
-        "id": "1779633284796dk2g5",
-        "name": "learnlog",
-        "url": "https://jinny777.github.io/learnlog-prototype/",
-        "category": "업무",
-        "notes": "",
-        "createdAt": 1779633284796
-      },
-      {
-        "id": "1779633249886xxqp4",
-        "name": "contenflow",
-        "url": "https://contentpilot-69x2.onrender.com/api/login",
-        "category": "업무",
-        "notes": "",
-        "createdAt": 1779633249886
-      }
-    ],
-    "siteFilter": "",
-    "recipes": [
-      {
-        "id": "1780579419407ttu2p",
-        "url": "https://youtu.be/Ii6ifJPjrq4?si=aSrSUrWRGuXjZVO7",
-        "videoId": "Ii6ifJPjrq4",
-        "title": "또띠아 샌드위치 이렇게 드시면 살빠져요 ㅣ 또띠아랩 ㅣ 또띠아 요리 만들기",
-        "ingredients": "00:00 - 00:23 또띠아 요리\n04:09 - 09:37 크래미마요 또띠아랩\n09:38 - 12:44 에그그릭 또띠아샌드위치\n12:45 - 17:20 불고기 또띠아랩",
-        "steps": "00:24 - 04:08 매콤 닭가슴살 또띠아 샌드위치",
-        "servings": "",
-        "time": "",
-        "tags": [],
-        "createdAt": 1780579419407
-      }
-    ],
     "projects": [
       {
         "id": "1779263172096u7s04",
@@ -8100,6 +8041,43 @@
         "tasks": []
       }
     ],
+    "books": [
+      {
+        "id": "1779058404759ztmik",
+        "createdAt": 1779058404759,
+        "title": "그 순간",
+        "author": "오타 K",
+        "startDate": "2026-05-17",
+        "pages": "185",
+        "readDates": [],
+        "done": true,
+        "doneDate": "2026-05-17"
+      },
+      {
+        "id": "1779323126606izeon",
+        "createdAt": 1779323126606,
+        "title": "커뮤니티 빌더들",
+        "author": "백영선",
+        "startDate": "2026-05-21",
+        "pages": "",
+        "readDates": [],
+        "done": false,
+        "doneDate": null
+      }
+    ],
+    "aiStudy": [
+      {
+        "id": "1779633359628h3z0i",
+        "createdAt": 1779633359628,
+        "date": "2026-05-23",
+        "title": "skill 만들기",
+        "content": "Skill 만들기 \n\n내가 주제를 제시하면, 그 주제를 구체화해 웹/앱의 전체 구조를 설계하고 최종적으로 프로토타입 제작까지 진행하려고 해. 기획서 작성부터 시작해서, UX/UI를 충분히 고려한 화면 설계가 이루어져야 해. 이 과정을 단계별로 안내해주는 Skill을 만들고 싶어. 우선 해당 Skill의 기본 구조를 설계해줘.",
+        "url": "",
+        "files": [],
+        "tags": []
+      }
+    ],
+    "aiTagFilter": "",
     "newsCategories": [
       {
         "id": "nc_ai",
@@ -8155,6 +8133,28 @@
       }
     ],
     "newsCache": {},
-    "newsCatFilter": "nc_ai"
+    "newsCatFilter": "nc_ai",
+    "statusModalType": null,
+    "statusModalId": null,
+    "notiSettings": {
+      "email": "khjyeon@naver.com",
+      "bizType": "IT/SW",
+      "bizSize": "도약",
+      "investStage": "미투자",
+      "bizAge": "3-7년",
+      "region": "서울",
+      "categories": [
+        "사업화자금",
+        "R&D",
+        "창업교육"
+      ],
+      "channels": {
+        "email": true,
+        "kakao": false,
+        "push": false,
+        "calendar": false
+      },
+      "frequency": "weekly"
+    }
   }
 }
