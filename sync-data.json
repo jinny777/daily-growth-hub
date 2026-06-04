@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-06-04T13:26:04.464Z",
+  "savedAt": "2026-06-04T13:26:30.625Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -8122,10 +8122,18 @@
           "수출",
           "미국"
         ]
+      },
+      {
+        "id": "1780579574163xztes",
+        "name": "부동산",
+        "color": "indigo",
+        "keywords": [
+          "산성역 헤리스톤"
+        ]
       }
     ],
     "newsCache": {},
-    "newsCatFilter": "",
+    "newsCatFilter": "nc_ai",
     "statusModalType": null,
     "statusModalId": null,
     "notiSettings": {
