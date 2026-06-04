@@ -146,6 +146,7 @@
       <button id="tab-program"  onclick="switchTab('program')"  class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">📋 지원사업</button>
       <button id="tab-news"     onclick="switchTab('news')"     class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">📰 뉴스클리핑</button>
       <button id="tab-book"     onclick="switchTab('book')"     class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">📚 독서</button>
+      <button id="tab-recipe"   onclick="switchTab('recipe')"   class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">🍳 요리모음</button>
       <button id="tab-aistudy"  onclick="switchTab('aistudy')"  class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">🤖 AI스터디</button>
       <button id="tab-admin"    onclick="switchTab('admin')"    class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">⚙️ 관리자</button>
     </div>
@@ -776,6 +777,51 @@
     <div id="book-empty" class="bg-white rounded-2xl p-8 text-center text-sm text-gray-400 hidden">도서를 추가해보세요 📚</div>
   </div>
 
+  <!-- ── TAB: RECIPE ── -->
+  <div id="tab-content-recipe" class="max-w-5xl mx-auto px-4 py-8 hidden">
+    <div class="bg-white rounded-2xl shadow-sm p-5 mb-5">
+      <h2 class="font-bold text-gray-800 mb-3">🍳 레시피 추가</h2>
+      <div class="space-y-2">
+        <div class="flex gap-2">
+          <input id="recipe-url" type="url" placeholder="YouTube URL 붙여넣기 (https://youtu.be/...)"
+            class="flex-1 border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300" />
+          <button onclick="fetchRecipeVideo()" class="bg-orange-500 text-white px-4 py-2 rounded-xl text-sm font-bold hover:bg-orange-600 transition whitespace-nowrap">영상 불러오기</button>
+        </div>
+        <div id="recipe-video-preview" class="hidden rounded-xl overflow-hidden bg-gray-100"></div>
+        <input id="recipe-title" type="text" placeholder="요리 이름 *"
+          class="w-full border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300" />
+        <div class="grid grid-cols-2 gap-2">
+          <input id="recipe-servings" type="text" placeholder="인분 (예: 2인분)"
+            class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300" />
+          <input id="recipe-time" type="text" placeholder="조리 시간 (예: 30분)"
+            class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300" />
+        </div>
+        <div class="bg-orange-50 rounded-xl p-3">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-xs font-bold text-orange-600">📋 영상 설명란 텍스트 붙여넣기 → 자동 파싱</span>
+            <button onclick="parseRecipeText()" class="text-xs bg-orange-500 text-white px-3 py-1 rounded-lg hover:bg-orange-600 transition font-bold">자동 분리</button>
+          </div>
+          <textarea id="recipe-raw-text" rows="4" placeholder="유튜브 영상 설명란의 재료·조리법 텍스트를 붙여넣고 '자동 분리' 클릭"
+            class="w-full border border-orange-200 rounded-xl px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-orange-300 resize-none"></textarea>
+        </div>
+        <textarea id="recipe-ingredients" rows="4" placeholder="🥬 재료 (한 줄에 하나씩)&#10;돼지고기 300g&#10;양파 1개&#10;간장 2큰술"
+          class="w-full border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300 resize-none"></textarea>
+        <textarea id="recipe-steps" rows="5" placeholder="👨‍🍳 조리법 (한 줄에 하나씩)&#10;1. 재료를 손질한다&#10;2. 팬에 기름을 두른다"
+          class="w-full border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300 resize-none"></textarea>
+        <input id="recipe-tags" type="text" placeholder="태그 (쉼표 구분, 예: 한식, 간편식, 다이어트)"
+          class="w-full border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300" />
+      </div>
+      <button onclick="saveRecipe()" class="w-full mt-3 bg-orange-500 text-white font-bold py-2.5 rounded-xl hover:bg-orange-600 transition text-sm">레시피 저장</button>
+    </div>
+    <div class="flex items-center gap-2 mb-4 flex-wrap">
+      <div id="recipe-tag-filter" class="flex gap-2 flex-wrap flex-1"></div>
+      <input id="recipe-search" type="text" placeholder="🔍 요리 검색..." oninput="renderRecipes()"
+        class="border rounded-xl px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-200 w-36" />
+    </div>
+    <div id="recipe-list" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+    <div id="recipe-empty" class="bg-white rounded-2xl p-10 text-center text-sm text-gray-400 shadow-sm hidden">요리 레시피를 추가해보세요 🍳</div>
+  </div>
+
   <!-- ── TAB: AI STUDY ── -->
   <div id="tab-content-aistudy" class="max-w-4xl mx-auto px-4 py-8 hidden">
     <div class="bg-white rounded-2xl shadow-sm p-5 mb-5">
@@ -1274,6 +1320,7 @@ let state = {
   adminFilter: '', editingId: null, dayOffset: 0,
   prayers: [], prayerFilter: 'all',
   sites: [], siteFilter: '',
+  recipes: [],
   todos: [], todoFilter: 'all', todoCalYear: null, todoCalMonth: null,
   jobs: [], jobFilter: '', jobChannelFilter: '',
   programs: [], programFilter: '', programCatFilter: '', programSiteFilter: '',
@@ -1401,7 +1448,7 @@ function showScreen(name) {
     document.getElementById('screen-'+s).classList.toggle('hidden', s !== name)
   );
 }
-const ALL_TABS = ['today','sites','prayer','todo','job','program','news','book','aistudy','admin'];
+const ALL_TABS = ['today','sites','prayer','todo','job','program','news','book','recipe','aistudy','admin'];
 function switchTab(name) {
   ALL_TABS.forEach(t => {
     const btn = document.getElementById('tab-'+t);
@@ -1417,6 +1464,7 @@ function switchTab(name) {
   if (name === 'program')  renderPrograms();
   if (name === 'news')     renderNewsTab();
   if (name === 'book')     renderBooks();
+  if (name === 'recipe')   renderRecipes();
   if (name === 'aistudy')  renderAiStudy();
 }
 
@@ -3295,6 +3343,123 @@ function deleteNewsCat(catId) {
   renderNewsTab();
   showToast('카테고리가 삭제됐습니다');
 }
+// ══════════════════════════════════════════
+//  RECIPE (요리모음)
+// ══════════════════════════════════════════
+function extractYoutubeId(url) {
+  const patterns = [/youtu\.be\/([^?&\s]+)/, /[?&]v=([^&\s]+)/, /embed\/([^?&\s]+)/, /shorts\/([^?&\s]+)/];
+  for (const p of patterns) { const m = (url||'').match(p); if (m) return m[1]; }
+  return null;
+}
+async function fetchRecipeVideo() {
+  const url = document.getElementById('recipe-url').value.trim();
+  if (!url) { showToast('⚠️ URL을 먼저 입력하세요'); return; }
+  const vid = extractYoutubeId(url);
+  const preview = document.getElementById('recipe-video-preview');
+  if (!vid) { showToast('⚠️ YouTube URL을 확인해주세요'); preview.classList.add('hidden'); return; }
+  preview.innerHTML = '<div class="relative cursor-pointer aspect-video">'
+    + '<img src="https://img.youtube.com/vi/' + vid + '/mqdefault.jpg" class="w-full h-full object-cover" />'
+    + '<div class="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/30 transition">'
+    + '<div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center shadow-lg">'
+    + '<svg viewBox="0 0 24 24" class="w-7 h-7 fill-white ml-1"><path d="M8 5v14l11-7z"/></svg>'
+    + '</div></div></div>';
+  preview.classList.remove('hidden');
+  try {
+    const res = await fetch('https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=' + vid + '&format=json');
+    if (res.ok) { const d = await res.json(); if (d.title) document.getElementById('recipe-title').value = d.title; showToast('✅ 영상 제목을 불러왔습니다'); }
+  } catch(e) { showToast('영상 제목 자동 로드 실패 — 직접 입력해주세요'); }
+}
+function parseRecipeText() {
+  const raw = document.getElementById('recipe-raw-text').value.trim();
+  if (!raw) { showToast('⚠️ 텍스트를 먼저 붙여넣으세요'); return; }
+  const lines = raw.split('\n').map(l => l.trim()).filter(Boolean);
+  const ingKW  = /\d+(g|ml|kg|oz|컵|큰술|작은술|개|장|봉|팩|마리|쪽|줄|cm|리터|인분)|적당|조금|약간/i;
+  const stepKW = /^\d+[.\)、]|^[①②③④⑤⑥⑦⑧⑨⑩]|^step\s*\d/i;
+  const secIng = /재료|ingredient/i;
+  const secStep= /만드는\s*법|조리|방법|레시피|순서|how\s*to|instruction/i;
+  let ingLines = [], stepLines = [], mode = 'auto';
+  for (const line of lines) {
+    if (secIng.test(line))  { mode = 'ing';  continue; }
+    if (secStep.test(line)) { mode = 'step'; continue; }
+    if (mode === 'ing')       { ingLines.push(line); continue; }
+    if (mode === 'step')      { stepLines.push(line); continue; }
+    if (stepKW.test(line) || line.length > 40) stepLines.push(line);
+    else if (ingKW.test(line) || line.length < 30) ingLines.push(line);
+    else stepLines.push(line);
+  }
+  if (ingLines.length)  document.getElementById('recipe-ingredients').value = ingLines.join('\n');
+  if (stepLines.length) document.getElementById('recipe-steps').value = stepLines.join('\n');
+  document.getElementById('recipe-raw-text').value = '';
+  showToast('✅ 재료 ' + ingLines.length + '줄 / 조리법 ' + stepLines.length + '줄로 분리됐습니다');
+}
+function saveRecipe() {
+  const title = document.getElementById('recipe-title').value.trim();
+  if (!title) { showToast('⚠️ 요리 이름을 입력하세요'); return; }
+  const url = document.getElementById('recipe-url').value.trim();
+  const tags = document.getElementById('recipe-tags').value.split(',').map(t=>t.trim()).filter(Boolean);
+  if (!state.recipes) state.recipes = [];
+  state.recipes.unshift({ id:uid(), url, videoId:extractYoutubeId(url)||'', title,
+    ingredients: document.getElementById('recipe-ingredients').value.trim(),
+    steps:       document.getElementById('recipe-steps').value.trim(),
+    servings:    document.getElementById('recipe-servings').value.trim(),
+    time:        document.getElementById('recipe-time').value.trim(),
+    tags, createdAt: Date.now() });
+  saveState();
+  ['recipe-url','recipe-title','recipe-ingredients','recipe-steps','recipe-tags','recipe-servings','recipe-time','recipe-raw-text'].forEach(id => { const el=document.getElementById(id); if(el) el.value=''; });
+  document.getElementById('recipe-video-preview').classList.add('hidden');
+  renderRecipes(); showToast('🍳 레시피가 저장됐습니다');
+}
+function deleteRecipe(id) {
+  if (!confirm('이 레시피를 삭제할까요?')) return;
+  state.recipes = (state.recipes||[]).filter(r=>r.id!==id); saveState(); renderRecipes();
+}
+let _recipeTagFilter = '';
+function filterRecipeTag(tag) { _recipeTagFilter = (_recipeTagFilter===tag)?'':tag; renderRecipes(); }
+function renderRecipes() {
+  if (!state.recipes) state.recipes = [];
+  const list  = document.getElementById('recipe-list');
+  const empty = document.getElementById('recipe-empty');
+  if (!list) return;
+  const search = (document.getElementById('recipe-search')?.value||'').toLowerCase();
+  const allTags = [...new Set(state.recipes.flatMap(r=>r.tags||[]))];
+  const filterEl = document.getElementById('recipe-tag-filter');
+  if (filterEl) filterEl.innerHTML = ['전체',...allTags].map(t => {
+    const active = (t==='전체'&&!_recipeTagFilter)||t===_recipeTagFilter;
+    const val = t==='전체'?'':t;
+    return '<button onclick="filterRecipeTag(\'' + escHtml(val) + '\')" class="text-xs px-3 py-1.5 rounded-full transition '
+      + (active?'bg-orange-500 text-white':'bg-white text-gray-500 border border-gray-200 hover:border-orange-300') + '">' + escHtml(t) + '</button>';
+  }).join('');
+  let filtered = state.recipes;
+  if (_recipeTagFilter) filtered = filtered.filter(r=>(r.tags||[]).includes(_recipeTagFilter));
+  if (search) filtered = filtered.filter(r => r.title.toLowerCase().includes(search)||(r.ingredients||'').toLowerCase().includes(search)||(r.tags||[]).some(t=>t.toLowerCase().includes(search)));
+  if (!filtered.length) { list.innerHTML=''; empty.classList.remove('hidden'); return; }
+  empty.classList.add('hidden');
+  list.innerHTML = filtered.map(r => {
+    const thumb = r.videoId ? 'https://img.youtube.com/vi/'+r.videoId+'/mqdefault.jpg' : '';
+    const vidLink = r.videoId ? 'https://www.youtube.com/watch?v='+r.videoId : (r.url||'');
+    const ings = (r.ingredients||'').split('\n').filter(Boolean);
+    const steps = (r.steps||'').split('\n').filter(Boolean);
+    return '<div class="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition group">'
+      + (thumb ? '<a href="'+escHtml(vidLink)+'" target="_blank" rel="noopener" class="block relative"><img src="'+thumb+'" class="w-full h-44 object-cover" />'
+          + '<div class="absolute inset-0 flex items-center justify-center bg-black/10 opacity-0 group-hover:opacity-100 transition">'
+          + '<div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center shadow-lg"><svg viewBox="0 0 24 24" class="w-6 h-6 fill-white ml-1"><path d="M8 5v14l11-7z"/></svg></div></div></a>' : '')
+      + '<div class="p-4">'
+      + '<div class="flex items-start justify-between gap-2 mb-1">'
+      + '<h3 class="font-bold text-gray-800 text-sm leading-snug flex-1">'
+      + (vidLink ? '<a href="'+escHtml(vidLink)+'" target="_blank" class="hover:text-orange-500 transition">'+escHtml(r.title)+'</a>' : escHtml(r.title))
+      + '</h3><button onclick="deleteRecipe(\''+r.id+'\')" class="opacity-0 group-hover:opacity-100 text-gray-300 hover:text-red-400 text-xl shrink-0 leading-none transition">×</button></div>'
+      + ((r.servings||r.time) ? '<div class="flex gap-3 text-xs text-gray-400 mb-2">'+(r.servings?'<span>👥 '+escHtml(r.servings)+'</span>':'')+(r.time?'<span>⏱ '+escHtml(r.time)+'</span>':'')+'</div>' : '')
+      + (r.tags?.length ? '<div class="flex flex-wrap gap-1 mb-3">'+r.tags.map(t=>'<span class="text-xs px-2 py-0.5 bg-orange-50 text-orange-500 rounded-full font-medium">'+escHtml(t)+'</span>').join('')+'</div>' : '')
+      + (ings.length ? '<div class="mb-3"><p class="text-xs font-bold text-gray-500 mb-1">🥬 재료</p><ul class="space-y-0.5">'
+          + ings.slice(0,6).map(l=>'<li class="text-xs text-gray-600">• '+escHtml(l)+'</li>').join('')
+          + (ings.length>6?'<li class="text-xs text-gray-400 italic">외 '+(ings.length-6)+'가지...</li>':'')+'</ul></div>' : '')
+      + (steps.length ? '<div><p class="text-xs font-bold text-gray-500 mb-1">👨‍🍳 조리법</p><ol class="space-y-0.5">'
+          + steps.slice(0,4).map(l=>'<li class="text-xs text-gray-600">'+escHtml(l)+'</li>').join('')
+          + (steps.length>4?'<li class="text-xs text-gray-400 italic">+ '+(steps.length-4)+'단계 더...</li>':'')+'</ol></div>' : '')
+      + '</div></div>';
+  }).join('');
+}
+
 function renderAiStudy() {
   // Build tag list
   const allTags=[...new Set(state.aiStudy.flatMap(x=>x.tags))].sort();
