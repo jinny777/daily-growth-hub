@@ -796,13 +796,20 @@
           <input id="recipe-time" type="text" placeholder="조리 시간 (예: 30분)"
             class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300" />
         </div>
-        <div class="bg-orange-50 rounded-xl p-3">
+        <div class="bg-purple-50 rounded-xl p-3">
           <div class="flex items-center justify-between mb-1">
-            <span class="text-xs font-bold text-orange-600">📋 영상 설명란 텍스트 붙여넣기 → 자동 파싱</span>
-            <button onclick="parseRecipeText()" class="text-xs bg-orange-500 text-white px-3 py-1 rounded-lg hover:bg-orange-600 transition font-bold">자동 분리</button>
+            <div>
+              <span class="text-xs font-bold text-purple-700">🤖 AI 자동 레시피 추출</span>
+              <span class="text-xs text-purple-400 ml-1">(Anthropic API 키 필요)</span>
+            </div>
+            <div class="flex gap-1">
+              <button onclick="openClaudeKeyModal()" class="text-xs border border-purple-300 text-purple-600 px-2 py-1 rounded-lg hover:bg-purple-100 transition">🔑 키 설정</button>
+              <button onclick="extractRecipeWithAI()" id="btn-ai-extract" class="text-xs bg-purple-600 text-white px-3 py-1 rounded-lg hover:bg-purple-700 transition font-bold">AI 레시피 추출</button>
+            </div>
           </div>
-          <textarea id="recipe-raw-text" rows="4" placeholder="유튜브 영상 설명란의 재료·조리법 텍스트를 붙여넣고 '자동 분리' 클릭"
-            class="w-full border border-orange-200 rounded-xl px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-orange-300 resize-none"></textarea>
+          <p class="text-xs text-purple-500 mb-2">① 위에서 영상 불러오기 → 자막 자동 수집 시도<br>② 안 되면 아래에 자막/설명 직접 붙여넣기 후 AI 추출 클릭</p>
+          <textarea id="recipe-raw-text" rows="4" placeholder="자막 텍스트를 여기에 붙여넣기 (YouTube → 영상 하단 '...' → '자막 열기'에서 복사)"
+            class="w-full border border-purple-200 rounded-xl px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-purple-300 resize-none"></textarea>
         </div>
         <textarea id="recipe-ingredients" rows="4" placeholder="🥬 재료 (한 줄에 하나씩)&#10;돼지고기 300g&#10;양파 1개&#10;간장 2큰술"
           class="w-full border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300 resize-none"></textarea>
@@ -1227,6 +1234,21 @@
         class="flex-1 bg-green-500 text-white font-bold py-2.5 rounded-xl hover:bg-green-600 transition text-sm">✅ 응답 저장</button>
       <button onclick="document.getElementById('prayer-answer-modal').classList.add('hidden')"
         class="px-5 bg-gray-100 text-gray-600 font-medium py-2.5 rounded-xl hover:bg-gray-200 transition text-sm">취소</button>
+    </div>
+  </div>
+</div>
+
+<!-- CLAUDE API KEY MODAL -->
+<div id="claude-key-modal" class="fixed inset-0 bg-black/40 flex items-center justify-center z-50 hidden p-4">
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm p-6">
+    <h3 class="font-bold text-gray-800 mb-1">🤖 Claude API 키 설정</h3>
+    <p class="text-xs text-gray-400 mb-3">Anthropic Console에서 발급한 API 키를 입력하세요.<br>키는 이 기기의 브라우저에만 저장됩니다.</p>
+    <input id="claude-api-key-input" type="password" placeholder="sk-ant-api03-..."
+      class="w-full border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-300 mb-3 font-mono" />
+    <p class="text-xs text-gray-400 mb-3">발급: <a href="https://console.anthropic.com/settings/keys" target="_blank" class="text-purple-500 underline">console.anthropic.com</a></p>
+    <div class="flex gap-2">
+      <button onclick="saveClaudeKey()" class="flex-1 bg-purple-600 text-white font-bold py-2.5 rounded-xl hover:bg-purple-700 transition text-sm">저장</button>
+      <button onclick="document.getElementById('claude-key-modal').classList.add('hidden')" class="px-5 bg-gray-100 text-gray-600 font-medium py-2.5 rounded-xl hover:bg-gray-200 transition text-sm">취소</button>
     </div>
   </div>
 </div>
@@ -3351,23 +3373,138 @@ function extractYoutubeId(url) {
   for (const p of patterns) { const m = (url||'').match(p); if (m) return m[1]; }
   return null;
 }
+function getClaudeKey() { return localStorage.getItem('dgh_claude_key') || ''; }
+function saveClaudeKey() {
+  const key = document.getElementById('claude-api-key-input').value.trim();
+  if (!key) { showToast('⚠️ API 키를 입력하세요'); return; }
+  localStorage.setItem('dgh_claude_key', key);
+  document.getElementById('claude-key-modal').classList.add('hidden');
+  showToast('🔑 Claude API 키가 저장됐습니다');
+}
+function openClaudeKeyModal() {
+  document.getElementById('claude-api-key-input').value = getClaudeKey();
+  document.getElementById('claude-key-modal').classList.remove('hidden');
+}
+
 async function fetchRecipeVideo() {
   const url = document.getElementById('recipe-url').value.trim();
   if (!url) { showToast('⚠️ URL을 먼저 입력하세요'); return; }
   const vid = extractYoutubeId(url);
   const preview = document.getElementById('recipe-video-preview');
   if (!vid) { showToast('⚠️ YouTube URL을 확인해주세요'); preview.classList.add('hidden'); return; }
-  preview.innerHTML = '<div class="relative cursor-pointer aspect-video">'
+
+  preview.innerHTML = '<div class="relative aspect-video">'
     + '<img src="https://img.youtube.com/vi/' + vid + '/mqdefault.jpg" class="w-full h-full object-cover" />'
-    + '<div class="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/30 transition">'
+    + '<div class="absolute inset-0 flex items-center justify-center bg-black/20">'
     + '<div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center shadow-lg">'
     + '<svg viewBox="0 0 24 24" class="w-7 h-7 fill-white ml-1"><path d="M8 5v14l11-7z"/></svg>'
     + '</div></div></div>';
   preview.classList.remove('hidden');
+
+  // 제목 로드
   try {
     const res = await fetch('https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=' + vid + '&format=json');
-    if (res.ok) { const d = await res.json(); if (d.title) document.getElementById('recipe-title').value = d.title; showToast('✅ 영상 제목을 불러왔습니다'); }
-  } catch(e) { showToast('영상 제목 자동 로드 실패 — 직접 입력해주세요'); }
+    if (res.ok) { const d = await res.json(); if (d.title) document.getElementById('recipe-title').value = d.title; }
+  } catch(e) {}
+
+  // 자막 자동 수집 시도
+  const rawEl = document.getElementById('recipe-raw-text');
+  if (rawEl.value.trim()) { showToast('✅ 영상 정보 로드 완료'); return; }
+
+  showToast('⏳ 자막 수집 중...');
+  const transcript = await fetchYoutubeTranscript(vid);
+  if (transcript) {
+    rawEl.value = transcript;
+    showToast('✅ 자막 자동 수집 완료! AI 레시피 추출 버튼을 클릭하세요.');
+  } else {
+    showToast('⚠️ 자막 자동 수집 실패 — YouTube에서 자막을 직접 복사해 붙여넣으세요.');
+  }
+}
+
+async function fetchYoutubeTranscript(videoId) {
+  const proxies = [
+    'https://corsproxy.io/?url=',
+    'https://api.allorigins.win/raw?url='
+  ];
+  const langs = ['ko', 'en', 'a.ko', 'a.en'];
+  for (const proxy of proxies) {
+    for (const lang of langs) {
+      try {
+        const endpoint = 'https://www.youtube.com/api/timedtext?lang=' + lang + '&v=' + videoId + '&fmt=json3';
+        const res = await fetch(proxy + encodeURIComponent(endpoint), { signal: AbortSignal.timeout(6000) });
+        if (!res.ok) continue;
+        const data = await res.json();
+        const events = data.events || [];
+        const text = events
+          .filter(e => e.segs)
+          .map(e => e.segs.map(s => s.utf8 || '').join(''))
+          .join(' ')
+          .replace(/\s+/g, ' ')
+          .trim();
+        if (text.length > 100) return text;
+      } catch(e) { continue; }
+    }
+  }
+  return null;
+}
+
+async function extractRecipeWithAI() {
+  const rawText = document.getElementById('recipe-raw-text').value.trim();
+  if (!rawText) { showToast('⚠️ 자막 텍스트가 없습니다. 먼저 영상 불러오기를 하거나 자막을 붙여넣으세요.'); return; }
+
+  const apiKey = getClaudeKey();
+  if (!apiKey) { openClaudeKeyModal(); return; }
+
+  const btn = document.getElementById('btn-ai-extract');
+  btn.textContent = '⏳ AI 분석 중...'; btn.disabled = true;
+
+  try {
+    const prompt = '다음은 요리 영상의 자막/스크립트입니다. 레시피를 추출해서 반드시 아래 JSON 형식으로만 답하세요. 다른 설명은 절대 하지 마세요.\n\n'
+      + '{\n  "title": "요리 이름",\n  "servings": "몇 인분",\n  "time": "조리 시간",\n'
+      + '  "ingredients": ["재료1 (양)", "재료2 (양)"],\n'
+      + '  "steps": ["1단계 설명", "2단계 설명"],\n'
+      + '  "tags": ["태그1", "태그2"]\n}\n\n'
+      + '자막:\n' + rawText.slice(0, 4000);
+
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 1500,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+
+    if (res.status === 401) throw new Error('API 키가 잘못됐습니다. 🔑 키 설정을 확인하세요.');
+    if (!res.ok) throw new Error('Claude API 오류 (' + res.status + ')');
+
+    const data = await res.json();
+    const text = data.content[0].text.trim();
+
+    // JSON 파싱
+    const jsonMatch = text.match(/\{[\s\S]*\}/);
+    if (!jsonMatch) throw new Error('AI 응답 파싱 실패');
+    const recipe = JSON.parse(jsonMatch[0]);
+
+    if (recipe.title)       document.getElementById('recipe-title').value       = recipe.title;
+    if (recipe.servings)    document.getElementById('recipe-servings').value    = recipe.servings;
+    if (recipe.time)        document.getElementById('recipe-time').value        = recipe.time;
+    if (recipe.ingredients) document.getElementById('recipe-ingredients').value = recipe.ingredients.join('\n');
+    if (recipe.steps)       document.getElementById('recipe-steps').value       = recipe.steps.join('\n');
+    if (recipe.tags)        document.getElementById('recipe-tags').value        = recipe.tags.join(', ');
+
+    document.getElementById('recipe-raw-text').value = '';
+    showToast('🍳 AI가 레시피를 추출했습니다! 확인 후 저장하세요.');
+  } catch(e) {
+    showToast('❌ ' + e.message);
+  }
+  btn.textContent = 'AI 레시피 추출'; btn.disabled = false;
 }
 function parseRecipeText() {
   const raw = document.getElementById('recipe-raw-text').value.trim();
