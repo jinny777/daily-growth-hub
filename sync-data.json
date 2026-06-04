@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-06-04T02:03:24.964Z",
+  "savedAt": "2026-06-04T09:56:26.997Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -8064,6 +8064,9 @@
       }
     ],
     "aiTagFilter": "",
+    "newsCategories": [],
+    "newsCache": {},
+    "newsCatFilter": "",
     "statusModalType": null,
     "statusModalId": null,
     "notiSettings": {
