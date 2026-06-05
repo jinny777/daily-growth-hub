@@ -3445,35 +3445,25 @@ async function transcribeWithDagloUrl() {
   btn.textContent = '⏳ 전사 중...'; btn.disabled = true;
   status.textContent = 'URL 전사 요청 중...'; status.classList.remove('hidden');
 
+  // 올바른 Daglo API 요청 형식: audio.source.url
+  const body = JSON.stringify({ audio: { source: { url } } });
+
   try {
-    // 동기 시도
-    const syncRes = await fetch('https://apis.daglo.ai/stt/v1/sync/transcripts', {
+    const asyncRes = await fetch('https://apis.daglo.ai/stt/v1/async/transcripts', {
       method: 'POST',
       headers: { 'Authorization': 'Bearer ' + apiKey, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ url, config: { useParagraph: false } }),
-      signal: AbortSignal.timeout(120000)
+      body
     });
-
-    if (syncRes.status === 401) throw new Error('다글로 API 키가 잘못됐습니다.');
-    if (syncRes.ok) {
-      const data = await syncRes.json();
-      const text = extractDagloText(data);
-      if (!text) throw new Error('전사 결과가 비어 있습니다.');
-      document.getElementById('recipe-raw-text').value = text;
-      status.textContent = '✅ 전사 완료! AI 추출 버튼을 클릭하세요.';
-      showToast('🎙️ 다글로 URL 전사 완료!');
-    } else {
-      // 비동기 전사
-      status.textContent = '비동기 전사로 전환 중...';
-      const asyncRes = await fetch('https://apis.daglo.ai/stt/v1/async/transcripts', {
-        method: 'POST',
-        headers: { 'Authorization': 'Bearer ' + apiKey, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url, config: { useParagraph: false } })
-      });
-      if (!asyncRes.ok) throw new Error('전사 요청 실패 (' + asyncRes.status + ')');
-      const { rid } = await asyncRes.json();
-      await pollDagloResult(rid, apiKey, status);
+    if (asyncRes.status === 401) throw new Error('다글로 API 키가 잘못됐습니다.');
+    if (!asyncRes.ok) {
+      const err = await asyncRes.json().catch(() => ({}));
+      throw new Error('전사 요청 실패 (' + asyncRes.status + ')' + (err.message ? ': ' + err.message : ''));
     }
+    const result = await asyncRes.json();
+    const rid = result.rid || result.requestId || result.id;
+    if (!rid) throw new Error('요청 ID를 받지 못했습니다: ' + JSON.stringify(result));
+    status.textContent = '전사 시작됨, 완료 대기 중...';
+    await pollDagloResult(rid, apiKey, status);
   } catch(e) {
     status.textContent = '❌ ' + e.message;
     showToast('❌ ' + e.message);
@@ -3547,7 +3537,7 @@ async function pollDagloResult(rid, apiKey, statusEl) {
       });
       if (!pollRes.ok) continue;
       const data = await pollRes.json();
-      if (data.status === 'completed' || data.transcript) {
+      if (data.status === 'completed' || data.status === 'transcribed' || data.transcript || data.sttResults?.length) {
         const text = extractDagloText(data);
         document.getElementById('recipe-raw-text').value = text;
         statusEl.textContent = '✅ 전사 완료! AI 추출 버튼을 클릭하세요.';
@@ -3561,12 +3551,16 @@ async function pollDagloResult(rid, apiKey, statusEl) {
 }
 
 function extractDagloText(data) {
-  // 다글로 응답 구조에서 텍스트 추출
+  // sttResults 배열 (공식 응답 구조)
+  if (data.sttResults?.length) return data.sttResults.map(r => r.transcript || '').join(' ').trim();
+  // 단일 transcript 필드
   if (data.transcript) return data.transcript;
+  // results.transcripts
   if (data.results?.transcripts) return data.results.transcripts.map(t => t.transcript).join(' ');
-  if (data.utterances) return data.utterances.map(u => u.msg).join(' ');
+  // utterances 배열
+  if (data.utterances?.length) return data.utterances.map(u => u.msg || u.transcript || '').join(' ').trim();
   if (typeof data.text === 'string') return data.text;
-  return JSON.stringify(data).slice(0, 2000);
+  return '';
 }
 
 // ── Claude AI ──────────────────────────────
