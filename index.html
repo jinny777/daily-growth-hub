@@ -796,19 +796,41 @@
           <input id="recipe-time" type="text" placeholder="조리 시간 (예: 30분)"
             class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300" />
         </div>
+        <!-- 다글로 음성 전사 -->
+        <div class="bg-blue-50 rounded-xl p-3">
+          <div class="flex items-center justify-between mb-1">
+            <div>
+              <span class="text-xs font-bold text-blue-700">🎙️ 다글로 음성 전사</span>
+              <span class="text-xs text-blue-400 ml-1">(Daglo API 키 필요)</span>
+            </div>
+            <button onclick="openDagloKeyModal()" class="text-xs border border-blue-300 text-blue-600 px-2 py-1 rounded-lg hover:bg-blue-100 transition">🔑 키 설정</button>
+          </div>
+          <p class="text-xs text-blue-500 mb-2">오디오 파일(mp3·m4a·wav)을 업로드하면 다글로가 텍스트로 변환합니다.<br>YouTube 오디오는 <a href="https://yt-dlp.org" target="_blank" class="underline">yt-dlp</a> 또는 브라우저 확장앱으로 먼저 다운로드하세요.</p>
+          <div class="flex gap-2 items-center">
+            <label class="flex-1 flex items-center gap-2 border border-blue-200 rounded-xl px-3 py-2 bg-white cursor-pointer hover:border-blue-400 transition">
+              <span class="text-blue-400 text-lg">🎵</span>
+              <span id="daglo-file-name" class="text-xs text-gray-400 flex-1">오디오 파일 선택...</span>
+              <input id="daglo-audio-input" type="file" accept=".mp3,.m4a,.wav,.ogg,.flac,.aac" class="hidden" onchange="onDagloFileSelected(this)" />
+            </label>
+            <button onclick="transcribeWithDaglo()" id="btn-daglo" class="text-xs bg-blue-600 text-white px-3 py-2 rounded-xl hover:bg-blue-700 transition font-bold whitespace-nowrap">전사 시작</button>
+          </div>
+          <div id="daglo-status" class="text-xs text-blue-500 mt-1 hidden"></div>
+        </div>
+
+        <!-- AI 레시피 추출 -->
         <div class="bg-purple-50 rounded-xl p-3">
           <div class="flex items-center justify-between mb-1">
             <div>
-              <span class="text-xs font-bold text-purple-700">🤖 AI 자동 레시피 추출</span>
+              <span class="text-xs font-bold text-purple-700">🤖 AI 레시피 추출</span>
               <span class="text-xs text-purple-400 ml-1">(Anthropic API 키 필요)</span>
             </div>
             <div class="flex gap-1">
               <button onclick="openClaudeKeyModal()" class="text-xs border border-purple-300 text-purple-600 px-2 py-1 rounded-lg hover:bg-purple-100 transition">🔑 키 설정</button>
-              <button onclick="extractRecipeWithAI()" id="btn-ai-extract" class="text-xs bg-purple-600 text-white px-3 py-1 rounded-lg hover:bg-purple-700 transition font-bold">AI 레시피 추출</button>
+              <button onclick="extractRecipeWithAI()" id="btn-ai-extract" class="text-xs bg-purple-600 text-white px-3 py-1 rounded-lg hover:bg-purple-700 transition font-bold">AI 추출</button>
             </div>
           </div>
-          <p class="text-xs text-purple-500 mb-2">① 위에서 영상 불러오기 → 자막 자동 수집 시도<br>② 안 되면 아래에 자막/설명 직접 붙여넣기 후 AI 추출 클릭</p>
-          <textarea id="recipe-raw-text" rows="4" placeholder="자막 텍스트를 여기에 붙여넣기 (YouTube → 영상 하단 '...' → '자막 열기'에서 복사)"
+          <p class="text-xs text-purple-500 mb-2">전사된 텍스트 또는 직접 붙여넣은 자막으로 재료·조리법을 자동 생성합니다.<br>텍스트 없으면 영상 제목으로 AI가 레시피를 직접 생성합니다.</p>
+          <textarea id="recipe-raw-text" rows="3" placeholder="여기에 텍스트가 자동으로 채워지거나, 직접 붙여넣으세요."
             class="w-full border border-purple-200 rounded-xl px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-purple-300 resize-none"></textarea>
         </div>
         <textarea id="recipe-ingredients" rows="4" placeholder="🥬 재료 (한 줄에 하나씩)&#10;돼지고기 300g&#10;양파 1개&#10;간장 2큰술"
@@ -1234,6 +1256,21 @@
         class="flex-1 bg-green-500 text-white font-bold py-2.5 rounded-xl hover:bg-green-600 transition text-sm">✅ 응답 저장</button>
       <button onclick="document.getElementById('prayer-answer-modal').classList.add('hidden')"
         class="px-5 bg-gray-100 text-gray-600 font-medium py-2.5 rounded-xl hover:bg-gray-200 transition text-sm">취소</button>
+    </div>
+  </div>
+</div>
+
+<!-- DAGLO API KEY MODAL -->
+<div id="daglo-key-modal" class="fixed inset-0 bg-black/40 flex items-center justify-center z-50 hidden p-4">
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm p-6">
+    <h3 class="font-bold text-gray-800 mb-1">🎙️ 다글로(Daglo) API 키 설정</h3>
+    <p class="text-xs text-gray-400 mb-3">다글로에서 발급한 API 키를 입력하세요. 한국어 음성 인식에 최적화되어 있습니다.</p>
+    <input id="daglo-api-key-input" type="password" placeholder="Daglo API Key..."
+      class="w-full border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300 mb-3 font-mono" />
+    <p class="text-xs text-gray-400 mb-3">발급: <a href="https://daglo.ai" target="_blank" class="text-blue-500 underline">daglo.ai</a> → 회원가입 → API 키 발급</p>
+    <div class="flex gap-2">
+      <button onclick="saveDagloKey()" class="flex-1 bg-blue-600 text-white font-bold py-2.5 rounded-xl hover:bg-blue-700 transition text-sm">저장</button>
+      <button onclick="document.getElementById('daglo-key-modal').classList.add('hidden')" class="px-5 bg-gray-100 text-gray-600 font-medium py-2.5 rounded-xl hover:bg-gray-200 transition text-sm">취소</button>
     </div>
   </div>
 </div>
@@ -3373,6 +3410,118 @@ function extractYoutubeId(url) {
   for (const p of patterns) { const m = (url||'').match(p); if (m) return m[1]; }
   return null;
 }
+// ── 다글로 STT ──────────────────────────────
+function getDagloKey() { return localStorage.getItem('dgh_daglo_key') || ''; }
+function saveDagloKey() {
+  const key = document.getElementById('daglo-api-key-input').value.trim();
+  if (!key) { showToast('⚠️ API 키를 입력하세요'); return; }
+  localStorage.setItem('dgh_daglo_key', key);
+  document.getElementById('daglo-key-modal').classList.add('hidden');
+  showToast('🎙️ 다글로 API 키가 저장됐습니다');
+}
+function openDagloKeyModal() {
+  document.getElementById('daglo-api-key-input').value = getDagloKey();
+  document.getElementById('daglo-key-modal').classList.remove('hidden');
+}
+function onDagloFileSelected(input) {
+  const file = input.files[0];
+  document.getElementById('daglo-file-name').textContent = file ? file.name : '오디오 파일 선택...';
+}
+async function transcribeWithDaglo() {
+  const input = document.getElementById('daglo-audio-input');
+  const file  = input.files[0];
+  if (!file) { showToast('⚠️ 오디오 파일을 먼저 선택하세요'); return; }
+
+  const apiKey = getDagloKey();
+  if (!apiKey) { openDagloKeyModal(); return; }
+
+  const btn    = document.getElementById('btn-daglo');
+  const status = document.getElementById('daglo-status');
+  btn.textContent = '⏳ 전사 중...'; btn.disabled = true;
+  status.textContent = '파일 업로드 중...'; status.classList.remove('hidden');
+
+  try {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('config', JSON.stringify({ useParagraph: false }));
+
+    // 동기 전사 (5분 미만 파일)
+    const res = await fetch('https://apis.daglo.ai/stt/v1/sync/transcripts', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + apiKey },
+      body: formData,
+      signal: AbortSignal.timeout(120000)
+    });
+
+    if (res.status === 401) throw new Error('다글로 API 키가 잘못됐습니다.');
+    if (res.status === 413) throw new Error('파일이 너무 큽니다. 10분 이내 파일을 사용하세요.');
+    if (!res.ok) {
+      // 비동기 전사 시도 (긴 파일)
+      status.textContent = '긴 파일 감지 — 비동기 전사 시작...';
+      await transcribeWithDagloAsync(file, apiKey, status);
+      return;
+    }
+
+    const data = await res.json();
+    const text = extractDagloText(data);
+    if (!text) throw new Error('전사 결과가 비어 있습니다.');
+
+    document.getElementById('recipe-raw-text').value = text;
+    status.textContent = '✅ 전사 완료! AI 추출 버튼을 클릭하세요.';
+    showToast('🎙️ 다글로 전사 완료!');
+  } catch(e) {
+    status.textContent = '❌ ' + e.message;
+    showToast('❌ ' + e.message);
+  }
+  btn.textContent = '전사 시작'; btn.disabled = false;
+}
+
+async function transcribeWithDagloAsync(file, apiKey, statusEl) {
+  const formData = new FormData();
+  formData.append('file', file);
+  formData.append('config', JSON.stringify({ useParagraph: false }));
+
+  const submitRes = await fetch('https://apis.daglo.ai/stt/v1/async/transcripts', {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer ' + apiKey },
+    body: formData
+  });
+  if (!submitRes.ok) throw new Error('비동기 전사 제출 실패 (' + submitRes.status + ')');
+  const { rid } = await submitRes.json();
+
+  // 폴링 (최대 5분)
+  for (let i = 0; i < 30; i++) {
+    await new Promise(r => setTimeout(r, 10000));
+    statusEl.textContent = '전사 진행 중... (' + ((i+1)*10) + '초)';
+    const pollRes = await fetch('https://apis.daglo.ai/stt/v1/async/transcripts/' + rid, {
+      headers: { 'Authorization': 'Bearer ' + apiKey }
+    });
+    if (!pollRes.ok) continue;
+    const data = await pollRes.json();
+    if (data.status === 'completed') {
+      const text = extractDagloText(data);
+      document.getElementById('recipe-raw-text').value = text;
+      statusEl.textContent = '✅ 전사 완료! AI 추출 버튼을 클릭하세요.';
+      showToast('🎙️ 다글로 전사 완료!');
+      document.getElementById('btn-daglo').textContent = '전사 시작';
+      document.getElementById('btn-daglo').disabled = false;
+      return;
+    }
+    if (data.status === 'failed') throw new Error('전사 실패');
+  }
+  throw new Error('전사 시간 초과 (5분)');
+}
+
+function extractDagloText(data) {
+  // 다글로 응답 구조에서 텍스트 추출
+  if (data.transcript) return data.transcript;
+  if (data.results?.transcripts) return data.results.transcripts.map(t => t.transcript).join(' ');
+  if (data.utterances) return data.utterances.map(u => u.msg).join(' ');
+  if (typeof data.text === 'string') return data.text;
+  return JSON.stringify(data).slice(0, 2000);
+}
+
+// ── Claude AI ──────────────────────────────
 function getClaudeKey() { return localStorage.getItem('dgh_claude_key') || ''; }
 function saveClaudeKey() {
   const key = document.getElementById('claude-api-key-input').value.trim();
