@@ -784,9 +784,12 @@
       <div class="space-y-2">
         <div class="flex gap-2">
           <input id="recipe-url" type="url" placeholder="YouTube URL 붙여넣기 (https://youtu.be/...)"
-            class="flex-1 border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300" />
-          <button onclick="fetchRecipeVideo()" class="bg-orange-500 text-white px-4 py-2 rounded-xl text-sm font-bold hover:bg-orange-600 transition whitespace-nowrap">영상 불러오기</button>
+            class="flex-1 border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300"
+            onkeydown="if(event.key==='Enter')autoRecipeFromUrl()" />
+          <button onclick="autoRecipeFromUrl()" id="btn-auto-recipe"
+            class="bg-gradient-to-r from-orange-500 to-purple-600 text-white px-4 py-2 rounded-xl text-sm font-bold hover:opacity-90 transition whitespace-nowrap">🪄 레시피 추출</button>
         </div>
+        <div id="auto-recipe-status" class="hidden text-xs text-center py-2 px-3 bg-orange-50 rounded-xl text-orange-600 font-medium"></div>
         <div id="recipe-video-preview" class="hidden rounded-xl overflow-hidden bg-gray-100"></div>
         <input id="recipe-title" type="text" placeholder="요리 이름 *"
           class="w-full border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300" />
@@ -3573,6 +3576,72 @@ function extractDagloText(data) {
 }
 
 // ── Claude AI ──────────────────────────────
+// ── 원클릭 자동 레시피 추출 ──────────────────
+async function autoRecipeFromUrl() {
+  const url = document.getElementById('recipe-url').value.trim();
+  if (!url) { showToast('⚠️ URL을 먼저 입력하세요'); return; }
+
+  const claudeKey = getClaudeKey();
+  if (!claudeKey) {
+    openClaudeKeyModal();
+    showToast('⚠️ Claude API 키를 먼저 설정하세요');
+    return;
+  }
+
+  const vid  = extractYoutubeId(url);
+  const btn  = document.getElementById('btn-auto-recipe');
+  const stat = document.getElementById('auto-recipe-status');
+  btn.textContent = '⏳ 처리 중...'; btn.disabled = true;
+  stat.classList.remove('hidden');
+
+  const setStatus = (msg) => { stat.textContent = msg; };
+
+  try {
+    // 1단계: 제목 + 썸네일
+    setStatus('① 영상 정보 불러오는 중...');
+    const preview = document.getElementById('recipe-video-preview');
+    if (vid) {
+      preview.innerHTML = '<div class="relative aspect-video">'
+        + '<img src="https://img.youtube.com/vi/' + vid + '/mqdefault.jpg" class="w-full h-full object-cover" />'
+        + '<div class="absolute inset-0 flex items-center justify-center bg-black/20">'
+        + '<div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center shadow-lg">'
+        + '<svg viewBox="0 0 24 24" class="w-7 h-7 fill-white ml-1"><path d="M8 5v14l11-7z"/></svg>'
+        + '</div></div></div>';
+      preview.classList.remove('hidden');
+      try {
+        const r = await fetch('https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=' + vid + '&format=json');
+        if (r.ok) { const d = await r.json(); if (d.title) document.getElementById('recipe-title').value = d.title; }
+      } catch(e) {}
+    }
+
+    // 2단계: 자막 수집
+    let rawText = '';
+    setStatus('② 자막 수집 중...');
+    if (vid) {
+      const transcript = await fetchYoutubeTranscript(vid);
+      if (transcript) {
+        rawText = transcript;
+        setStatus('② 자막 수집 완료 ✅');
+      } else {
+        setStatus('② 자막 없음 — 영상 설명란 확인 중...');
+        const desc = await fetchYoutubeDescription(vid);
+        if (desc) { rawText = desc; setStatus('② 영상 설명란 수집 완료 ✅'); }
+        else { setStatus('② 자막/설명 없음 — 영상 제목으로 레시피 생성...'); }
+      }
+    }
+    document.getElementById('recipe-raw-text').value = rawText;
+
+    // 3단계: AI 레시피 추출
+    setStatus('③ AI가 레시피 분석 중...');
+    await extractRecipeWithAI();
+    setStatus('✅ 레시피 추출 완료! 내용을 확인하고 저장하세요.');
+  } catch(e) {
+    setStatus('❌ ' + e.message);
+    showToast('❌ ' + e.message);
+  }
+  btn.textContent = '🪄 레시피 추출'; btn.disabled = false;
+}
+
 function getClaudeKey() { return localStorage.getItem('dgh_claude_key') || ''; }
 function saveClaudeKey() {
   const key = document.getElementById('claude-api-key-input').value.trim();
