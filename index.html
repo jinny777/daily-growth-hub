@@ -3817,18 +3817,28 @@ async function extractRecipeWithAI() {
       return;
     }
 
-    const res = await fetch(
-      'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + apiKey,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
-      }
+    // gemini-1.5-flash 시도 → 실패 시 gemini-pro 폴백
+    let res, model = 'gemini-1.5-flash';
+    res = await fetch(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + model + ':generateContent?key=' + apiKey,
+      { method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }) }
     );
-
-    if (res.status === 400) throw new Error('API 키가 잘못됐습니다. 🔑 키 설정에서 Gemini 키를 확인하세요.');
-    if (res.status === 403) throw new Error('API 키 권한 오류. aistudio.google.com에서 키를 재발급하세요.');
-    if (!res.ok) throw new Error('Gemini API 오류 (' + res.status + ')');
+    if (!res.ok && res.status !== 401 && res.status !== 403) {
+      model = 'gemini-pro';
+      res = await fetch(
+        'https://generativelanguage.googleapis.com/v1beta/models/' + model + ':generateContent?key=' + apiKey,
+        { method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }) }
+      );
+    }
+    if (!res.ok) {
+      let errMsg = 'Gemini API 오류 (' + res.status + ')';
+      try { const e = await res.json(); errMsg += ': ' + (e.error?.message || JSON.stringify(e)); } catch(e2) {}
+      if (res.status === 400 || res.status === 401) errMsg = 'API 키가 잘못됐습니다. 🔑 키 설정 확인 → AIzaSy... 형식이어야 합니다.';
+      if (res.status === 403) errMsg = '키 권한 없음. aistudio.google.com에서 키를 새로 발급하세요.';
+      throw new Error(errMsg);
+    }
 
     const data = await res.json();
     const text = (data.candidates?.[0]?.content?.parts?.[0]?.text || '').trim();
