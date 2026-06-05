@@ -3817,14 +3817,8 @@ async function extractRecipeWithAI() {
       return;
     }
 
-    // 모델 순서대로 시도
-    const models = [
-      'gemini-2.0-flash-lite',
-      'gemini-2.0-flash',
-      'gemini-1.5-flash',
-      'gemini-1.5-flash-latest',
-      'gemini-1.0-pro'
-    ];
+    // 모델 순서대로 시도 (404는 다음 모델로, 그 외 오류는 중단)
+    const models = ['gemini-2.0-flash-lite', 'gemini-2.0-flash', 'gemini-1.5-flash'];
     let res, usedModel = '';
     for (const model of models) {
       res = await fetch(
@@ -3833,16 +3827,17 @@ async function extractRecipeWithAI() {
           body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }) }
       );
       if (res.ok) { usedModel = model; break; }
-      if (res.status === 401 || res.status === 403) break; // 키 오류면 더 시도 안 함
+      if (res.status !== 404) break; // 404 외 오류(401,403,429 등)는 다른 모델 시도 안 함
     }
     if (!res.ok) {
-      let errMsg = 'Gemini API 오류 (' + res.status + ')';
-      try { const e = await res.json(); errMsg += '\n' + (e.error?.message || ''); } catch(e2) {}
-      if (res.status === 400) errMsg = 'API 키가 잘못됐습니다. AIzaSy... 형식 키인지 확인하세요.';
-      if (res.status === 401 || res.status === 403) errMsg = '키 권한 없음. aistudio.google.com에서 새 키를 발급하세요.';
-      throw new Error(errMsg);
+      let errDetail = '';
+      try { const e = await res.json(); errDetail = e.error?.message || ''; } catch(e2) {}
+      if (res.status === 429) throw new Error('요청 한도 초과 (429) — 1분 후 다시 시도하세요.\n무료 플랜: 분당 15회 제한');
+      if (res.status === 400) throw new Error('API 키가 잘못됐습니다. AIzaSy... 형식인지 확인하세요.');
+      if (res.status === 401 || res.status === 403) throw new Error('키 권한 없음. aistudio.google.com에서 새 키를 발급하세요.');
+      throw new Error('Gemini API 오류 (' + res.status + ') ' + errDetail);
     }
-    console.log('Gemini 모델 사용:', usedModel);
+    console.log('Gemini 사용 모델:', usedModel);
 
     const data = await res.json();
     const text = (data.candidates?.[0]?.content?.parts?.[0]?.text || '').trim();
