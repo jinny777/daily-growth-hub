@@ -799,7 +799,23 @@
           <input id="recipe-time" type="text" placeholder="조리 시간 (예: 30분)"
             class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300" />
         </div>
-        <!-- 다글로 음성 전사 -->
+        <!-- 다글로 웹앱 연동 -->
+        <div class="bg-sky-50 rounded-xl p-3 border border-sky-200">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-sky-700">🎙️ 다글로 웹앱으로 전사 (자막 없는 영상용)</span>
+            <button onclick="openDagloWeb()" id="btn-daglo-web"
+              class="text-xs bg-sky-600 text-white px-3 py-1.5 rounded-lg hover:bg-sky-700 transition font-bold whitespace-nowrap">
+              다글로 열기 →
+            </button>
+          </div>
+          <ol class="text-xs text-sky-600 space-y-1 mb-2">
+            <li>① 위 URL 입력 후 <b>다글로 열기</b> 클릭 → 새 탭에서 전사 시작</li>
+            <li>② 다글로에서 전사 완료 → 전체 텍스트 복사</li>
+            <li>③ 아래 입력창에 붙여넣기 → <b>🤖 AI 추출</b> 클릭</li>
+          </ol>
+        </div>
+
+        <!-- 다글로 음성 전사 (API) -->
         <div class="bg-blue-50 rounded-xl p-3">
           <div class="flex items-center justify-between mb-2">
             <div>
@@ -3419,6 +3435,22 @@ function extractYoutubeId(url) {
   for (const p of patterns) { const m = (url||'').match(p); if (m) return m[1]; }
   return null;
 }
+// ── 다글로 웹앱 연동 ──────────────────────────
+function openDagloWeb() {
+  const url = document.getElementById('recipe-url').value.trim();
+  // URL 클립보드 복사
+  if (url) {
+    navigator.clipboard.writeText(url).catch(() => {});
+  }
+  // 다글로 열기
+  window.open('https://daglo.ai', '_blank');
+  if (url) {
+    showToast('✅ URL이 클립보드에 복사됐습니다. 다글로에서 붙여넣기 하세요!');
+  } else {
+    showToast('다글로가 열렸습니다. YouTube URL을 붙여넣으세요.');
+  }
+}
+
 // ── 다글로 STT ──────────────────────────────
 function getDagloKey() { return localStorage.getItem('dgh_daglo_key') || ''; }
 function saveDagloKey() {
