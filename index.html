@@ -3907,6 +3907,15 @@ function saveRecipe() {
   document.getElementById('recipe-video-preview').classList.add('hidden');
   renderRecipes(); showToast('🍳 레시피가 저장됐습니다');
 }
+function toggleMore(id, btn) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const hidden = el.classList.toggle('hidden');
+  btn.textContent = hidden
+    ? btn.textContent.replace('▲','▼').replace('접기','더 보기')
+    : btn.textContent.replace('▼','▲').replace('더 보기','접기');
+}
+
 function saveRecipeFromText() {
   const rawText = document.getElementById('recipe-raw-text').value.trim();
   if (!rawText) { showToast('⚠️ 텍스트를 먼저 붙여넣으세요'); return; }
@@ -3995,12 +4004,21 @@ function renderRecipes() {
       + '</h3><button onclick="deleteRecipe(\''+r.id+'\')" class="text-gray-300 hover:text-red-500 active:text-red-600 text-xl shrink-0 leading-none transition" title="삭제">🗑</button></div>'
       + ((r.servings||r.time) ? '<div class="flex gap-3 text-xs text-gray-400 mb-2">'+(r.servings?'<span>👥 '+escHtml(r.servings)+'</span>':'')+(r.time?'<span>⏱ '+escHtml(r.time)+'</span>':'')+'</div>' : '')
       + (r.tags?.length ? '<div class="flex flex-wrap gap-1 mb-3">'+r.tags.map(t=>'<span class="text-xs px-2 py-0.5 bg-orange-50 text-orange-500 rounded-full font-medium">'+escHtml(t)+'</span>').join('')+'</div>' : '')
-      + (ings.length ? '<div class="mb-3"><p class="text-xs font-bold text-gray-500 mb-1">🥬 재료</p><ul class="space-y-0.5">'
-          + ings.slice(0,6).map(l=>'<li class="text-xs text-gray-600">• '+escHtml(l)+'</li>').join('')
-          + (ings.length>6?'<li class="text-xs text-gray-400 italic">외 '+(ings.length-6)+'가지...</li>':'')+'</ul></div>' : '')
-      + (steps.length ? '<div><p class="text-xs font-bold text-gray-500 mb-1">👨‍🍳 조리법</p><ol class="space-y-0.5">'
-          + steps.slice(0,4).map(l=>'<li class="text-xs text-gray-600">'+escHtml(l)+'</li>').join('')
-          + (steps.length>4?'<li class="text-xs text-gray-400 italic">+ '+(steps.length-4)+'단계 더...</li>':'')+'</ol></div>' : '')
+      + (ings.length ? '<div class="mb-3"><p class="text-xs font-bold text-gray-500 mb-1">🥬 재료</p>'
+          + '<ul class="space-y-0.5">' + ings.slice(0,6).map(l=>'<li class="text-xs text-gray-600">• '+escHtml(l)+'</li>').join('') + '</ul>'
+          + (ings.length>6
+              ? '<div id="ing-more-'+r.id+'" class="hidden"><ul class="space-y-0.5 mt-0.5">'+ings.slice(6).map(l=>'<li class="text-xs text-gray-600">• '+escHtml(l)+'</li>').join('')+'</ul></div>'
+                + '<button onclick="toggleMore(\'ing-more-'+r.id+'\',this)" class="text-xs text-orange-500 hover:underline mt-1 block">▼ 재료 '+(ings.length-6)+'개 더 보기</button>'
+              : '')
+          + '</div>' : '')
+      + (steps.length ? '<div>'
+          + '<p class="text-xs font-bold text-gray-500 mb-1">👨‍🍳 조리법</p>'
+          + '<ol class="space-y-0.5">' + steps.slice(0,4).map(l=>'<li class="text-xs text-gray-600">'+escHtml(l)+'</li>').join('') + '</ol>'
+          + (steps.length>4
+              ? '<div id="step-more-'+r.id+'" class="hidden"><ol class="space-y-0.5 mt-0.5">'+steps.slice(4).map(l=>'<li class="text-xs text-gray-600">'+escHtml(l)+'</li>').join('')+'</ol></div>'
+                + '<button onclick="toggleMore(\'step-more-'+r.id+'\',this)" class="text-xs text-orange-500 hover:underline mt-1 block">▼ 조리법 '+(steps.length-4)+'단계 더 보기</button>'
+              : '')
+          + '</div>' : '')
       + '</div></div>';
   }).join('');
 }
