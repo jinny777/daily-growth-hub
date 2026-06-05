@@ -798,23 +798,29 @@
         </div>
         <!-- 다글로 음성 전사 -->
         <div class="bg-blue-50 rounded-xl p-3">
-          <div class="flex items-center justify-between mb-1">
+          <div class="flex items-center justify-between mb-2">
             <div>
               <span class="text-xs font-bold text-blue-700">🎙️ 다글로 음성 전사</span>
               <span class="text-xs text-blue-400 ml-1">(Daglo API 키 필요)</span>
             </div>
             <button onclick="openDagloKeyModal()" class="text-xs border border-blue-300 text-blue-600 px-2 py-1 rounded-lg hover:bg-blue-100 transition">🔑 키 설정</button>
           </div>
-          <p class="text-xs text-blue-500 mb-2">오디오 파일(mp3·m4a·wav)을 업로드하면 다글로가 텍스트로 변환합니다.<br>YouTube 오디오는 <a href="https://yt-dlp.org" target="_blank" class="underline">yt-dlp</a> 또는 브라우저 확장앱으로 먼저 다운로드하세요.</p>
+          <!-- URL 입력 -->
+          <div class="flex gap-2 mb-2">
+            <input id="daglo-url-input" type="url" placeholder="동영상/오디오 URL (YouTube, 직접 링크 등)"
+              class="flex-1 border border-blue-200 rounded-xl px-3 py-1.5 text-xs bg-white focus:outline-none focus:ring-2 focus:ring-blue-300" />
+            <button onclick="transcribeWithDagloUrl()" id="btn-daglo-url" class="text-xs bg-blue-600 text-white px-3 py-1.5 rounded-xl hover:bg-blue-700 transition font-bold whitespace-nowrap">URL 전사</button>
+          </div>
+          <!-- 파일 업로드 -->
           <div class="flex gap-2 items-center">
-            <label class="flex-1 flex items-center gap-2 border border-blue-200 rounded-xl px-3 py-2 bg-white cursor-pointer hover:border-blue-400 transition">
-              <span class="text-blue-400 text-lg">🎵</span>
-              <span id="daglo-file-name" class="text-xs text-gray-400 flex-1">오디오 파일 선택...</span>
+            <label class="flex-1 flex items-center gap-2 border border-blue-200 rounded-xl px-3 py-1.5 bg-white cursor-pointer hover:border-blue-400 transition">
+              <span class="text-blue-400">🎵</span>
+              <span id="daglo-file-name" class="text-xs text-gray-400 flex-1">또는 오디오 파일 선택 (mp3·m4a·wav)</span>
               <input id="daglo-audio-input" type="file" accept=".mp3,.m4a,.wav,.ogg,.flac,.aac" class="hidden" onchange="onDagloFileSelected(this)" />
             </label>
-            <button onclick="transcribeWithDaglo()" id="btn-daglo" class="text-xs bg-blue-600 text-white px-3 py-2 rounded-xl hover:bg-blue-700 transition font-bold whitespace-nowrap">전사 시작</button>
+            <button onclick="transcribeWithDaglo()" id="btn-daglo" class="text-xs bg-blue-500 text-white px-3 py-1.5 rounded-xl hover:bg-blue-600 transition font-bold whitespace-nowrap">파일 전사</button>
           </div>
-          <div id="daglo-status" class="text-xs text-blue-500 mt-1 hidden"></div>
+          <div id="daglo-status" class="text-xs text-blue-500 mt-1.5 hidden"></div>
         </div>
 
         <!-- AI 레시피 추출 -->
@@ -3427,6 +3433,54 @@ function onDagloFileSelected(input) {
   const file = input.files[0];
   document.getElementById('daglo-file-name').textContent = file ? file.name : '오디오 파일 선택...';
 }
+async function transcribeWithDagloUrl() {
+  const url    = document.getElementById('daglo-url-input').value.trim();
+  if (!url) { showToast('⚠️ URL을 먼저 입력하세요'); return; }
+
+  const apiKey = getDagloKey();
+  if (!apiKey) { openDagloKeyModal(); return; }
+
+  const btn    = document.getElementById('btn-daglo-url');
+  const status = document.getElementById('daglo-status');
+  btn.textContent = '⏳ 전사 중...'; btn.disabled = true;
+  status.textContent = 'URL 전사 요청 중...'; status.classList.remove('hidden');
+
+  try {
+    // 동기 시도
+    const syncRes = await fetch('https://apis.daglo.ai/stt/v1/sync/transcripts', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + apiKey, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url, config: { useParagraph: false } }),
+      signal: AbortSignal.timeout(120000)
+    });
+
+    if (syncRes.status === 401) throw new Error('다글로 API 키가 잘못됐습니다.');
+    if (syncRes.ok) {
+      const data = await syncRes.json();
+      const text = extractDagloText(data);
+      if (!text) throw new Error('전사 결과가 비어 있습니다.');
+      document.getElementById('recipe-raw-text').value = text;
+      status.textContent = '✅ 전사 완료! AI 추출 버튼을 클릭하세요.';
+      showToast('🎙️ 다글로 URL 전사 완료!');
+    } else {
+      // 비동기 전사
+      status.textContent = '비동기 전사로 전환 중...';
+      const asyncRes = await fetch('https://apis.daglo.ai/stt/v1/async/transcripts', {
+        method: 'POST',
+        headers: { 'Authorization': 'Bearer ' + apiKey, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url, config: { useParagraph: false } })
+      });
+      if (!asyncRes.ok) throw new Error('전사 요청 실패 (' + asyncRes.status + ')');
+      const { rid } = await asyncRes.json();
+      await pollDagloResult(rid, apiKey, status);
+    }
+  } catch(e) {
+    status.textContent = '❌ ' + e.message;
+    showToast('❌ ' + e.message);
+  }
+  btn.textContent = 'URL 전사'; btn.disabled = false;
+}
+
 async function transcribeWithDaglo() {
   const input = document.getElementById('daglo-audio-input');
   const file  = input.files[0];
@@ -3445,7 +3499,6 @@ async function transcribeWithDaglo() {
     formData.append('file', file);
     formData.append('config', JSON.stringify({ useParagraph: false }));
 
-    // 동기 전사 (5분 미만 파일)
     const res = await fetch('https://apis.daglo.ai/stt/v1/sync/transcripts', {
       method: 'POST',
       headers: { 'Authorization': 'Bearer ' + apiKey },
@@ -3456,16 +3509,24 @@ async function transcribeWithDaglo() {
     if (res.status === 401) throw new Error('다글로 API 키가 잘못됐습니다.');
     if (res.status === 413) throw new Error('파일이 너무 큽니다. 10분 이내 파일을 사용하세요.');
     if (!res.ok) {
-      // 비동기 전사 시도 (긴 파일)
-      status.textContent = '긴 파일 감지 — 비동기 전사 시작...';
-      await transcribeWithDagloAsync(file, apiKey, status);
+      status.textContent = '긴 파일 — 비동기 전사 시작...';
+      const formData2 = new FormData();
+      formData2.append('file', file);
+      formData2.append('config', JSON.stringify({ useParagraph: false }));
+      const asyncRes = await fetch('https://apis.daglo.ai/stt/v1/async/transcripts', {
+        method: 'POST',
+        headers: { 'Authorization': 'Bearer ' + apiKey },
+        body: formData2
+      });
+      if (!asyncRes.ok) throw new Error('비동기 전사 제출 실패');
+      const { rid } = await asyncRes.json();
+      await pollDagloResult(rid, apiKey, status);
       return;
     }
 
     const data = await res.json();
     const text = extractDagloText(data);
     if (!text) throw new Error('전사 결과가 비어 있습니다.');
-
     document.getElementById('recipe-raw-text').value = text;
     status.textContent = '✅ 전사 완료! AI 추출 버튼을 클릭하세요.';
     showToast('🎙️ 다글로 전사 완료!');
@@ -3473,43 +3534,30 @@ async function transcribeWithDaglo() {
     status.textContent = '❌ ' + e.message;
     showToast('❌ ' + e.message);
   }
-  btn.textContent = '전사 시작'; btn.disabled = false;
+  btn.textContent = '파일 전사'; btn.disabled = false;
 }
 
-async function transcribeWithDagloAsync(file, apiKey, statusEl) {
-  const formData = new FormData();
-  formData.append('file', file);
-  formData.append('config', JSON.stringify({ useParagraph: false }));
-
-  const submitRes = await fetch('https://apis.daglo.ai/stt/v1/async/transcripts', {
-    method: 'POST',
-    headers: { 'Authorization': 'Bearer ' + apiKey },
-    body: formData
-  });
-  if (!submitRes.ok) throw new Error('비동기 전사 제출 실패 (' + submitRes.status + ')');
-  const { rid } = await submitRes.json();
-
-  // 폴링 (최대 5분)
-  for (let i = 0; i < 30; i++) {
+async function pollDagloResult(rid, apiKey, statusEl) {
+  for (let i = 0; i < 36; i++) {
     await new Promise(r => setTimeout(r, 10000));
     statusEl.textContent = '전사 진행 중... (' + ((i+1)*10) + '초)';
-    const pollRes = await fetch('https://apis.daglo.ai/stt/v1/async/transcripts/' + rid, {
-      headers: { 'Authorization': 'Bearer ' + apiKey }
-    });
-    if (!pollRes.ok) continue;
-    const data = await pollRes.json();
-    if (data.status === 'completed') {
-      const text = extractDagloText(data);
-      document.getElementById('recipe-raw-text').value = text;
-      statusEl.textContent = '✅ 전사 완료! AI 추출 버튼을 클릭하세요.';
-      showToast('🎙️ 다글로 전사 완료!');
-      document.getElementById('btn-daglo').textContent = '전사 시작';
-      document.getElementById('btn-daglo').disabled = false;
-      return;
-    }
-    if (data.status === 'failed') throw new Error('전사 실패');
+    try {
+      const pollRes = await fetch('https://apis.daglo.ai/stt/v1/async/transcripts/' + rid, {
+        headers: { 'Authorization': 'Bearer ' + apiKey }
+      });
+      if (!pollRes.ok) continue;
+      const data = await pollRes.json();
+      if (data.status === 'completed' || data.transcript) {
+        const text = extractDagloText(data);
+        document.getElementById('recipe-raw-text').value = text;
+        statusEl.textContent = '✅ 전사 완료! AI 추출 버튼을 클릭하세요.';
+        showToast('🎙️ 다글로 전사 완료!');
+        return;
+      }
+      if (data.status === 'failed') throw new Error('전사 실패');
+    } catch(e) { if (e.message === '전사 실패') throw e; }
   }
-  throw new Error('전사 시간 초과 (5분)');
+  throw new Error('전사 시간 초과 (6분)');
 }
 
 function extractDagloText(data) {
