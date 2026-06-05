@@ -807,7 +807,7 @@
           </div>
           <!-- URL 입력 -->
           <div class="flex gap-2 mb-2">
-            <input id="daglo-url-input" type="url" placeholder="동영상/오디오 URL (YouTube, 직접 링크 등)"
+            <input id="daglo-url-input" type="url" placeholder="직접 다운로드 가능한 오디오/영상 URL (YouTube ❌)"
               class="flex-1 border border-blue-200 rounded-xl px-3 py-1.5 text-xs bg-white focus:outline-none focus:ring-2 focus:ring-blue-300" />
             <button onclick="transcribeWithDagloUrl()" id="btn-daglo-url" class="text-xs bg-blue-600 text-white px-3 py-1.5 rounded-xl hover:bg-blue-700 transition font-bold whitespace-nowrap">URL 전사</button>
           </div>
@@ -3436,6 +3436,15 @@ function onDagloFileSelected(input) {
 async function transcribeWithDagloUrl() {
   const url    = document.getElementById('daglo-url-input').value.trim();
   if (!url) { showToast('⚠️ URL을 먼저 입력하세요'); return; }
+
+  // YouTube URL은 API에서 직접 지원 안 함
+  if (/youtube\.com|youtu\.be/i.test(url)) {
+    document.getElementById('daglo-status').textContent =
+      '⚠️ YouTube URL은 다글로 API에서 직접 지원되지 않습니다. mp3 파일을 다운로드 후 파일 전사를 사용하세요.\n' +
+      '다운로드 방법: yt-dlp -x --audio-format mp3 "URL" 또는 Chrome 확장앱 사용';
+    document.getElementById('daglo-status').classList.remove('hidden');
+    return;
+  }
 
   const apiKey = getDagloKey();
   if (!apiKey) { openDagloKeyModal(); return; }
