@@ -847,7 +847,7 @@
           <div class="flex items-center justify-between mb-1">
             <div>
               <span class="text-xs font-bold text-purple-700">🤖 AI 레시피 추출</span>
-              <span class="text-xs text-purple-400 ml-1">(Anthropic API 키 필요)</span>
+              <span class="text-xs text-purple-400 ml-1">(Google Gemini 무료 키 필요)</span>
             </div>
             <div class="flex gap-1">
               <button onclick="openClaudeKeyModal()" class="text-xs border border-purple-300 text-purple-600 px-2 py-1 rounded-lg hover:bg-purple-100 transition">🔑 키 설정</button>
@@ -1300,14 +1300,14 @@
   </div>
 </div>
 
-<!-- CLAUDE API KEY MODAL -->
+<!-- AI API KEY MODAL -->
 <div id="claude-key-modal" class="fixed inset-0 bg-black/40 flex items-center justify-center z-50 hidden p-4">
   <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm p-6">
-    <h3 class="font-bold text-gray-800 mb-1">🤖 Claude API 키 설정</h3>
-    <p class="text-xs text-gray-400 mb-3">Anthropic Console에서 발급한 API 키를 입력하세요.<br>키는 이 기기의 브라우저에만 저장됩니다.</p>
-    <input id="claude-api-key-input" type="password" placeholder="sk-ant-api03-..."
-      class="w-full border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-300 mb-3 font-mono" />
-    <p class="text-xs text-gray-400 mb-3">발급: <a href="https://console.anthropic.com/settings/keys" target="_blank" class="text-purple-500 underline">console.anthropic.com</a></p>
+    <h3 class="font-bold text-gray-800 mb-1">🤖 AI API 키 설정</h3>
+    <p class="text-xs text-gray-400 mb-3">Google Gemini API 키를 입력하세요. <b>무료</b>로 발급 가능합니다.<br>키는 이 기기 브라우저에만 저장됩니다.</p>
+    <input id="claude-api-key-input" type="password" placeholder="AIza..."
+      class="w-full border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-300 mb-2 font-mono" />
+    <p class="text-xs text-gray-400 mb-3">무료 발급: <a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-purple-500 underline font-bold">aistudio.google.com/app/apikey</a><br>Google 계정 로그인 → Create API Key</p>
     <div class="flex gap-2">
       <button onclick="saveClaudeKey()" class="flex-1 bg-purple-600 text-white font-bold py-2.5 rounded-xl hover:bg-purple-700 transition text-sm">저장</button>
       <button onclick="document.getElementById('claude-key-modal').classList.add('hidden')" class="px-5 bg-gray-100 text-gray-600 font-medium py-2.5 rounded-xl hover:bg-gray-200 transition text-sm">취소</button>
@@ -3616,7 +3616,7 @@ async function autoRecipeFromUrl() {
   const claudeKey = getClaudeKey();
   if (!claudeKey) {
     openClaudeKeyModal();
-    showToast('⚠️ Claude API 키를 먼저 설정하세요');
+    showToast('⚠️ Gemini API 키를 먼저 설정하세요 (무료)');
     return;
   }
 
@@ -3817,26 +3817,21 @@ async function extractRecipeWithAI() {
       return;
     }
 
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-direct-browser-access': 'true'
-      },
-      body: JSON.stringify({
-        model: 'claude-haiku-4-5-20251001',
-        max_tokens: 1500,
-        messages: [{ role: 'user', content: prompt }]
-      })
-    });
+    const res = await fetch(
+      'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + apiKey,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+      }
+    );
 
-    if (res.status === 401) throw new Error('API 키가 잘못됐습니다. 🔑 키 설정을 확인하세요.');
-    if (!res.ok) throw new Error('Claude API 오류 (' + res.status + ')');
+    if (res.status === 400) throw new Error('API 키가 잘못됐습니다. 🔑 키 설정에서 Gemini 키를 확인하세요.');
+    if (res.status === 403) throw new Error('API 키 권한 오류. aistudio.google.com에서 키를 재발급하세요.');
+    if (!res.ok) throw new Error('Gemini API 오류 (' + res.status + ')');
 
     const data = await res.json();
-    const text = data.content[0].text.trim();
+    const text = (data.candidates?.[0]?.content?.parts?.[0]?.text || '').trim();
 
     // JSON 파싱
     const jsonMatch = text.match(/\{[\s\S]*\}/);
