@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-06-10T10:12:08.391Z",
+  "savedAt": "2026-06-10T10:13:10.506Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -39,6 +39,14 @@
     ],
     "prayerFilter": "all",
     "sites": [
+      {
+        "id": "17810863731086ngub",
+        "name": "mortgage",
+        "url": "https://build-mortgage.onrender.com/",
+        "category": "기타",
+        "notes": "",
+        "createdAt": 1781086373108
+      },
       {
         "id": "1780234673013nrf5b",
         "name": "runningrecord",
