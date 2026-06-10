@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-06-10T03:18:52.015Z",
+  "savedAt": "2026-06-10T03:26:58.814Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -93,6 +93,15 @@
     ],
     "todos": [
       {
+        "id": "1781062003035mfq9t",
+        "date": "2026-06-11",
+        "text": "신보전화",
+        "category": "📌 일반",
+        "done": false,
+        "doneDate": null,
+        "createdAt": 1781062003035
+      },
+      {
         "id": "17796320587830kfdf",
         "date": "2026-05-25",
         "text": "핀테크지원센타 멘토링 신청",
@@ -106,8 +115,8 @@
         "date": "2026-05-22",
         "text": "그룹바이 업데이트",
         "category": "📌 일반",
-        "done": false,
-        "doneDate": null,
+        "done": true,
+        "doneDate": "2026-06-10",
         "createdAt": 1779446750505
       },
       {
