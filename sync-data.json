@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-06-11T00:13:43.018Z",
+  "savedAt": "2026-06-11T03:04:06.258Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -8094,6 +8094,7 @@
         "doneDate": null
       }
     ],
+    "insights": [],
     "aiStudy": [
       {
         "id": "1779633359628h3z0i",
