@@ -3028,6 +3028,43 @@ function renderNewsTab() {
   renderNewsCatChips();
   renderNewsCatTabs();
   renderNewsArticles();
+  autoFetchNews();
+}
+
+// ══════════════════════════════════════════
+//  뉴스클리핑 자동 수집 (GitHub Actions 연동)
+// ══════════════════════════════════════════
+const NEWS_JSON_URL = 'https://raw.githubusercontent.com/jinny777/daily-growth-hub/main/news_clipping.json';
+
+async function autoFetchNews() {
+  const statusEl = document.getElementById('news-fetch-status');
+  try {
+    const res = await fetch(NEWS_JSON_URL + '?t=' + Date.now());
+    if (!res.ok) return;
+    const data = await res.json();
+    if (!data || !data.categories) return;
+
+    if (!state.newsCache) state.newsCache = {};
+    let updated = false;
+    Object.entries(data.categories).forEach(([catId, catData]) => {
+      const existing = state.newsCache[catId];
+      if (!existing || (data.fetchedAt && existing.fetchedAt < data.fetchedAt)) {
+        state.newsCache[catId] = { articles: catData.articles || [], fetchedAt: data.fetchedAt };
+        updated = true;
+      }
+    });
+
+    if (updated) {
+      saveState();
+      renderNewsCatTabs();
+      renderNewsArticles();
+    }
+    if (statusEl && data.fetchedAt) {
+      statusEl.textContent = `🤖 자동 수집: ${new Date(data.fetchedAt).toLocaleString('ko-KR')}`;
+    }
+  } catch(e) {
+    console.warn('뉴스 자동 수집 불러오기 실패:', e);
+  }
 }
 
 function renderNewsCatChips() {
