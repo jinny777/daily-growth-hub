@@ -146,6 +146,7 @@
       <button id="tab-program"  onclick="switchTab('program')"  class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">📋 지원사업</button>
       <button id="tab-news"     onclick="switchTab('news')"     class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">📰 뉴스클리핑</button>
       <button id="tab-book"     onclick="switchTab('book')"     class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">📚 독서</button>
+      <button id="tab-insight"  onclick="switchTab('insight')"  class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">💡 깨달음</button>
       <button id="tab-recipe"   onclick="switchTab('recipe')"   class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">🍳 요리모음</button>
       <button id="tab-aistudy"  onclick="switchTab('aistudy')"  class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">🤖 AI스터디</button>
       <button id="tab-admin"    onclick="switchTab('admin')"    class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">⚙️ 관리자</button>
@@ -775,6 +776,24 @@
     </div>
     <div id="book-list" class="space-y-4"></div>
     <div id="book-empty" class="bg-white rounded-2xl p-8 text-center text-sm text-gray-400 hidden">도서를 추가해보세요 📚</div>
+  </div>
+
+  <!-- ── TAB: INSIGHT ── -->
+  <div id="tab-content-insight" class="max-w-3xl mx-auto px-4 py-8 hidden">
+    <div class="bg-white rounded-2xl shadow-sm p-5 mb-5">
+      <h2 class="font-bold text-gray-800 mb-3">💡 깨달음 기록</h2>
+      <div class="space-y-3">
+        <div class="flex flex-col gap-1">
+          <label class="text-xs text-gray-500 font-medium">날짜</label>
+          <input id="insight-date" type="date" class="border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-300" />
+        </div>
+        <textarea id="insight-text" rows="4" placeholder="오늘 깨달은 점을 기록해보세요"
+          class="w-full border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-300"></textarea>
+        <button onclick="addInsight()" class="w-full bg-amber-500 text-white font-bold py-2.5 rounded-xl hover:bg-amber-600 transition text-sm">기록 저장</button>
+      </div>
+    </div>
+    <div id="insight-list" class="space-y-3"></div>
+    <div id="insight-empty" class="bg-white rounded-2xl p-8 text-center text-sm text-gray-400 hidden">아직 기록한 깨달음이 없어요 💡</div>
   </div>
 
   <!-- ── TAB: RECIPE ── -->
@@ -1416,6 +1435,7 @@ let state = {
   programs: [], programFilter: '', programCatFilter: '', programSiteFilter: '',
   projects: [],
   books: [],
+  insights: [],
   aiStudy: [], aiTagFilter: '',
   newsCategories: [], newsCache: {}, newsCatFilter: '',
   statusModalType: null, statusModalId: null,
@@ -1538,7 +1558,7 @@ function showScreen(name) {
     document.getElementById('screen-'+s).classList.toggle('hidden', s !== name)
   );
 }
-const ALL_TABS = ['today','sites','prayer','todo','job','program','news','book','recipe','aistudy','admin'];
+const ALL_TABS = ['today','sites','prayer','todo','job','program','news','book','insight','recipe','aistudy','admin'];
 function switchTab(name) {
   ALL_TABS.forEach(t => {
     const btn = document.getElementById('tab-'+t);
@@ -1554,6 +1574,7 @@ function switchTab(name) {
   if (name === 'program')  renderPrograms();
   if (name === 'news')     renderNewsTab();
   if (name === 'book')     renderBooks();
+  if (name === 'insight')  renderInsights();
   if (name === 'recipe')   renderRecipes();
   if (name === 'aistudy')  renderAiStudy();
 }
@@ -3069,6 +3090,37 @@ function renderBooks() {
       </div>
     </div>`;
   }).join('');
+}
+
+// ══════════════════════════════════════════
+//  INSIGHT (깨달음)
+// ══════════════════════════════════════════
+function addInsight() {
+  const text = document.getElementById('insight-text').value.trim();
+  if (!text) { showToast('⚠️ 내용을 입력하세요'); return; }
+  const date = document.getElementById('insight-date').value || today();
+  state.insights.unshift({ id: uid(), createdAt: Date.now(), date, text });
+  saveState();
+  document.getElementById('insight-text').value = '';
+  document.getElementById('insight-date').value = '';
+  renderInsights(); showToast('💡 깨달음이 저장됐습니다');
+}
+function deleteInsight(id) {
+  if (!confirm('이 기록을 삭제할까요?')) return;
+  state.insights = state.insights.filter(x=>x.id!==id); saveState(); renderInsights();
+}
+function renderInsights() {
+  const list = [...state.insights].sort((a,b)=> (b.date||'').localeCompare(a.date||'') || b.createdAt-a.createdAt);
+  const container=document.getElementById('insight-list'); const empty=document.getElementById('insight-empty');
+  if (!list.length) { container.innerHTML=''; empty.classList.remove('hidden'); return; }
+  empty.classList.add('hidden');
+  container.innerHTML=list.map(it=>`<div class="bg-white rounded-2xl shadow-sm p-5">
+      <div class="flex items-start justify-between gap-3">
+        <span class="text-xs font-semibold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full">${formatDateShort(it.date)}</span>
+        <button onclick="deleteInsight('${it.id}')" class="text-xs text-red-400 hover:underline px-2 shrink-0">삭제</button>
+      </div>
+      <p class="text-sm text-gray-700 mt-2 whitespace-pre-wrap">${escHtml(it.text)}</p>
+    </div>`).join('');
 }
 
 // ══════════════════════════════════════════
