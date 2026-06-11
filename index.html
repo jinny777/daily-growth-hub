@@ -694,7 +694,7 @@
           <button onclick="fetchAllNews()" id="news-fetch-btn"
             class="flex items-center gap-1.5 bg-indigo-500 text-white text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-indigo-600 transition">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-            전체 수집
+            <span id="news-fetch-btn-label">전체 수집</span>
           </button>
         </div>
       </div>
@@ -3100,6 +3100,20 @@ function renderNewsCatTabs() {
   const allActive = !state.newsCatFilter;
   tabsEl.innerHTML = `<button onclick="setNewsCatFilter('')" id="ncat-all"
     class="text-sm px-4 py-1.5 rounded-full font-semibold shrink-0 transition ${allActive?'bg-indigo-600 text-white':'bg-gray-100 text-gray-600 hover:bg-gray-200'}">전체</button>` + extra;
+
+  // 수집 버튼: 선택된 카테고리에 따라 "전체 수집" ↔ "OO 수집"으로 전환
+  const fetchBtn = document.getElementById('news-fetch-btn');
+  const fetchLabel = document.getElementById('news-fetch-btn-label');
+  if (fetchBtn) {
+    if (state.newsCatFilter) {
+      const cat = state.newsCategories.find(c => c.id === state.newsCatFilter);
+      fetchBtn.setAttribute('onclick', `fetchCategoryNews('${state.newsCatFilter}')`);
+      if (fetchLabel) fetchLabel.textContent = `${cat ? cat.name : '이 카테고리'} 수집`;
+    } else {
+      fetchBtn.setAttribute('onclick', 'fetchAllNews()');
+      if (fetchLabel) fetchLabel.textContent = '전체 수집';
+    }
+  }
 }
 
 function renderNewsArticles() {
@@ -3198,6 +3212,36 @@ async function fetchAllNews() {
   if (statusEl) statusEl.textContent = `마지막 수집: ${new Date().toLocaleString('ko-KR')} · 총 ${total}건`;
   renderNewsArticles();
   showToast(`📰 뉴스 ${total}건을 수집했습니다`);
+}
+
+async function fetchCategoryNews(catId) {
+  const cat = (state.newsCategories||[]).find(c => c.id === catId);
+  if (!cat) return;
+  const btn = document.getElementById('news-fetch-btn');
+  const loadingEl = document.getElementById('news-loading');
+  const loadingText = document.getElementById('news-loading-text');
+  const statusEl = document.getElementById('news-fetch-status');
+  if (btn) btn.disabled = true;
+  if (loadingEl) loadingEl.classList.remove('hidden');
+  if (loadingText) loadingText.textContent = `"${cat.name}" 수집 중...`;
+  document.getElementById('news-article-list').innerHTML = '';
+  document.getElementById('news-empty').classList.add('hidden');
+
+  try {
+    const articles = await fetchNewsByCategory(cat);
+    if (!state.newsCache) state.newsCache = {};
+    state.newsCache[cat.id] = { articles, fetchedAt: Date.now() };
+    saveState();
+    renderNewsCatTabs();
+    if (statusEl) statusEl.textContent = `마지막 수집: ${new Date().toLocaleString('ko-KR')} · "${cat.name}" ${articles.length}건`;
+    showToast(`📰 "${cat.name}" 뉴스 ${articles.length}건을 수집했습니다`);
+  } catch(e) {
+    showToast('❌ 수집 실패: ' + e.message);
+  } finally {
+    if (loadingEl) loadingEl.classList.add('hidden');
+    if (btn) btn.disabled = false;
+    renderNewsArticles();
+  }
 }
 
 async function fetchNewsByCategory(cat) {
