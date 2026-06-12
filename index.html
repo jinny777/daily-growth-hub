@@ -3438,7 +3438,8 @@ async function fetchNewsByCategory(cat) {
   if (!cat.keywords || !cat.keywords.length) return [];
   const query = cat.keywords.join(' OR ');
   const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=ko&gl=KR&ceid=KR:ko`;
-  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}&count=30`;
+  // count 파라미터는 rss2json 무료 사용 시 API 키가 필요해 422 오류가 발생하므로 제거 (기본 10건 반환)
+  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
 
   const res = await fetch(apiUrl);
   if (!res.ok) throw new Error('RSS fetch failed');
