@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "savedAt": "2026-06-04T02:03:24.964Z",
+  "savedAt": "2026-06-11T03:29:47.911Z",
   "state": {
     "user": {
       "email": "user@example.com",
       "name": "user"
     },
-    "startDate": "2026-05-31",
+    "startDate": "2026-06-11",
     "completed": {},
     "streak": 0,
     "longestStreak": 0,
@@ -38,34 +38,16 @@
       }
     ],
     "prayerFilter": "all",
-    "sites": [
-      {
-        "id": "1780234673013nrf5b",
-        "name": "runningrecord",
-        "url": "https://runningrecord.onrender.com",
-        "category": "기타",
-        "notes": "",
-        "createdAt": 1780234673013
-      },
-      {
-        "id": "1779633284796dk2g5",
-        "name": "learnlog",
-        "url": "https://jinny777.github.io/learnlog-prototype/",
-        "category": "업무",
-        "notes": "",
-        "createdAt": 1779633284796
-      },
-      {
-        "id": "1779633249886xxqp4",
-        "name": "contenflow",
-        "url": "https://contentpilot-69x2.onrender.com/api/login",
-        "category": "업무",
-        "notes": "",
-        "createdAt": 1779633249886
-      }
-    ],
-    "siteFilter": "",
     "todos": [
+      {
+        "id": "1781062003035mfq9t",
+        "date": "2026-06-11",
+        "text": "신보전화",
+        "category": "📌 일반",
+        "done": false,
+        "doneDate": null,
+        "createdAt": 1781062003035
+      },
       {
         "id": "17796320587830kfdf",
         "date": "2026-05-25",
@@ -80,8 +62,8 @@
         "date": "2026-05-22",
         "text": "그룹바이 업데이트",
         "category": "📌 일반",
-        "done": false,
-        "doneDate": null,
+        "done": true,
+        "doneDate": "2026-06-10",
         "createdAt": 1779446750505
       },
       {
@@ -945,7 +927,7 @@
         "status": "관심",
         "channel": "원티드",
         "url": "https://www.wanted.co.kr/wd/357621",
-        "notes": "96\nCompany Newsletter Template v1\n김지연 님께 딱 맞는 채용공고\n금융\n토스뱅크\n📣 Corporate Strategy Manager (경영 기획)\n주요업무\n[합류하면 함께할 업무예요]\n• 전사의 핵심 성과 지표를 정의하고 개선해요.\r\n• 그리고 각 사업부의 성과를 setting 하고 전사성과 달성을 위해서 그 조직들의 세부 전략 및 액션플랜의 설계와 운영을 지원해요.\r\n• 각 사업부 단위에서는 볼 수 없는 전사 관점의 데이터 분석, Corporate level 의사결정의 framework, 그리고 이를 통한 인사이트 도출 및 개선 방안을 제안해요.\r\n• 경영진과 다양한 이해관계자들의 전략적 의사결정을 지원하고 우선순위를 조율하는 역할도 담당해요.\r\n• 전사 및 사업부의 성과와 액션 "
+        "notes": "96\nCompany Newsletter Template v1\n김지연 님께 딱 맞는 채용공고\n금융\n토스뱅크\n📣 Corporate Strategy Manager (경영 기획)\n주요업무\n[합류하면 함께할 업무예요]\n• 전사의 핵심 성과 지표를 정의하고 개선해요.\r\n• 그리고 각 사업부의 성과를 setting 하고 전사성과 달성을 위해서 그 조직들의 세부 전략 및 액션플랜의 설계와 운영을 지원해요.\r\n• 각 사업부 단위에서는 볼 수 없는 전사 관점의 데이터 분석, Corporate level 의사결정의 framework, 그리고 이를 통"
       },
       {
         "id": "wanted_gmail_39_4",
@@ -1077,7 +1059,7 @@
         "status": "관심",
         "channel": "원티드",
         "url": "https://www.wanted.co.kr/wd/357621",
-        "notes": "96\nCompany Newsletter Template v1\n김지연 님께 딱 맞는 채용공고\n제조\n톤28\n📣 신사업 개발 Lead(식품_건기식)\n주요업무\n• 건기식/이너뷰티 영역에서의 신사업 기회 정의 및 사업성 검증\r\n• 기능성 원료·제형·포뮬러를 기반으로 한 제품 콘셉트 설계\r\n• 제조사, 원료사, 인증 등 복잡한 외부 이해관계 직접 조율\r\n• 테스트 런칭 → 데이터 기반 개선 → 확장 구조 설계\r\n• 규제를 이유로 멈추지 않고, 규제 안에서 답을 찾는 실행\n경기도 성남시 수정구 창업로 42 경기기업성장센터 314호\n더 알아보기\nIT, 컨텐츠\n딜리버리랩\n📣 사업기획\n주요업무\n• 오더히어로 서비스 사업 기획 및 운영관리\r\n• 매출/판매/마케팅 데이터 분석, 전략 수립 및 실행관리\r\n• 파트너(유통사) 소싱 "
+        "notes": "96\nCompany Newsletter Template v1\n김지연 님께 딱 맞는 채용공고\n제조\n톤28\n📣 신사업 개발 Lead(식품_건기식)\n주요업무\n• 건기식/이너뷰티 영역에서의 신사업 기회 정의 및 사업성 검증\r\n• 기능성 원료·제형·포뮬러를 기반으로 한 제품 콘셉트 설계\r\n• 제조사, 원료사, 인증 등 복잡한 외부 이해관계 직접 조율\r\n• 테스트 런칭 → 데이터 기반 개선 → 확장 구조 설계\r\n• 규제를 이유로 멈추지 않고, 규제 안에서 답을 찾는 실행\n경기도 성남시 수정구 창업로 42 경기기업성장센터 314호\n더 알아보기"
       },
       {
         "id": "wanted_19e43660037c8d0b",
@@ -7945,6 +7927,65 @@
     "programFilter": "",
     "programCatFilter": "기타",
     "programSiteFilter": "K-startup",
+    "books": [
+      {
+        "id": "1779058404759ztmik",
+        "createdAt": 1779058404759,
+        "title": "그 순간",
+        "author": "오타 K",
+        "startDate": "2026-05-17",
+        "pages": "185",
+        "readDates": [],
+        "done": true,
+        "doneDate": "2026-05-17"
+      },
+      {
+        "id": "1779323126606izeon",
+        "createdAt": 1779323126606,
+        "title": "커뮤니티 빌더들",
+        "author": "백영선",
+        "startDate": "2026-05-21",
+        "pages": "",
+        "readDates": [],
+        "done": false,
+        "doneDate": null
+      }
+    ],
+    "aiStudy": [
+      {
+        "id": "1779633359628h3z0i",
+        "createdAt": 1779633359628,
+        "date": "2026-05-23",
+        "title": "skill 만들기",
+        "content": "Skill 만들기 \n\n내가 주제를 제시하면, 그 주제를 구체화해 웹/앱의 전체 구조를 설계하고 최종적으로 프로토타입 제작까지 진행하려고 해. 기획서 작성부터 시작해서, UX/UI를 충분히 고려한 화면 설계가 이루어져야 해. 이 과정을 단계별로 안내해주는 Skill을 만들고 싶어. 우선 해당 Skill의 기본 구조를 설계해줘.",
+        "url": "",
+        "files": [],
+        "tags": []
+      }
+    ],
+    "aiTagFilter": "",
+    "statusModalType": null,
+    "statusModalId": null,
+    "notiSettings": {
+      "email": "khjyeon@naver.com",
+      "bizType": "IT/SW",
+      "bizSize": "도약",
+      "investStage": "미투자",
+      "bizAge": "3-7년",
+      "region": "서울",
+      "categories": [
+        "사업화자금",
+        "R&D",
+        "창업교육"
+      ],
+      "channels": {
+        "email": true,
+        "kakao": false,
+        "push": false,
+        "calendar": false
+      },
+      "frequency": "weekly"
+    },
     "projects": [
       {
         "id": "1779263172096u7s04",
@@ -8027,64 +8068,123 @@
         "tasks": []
       }
     ],
-    "books": [
+    "sites": [
       {
-        "id": "1779058404759ztmik",
-        "createdAt": 1779058404759,
-        "title": "그 순간",
-        "author": "오타 K",
-        "startDate": "2026-05-17",
-        "pages": "185",
-        "readDates": [],
-        "done": true,
-        "doneDate": "2026-05-17"
+        "id": "17810863731086ngub",
+        "name": "mortgage",
+        "url": "https://build-mortgage.onrender.com/",
+        "category": "기타",
+        "notes": "",
+        "createdAt": 1781086373108
       },
       {
-        "id": "1779323126606izeon",
-        "createdAt": 1779323126606,
-        "title": "커뮤니티 빌더들",
-        "author": "백영선",
-        "startDate": "2026-05-21",
-        "pages": "",
-        "readDates": [],
-        "done": false,
-        "doneDate": null
-      }
-    ],
-    "aiStudy": [
-      {
-        "id": "1779633359628h3z0i",
-        "createdAt": 1779633359628,
-        "date": "2026-05-23",
-        "title": "skill 만들기",
-        "content": "Skill 만들기 \n\n내가 주제를 제시하면, 그 주제를 구체화해 웹/앱의 전체 구조를 설계하고 최종적으로 프로토타입 제작까지 진행하려고 해. 기획서 작성부터 시작해서, UX/UI를 충분히 고려한 화면 설계가 이루어져야 해. 이 과정을 단계별로 안내해주는 Skill을 만들고 싶어. 우선 해당 Skill의 기본 구조를 설계해줘.",
-        "url": "",
-        "files": [],
-        "tags": []
-      }
-    ],
-    "aiTagFilter": "",
-    "statusModalType": null,
-    "statusModalId": null,
-    "notiSettings": {
-      "email": "khjyeon@naver.com",
-      "bizType": "IT/SW",
-      "bizSize": "도약",
-      "investStage": "미투자",
-      "bizAge": "3-7년",
-      "region": "서울",
-      "categories": [
-        "사업화자금",
-        "R&D",
-        "창업교육"
-      ],
-      "channels": {
-        "email": true,
-        "kakao": false,
-        "push": false,
-        "calendar": false
+        "id": "1780234673013nrf5b",
+        "name": "runningrecord",
+        "url": "https://runningrecord.onrender.com",
+        "category": "기타",
+        "notes": "",
+        "createdAt": 1780234673013
       },
-      "frequency": "weekly"
-    }
+      {
+        "id": "1779633284796dk2g5",
+        "name": "learnlog",
+        "url": "https://jinny777.github.io/learnlog-prototype/",
+        "category": "업무",
+        "notes": "",
+        "createdAt": 1779633284796
+      },
+      {
+        "id": "1779633249886xxqp4",
+        "name": "contenflow",
+        "url": "https://contentpilot-69x2.onrender.com/api/login",
+        "category": "업무",
+        "notes": "",
+        "createdAt": 1779633249886
+      }
+    ],
+    "siteFilter": "",
+    "recipes": [
+      {
+        "id": "17806525254424q679",
+        "url": "https://youtu.be/wvTZa2nNlmc?si=kPF9fxbeDL2DAskZ",
+        "videoId": "wvTZa2nNlmc",
+        "title": "초간단 아보카도 간단히 먹는법, 현실적인 초간단 아보카도를 활용한 브런치 메뉴 4가지",
+        "ingredients": "",
+        "steps": "---\n## 1. 아보카도 에그토스트\n- 후숙이 잘 된 아보카도를 반으로 갈라 씨를 제거하고 껍질을 벗긴 뒤 슬라이스합니다.\n- 계란을 삶아 껍질을 벗기고 자릅니다.\n- 통밀빵 두 장을 에어프라이어(180도, 3분)로 노릇하게 구워 식힙니다.\n- 빵에 무가당 그릭 요거트(또는 저당 마요네즈)를 넉넉히 펴 바릅니다.\n- 슬라이스한 아보카도, 소금 한 꼬집, 올리브오일, 삶은 달걀을 올려 완성합니다.\n## 2. 아보카도 스크램블 토스트\n- 냉동 아보카도를 해동해 으깬 뒤 소금 한 꼬집, 레몬즙(또는 식초) 한 티스푼을 넣어 섞습니다.\n- 전자레인지용 그릇에 계란 2개, 우유 2큰술, 소금·후추를 넣고 잘 풀어 랩을 덮고 1분 돌린 뒤 저어주고 30초 더 돌려 스크램블 에그를 만듭니다.\n- 통밀빵을 구워 그릭 요거트를 바르고, 으깬 아보카도와 스크램블 에그, 파슬리를 올려 완성합니다.\n## 3. 아보카도 계란 비빔밥\n- 아보카도 반쪽을 깍둑썰기합니다. 남은 반쪽은 레몬즙이나 식초를 뿌려 랩에 싸서 보관합니다.\n- 비빔 소스(진간장, 알룰로오스, 참기름)를 만듭니다.\n- 잡곡밥 3숟가락, 아보카도, 계란후라이, 김가루, 송송 썬 파, 참깨를 그릇에 담고 소스를 뿌려 비빕니다.\n## 4. 아보카도 두부된장덮밥\n- 두부는 키친타월로 물기를 제거하고 깍둑썰기 후 에어프라이어(180도, 10분) 또는 팬에 구워줍니다.\n- 아보카도는 으깨서 소금, 후추, 레몬즙과 섞어둡니다.\n- 된장 소스(된장, 알룰로오스, 참기름, 간장, 다진 마늘)를 만듭니다.\n- 현미밥 3숟가락, 구운 두부, 아보카도, 김가루, 파, 참깨, 된장 소스를 올려 완성합니다.\n---",
+        "tags": [],
+        "servings": "",
+        "time": "",
+        "createdAt": 1780652525442
+      },
+      {
+        "id": "1780633938940jdkvx",
+        "url": "https://youtu.be/Ii6ifJPjrq4?si=kFUdGf7HcvXSX7Zg",
+        "videoId": "Ii6ifJPjrq4",
+        "title": "또띠아 샌드위치 이렇게 드시면 살빠져요 ㅣ 또띠아랩 ㅣ 또띠아 요리 만들기",
+        "ingredients": "",
+        "steps": "## 1. 매콤 닭가슴살 또띠아랩\n1. 또띠아를 구워 준비한다.\n2. 닭가슴살을 데워 포크로 찢고, 소스를 두 바퀴 반 뿌려 섞는다.\n3. 계란을 풀어 전자레인지에 1분 돌린 뒤 으깬다.\n4. 매직랩(끈적이는 면 아래) 위에 또띠아, 로메인, 닭가슴살, 으깬 계란, 채 썬 양배추를 올린다.\n5. 저당 마요네즈를 뿌리고, 로메인으로 덮는다.\n6. 단단하게 말아 매직랩으로 포장한다.\n## 2. 크레미 마요 또띠아랩\n1. 오이는 씨를 빼고 썰어 소금, 식초에 10분 절인 뒤 물기를 짠다.\n2. 크레미를 찢고, 저당 마요네즈, 와사비, 후추와 섞는다.\n3. 또띠아(끈적이는 면 아래)에 로메인, 크레미마요, 절인 오이, 양배추, 스리라차를 올린다.\n4. 로메인으로 덮고 단단히 말아 매직랩으로 포장한다.\n## 3. 에그 그릭 또띠아 샌드위치\n1. 계란 3개를 풀어 전자레인지에 2분 돌린 뒤 으깨 식힌다.\n2. 식힌 계란에 그릭요거트, 머스타드, 후추를 섞는다.\n3. 또띠아(끈적이는 면 아래)에 로메인, 당근 라페, 잠봉, 에그 그릭, 칠리소스를 올린다.\n4. 로메인으로 덮고 말아 매직랩으로 포장한다.\n## 4. 소불고기 또띠아랩\n1. 소고기는 핏기를 제거하고, 양념(참치액, 식초, 진간장, 맛술, 알룰로스, 참기름, 다진 마늘, 후추)해 30분 이상 재운다.\n2. 또띠아와 불고기를 각각 구운 뒤, 또띠아 2장 위에 로메인, 깻잎, 불고기, 마요네즈, 로메인, 깻잎, 양배추, 당근을 올린다.\n3. 단단히 말아 매직랩으로 포장한다.\n---",
+        "tags": [],
+        "servings": "",
+        "time": "",
+        "createdAt": 1780633938940
+      }
+    ],
+    "newsCategories": [
+      {
+        "id": "nc_ai",
+        "name": "AI/기술",
+        "color": "indigo",
+        "keywords": [
+          "인공지능",
+          "AI",
+          "챗GPT",
+          "LLM"
+        ]
+      },
+      {
+        "id": "nc_startup",
+        "name": "창업/스타트업",
+        "color": "green",
+        "keywords": [
+          "스타트업",
+          "창업",
+          "유니콘",
+          "벤처투자"
+        ]
+      },
+      {
+        "id": "nc_economy",
+        "name": "경제/금융",
+        "color": "orange",
+        "keywords": [
+          "금리",
+          "주식",
+          "경제",
+          "투자"
+        ]
+      },
+      {
+        "id": "nc_global",
+        "name": "글로벌",
+        "color": "blue",
+        "keywords": [
+          "글로벌",
+          "해외진출",
+          "수출",
+          "미국"
+        ]
+      },
+      {
+        "id": "1780579574163xztes",
+        "name": "부동산",
+        "color": "indigo",
+        "keywords": [
+          "산성역 헤리스톤"
+        ]
+      }
+    ],
+    "newsCache": {},
+    "newsCatFilter": "nc_ai",
+    "insights": []
   }
 }
