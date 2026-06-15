@@ -83,7 +83,7 @@ def fetch_kstartup():
             'amount':   '',
             'status':   '검토중',
             'source':   'K-startup',
-            'url':      f'https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?pbancSn={sn}',
+            'url':      f'https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn={sn}',
             'notes':    'K-Startup 공고',
         })
         if len(results) >= 15:
