@@ -1,185 +1,185 @@
 {
-  "fetchedAt": 1781758534152,
+  "fetchedAt": 1781846316512,
   "categories": {
     "nc_ai": {
       "name": "AI/기술",
       "articles": [
         {
-          "title": "[단독] 삼성전자, AI로 10명분 똑같이 일해도 ‘차등 평가’…토큰 가성비 본다 - 한겨레",
-          "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1NeVhaendaRFQtQ09xNmJuZHppa1E1Q2hnaXhELTNpeGtoTzhwaXdOVjVHaDNBajc1SkVMMWxMQ0RBdWxRYWowMC0ySENzMklkak9pMFlLNnJoMDREYURpR0RTQUJKeGhtU3c?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 02:42:00 GMT",
-          "description": "[단독] 삼성전자, AI로 10명분 똑같이 일해도 ‘차등 평가’…토큰 가성비 본다 한겨레",
-          "source": "한겨레",
+          "title": "[단독] 하정우, 국가AI전략위로…李정부 AI 삼각축 재편 마무리 - 지디넷코리아",
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1LUjZ5emFlTzEtZHNJQmdPZmlxYTU1VjJrZ3Izd3g1RHgyVjRXdzFkZDdVSE1YLXhRdWgwWnpzUC1oVzV0UjNqSlRQYURQZzBQS09CamJn?oc=5",
+          "pubDate": "Thu, 18 Jun 2026 23:32:12 GMT",
+          "description": "[단독] 하정우, 국가AI전략위로…李정부 AI 삼각축 재편 마무리 지디넷코리아",
+          "source": "지디넷코리아",
           "keyword": "AI",
           "catId": "nc_ai"
         },
         {
-          "title": "생성형 AI와 콘텐츠 산업의 법적 충돌 — 미국 주요 소송의 현황과 쟁점 - 법률신문",
-          "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE5hTjVrLWtQbDhrX1ZkUVd0M0YxZXpIMjRuR0VfQXpFYndEWHplNE9USHJVWjNhcERaMnpLcEtZWDFrOXNCaEdvQ3BrLTlvc0dPODIyaEZNNFZtelk1UWVGdkRnX1p3RGFSZUV6ZEVqV0RlUdIBckFVX3lxTE5hTjVrLWtQbDhrX1ZkUVd0M0YxZXpIMjRuR0VfQXpFYndEWHplNE9USHJVWjNhcERaMnpLcEtZWDFrOXNCaEdvQ3BrLTlvc0dPODIyaEZNNFZtelk1UWVGdkRnX1p3RGFSZUV6ZEVqV0RlUQ?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 01:16:01 GMT",
-          "description": "생성형 AI와 콘텐츠 산업의 법적 충돌 — 미국 주요 소송의 현황과 쟁점 법률신문",
-          "source": "법률신문",
-          "keyword": "AI",
-          "catId": "nc_ai"
-        },
-        {
-          "title": "베이조스 \"AI가 오히려 노동력 부족 초래할 것\" - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE94Tzl3UEFTQll0MWludE85RXlHb3NyZUhTYU9XWmE5cURoYlFrS1oteTBNVmNWQ0xxSmVxbGp3ZV9idDk5eU5WREYtZzIzajZIaHNCek5MbUJ3S3VZN2lnWdIBYEFVX3lxTE94Tzl3UEFTQll0MWludE85RXlHb3NyZUhTYU9XWmE5cURoYlFrS1oteTBNVmNWQ0xxSmVxbGp3ZV9idDk5eU5WREYtZzIzajZIaHNCek5MbUJ3S3VZN2lnWQ?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 00:38:32 GMT",
-          "description": "베이조스 \"AI가 오히려 노동력 부족 초래할 것\" 연합뉴스",
+          "title": "[AI픽] 과기정통부, 자율주행 AI 개발용 데이터 장벽 허문다 - 연합뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE4zbEhjU3d2WHp5UW81VkpNVzdRbmNjWnA1QUR0S0U3WHl4ZVRRbUR5WEdMblFrOFFrckowYlFfQU1LT2ZYV2VkTjgwSHVVelpVVFhrRHY4dFNiNW5MOEduT9IBYEFVX3lxTE4zbEhjU3d2WHp5UW81VkpNVzdRbmNjWnA1QUR0S0U3WHl4ZVRRbUR5WEdMblFrOFFrckowYlFfQU1LT2ZYV2VkTjgwSHVVelpVVFhrRHY4dFNiNW5MOEduTw?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 03:00:02 GMT",
+          "description": "[AI픽] 과기정통부, 자율주행 AI 개발용 데이터 장벽 허문다 연합뉴스",
           "source": "연합뉴스",
           "keyword": "AI",
           "catId": "nc_ai"
         },
         {
-          "title": "건설 AI 시대, 데이터는 쌓이는데 권리 규칙은 ‘공백’ - 전기신문",
-          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1kYnM2T3hyZVZCb0EtMVdQME00M0pmSGxYNkVocE9BdW1jbEctczJOQ05XSDhyT3MtbmxHdE5mU3c5aGxXOW1aSDB2X0hmREZ0Vm8wNHVtOVVFcGV2bGh6eWl1V0h4VUJOWkNrUjFzQXrSAXBBVV95cUxNZGJzNk94cmVWQm9BLTFXUDBNNDNKZkhsWDZFaHBPQXVtY2xHLXMyTkNOV0g4ck9zLW5sR3ROZlN3OWhsVzltWkgwdl9IZkRGdFZvMDR1bTlVRXBldmxoenlpdVdIeFVCTlpDa1Ixc0F6?oc=5",
-          "pubDate": "Wed, 17 Jun 2026 23:47:26 GMT",
-          "description": "건설 AI 시대, 데이터는 쌓이는데 권리 규칙은 ‘공백’ 전기신문",
-          "source": "전기신문",
+          "title": "과기정통부 주도 '피지컬 AI 얼라이언스' 2기 출범…실행형 협력체계 전환 - 전자신문",
+          "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5KVUMySFpGOG1DZXYyOVBCS052WHVYdUdJMXVVdUhiWFVhSXRveGUxOVhySDNvSmh1U09PMkhLR1ppWXliN0lQeGRSYldMZw?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 02:16:40 GMT",
+          "description": "과기정통부 주도 '피지컬 AI 얼라이언스' 2기 출범…실행형 협력체계 전환 전자신문",
+          "source": "전자신문",
           "keyword": "AI",
           "catId": "nc_ai"
         },
         {
-          "title": "이 대통령, AI 시대 '공유'와 '안전' 위한 국제협력 필요성 강조 - 대한민국 정책브리핑",
-          "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOTGFaUTJGWnNqN0xHcXBpdVBNc0dNR19DSzU3dDlkM1ZyTDhOTnMyQk9MS3U0VUZBMjZEZndUel9BdmxCWkZsS2tkQmk2WjFVTzV2SC05NE1YZVRROVZ2YjNBV3pOdTcwczd3cUhOMHI3STVUY0todTlsUGhlaTh6MlRRQlEyQlBGUnc?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 02:12:06 GMT",
-          "description": "이 대통령, AI 시대 '공유'와 '안전' 위한 국제협력 필요성 강조 대한민국 정책브리핑",
-          "source": "대한민국 정책브리핑",
+          "title": "오픈AI, 한국 챗GPT에 광고 붙인다…무료·저가 요금제 대상 [팩플] - 중앙일보",
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5HNzZvTklRZXRuTWNTeDZIYnhqSmg5V3MwRlNoNHM0Rnh0LUQwYTYxcjNsMnBUczNyVUtIVndMVE1vYVhqY18tY0Y1cGNwazZrTVhfc3hR?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 02:35:05 GMT",
+          "description": "오픈AI, 한국 챗GPT에 광고 붙인다…무료·저가 요금제 대상 [팩플] 중앙일보",
+          "source": "중앙일보",
           "keyword": "AI",
           "catId": "nc_ai"
         },
         {
-          "title": "AI 최대 병목은 전력...막대한 전력 인프라 갖춘 중국 파워 더 거세질 수도 - 조선일보",
-          "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNMlA5TTNBeXREdGlJZGl4Z2xzdGJjQnpnNjh1akt0VG94dTlKVXYyaGEteURUUGZCeU9mczA1bDVxTW85TjlrR1ozMmFqQi1oNTBoMlJ4bGNpZ18wR1ktNVlkTjdyaU92bmJ6ZWtQbzJxOWVpbzBhMEZaQnFNd05LbnlkRQ?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 02:34:00 GMT",
-          "description": "AI 최대 병목은 전력...막대한 전력 인프라 갖춘 중국 파워 더 거세질 수도 조선일보",
-          "source": "조선일보",
+          "title": "챗GPT도 무료 이용하면 광고 본다···표시는 어떻게? - 경향신문",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFB2OWpBS0FLUUFWVnVMUW9sY1NNOVJIbnNTdmRfNzQxZTR3ZjBSM3BYc2VyX3FmZlF0WTRoY2cycFdhWV85TjBpYzNSeXJHZWEtbUtKS054UnJhZ9IBX0FVX3lxTFAzX0lWaTI0Y25Sc2xsOXl0a0JpYkJpZTh0Unkyc0QtNVVObWt1U2cxaXFldU5VbEJfZGZ4LWNiR19EU1JRRGY0bnB5V0F2QWQtLTU3ZDQ0d2lIUmxPMU80?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 02:27:00 GMT",
+          "description": "챗GPT도 무료 이용하면 광고 본다···표시는 어떻게? 경향신문",
+          "source": "경향신문",
+          "keyword": "챗GPT",
+          "catId": "nc_ai"
+        },
+        {
+          "title": "'피지컬 AI 얼라이언스 2기' 출범···산업 현장 구축·확산 나선다 - 헬로디디",
+          "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE0xV1RON1FMZWF6aGU2bEtXNnIyTXhFTFNFUnEzRDRPRERsUTdPcS16TWQ5cjc3czgxa2NFSWJ5LU8xaE1PaE1uY3h5VnM1bzNWVkdjdkY2UFp6VERDN2Z4b2dxanFHSWxETUE?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 05:02:30 GMT",
+          "description": "'피지컬 AI 얼라이언스 2기' 출범···산업 현장 구축·확산 나선다 헬로디디",
+          "source": "헬로디디",
           "keyword": "AI",
           "catId": "nc_ai"
         },
         {
-          "title": "“남의 집 AI로는 안 된다”…‘생존’이 걸린 소버린 AI - KBS 뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1Ya0JfOFNZYllxeUdwOFd0Vm9aRnluWDZqdUEzaDN2Z3h3cUlLX2M2LUdHVXhmeG9lYmVrSnJyUHFiSUgtdDdBYTFvUThzSU14OGxwUklwQmxlQ28?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 02:30:00 GMT",
-          "description": "“남의 집 AI로는 안 된다”…‘생존’이 걸린 소버린 AI KBS 뉴스",
-          "source": "KBS 뉴스",
+          "title": "A10네트웍스, 보안 기업 트로이AI 인수 - 디일렉",
+          "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9rSXEySHJtT0tNMGdBWnNyLUZLU2hTOG9MM2E1Q3pFeXVURXJaeVFxUHlXaEpnRkxVejNVRXNIVllOWlJkRmt3U3JBbGFuWG82NEMzZWx4UDRhNHdtMmwtRm4tY19fUQ?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 04:39:46 GMT",
+          "description": "A10네트웍스, 보안 기업 트로이AI 인수 디일렉",
+          "source": "디일렉",
           "keyword": "AI",
           "catId": "nc_ai"
         },
         {
-          "title": "마키나락스, 한국수자원공사에 '설명 가능한 AI ' 운영 시스템 도입 - AI타임스",
-          "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBvazZGWG5lbjBSZHpBRzBFXzZ1QVJoX3hlV0NqM3Y5LUlLMnM1OUVRV3ZMUG5GelpNcGstWEdTald2Q1Y2YWticFZ4eTJ0TGxDcGhvVHVlMUdFQmpQazFTRURzUTJtYmJGX1E?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 03:51:45 GMT",
-          "description": "마키나락스, 한국수자원공사에 '설명 가능한 AI ' 운영 시스템 도입 AI타임스",
-          "source": "AI타임스",
-          "keyword": "AI",
-          "catId": "nc_ai"
-        },
-        {
-          "title": "과기부, 앤트로픽과 AI 안전·보안 협력 - v.daum.net",
-          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5zczlFSkF6Vmdqbi1ndzNkRTlaWWZNaXJWYVlpZW10UXhjcU5YdEFPeFJObE50dVRqSndpYXBaNEJBQnJNUjIwNXpfTUhEbkk?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 02:30:05 GMT",
-          "description": "과기부, 앤트로픽과 AI 안전·보안 협력 v.daum.net",
+          "title": "디즈니, AI광고 경쟁 참여…\"대본 영상 음악 AI로 한 번에\" - v.daum.net",
+          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5wM3FteVQ4N3ZPYWR4cFprMVNNMGNuWGgtOEFuR0c0Z2VXX3VuYkg3NGNtVGRDMVN6X01xTnZWanIyZlFqU01FM3BjWWVSWVE?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 04:54:09 GMT",
+          "description": "디즈니, AI광고 경쟁 참여…\"대본 영상 음악 AI로 한 번에\" v.daum.net",
           "source": "v.daum.net",
           "keyword": "AI",
           "catId": "nc_ai"
         },
         {
-          "title": "교황청, 인공지능(AI)과 노동에 있어서 인간의 존엄성과 공동선이 지켜져야 한다. - Vatican News",
-          "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOaWVaVzJZeDdMMlFVRzI1a0ZoeVlPY0ppV0drMHBBU3VoT3FWekZ1V0ZvNG1wVzZnZ09GVUJXdGpJQzNRTmxIMEV3anlLa3Y4WlBrN1B3YVMwSGluYk5Rck1OdjFnUHBKTnphMm5uZFFxay1qYnBTZTNvN29kcnBzQWpVb1E?oc=5",
-          "pubDate": "Wed, 17 Jun 2026 20:40:18 GMT",
-          "description": "교황청, 인공지능(AI)과 노동에 있어서 인간의 존엄성과 공동선이 지켜져야 한다. Vatican News",
-          "source": "Vatican News",
-          "keyword": "인공지능",
-          "catId": "nc_ai"
-        },
-        {
-          "title": "동의대, 전 학과 ‘AI 융합 교육’ 전면 도입 - 한국대학신문",
-          "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9rcEVMNWtSXzZSQkJISUg5LXZqX2laWmRMZWZDWWVoMVpycXZnZXAwTVppSTJJcnFJZV9TdkxwQTVibnlSWjdjb0tsei1ETlhCell2SVZXMnUtTzdzN3VxUXZKd19GUQ?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 03:42:46 GMT",
-          "description": "동의대, 전 학과 ‘AI 융합 교육’ 전면 도입 한국대학신문",
-          "source": "한국대학신문",
+          "title": "S&P500 선물, AI 기대에도 차익 실현에 하락 - 연합인포맥스",
+          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBHbEY4cXc0cjc1QnE4bjBfcXhQaHRubHprMVBsX2swVURhZXZTempDLUdjV0pPRExDTlFUdm5KTjladWZWMzVVUFZzUC1mNlMxWW1UV2JDRkNHQi1wYVVYVDI3Uk1TMjdFOEpjWDRNYlM?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 02:42:09 GMT",
+          "description": "S&P500 선물, AI 기대에도 차익 실현에 하락 연합인포맥스",
+          "source": "연합인포맥스",
           "keyword": "AI",
           "catId": "nc_ai"
         },
         {
-          "title": "미래에셋 “피지컬 AI 투자 기준은 전문성·데이터·상용화” - 스트레이트뉴스",
-          "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE4yRmhIMDlrNTF0TzdUSFp5WGRQbUZtYUQ0SWpuLUNJVDB6eklSVG8wcjZMQVJBRVB2S2hEMjdIUEpabjBMSHJQN0sxNGVNRUNWUjJhMnpRaEktTl9FSTVhQlVuN1lVTEFiakZ4bHQ1T25uRlHSAXdBVV95cUxPU2lCamZWdURQMHhPMHdNeXpmVWdaRkFvNDBrSHd0QUhJN2dCQ0pjQkVSdGE1MnhRWjRrNTVMNVZrYks2R08zQjl0dkM2WnZpNU1CTnNXTGM0bTNOR1FGQml2NTRXSnRXbFVFQTU0bDFYUjFOQlhHYw?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 04:02:33 GMT",
-          "description": "미래에셋 “피지컬 AI 투자 기준은 전문성·데이터·상용화” 스트레이트뉴스",
-          "source": "스트레이트뉴스",
-          "keyword": "AI",
-          "catId": "nc_ai"
-        },
-        {
-          "title": "앤트로픽, 한국 정부와 AI 안전성 평가하고 금융 취약점 발굴 협력한다 - 보안뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE8tdVVvbm0tT0JTTFJaWTA2NGE1akY3SW9NVUVOclhDek1UcDlWTllSRFliVTJpNU9mSUVqblVYTEF3WkJnVDRrVFdkdHZxWmgxcklBZjhlUjFMT1pUbnhWemZBemNXY3Fy?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 02:33:00 GMT",
-          "description": "앤트로픽, 한국 정부와 AI 안전성 평가하고 금융 취약점 발굴 협력한다 보안뉴스",
-          "source": "보안뉴스",
-          "keyword": "AI",
-          "catId": "nc_ai"
-        },
-        {
-          "title": "한해 경찰 민원 3억7천만건…AI챗봇 '모두의경찰관' 개발 착수 - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFA4bUdOUERYV3hlX1hwSHJkaGN2RUlHQVloTWlNUjBlbHFoaUZWWlk5QWZvNHM4ek9WcEdCOUlRZ3VjRjdVNm5ya0E5WE5FUm9tOFdYbV8ySkxobFFUd0t6V9IBYEFVX3lxTFA4bUdOUERYV3hlX1hwSHJkaGN2RUlHQVloTWlNUjBlbHFoaUZWWlk5QWZvNHM4ek9WcEdCOUlRZ3VjRjdVNm5ya0E5WE5FUm9tOFdYbV8ySkxobFFUd0t6Vw?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 02:00:04 GMT",
-          "description": "한해 경찰 민원 3억7천만건…AI챗봇 '모두의경찰관' 개발 착수 연합뉴스",
+          "title": "재경부 AX집현전, 'AI 혁신' GS 방문…민간 노하우 청취 - 연합뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9HX3lZbGJFZmFBYVMteHlmZTJxZk9VMU1CSWhTVWdaQllZeXdoREZLT045MlpOU25pbnlJMlVuZHB0ZmdreFJ5Vm91amVTNGNDcmw4Z1h2aTg5VFdHdmZjd9IBYEFVX3lxTE9HX3lZbGJFZmFBYVMteHlmZTJxZk9VMU1CSWhTVWdaQllZeXdoREZLT045MlpOU25pbnlJMlVuZHB0ZmdreFJ5Vm91amVTNGNDcmw4Z1h2aTg5VFdHdmZjdw?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 01:00:01 GMT",
+          "description": "재경부 AX집현전, 'AI 혁신' GS 방문…민간 노하우 청취 연합뉴스",
           "source": "연합뉴스",
           "keyword": "AI",
           "catId": "nc_ai"
         },
         {
-          "title": "\"AI가 수학을 어떻게 배우나\"...SKT, 독자 AI 모델 기술 세미나 개최 - AI타임스",
-          "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE84TnhoWjZzYmRpeVJvVkVCMnZDbVdiSlJJVGp0OWZpRGV1Y3hVYWdTbk1kTEZmVlp4dlRhb0ZWd1hxWmM5UHN2SDJIVnNieTVMRVVBVjNRQ0RaOXNxeEF3TnVfQ2JGVHk0Zmc?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 03:49:22 GMT",
-          "description": "\"AI가 수학을 어떻게 배우나\"...SKT, 독자 AI 모델 기술 세미나 개최 AI타임스",
-          "source": "AI타임스",
+          "title": "정부, K-피지컬 AI 풀스택 전략 공개…\"독자 기술력 확산 목표\" - 지디넷코리아",
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBNWS1JdjdPZkdSaWVGUzhyMmEwU3dqa1pJeFNzckttQm1QQ1lKSXphUFFWdEZqNXl5VUthRk9kcXM5dXlTT05lejJfc3E5TXM0NVpNQjVR?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 04:17:36 GMT",
+          "description": "정부, K-피지컬 AI 풀스택 전략 공개…\"독자 기술력 확산 목표\" 지디넷코리아",
+          "source": "지디넷코리아",
           "keyword": "AI",
           "catId": "nc_ai"
         },
         {
-          "title": "세종시, 생활정보 24시간 무료 안내 'AI 충녕' 서비스 운영 - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5VWnFiM1g5RDFRajNtVHo4Rmo0ekpZd2pNYko5QzJrNDdLSDlSZnljQ0N6RXlRVjRiaExRWTdZR2VUTUhhLVVZeWl0MlcxZ1ZIV21HUzUwNkp5ZmhFVlVCMtIBYEFVX3lxTE5VWnFiM1g5RDFRajNtVHo4Rmo0ekpZd2pNYko5QzJrNDdLSDlSZnljQ0N6RXlRVjRiaExRWTdZR2VUTUhhLVVZeWl0MlcxZ1ZIV21HUzUwNkp5ZmhFVlVCMg?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 01:42:13 GMT",
-          "description": "세종시, 생활정보 24시간 무료 안내 'AI 충녕' 서비스 운영 연합뉴스",
+          "title": "티맥스티베로, '2026 공공 AI 박람회' 참가…공공 AI 인프라 전략 제시 - 전자신문",
+          "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBDcWxZYno1ME5DTGVVbEx6SVpRWGFHY1Y1YUtnMDBFSTg2YVV5Q1NCZ29FYm5fdHNxV2lzOHpJMEozamQtRkNfbGtBNXRZQQ?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 02:41:57 GMT",
+          "description": "티맥스티베로, '2026 공공 AI 박람회' 참가…공공 AI 인프라 전략 제시 전자신문",
+          "source": "전자신문",
+          "keyword": "AI",
+          "catId": "nc_ai"
+        },
+        {
+          "title": "[AI픽] 챗GPT도 광고 단다…오픈AI, 한국 서비스 시작 - 연합뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9RTEN2ejZKQUdHaUZoRXVNSFBnUHRIdl9ESk1UQm1JOHJJLW1QbmVOY0pBbkIxejM4ZVA0V2J6SDFESWdLenRzNkZxYUwyZTFjNjJmS3BQRXg5X05uYU8zWdIBYEFVX3lxTE9RTEN2ejZKQUdHaUZoRXVNSFBnUHRIdl9ESk1UQm1JOHJJLW1QbmVOY0pBbkIxejM4ZVA0V2J6SDFESWdLenRzNkZxYUwyZTFjNjJmS3BQRXg5X05uYU8zWQ?oc=5",
+          "pubDate": "Thu, 18 Jun 2026 23:15:07 GMT",
+          "description": "[AI픽] 챗GPT도 광고 단다…오픈AI, 한국 서비스 시작 연합뉴스",
           "source": "연합뉴스",
           "keyword": "AI",
           "catId": "nc_ai"
         },
         {
-          "title": "과기부-앤트로픽, 글로벌 AI 안전·보안 협력 MOU - AI타임스",
-          "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5naGp4cTJiM2pudm5PNDQwREY4MjNFaUoxZElJRENIZk5aREpvTTJ2ZXliTm1wQVl6SHNfWGt6MVVPR2UxMlBSLW1qRjd3b09SbmZNRWgyUFZ3SWV1WjlmX0xQakF3anE2b3c?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 02:30:00 GMT",
-          "description": "과기부-앤트로픽, 글로벌 AI 안전·보안 협력 MOU AI타임스",
-          "source": "AI타임스",
+          "title": "배경훈 부총리 \"피지컬 AI '글로벌 1강' 목표…민관 협력 필수\" - 지디넷코리아",
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5vdmNPYXNCWXd4XzBjS3I3VVV6M0wtdTY5bkpueVl4R1haR1IyNUpCci1iM25aeUlOMFRFQ3lnQm5iRkV4ZnYwZjVfQzUtOHVQVEJOVWZ3?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 02:02:13 GMT",
+          "description": "배경훈 부총리 \"피지컬 AI '글로벌 1강' 목표…민관 협력 필수\" 지디넷코리아",
+          "source": "지디넷코리아",
           "keyword": "AI",
           "catId": "nc_ai"
         },
         {
-          "title": "민간 부동산 데이터 활용 확대…AI로 시장 모니터링 - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE42dEhSTFpIczFReWRMOExndi1tZW5BaHd1WHp2cVpzSURab2hXZTJSSmVPY2Z1bVJodmZ2Yk1DQjJTeWdVNFp3Y0xXLWFkbTFwbXZfcG9wZEdLNnFPSFAwd9IBYEFVX3lxTE42dEhSTFpIczFReWRMOExndi1tZW5BaHd1WHp2cVpzSURab2hXZTJSSmVPY2Z1bVJodmZ2Yk1DQjJTeWdVNFp3Y0xXLWFkbTFwbXZfcG9wZEdLNnFPSFAwdw?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 02:00:02 GMT",
-          "description": "민간 부동산 데이터 활용 확대…AI로 시장 모니터링 연합뉴스",
+          "title": "LG CNS·두산, AI·로봇·데이터센터 동맹 구축 - 연합뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5rU1ZSbFlEUUM3QkJWNzlCNXVNVUJMaE56bW9zWTdsNEptTFo1ZFBxak9PdkdkODNTdjhxb3lFWHJndm1VampaRDB2Y3BNSzFqRHZEdzE0MmxGbzB4R1RlZ9IBYEFVX3lxTE5rU1ZSbFlEUUM3QkJWNzlCNXVNVUJMaE56bW9zWTdsNEptTFo1ZFBxak9PdkdkODNTdjhxb3lFWHJndm1VampaRDB2Y3BNSzFqRHZEdzE0MmxGbzB4R1RlZw?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 00:00:01 GMT",
+          "description": "LG CNS·두산, AI·로봇·데이터센터 동맹 구축 연합뉴스",
           "source": "연합뉴스",
           "keyword": "AI",
           "catId": "nc_ai"
         },
         {
-          "title": "\"AI로 신약개발 승부수\"…LG화학, 랩-지니어스와 공동연구 - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFB5TkNmcEo4QUVIcGt4MWd3dnhmdG5ta2EtSl9GWUxuR0tJci1NbDh2YUpXaENmMTVXd3N5Ty1KeE43WkE0Y3loVElRMDdBX01yM1BNNHZXZmVUa1cwdFFybtIBYEFVX3lxTFB5TkNmcEo4QUVIcGt4MWd3dnhmdG5ta2EtSl9GWUxuR0tJci1NbDh2YUpXaENmMTVXd3N5Ty1KeE43WkE0Y3loVElRMDdBX01yM1BNNHZXZmVUa1cwdFFybg?oc=5",
-          "pubDate": "Wed, 17 Jun 2026 23:51:12 GMT",
-          "description": "\"AI로 신약개발 승부수\"…LG화학, 랩-지니어스와 공동연구 연합뉴스",
+          "title": "조준희 \"AI는 승자독식 시장…정부·기업·산업계 힘 모아야\" - 지디넷코리아",
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5iUl9reTdQaWsxRi1PRmk4bUVDMFZPdTZOM3pUb2dfa3J4Z0RGeUJZckNyaHAwNlJoRnR1aHhoYTNwR1pZZEs1aWZVN2hEekpZT2pFUUdn?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 02:14:11 GMT",
+          "description": "조준희 \"AI는 승자독식 시장…정부·기업·산업계 힘 모아야\" 지디넷코리아",
+          "source": "지디넷코리아",
+          "keyword": "AI",
+          "catId": "nc_ai"
+        },
+        {
+          "title": "[게시판] 한솔그룹, 대학생 AI 숏폼 영상 공모전 - 연합뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBndG4zcmY1amtGcnlvbVlucVVibHVvWHY3eWRNTVkwbjFhVWxMSkMtS09DMm9xZW95WHdGc0ZJdjRqYjBSR2lGbThzVjM4dVBlU3l5VkVBOVNQRkJudVg4RtIBYEFVX3lxTFBndG4zcmY1amtGcnlvbVlucVVibHVvWHY3eWRNTVkwbjFhVWxMSkMtS09DMm9xZW95WHdGc0ZJdjRqYjBSR2lGbThzVjM4dVBlU3l5VkVBOVNQRkJudVg4Rg?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 00:36:58 GMT",
+          "description": "[게시판] 한솔그룹, 대학생 AI 숏폼 영상 공모전 연합뉴스",
           "source": "연합뉴스",
           "keyword": "AI",
           "catId": "nc_ai"
         },
         {
-          "title": "\"AI 시대 역할 다했다\" vs \"농기계 교육 여전히 필요\" - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE0zdDVwUGIyU3pmd2l6NzlkMUhiS3BjblNaQVUybHk3TmFEOVhzS1NDNmhhYXEtSEpHcm5ibmJmaEFoSU9fNFZCQWdpajlYZ0hiMHFpanR6VmtPRUtYZjE4M9IBYEFVX3lxTE0zdDVwUGIyU3pmd2l6NzlkMUhiS3BjblNaQVUybHk3TmFEOVhzS1NDNmhhYXEtSEpHcm5ibmJmaEFoSU9fNFZCQWdpajlYZ0hiMHFpanR6VmtPRUtYZjE4Mw?oc=5",
-          "pubDate": "Wed, 17 Jun 2026 22:10:00 GMT",
-          "description": "\"AI 시대 역할 다했다\" vs \"농기계 교육 여전히 필요\" 연합뉴스",
+          "title": "\"AX가 만드는 진짜 가치\"…롯데, AI 혁신 해법 공유 - 연합뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9vVXdkSkc2RU5Yc0F5R2VXYVVpYTh2YXNBN2tpYmtuZzFYN3JuaU5wRXNHZ3pJOXVoQmdjT2pkZ0g2c1Bmd3hVVndRUm92RVJaY3U0VEgwSFhVVzZTZWJXRdIBYEFVX3lxTE9vVXdkSkc2RU5Yc0F5R2VXYVVpYTh2YXNBN2tpYmtuZzFYN3JuaU5wRXNHZ3pJOXVoQmdjT2pkZ0g2c1Bmd3hVVndRUm92RVJaY3U0VEgwSFhVVzZTZWJXRQ?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 01:07:38 GMT",
+          "description": "\"AX가 만드는 진짜 가치\"…롯데, AI 혁신 해법 공유 연합뉴스",
+          "source": "연합뉴스",
+          "keyword": "AI",
+          "catId": "nc_ai"
+        },
+        {
+          "title": "[동정] 배석태 동명대 교수, 한국AI·로봇산업협회 부회장에 선임 - 연합뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFAyazN5UGx2cnhXdjZJbFZVN0JEUzI3WmZmaUJxdkNPcTRrTUZLUWV5djVZQ3RicmtpREdkcWpYejVZTG5IOUtjZVNYNUw1Y3M4WFNuTmhNOWhKQWlhRmV0VtIBYEFVX3lxTFAyazN5UGx2cnhXdjZJbFZVN0JEUzI3WmZmaUJxdkNPcTRrTUZLUWV5djVZQ3RicmtpREdkcWpYejVZTG5IOUtjZVNYNUw1Y3M4WFNuTmhNOWhKQWlhRmV0Vg?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 01:32:34 GMT",
+          "description": "[동정] 배석태 동명대 교수, 한국AI·로봇산업협회 부회장에 선임 연합뉴스",
+          "source": "연합뉴스",
+          "keyword": "AI",
+          "catId": "nc_ai"
+        },
+        {
+          "title": "AI가 자세 진단하고 운동 처방까지…서초구 'AI 체육관' 첫선 - 연합뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFB2dm9QZXhycTBBZzZOVF9vYUMzQTlwZS1JYlc1eVNDaC1UdnQ5b3djd1NMa1Z6NWNGRFhrV29FUGlxMnd5ancyZzduMkVNek8yWklmN0sySW1nM0lmNldfS9IBYEFVX3lxTFB2dm9QZXhycTBBZzZOVF9vYUMzQTlwZS1JYlc1eVNDaC1UdnQ5b3djd1NMa1Z6NWNGRFhrV29FUGlxMnd5ancyZzduMkVNek8yWklmN0sySW1nM0lmNldfSw?oc=5",
+          "pubDate": "Thu, 18 Jun 2026 22:44:25 GMT",
+          "description": "AI가 자세 진단하고 운동 처방까지…서초구 'AI 체육관' 첫선 연합뉴스",
           "source": "연합뉴스",
           "keyword": "AI",
           "catId": "nc_ai"
@@ -190,183 +190,183 @@
       "name": "창업/스타트업",
       "articles": [
         {
-          "title": "[기고] 2026년, 인수창업 원년- 지방소멸의 답은 이미 그곳에 있다 - 영남일보",
-          "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5PeVh3RkRNMk9VREtweWo5YnQ4VjZ4ckNGbFgwTzdpTGxvLTZYbkgweWNvb043ZlJub1BBb0ZrU3JkTjZwOFNyMXNsclUtNlNGY2d4M3BpZFhYZUJoNkh0NzRvSQ?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 04:45:48 GMT",
-          "description": "[기고] 2026년, 인수창업 원년- 지방소멸의 답은 이미 그곳에 있다 영남일보",
-          "source": "영남일보",
+          "title": "“수산 청년 창업자금 3억뿐”…출범 앞둔 통합특별시에 쏟아진 창업 과제 - v.daum.net",
+          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE92YUVYS3h1N192alo3TGlnVDNXbDJqbDhtQm0yeGJGa2NsTkJSRVZpVEhsbTRvUGhZZWcxa0RqWVFKM0FUQTg2VGVtVS1rYWc?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 04:01:01 GMT",
+          "description": "“수산 청년 창업자금 3억뿐”…출범 앞둔 통합특별시에 쏟아진 창업 과제 v.daum.net",
+          "source": "v.daum.net",
           "keyword": "창업",
           "catId": "nc_startup"
         },
         {
-          "title": "K-스타트업 39개사, 비바테크서 유럽 시장 문 두드린다 - 플래텀(Platum)",
-          "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE96WUplVVZMN0xLOVhTWFFGUXg0a2JoLWJEVm5yQUc1V29UZ0oxcUxWR2FtamYyRFA4QW1sTnQ5UEFkY3gwbnY4dQ?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 02:45:50 GMT",
-          "description": "K-스타트업 39개사, 비바테크서 유럽 시장 문 두드린다 플래텀(Platum)",
-          "source": "플래텀(Platum)",
+          "title": "정부 주도 ‘모두의 창업’ 개인정보 유출…5천명 아이디어 요약 포함 - 한겨레",
+          "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE4yaUhXY3dBSF9hWW9xRFo3UjZCcEVmenU3cC1zNGxsZ1VJWUhubUhfQUM3WmN0ck5wTzRzQ01FYUZrdWVCVEw5RExLMTlHanJ3NW5iY240aVBRMXRBUmxQeThfY0RmdjQ?oc=5",
+          "pubDate": "Thu, 18 Jun 2026 09:43:00 GMT",
+          "description": "정부 주도 ‘모두의 창업’ 개인정보 유출…5천명 아이디어 요약 포함 한겨레",
+          "source": "한겨레",
+          "keyword": "창업",
+          "catId": "nc_startup"
+        },
+        {
+          "title": "“피지컬 AI가 이끌 ‘챗GPT 모먼트’”… 한국 스타트업에 열린 기회의 창 - 산업일보",
+          "link": "https://news.google.com/rss/articles/CBMiREFVX3lxTFBleFd5d2NmZ3ltRUtYMjZXQTdTdktzRUhidnJzMHdKYUVOMGpNd2tyQmIyeFMwRlFETkxoRVNVZzhkOHFn?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 04:55:52 GMT",
+          "description": "“피지컬 AI가 이끌 ‘챗GPT 모먼트’”… 한국 스타트업에 열린 기회의 창 산업일보",
+          "source": "산업일보",
           "keyword": "스타트업",
           "catId": "nc_startup"
         },
         {
-          "title": "부산시, 글로벌 신흥 창업도시 세계 70위권 진입 - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBZU1QxYTd2M3Y4WGZRVEp2OTBYUlJhMnFkSF9wRjU3d2NYS25td29HQ2FYbDZLYzcxSEljdXhKeUNyQ203R3g0ZUE5T0o1V09LMXJ5WFBZV3JQV1lSTUloRNIBYEFVX3lxTFBZU1QxYTd2M3Y4WGZRVEp2OTBYUlJhMnFkSF9wRjU3d2NYS25td29HQ2FYbDZLYzcxSEljdXhKeUNyQ203R3g0ZUE5T0o1V09LMXJ5WFBZV3JQV1lSTUloRA?oc=5",
-          "pubDate": "Wed, 17 Jun 2026 22:56:35 GMT",
-          "description": "부산시, 글로벌 신흥 창업도시 세계 70위권 진입 연합뉴스",
-          "source": "연합뉴스",
+          "title": "서울 창업생태계 가치, 1000억 달러 성장 - 환경일보",
+          "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBtemV0NWtfbmZVclVrbWtoT3JtVnNMX3VqSjRrUXNvOG9OOUNNdmIzOTdwaTVEVXZhb0RqMnBlaXdXWHByc0U1Z0NHbDhVRE9pVWFydGpuUG9rNE1EdnZ2dEs1Yk9GNHVn?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 03:04:35 GMT",
+          "description": "서울 창업생태계 가치, 1000억 달러 성장 환경일보",
+          "source": "환경일보",
           "keyword": "창업",
           "catId": "nc_startup"
         },
         {
-          "title": "중소벤처기업부는 「모두의 창업」 개인정보 유출 사안에 대해 신속한 차단 조치를 완료하였으며, 피해자 보호와 재발방지에 총력을 다하겠습니다 - 대한민국 정책브리핑",
-          "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE0tVS1DQ1dyaTJSMGZCamY5cnRMUE0yeVdEeXNYS2lHdHBoOERBc01PNU5SME1sOG9iVHFUbWI3dU1sZjR2bU0xOHljQTBWRG83ckR6WnIxal9xc3RSWnFNZWZuSkdOZnNkUXh3V0JmSQ?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 04:42:53 GMT",
-          "description": "중소벤처기업부는 「모두의 창업」 개인정보 유출 사안에 대해 신속한 차단 조치를 완료하였으며, 피해자 보호와 재발방지에 총력을 다하겠습니다 대한민국 정책브리핑",
-          "source": "대한민국 정책브리핑",
+          "title": "KOMSA, 세종 창업기업과 간담회 개최 - 물류신문",
+          "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBjT3hWVjI1ZWdiN3IyWmJrVS0wdWRBQVpjbHVva3E5dHNCUDNqc05NVkltSVZfTEVseVl6M0RISEZWN0FiTmR4SmFjSVJyRmxFd1RsT0tiMnBkVWVjcUtFbXpwSnN4a19VQTZN?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 02:58:13 GMT",
+          "description": "KOMSA, 세종 창업기업과 간담회 개최 물류신문",
+          "source": "물류신문",
           "keyword": "창업",
           "catId": "nc_startup"
         },
         {
-          "title": "국세청, '스타트업 세금든든케어' 띄운다....청년 창업 적극 지원 - intn.co.kr",
-          "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE0zaVFvejdFbDdBV3JJYV9wbXZfUXFNZGdta3paeXlxQ3ZmZEJ5WGlRSXBCNHZNWXBjdFF0SHhKWmZ3Q29ITmE1UVYtTnZ0ZzJoVDlSSXNtUVlrUjRlNVlmQ3AwMEJUNWlQM3c?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 03:00:00 GMT",
-          "description": "국세청, '스타트업 세금든든케어' 띄운다....청년 창업 적극 지원 intn.co.kr",
-          "source": "intn.co.kr",
-          "keyword": "스타트업",
+          "title": "서울 창업생태계 가치 '154조원 성장' 글로벌 혁신도시 됐다 - 유니콘팩토리",
+          "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBtS3Q3OHkzYVQtZUk4bE5WOHI4cERVUjRHVzBudzNvRGNrR2hua1h1SzdGbDlLX1VLLVJLRWpRQ1d2WjBfM2tDZGFaYmg1Ynk3aEhoNnVyN0E5U094MHdMOTQ3U05fS2NlR2RsXw?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 05:00:00 GMT",
+          "description": "서울 창업생태계 가치 '154조원 성장' 글로벌 혁신도시 됐다 유니콘팩토리",
+          "source": "유니콘팩토리",
+          "keyword": "창업",
           "catId": "nc_startup"
         },
         {
-          "title": "[단독] ‘모두의 창업’ 1차 합격자 5000명 아이디어·심사평 전부 유출 - 조선비즈 - Chosunbiz",
-          "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPa2RRNkxfTFN6M3NyclBxU3JRRW5veUN0TTA0amxFeHRLSDN0czNjM0M3WnQ0UzZaZWdwdXJQYlFwbWJWLThRenUwR0w4WEktWFZ4X1o5SHY5aG1sM1NGNk5kZElvaWtaaTU0ajNSaWxIeXVPMWRaVTRHZV84Rk1jaDhSbFIwcTVUNEHSAZ4BQVVfeXFMT3JJN2xGZk5GY0RTSGdxQ1A2anhQaHNzMEd6RTJJNXdaWHJsNDlOV1B2RzcxemZ1a2VUR19lZmhqWm1pV1J6ekVLZE0xVUw4WW1XX3BCOThQaWdxemtzYU5QekU0MlRtbDVvNU9MSk1fSHdhZ1had2xVc1RqVDRxaFpiLXJfZlNkeE9SeXdSOW42emVmU1Vzai1tajVlLUE?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 03:56:00 GMT",
-          "description": "[단독] ‘모두의 창업’ 1차 합격자 5000명 아이디어·심사평 전부 유출 - 조선비즈 Chosunbiz",
+          "title": "\"아이디어만 있으면 도전 OK\"…선문대, '모두의 창업' 1기 출범 - 아산뉴스",
+          "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1yZlBYRW9ScVp5NVJVcXlfSDlHUm9Od1FibllyV0c2eGhEcHllLS1PcFd3MERMS2trTDhYRFE3bVRpV1F4Z1FObGRWVlpLblhyS2hpZnQ5czExN254Qmg5THZpSEx4QTR4MmkxcXozSmNRLXhIaFJ1UDdmMA?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 02:40:00 GMT",
+          "description": "\"아이디어만 있으면 도전 OK\"…선문대, '모두의 창업' 1기 출범 아산뉴스",
+          "source": "아산뉴스",
+          "keyword": "창업",
+          "catId": "nc_startup"
+        },
+        {
+          "title": "선문대, ‘모두의 창업’ 1기 출범… 예비창업자 맞춤형 성장 지원 본격화 - 한국대학신문",
+          "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9rSFB3eHdPU3hvQUVMOHBWVmNEcXRrZk02OTk5RmxMTjgtSDF1eEUxSlFKb0w1ZmpQQ0tEY1NxT3J4TDJocTR3aUpGcHFTanMzakkydzhTTW5iT0RtdU9OYnU2dW54UQ?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 02:40:50 GMT",
+          "description": "선문대, ‘모두의 창업’ 1기 출범… 예비창업자 맞춤형 성장 지원 본격화 한국대학신문",
+          "source": "한국대학신문",
+          "keyword": "창업",
+          "catId": "nc_startup"
+        },
+        {
+          "title": "[단독] ‘월 60만원씩 9개월’ 창업도전자금…생활비 지원 적절성 도마 - 조선비즈 - Chosunbiz",
+          "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNTldkQ2V5eUNCU2FVQzZGWXF0Z3VEVjRLOFladHNCV1JXTUNwSVFYN2MyNEN1dW1QUk9QakxSMzJmTDFDZG5kREZZQWNxd1RKZUh1aW9ObHE1NEVId0EyeDdkOVlOR2p3X1F0UVBqQlFtRzc5Z1Qwa3QwU0IwcmtTb1FKc0p1SVlaYUgxZEZORDbSAaQBQVVfeXFMTUlUcV93SF9jbUJmangzbmNYQTJNcFp6MF9BMUlmM0tCaXFROVk3ZTVYejFHUGZvTklDOHp0UmZaczVsU1FEbUlscU1qSWtxN211ZjRVclQ4VUU4eDNPZ1VpYkswV0VUcG1zVVNkNC1HbTBkVFJwM2Fzb2s3SmV4Mkk2cWxBdndEdEhHUzFQeldxWUZ5Qll3cXRLNDFLd2hiN291TTY?oc=5",
+          "pubDate": "Thu, 18 Jun 2026 21:34:00 GMT",
+          "description": "[단독] ‘월 60만원씩 9개월’ 창업도전자금…생활비 지원 적절성 도마 - 조선비즈 Chosunbiz",
           "source": "Chosunbiz",
           "keyword": "창업",
           "catId": "nc_startup"
         },
         {
-          "title": "목포수산식품지원센터·국립목포대, 창업기업 성장 지원 협약 - AI타임스",
-          "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9NMHN2ekdwSmtOV0dIcHRkZVR1MTVVT1pkTkdRMFdQWVRxdnlKZ3lXVTdETC1IaWZ2MGhCcXRSdld2a2o1NUJQU25keUtVOXdqZ2Q3X05yRGxOdHRJNFlXb0pLNlZBZ3JpYXc?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 03:33:06 GMT",
-          "description": "목포수산식품지원센터·국립목포대, 창업기업 성장 지원 협약 AI타임스",
-          "source": "AI타임스",
+          "title": "나인테크, 창립 20주년 맞아 '제3의 창업' 선언 - 전자신문",
+          "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9pTWpWMFRESGd4WXJwRXQ5aEhiWU85bU1PWW5KYU9oWDJqSUEySVNWWDJmOFJXd0JBT1FZRWFscHZKbHVMV0ptQ0xzdFBKdw?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 03:01:33 GMT",
+          "description": "나인테크, 창립 20주년 맞아 '제3의 창업' 선언 전자신문",
+          "source": "전자신문",
           "keyword": "창업",
           "catId": "nc_startup"
         },
         {
-          "title": "“94억 투입한 창업 메카”… 청주시 청년창업지원센터 ‘본격 가동’ - v.daum.net",
-          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1QVWhoX1dZQmhkakF3c1RVeHdJVEhvZ3pjVWlvblBXdDgwS1pvajFGLVpFaVZMMXBmOEh3cXJDTEVWbmZyTnBPUjQ3OVM3Sm8?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 01:34:39 GMT",
-          "description": "“94억 투입한 창업 메카”… 청주시 청년창업지원센터 ‘본격 가동’ v.daum.net",
-          "source": "v.daum.net",
-          "keyword": "창업",
-          "catId": "nc_startup"
-        },
-        {
-          "title": "임광현 국세청장 \"'스타트업 세금든든케어'로 청년 창업자 전방위 지원\" - 한국세정신문",
-          "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBJUFJTVDJSMGdrY3ltQW1oRXl0bHBldjNzR2dGR0VUczBGelZrVEZ1aEdnQXNuc042SU1KYXlndExpQk1uM2pzWFVfRmxkS09PZmhXbG5iaGJrQnY4YjVPZ3RUd04?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 03:00:02 GMT",
-          "description": "임광현 국세청장 \"'스타트업 세금든든케어'로 청년 창업자 전방위 지원\" 한국세정신문",
-          "source": "한국세정신문",
+          "title": "LG생활건강, 미래 혁신 이끌 ‘뷰티·웰니스 스타트업’ 발굴 나선다 - 뉴스와이어",
+          "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE53OEJrVUtwb25fUGc2MWJkVlJHeEZWTzl6bDNLUnpneTR2WGJtWnhHWm9TbXVjeS1vLS01ZUN6LWNrRHBOVGVLa3MycklzaUhqdmZsTG5MVnZ3TWE2dkMw?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 01:05:53 GMT",
+          "description": "LG생활건강, 미래 혁신 이끌 ‘뷰티·웰니스 스타트업’ 발굴 나선다 뉴스와이어",
+          "source": "뉴스와이어",
           "keyword": "스타트업",
           "catId": "nc_startup"
         },
         {
-          "title": "한국기술교육대, 유럽 최대 스타트업 박람회 참가 글로벌 창업 꿈 키운다 - 한국대학신문",
-          "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1TN0pIdTc2ZzVsWndKVkY2dWZ6QVBZR2tONC00Uy1qRkFDTjRCV1pPdGQydWY3NENMZTgwUlhFYnFnWUxtek5MbXcxbnp5dGE3RjNNQlR0VVVja2ZlWUpUU0FaT0V0QQ?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 02:31:56 GMT",
-          "description": "한국기술교육대, 유럽 최대 스타트업 박람회 참가 글로벌 창업 꿈 키운다 한국대학신문",
+          "title": "스타트업 페어 ‘넥스트라이즈 2026’, 차세대 AIㆍ모빌리티 청사진 제시 - 산업인뉴스",
+          "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE91QXZ5YXRodHY5Z2dHbFZNb0RYMUxOeDVqSHA1emR3QjJpcC0xTnhHejFaalNpMTU4dHMwYjlHOTNWTDhmNmZmUTdCUUMyaE9WQWVfY0pIUjNhV2JSdDh5Wk9JbERJZkpCTkVjYUJB?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 04:06:59 GMT",
+          "description": "스타트업 페어 ‘넥스트라이즈 2026’, 차세대 AIㆍ모빌리티 청사진 제시 산업인뉴스",
+          "source": "산업인뉴스",
+          "keyword": "스타트업",
+          "catId": "nc_startup"
+        },
+        {
+          "title": "부산시, 글로벌 신흥 창업도시 세계 70위권 진입, 1년 만에 10계단 상승 - 한국방송뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5BMUlJRG0xeEZocWphQ0t3MEZ3SHk4aVV4Q0hYNktDeGI0c2lFNm1sTDE5cEhvVVNQeWw1b2xmeUczUVhGc0dyeVF2dTVjVDBtYnhkeFNFbUpFWmZEZjRzeg?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 01:40:31 GMT",
+          "description": "부산시, 글로벌 신흥 창업도시 세계 70위권 진입, 1년 만에 10계단 상승 한국방송뉴스",
+          "source": "한국방송뉴스",
+          "keyword": "창업",
+          "catId": "nc_startup"
+        },
+        {
+          "title": "동의과학대 베이커리카페산업과, 학생 주도 창업 리빙랩 ‘제제공작소’ 운영 - 국제신문",
+          "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPZXp3X2k2Q2s1MTlPazlSNEJ0c0xveGpYRVE2RnI0QzFpbDlvdmtNdW1IbXRkYjF0NEhNR05HVkJlTXgyVU1WVzE3RFl0MWxESXBYVzB3Z0RFNk1nRTd4V3VlWEZnOFRnTHlNempUSWJRSjhKWGMxQ2FCdnVsZ0hJZHFheDJPZk1wSm02djFJeWg0bGs?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 05:16:00 GMT",
+          "description": "동의과학대 베이커리카페산업과, 학생 주도 창업 리빙랩 ‘제제공작소’ 운영 국제신문",
+          "source": "국제신문",
+          "keyword": "창업",
+          "catId": "nc_startup"
+        },
+        {
+          "title": "혁신창업 발굴 '스타트업 815 IR 연합' …'산학연 기술지주회사' 주목 - 브릿지경제",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFB2R3ozS3JZS1NsZkduRHp4d2dkOFVVYjFieU8yaXVnU3RyOUFMcjMxTzBLTGw3QTJTYXZXR2R5RDljUm52Y3hwQkpkc05LZ1lVS3ZQLXNYTktKdw?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 03:54:00 GMT",
+          "description": "혁신창업 발굴 '스타트업 815 IR 연합' …'산학연 기술지주회사' 주목 브릿지경제",
+          "source": "브릿지경제",
+          "keyword": "스타트업",
+          "catId": "nc_startup"
+        },
+        {
+          "title": "KAIST 출신 주목! 정부, 2026 딥테크 창업기업 모집 - 동행일보",
+          "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE56QkZ6bkd5SGcyajFpd29Yd3JpZnk4akVTZGpLVHhvQ3htMEZzTDlXMDNTSlgyYVZEZGFMQ1ZrUVpXM2prSUZRcGZzQ1pvZW93aUtvb3lHQ0J1NXR4SV96MnFxUURIeG1z?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 00:54:00 GMT",
+          "description": "KAIST 출신 주목! 정부, 2026 딥테크 창업기업 모집 동행일보",
+          "source": "동행일보",
+          "keyword": "창업",
+          "catId": "nc_startup"
+        },
+        {
+          "title": "[단독] ‘모두의 창업’ 1기 합격자 5000명 아이디어·심사평 유출 - 조선비즈 - Chosunbiz",
+          "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPa2RRNkxfTFN6M3NyclBxU3JRRW5veUN0TTA0amxFeHRLSDN0czNjM0M3WnQ0UzZaZWdwdXJQYlFwbWJWLThRenUwR0w4WEktWFZ4X1o5SHY5aG1sM1NGNk5kZElvaWtaaTU0ajNSaWxIeXVPMWRaVTRHZV84Rk1jaDhSbFIwcTVUNEHSAZ4BQVVfeXFMT3JJN2xGZk5GY0RTSGdxQ1A2anhQaHNzMEd6RTJJNXdaWHJsNDlOV1B2RzcxemZ1a2VUR19lZmhqWm1pV1J6ekVLZE0xVUw4WW1XX3BCOThQaWdxemtzYU5QekU0MlRtbDVvNU9MSk1fSHdhZ1had2xVc1RqVDRxaFpiLXJfZlNkeE9SeXdSOW42emVmU1Vzai1tajVlLUE?oc=5",
+          "pubDate": "Thu, 18 Jun 2026 08:38:00 GMT",
+          "description": "[단독] ‘모두의 창업’ 1기 합격자 5000명 아이디어·심사평 유출 - 조선비즈 Chosunbiz",
+          "source": "Chosunbiz",
+          "keyword": "창업",
+          "catId": "nc_startup"
+        },
+        {
+          "title": "환경공단, 환경분야 청년창업 지속 성장 위한 지원 확대 - 환경일보",
+          "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9OcnJ6Z2d0aWxQUEs5NzE5dUlCWEotZkYzRlhwdkRwQ05OSnhkOXNXQ2c3bGZ3dmFZZlNLV2ktNGtUZ0pJQ1J5OHdXUEcxMlBQSXhaUmtSMkRTYjU3dFMtR09IOF9JQmxZ?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 04:42:39 GMT",
+          "description": "환경공단, 환경분야 청년창업 지속 성장 위한 지원 확대 환경일보",
+          "source": "환경일보",
+          "keyword": "창업",
+          "catId": "nc_startup"
+        },
+        {
+          "title": "충북 라이즈(RISE), 대학-기업 협력 본격화… “청년 취창업 통해 지역정주 높인다” - 한국대학신문",
+          "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9xc2VBaHVPOFJTVzRUV3ZjTDFOaXI2ZnF2QlFoQkJWb0l3NWpGS1htcHI3YXU1dVFEa1ZuOV85bUdDM2RobFZQSDdxOXl4Rk9idmI3cUFHRkVyWlc2LTVmaXBMUzhkdw?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 02:26:12 GMT",
+          "description": "충북 라이즈(RISE), 대학-기업 협력 본격화… “청년 취창업 통해 지역정주 높인다” 한국대학신문",
           "source": "한국대학신문",
-          "keyword": "스타트업",
-          "catId": "nc_startup"
-        },
-        {
-          "title": "2026 상주시 청년창업 비즈니스 아이디어톤 개최 - 경북매일",
-          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBoanhlbVJCR0NEOExwVmJNV0xTckNrUWhPN0Njc1ZJUVdrMlpXdnVQeUxfaHpJdnc5amc1TUlnRmlHbkpaaXBGRHFqLUgxRmY1QjFET3JIemw4QQ?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 02:08:00 GMT",
-          "description": "2026 상주시 청년창업 비즈니스 아이디어톤 개최 경북매일",
-          "source": "경북매일",
           "keyword": "창업",
           "catId": "nc_startup"
         },
         {
-          "title": "중기부, 비바테크 2026 참가 스타트업 지원 - 문화일보",
-          "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5hZVNwZGw4WldBSy1WZ3RvZzAtNklqVGNCalZ4OW5DeEJRYnpaV0hwN0pxMEVJVGpiMENiZENqc1dkQTVuejBVUk9pejFBbmpz?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 00:43:15 GMT",
-          "description": "중기부, 비바테크 2026 참가 스타트업 지원 문화일보",
-          "source": "문화일보",
-          "keyword": "스타트업",
-          "catId": "nc_startup"
-        },
-        {
-          "title": "국가 창업시대 창업 열풍과 벤처투자 최대 - 대한민국 정책브리핑",
-          "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE00MXJPc3RnS0lRNUpCVDhJUjBaX3JDZHV4TnpYeWZZajVob3BEc2VlTU5Td3AxN25ad2UzN0tBeGRub1cwQUd0Z1d4NDNCOWtIWThIVTNQVG9mLXZ6RWNncEF1Y05qZVd6NlB3eg?oc=5",
-          "pubDate": "Wed, 17 Jun 2026 21:51:00 GMT",
-          "description": "국가 창업시대 창업 열풍과 벤처투자 최대 대한민국 정책브리핑",
-          "source": "대한민국 정책브리핑",
-          "keyword": "창업",
-          "catId": "nc_startup"
-        },
-        {
-          "title": "중기부, 파리 스타트업 전시회서 통합관 운영…\"유럽 진출 지원\" - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1QTmN1Um1pT1BUcXJabWFUS0k1WVlxUkFnbGdDMkJWdVItdl9YQTFiTEhPRGp6ZUpwV2trQ0NHZ2VTVFRKMFItZkthUTcxY09oa0JvUXltaXpIbTFkRUo1N9IBYEFVX3lxTE1QTmN1Um1pT1BUcXJabWFUS0k1WVlxUkFnbGdDMkJWdVItdl9YQTFiTEhPRGp6ZUpwV2trQ0NHZ2VTVFRKMFItZkthUTcxY09oa0JvUXltaXpIbTFkRUo1Nw?oc=5",
-          "pubDate": "Wed, 17 Jun 2026 21:00:09 GMT",
-          "description": "중기부, 파리 스타트업 전시회서 통합관 운영…\"유럽 진출 지원\" 연합뉴스",
-          "source": "연합뉴스",
-          "keyword": "스타트업",
-          "catId": "nc_startup"
-        },
-        {
-          "title": "[전화성의 스타트업 모닝커피 1337회] 슈퍼포우 - 플래텀(Platum)",
-          "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFBiMm9qYnluSXVheEwtbFBKRWxhRFg0czhsaVhiV1JVOVI1aEFBNkpQX1VCNi1zS0wwZktsbWJjYzZWMURyZU9GNg?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 00:40:20 GMT",
-          "description": "[전화성의 스타트업 모닝커피 1337회] 슈퍼포우 플래텀(Platum)",
-          "source": "플래텀(Platum)",
-          "keyword": "스타트업",
-          "catId": "nc_startup"
-        },
-        {
-          "title": "국세청, 청년 창업부터 성장·폐업·재기까지 세정지원 확대한다 - 한국세정신문",
-          "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE8tYWk3WEF5dDNhTWNOWFVFU1VDaVRvb1k0ZnR1UGh2bUd6ZUczWkQtRm90UTE0Ynd4cGxCN1hueXZBV3kySkN1OVNRN3hXVG9pcm1lZ3NzbE9KYmExVjU1dGh1Z1o?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 03:00:01 GMT",
-          "description": "국세청, 청년 창업부터 성장·폐업·재기까지 세정지원 확대한다 한국세정신문",
-          "source": "한국세정신문",
-          "keyword": "창업",
-          "catId": "nc_startup"
-        },
-        {
-          "title": "부산, 창업생태계 성장세…세계 70위권 진입 - v.daum.net",
-          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE82YmJrTjc2UXU4ZkdkOFIxYmthZERXZzdhM2pzMjNIN0cxelpKU3JWNGxpMFNUWkpSTUtrVkV1T29tQUowUjBhbHJScTVDWWs?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 02:20:32 GMT",
-          "description": "부산, 창업생태계 성장세…세계 70위권 진입 v.daum.net",
+          "title": "디캠프-코로프라, K-콘텐츠 스타트업 일본 진출 지원 - v.daum.net",
+          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5IV09XUlV6azNNbVA0UGRxUzFVbzV0cGJKblA2NFNBM2Y5blhZRVh0Y2VoN2hXbmNGT1RPRENTYjE0VTFuZEFyb0tkemdWWmM?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 01:27:03 GMT",
+          "description": "디캠프-코로프라, K-콘텐츠 스타트업 일본 진출 지원 v.daum.net",
           "source": "v.daum.net",
-          "keyword": "창업",
-          "catId": "nc_startup"
-        },
-        {
-          "title": "SP 삼화, 방산 스타트업에 전략적투자…\"종합화학 기업 도약\" - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBxT3Vtcjd6dWdGVVhCVkpVZFFXWk1tUGdicV95bTk4U2ZIelNqSmtWQUxfRjFmdjlLYXNEcEVBamJuTHJVWHNOZFBaMmEwY3Z1VjYwdzc1S3BYem1SNExWWdIBYEFVX3lxTFBxT3Vtcjd6dWdGVVhCVkpVZFFXWk1tUGdicV95bTk4U2ZIelNqSmtWQUxfRjFmdjlLYXNEcEVBamJuTHJVWHNOZFBaMmEwY3Z1VjYwdzc1S3BYem1SNExWWQ?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 00:05:21 GMT",
-          "description": "SP 삼화, 방산 스타트업에 전략적투자…\"종합화학 기업 도약\" 연합뉴스",
-          "source": "연합뉴스",
           "keyword": "스타트업",
-          "catId": "nc_startup"
-        },
-        {
-          "title": "5천의 도전, 창업 레이스가 시작됩니다 - 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑",
-          "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPM1pCWm8zZjZiWEVCTWVZR1NkQnhCZTROQk5QRk9pWDd4OF94QUR0aU9wbzVLOWk0RGZFZzdIMDkwRFNVT1ZnVFg0d0RWS1pvdkFFcjF5eURoSlZSVjlidHpJbXBMRUMyS3ZyckR0amlncTlRTldzSVcxZUZiU0h6VXBycVpKR3JFdURZ?oc=5",
-          "pubDate": "Wed, 17 Jun 2026 19:52:30 GMT",
-          "description": "5천의 도전, 창업 레이스가 시작됩니다 - 카드/한컷 | 멀티미디어 대한민국 정책브리핑",
-          "source": "대한민국 정책브리핑",
-          "keyword": "창업",
-          "catId": "nc_startup"
-        },
-        {
-          "title": "AI 영어앱 유니콘 스픽 CEO \"나를 가장 잘 아는 AI교사가 코칭하는 시대\" - 조선일보",
-          "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPdlFyNGRBVWF6ZERsT2RLOWhtSlg2WkFiTjMwTGxrMFJTM2tjTTA1ZmJDMHVpNG5ZTERUUTdHbEVNdkVvSXlBXzFOcWI0R250R2ZhUmRlNHBFdl9PV1BqVDZJbXBabjlGdGlWQWVPMlhac1NtdXNfZ3RxdmR6TktPbHFFYw?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 01:02:00 GMT",
-          "description": "AI 영어앱 유니콘 스픽 CEO \"나를 가장 잘 아는 AI교사가 코칭하는 시대\" 조선일보",
-          "source": "조선일보",
-          "keyword": "유니콘",
           "catId": "nc_startup"
         }
       ]
@@ -375,183 +375,183 @@
       "name": "경제/금융",
       "articles": [
         {
-          "title": "25억 벌고 퇴사한 ‘사이다 언니’... AI 대신 올라탄 주식 3가지 - 조선일보",
-          "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOalVJNXd1R2pmYWkxNkM4T0dCaHd1V2lmNzM4YUctcTFQSXB1M3g5OE5aeGhwUTA1QmZSMnNQY0lIeVNlTVJXMmRjRE1ocGxfVmk5amVrS1VsUkJhRDRKUXR6YzZTTm5pTmlSbGJ6UjJGcm1OVUh3eDUwQk9tbkVxWg?oc=5",
-          "pubDate": "Wed, 17 Jun 2026 20:33:24 GMT",
-          "description": "25억 벌고 퇴사한 ‘사이다 언니’... AI 대신 올라탄 주식 3가지 조선일보",
-          "source": "조선일보",
+          "title": "外人 투자 촉진하는 SK하이닉스 美 상장…NPS급 환시 '게임체인저' 되나 - 연합인포맥스",
+          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE55UF9Bc3lZNmFsNUZsb0RjcUlDOHZTalJQMC1KQTA4YmdKaVNVTXBycDhPbl82T2ZQVVB3TDhQeDR0YkFNM0NGLTlQdDVLNDZTZTNrQS1qV05jalJwbS16eEdNYVp5VkNFNUFUUVRFamU?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 01:23:00 GMT",
+          "description": "外人 투자 촉진하는 SK하이닉스 美 상장…NPS급 환시 '게임체인저' 되나 연합인포맥스",
+          "source": "연합인포맥스",
+          "keyword": "투자",
+          "catId": "nc_economy"
+        },
+        {
+          "title": "한미전략투자공사가 바꾸는 산업·공급망 질서 - PwC",
+          "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5IazFscDZ5WXlQYnczclNwSFhJSXduaGkzbUFua2tUSmVMS2F5UW9EQnotUE5INktiOEMtNnp0UnMxZUlZOWk4T2szNHB1eHRVRDJEZU1IWDZlbG94emp3dXM1N1I1OW81d3FraXRaTEVBeEE?oc=5",
+          "pubDate": "Thu, 18 Jun 2026 14:28:08 GMT",
+          "description": "한미전략투자공사가 바꾸는 산업·공급망 질서 PwC",
+          "source": "PwC",
+          "keyword": "투자",
+          "catId": "nc_economy"
+        },
+        {
+          "title": "“아빠 그 주식 사랬지”…수익률 47%, 10대가 최고였다 - 중앙일보",
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1nWmNvQWozMGU1NlluUzVacHpwV3pWdHBDWDdmM3BlZDNwNDQyYkM3anhvQWRlLUJuNFZNMWpjeVhvU0VoWHJ6WVhlbGdicVFUMVRTX293?oc=5",
+          "pubDate": "Thu, 18 Jun 2026 20:00:01 GMT",
+          "description": "“아빠 그 주식 사랬지”…수익률 47%, 10대가 최고였다 중앙일보",
+          "source": "중앙일보",
           "keyword": "주식",
           "catId": "nc_economy"
         },
         {
-          "title": "연준, 금리 동결 속 점도표 '연내 인하→인상' 선회…워시는 안내(종합) - 연합인포맥스",
-          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE15TC16T0tQNGY4SWFnaV9MeXY4T1NPR2pHRmJCbmRVVmdCaDd4RDJkYU9KNl9Ca3RhaUJaQ0pCT1MyVWtiQnV2cVpJMzFlX2FjQWNhZEpVcU5VQzdvMVh6dXgwMkNFRVg0SmVwOTFPM2Y?oc=5",
-          "pubDate": "Wed, 17 Jun 2026 21:57:00 GMT",
-          "description": "연준, 금리 동결 속 점도표 '연내 인하→인상' 선회…워시는 안내(종합) 연합인포맥스",
-          "source": "연합인포맥스",
-          "keyword": "금리",
-          "catId": "nc_economy"
-        },
-        {
-          "title": "美, '워시체제' 첫 FOMC서 금리 또 동결…연내 인하→인상 전환(종합2보) - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1XNE1JVVJkeWNqXzFSSWZkUEhVbmtOZnhCR1M4ZmpvdTcwbEZjZk5DSzg4aUhfM3JwMS0xUXh5WWR4YU1HUWpxdVNubGxWdWZ0SlVROFVhVFhERmvSAWBBVV95cUxQWkpRdy1WWUE2clA0U2VHNjVhbEtIQl9EUUFKUmxBNThncWRXRTk2Y0UydzV3RDhrenYtX1NRdDNlaUtaUW5LMXBsMkJSbDhrT2FWZk1BUThhLVFZdjI2YU4?oc=5",
-          "pubDate": "Wed, 17 Jun 2026 20:23:30 GMT",
-          "description": "美, '워시체제' 첫 FOMC서 금리 또 동결…연내 인하→인상 전환(종합2보) 연합뉴스",
+          "title": "MSCI, 韓증시 투자상품 가용성 개선 평가…\"투자 상품폭 넓어져\"(종합) - 연합뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFByZWlNM0I2YnRlcDFZMmljaExibzVfV0JYX19nWFFjUDYzWHJSRm5BYTNySHZBVGFZNkNiei11TjRudVJKeWtTUndDNTEyaDhhdlhPM3UwT19aUm_SAWBBVV95cUxQOFRwcVNsWkgwNmM1eFotRVloeUp6LXdfZEtUOXNURkVPZmJldXRnNUtZYlJiWGdmUnMtM1ZlLXNpVng1LUEzUDNJVjdyaVVFRlJIaVVnWjlSeGxfeGVFRlU?oc=5",
+          "pubDate": "Thu, 18 Jun 2026 21:57:11 GMT",
+          "description": "MSCI, 韓증시 투자상품 가용성 개선 평가…\"투자 상품폭 넓어져\"(종합) 연합뉴스",
           "source": "연합뉴스",
-          "keyword": "금리",
+          "keyword": "투자",
           "catId": "nc_economy"
         },
         {
-          "title": "미국 연준, 금리 3.5∼3.75%로 동결...금리 전망 엇갈려 - YTN",
-          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5mX3VoSDNqTU1hek01WHl0YVBLMVFpaF80YmdoNkh0X2t0VjJlNFNrdkRvOVpuVmdsSGhXOGNOZzVfdW9XdllTN1JWajlUanZRRnZXT21FMUY5WGZMc3c?oc=5",
-          "pubDate": "Wed, 17 Jun 2026 18:49:00 GMT",
-          "description": "미국 연준, 금리 3.5∼3.75%로 동결...금리 전망 엇갈려 YTN",
-          "source": "YTN",
-          "keyword": "금리",
+          "title": "(설명) 매일경제, \"'시럽급여' 된 실업급여... 65%는 끝까지 받아\" 기사 관련 - 대한민국 정책브리핑",
+          "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9sODB3ODVnODktaFRtbFFVa2pqdkFKZFZ5OEVCTm1RRk12cDRNNExZNTQ1MXBpZzJudTJQYWFnS3J0T01nNzI4czJTWjIwTVRWX2FPUmJIT3M1NUMwQjE5aHRPTEFpeDNfTHJYclRjVQ?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 02:34:06 GMT",
+          "description": "(설명) 매일경제, \"'시럽급여' 된 실업급여... 65%는 끝까지 받아\" 기사 관련 대한민국 정책브리핑",
+          "source": "대한민국 정책브리핑",
+          "keyword": "경제",
           "catId": "nc_economy"
         },
         {
-          "title": "미 연준, ‘워시 체제’ 첫 FOMC서 금리 동결…연내 인상 가능성 시사 - 한겨레",
-          "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5xRVVDLXkyZUhaWW42dTJLWDZQeUZMYWlKaVN6cmdYNjU1ampVZDB0YXMyNnd2Qk1rRDhYTF9JNDRiY2lEODFabGlqbjJTV3VxaEl6eV8tSWwwSUFsVXpScTdFQmVYRjhJTzZMd3BMQQ?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 01:30:00 GMT",
-          "description": "미 연준, ‘워시 체제’ 첫 FOMC서 금리 동결…연내 인상 가능성 시사 한겨레",
-          "source": "한겨레",
-          "keyword": "금리",
-          "catId": "nc_economy"
-        },
-        {
-          "title": "미 기준금리 동결에 금융당국 ‘대응 체계’ 가동 - 한국보험신문",
-          "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1OaF84SFJRNmUySG4wR2F2SENpRjBoc0F5V0RUZlM1aGJDbFpNLXpTal9jczVCTlozZm95QXFQS2JuZlRwWS1KNFl5T1ZVTTNVMkNiWWhnMFFOdERLYzdqa0h6Rm9VN2loS3pR0gFvQVVfeXFMTkJnc2lsbHR4SWh5Mkpmcy1pMUEwNE9HelpDT2RNekdpc2JNdjFRNTVlUG5TUGVodnVhQk9FdHc1UDFaaVdWRXhiYTg1MnQ2R1g2eDdJaHRlZ0M1TDhGVExCSXF5VVIyS2E5em1DemlJ?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 02:47:12 GMT",
-          "description": "미 기준금리 동결에 금융당국 ‘대응 체계’ 가동 한국보험신문",
-          "source": "한국보험신문",
-          "keyword": "금리",
-          "catId": "nc_economy"
-        },
-        {
-          "title": "워시 체제 첫 FOMC 금리 동결‥연내 인상 가능성 - MBC 뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1zekpJZ2ZqaTN4ZjMyY3hmaXlqLTdxSzh3T0RFVW4zbDM3dVo0T0hnYjU4S2hLU290cXBhYUZRNWxZdXFSN1kwUGlPNHk3eUVLZDVpcVU2V3NXZWVoYWhOdGlCamZxQ2pHcFl1RnUwUTdUVDRKam1aWXFn?oc=5",
-          "pubDate": "Wed, 17 Jun 2026 21:07:07 GMT",
-          "description": "워시 체제 첫 FOMC 금리 동결‥연내 인상 가능성 MBC 뉴스",
-          "source": "MBC 뉴스",
-          "keyword": "금리",
-          "catId": "nc_economy"
-        },
-        {
-          "title": "한국 온 돈나무 언니 “이 주식 6배 간다…삼전닉스는 AI혁명의 심장” - v.daum.net",
-          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9ON25uRlZhUlBoYWNWaWdSQTB3T21VTnNRQmNjV2lGVUR5Zi1zeEVfdHhITmJTd21OM0hsNzk1Z3JHTGc4QXdsQmRkX3MzZk0?oc=5",
-          "pubDate": "Wed, 17 Jun 2026 23:25:22 GMT",
-          "description": "한국 온 돈나무 언니 “이 주식 6배 간다…삼전닉스는 AI혁명의 심장” v.daum.net",
+          "title": "대미 흑자 줄고 중국 적자 늘고…미국 주식투자 증가폭 확대 - v.daum.net",
+          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1GTGM4VGhCQVVpUjIxUGtXaE53NlpYdnljLUlnbk5LWGNwVkd2Z0hpdVA4aG11Mk5nVlptZ0loWGVxaFZWYzBHZ1h0bmYybEU?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 03:00:04 GMT",
+          "description": "대미 흑자 줄고 중국 적자 늘고…미국 주식투자 증가폭 확대 v.daum.net",
           "source": "v.daum.net",
           "keyword": "주식",
           "catId": "nc_economy"
         },
         {
-          "title": "워시 체제 첫 연준, 금리 ‘동결’…“물가에 집중” - KBS 뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9sYkcxaFk5YVBFT3ROODJhRl9NUXdQZnlkdUdOZC1WN0x4MlpGNEFIMEsxb2Y4Q0l6cGo2NnR1ZWFFNUk2V1RyaGwzMmpJUndVbmRYZFE3T2swd0E?oc=5",
-          "pubDate": "Wed, 17 Jun 2026 21:01:00 GMT",
-          "description": "워시 체제 첫 연준, 금리 ‘동결’…“물가에 집중” KBS 뉴스",
-          "source": "KBS 뉴스",
+          "title": "금리 급등에 여전사 '해외 조달' 러시…환헤지 '양날의 검' - 인베스트조선",
+          "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPMlRHZWxfSEY3ZzJ6WmlOYVBkYXNpTG5jaGNUaEtlZi13bjJYRVljMFNON0NlNTUtOVhXcEhJZ0tyamdacVNpZEx2X1ZxdG43WWRlXzlHbmdYM3J4eHJsOHBOM0ZfQS1CN2x5M3dZeXB4TUtvU1U0MUU1RUVMUXNSRVF4NA?oc=5",
+          "pubDate": "Thu, 18 Jun 2026 22:04:41 GMT",
+          "description": "금리 급등에 여전사 '해외 조달' 러시…환헤지 '양날의 검' 인베스트조선",
+          "source": "인베스트조선",
           "keyword": "금리",
           "catId": "nc_economy"
         },
         {
-          "title": "美·日·유럽 긴축 전환, 한은도 내달 금리 인상 불가피[사설] - 문화일보",
-          "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFB1Um12MnA3cHBjUmliWXVEd040YmQ0Vl9OLTA0Y1hmandKbnpMR0Y4cDZmSU91Y2YwVUliSjlpNEM4aktybEdsTkYtX0JoUUV6?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 02:46:12 GMT",
-          "description": "美·日·유럽 긴축 전환, 한은도 내달 금리 인상 불가피[사설] 문화일보",
-          "source": "문화일보",
-          "keyword": "금리",
-          "catId": "nc_economy"
-        },
-        {
-          "title": "증권가 \"워시의 첫 연준, 금리동결에도 파격적 변화 가능성\" - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBtTVoycXJVOXNmdkR5dUFUekdocGc4YXR4VldIS3JmU0FkZWduN0FDNm5KN2t6RjBiYzNJUmR3T3ZSSVJ3OUtDRU0tTUJDWFNRcnlaUFgyd0tGQUNKUzdxM9IBYEFVX3lxTFBtTVoycXJVOXNmdkR5dUFUekdocGc4YXR4VldIS3JmU0FkZWduN0FDNm5KN2t6RjBiYzNJUmR3T3ZSSVJ3OUtDRU0tTUJDWFNRcnlaUFgyd0tGQUNKUzdxMw?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 01:30:50 GMT",
-          "description": "증권가 \"워시의 첫 연준, 금리동결에도 파격적 변화 가능성\" 연합뉴스",
-          "source": "연합뉴스",
-          "keyword": "금리",
-          "catId": "nc_economy"
-        },
-        {
-          "title": "연준, 4연속 금리 동결…점도표 '연내 인하→인상' 선회(상보) - 연합인포맥스",
-          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE13MEJzQ0UwYzkyQ0ZnWWdIc0FQZGVzQ2ZjRlJCdUU0UU9qY1g5RUFDZWZseEFZVmZIY0U4dGVvM2tTeGp3VUdVeFpQZGF1dWJBT090ZF85V0s4TkQ1QTVYZDByaVdSMHJYTWdBX2lzeE0?oc=5",
-          "pubDate": "Wed, 17 Jun 2026 20:29:58 GMT",
-          "description": "연준, 4연속 금리 동결…점도표 '연내 인하→인상' 선회(상보) 연합인포맥스",
-          "source": "연합인포맥스",
-          "keyword": "금리",
-          "catId": "nc_economy"
-        },
-        {
-          "title": "워시의 美연준, 금리 동결... 연내 인하 기대 사실상 접어 - 조선일보",
-          "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQWnh3RXpWQlBHNy1tVDJvUS0wODdWUzktWWxjQzNrVkV2c1N3VXdXNWxIbkM3Mm5DU0djZW5pbkY0T216OUlBUFM5WmpMQ3JhQzNvYmtzSG1JakdiYjRNTFdWNkNIT0UzaW5iMnBpWVJpbjdTU3ZYNHlRUmt5N2t1c1pTV19CY2NVUEhFdzFJWDJGaUFJdDhURnNjck9XUQ?oc=5",
-          "pubDate": "Wed, 17 Jun 2026 18:01:00 GMT",
-          "description": "워시의 美연준, 금리 동결... 연내 인하 기대 사실상 접어 조선일보",
+          "title": "美 금리 동결에도 인상 시사... 한은도 내달 인상 유력 - 조선일보",
+          "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxONWJPRldfY1dKR2czTkdfWFVma0diUk42UXZtY0l1Q1haZHJZWWM0OXdYanZkMGplX0F6TTE1djd0TWVIZTZhcFNRUFA2YV9BMFVPSjRVV25BTWRtVVVHZmhvSVk5U3FWSG90ZHFYNlBVNTVkT0l3dEdxX280eEZkd0pnMmVHSXlzRmlhN0l3?oc=5",
+          "pubDate": "Thu, 18 Jun 2026 00:38:21 GMT",
+          "description": "美 금리 동결에도 인상 시사... 한은도 내달 인상 유력 조선일보",
           "source": "조선일보",
           "keyword": "금리",
           "catId": "nc_economy"
         },
         {
-          "title": "美, '워시체제' 첫 FOMC서 금리 또 동결…연내 인상 가능성(종합) - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5ZQ2kwVEI1UnhmRWwydGFrS1RCNWk4X3ZCRFcyV09WQVBfRldweFpTMENkUjRBbG9yTWVFUXpQYjh1RkplT2x0NGRIOVFoUHBVc2NiN1ZCS0YzVzTSAWBBVV95cUxQcjhYZFM5SUhza01JVVA0Zjg3WFY1MzQxTUM1dTFoZHRGVVJXTG5KVTVLUWdEX2RVVXNFNXdRT0VmbnZ4QTVrOUw1bW5NY0tTVXFTX3ZGVmcxT1VNTW5weFk?oc=5",
-          "pubDate": "Wed, 17 Jun 2026 18:41:27 GMT",
-          "description": "美, '워시체제' 첫 FOMC서 금리 또 동결…연내 인상 가능성(종합) 연합뉴스",
-          "source": "연합뉴스",
-          "keyword": "금리",
-          "catId": "nc_economy"
-        },
-        {
-          "title": "S&P500 선물, 연준 금리 인상 가능성에도 반등…美 국채금리↓ - 연합인포맥스",
-          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE41ZGF3dmR3Z3FpM1NoUHhvajBtQzJONlFGTlhBdER1aDZoV3NrbmdHVGxIcVNjTXd3ZmV2aUoxUURpQTdwTHlnWTJMb1g2R3ZEQUVNZXpPczZEbHNvV1Yyc1VpMW9YQ0xYSzNhNEV1LVA?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 03:18:01 GMT",
-          "description": "S&P500 선물, 연준 금리 인상 가능성에도 반등…美 국채금리↓ 연합인포맥스",
+          "title": "[국민연금 양난] 9천피 함정…국내주식 비중 30% 육박 - 연합인포맥스",
+          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1INUEyUWpFWndTVUhqaVVxVHNhVkJLQW5ZVHlGTGdpYTNYdTh0RGpDNFlEOEgyMkRLNEU3V0xGNU5ZQTJSbThLS2JDR0FLR0Q1UzBqaWcwOHdVX0NqVVEzV2V3YmYzTF91aFBGUWRjay0?oc=5",
+          "pubDate": "Thu, 18 Jun 2026 21:08:00 GMT",
+          "description": "[국민연금 양난] 9천피 함정…국내주식 비중 30% 육박 연합인포맥스",
           "source": "연합인포맥스",
-          "keyword": "금리",
-          "catId": "nc_economy"
-        },
-        {
-          "title": "사람만 모이면 주식 이야기... 영유아 계좌까지 3배 늘어 - 조선일보",
-          "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQM0pqY1lMVEl2cFVrcHNaWnNQRWZQNEl1cUY2Rm5yY1pxTE5uYTlWcURlNlFPcm0tYnl3YUh1U1hJaUJGLUh3ZThpU1hpcHRPT2hwaHV1RFo1d2ZDcF9IZjVmTTF1X3FOcWQ0SDFSWjRJZ2NyWEU2VlNiek0zdmVKRHhSSWdLR3lNdGlHT0JBTnE?oc=5",
-          "pubDate": "Wed, 17 Jun 2026 15:54:00 GMT",
-          "description": "사람만 모이면 주식 이야기... 영유아 계좌까지 3배 늘어 조선일보",
-          "source": "조선일보",
           "keyword": "주식",
           "catId": "nc_economy"
         },
         {
-          "title": "[그래픽] 미 FOMC 위원 기준금리 전망 - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE4tcWZ0VnFPUk1aN0h3MVEzbDR0S19UaDdtbEdVcEE5czlZNkJzdDNCLXRaTkhBWDVJbVR3N2RsbUVweEVCWDR3RzZJZmt0NDZfQnZtUk95Y2NrU0RtX21CR9IBYEFVX3lxTE4tcWZ0VnFPUk1aN0h3MVEzbDR0S19UaDdtbEdVcEE5czlZNkJzdDNCLXRaTkhBWDVJbVR3N2RsbUVweEVCWDR3RzZJZmt0NDZfQnZtUk95Y2NrU0RtX21CRw?oc=5",
-          "pubDate": "Wed, 17 Jun 2026 23:16:19 GMT",
-          "description": "[그래픽] 미 FOMC 위원 기준금리 전망 연합뉴스",
-          "source": "연합뉴스",
-          "keyword": "금리",
+          "title": "“당장 투자해라, 1년후 10배!” 젠슨 황이 샤라웃 한 K기업 - 중앙일보",
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBHeDBPMmNIV19KMmtfdVNwQzJYTnlGZjRxc0lYLTdkamc5RmRaX2FFd1RDVHBXM2lQdE0tdDVzTFd6RUhDWHo5alRSTzRZcjlaUEhkSEh3?oc=5",
+          "pubDate": "Thu, 18 Jun 2026 20:00:01 GMT",
+          "description": "“당장 투자해라, 1년후 10배!” 젠슨 황이 샤라웃 한 K기업 중앙일보",
+          "source": "중앙일보",
+          "keyword": "투자",
           "catId": "nc_economy"
         },
         {
-          "title": "ING \"매파 연준에도 12개월 금리 동결 전망 유지\" - 연합인포맥스",
-          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBDMHF6WTJYMUxyVzU3cDNXZUxIWkRsbGtFWFNkTnZKUThNQlprclhEOFp6dVpQVXpwSmMxLTNZV0pWVHFJenVQYTR6S0J2Q0s2Yk4tQ3N0ZVVqdnIxNUZ6UTR5a3h1Rlh3bnhnemVWVUk?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 01:36:30 GMT",
-          "description": "ING \"매파 연준에도 12개월 금리 동결 전망 유지\" 연합인포맥스",
+          "title": "서울투자진흥재단, 유럽 최대규모 기술박람회서 서울투자 설명회 - 연합뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBCek9VY3NmTjFWdFQwYmEycGtrWDhNWjViNTFMQUtka3RmdVh3ZXlEd0ZvdGFydUJ0akR4blZiMjlzelV0RkxXSjFvU1JjdjhBZ3hvLVFEb2wwT21IbmZmONIBYEFVX3lxTFBCek9VY3NmTjFWdFQwYmEycGtrWDhNWjViNTFMQUtka3RmdVh3ZXlEd0ZvdGFydUJ0akR4blZiMjlzelV0RkxXSjFvU1JjdjhBZ3hvLVFEb2wwT21IbmZmOA?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 00:51:03 GMT",
+          "description": "서울투자진흥재단, 유럽 최대규모 기술박람회서 서울투자 설명회 연합뉴스",
+          "source": "연합뉴스",
+          "keyword": "투자",
+          "catId": "nc_economy"
+        },
+        {
+          "title": "ING \"한·일, 빠르고 큰 폭의 금리 인상 가능성\" - 연합인포맥스",
+          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBEek9uYS1ta25BUU9YR2lvU0dBOEc1UnVCMVN0V3ctTWFCTnJJSkJYbS1mREV4UzlEX2dVQm82VmhkMC1CaGZ2VFJNLWd1b0l6WTh2MjVpTXpSY1V6NjhsektCS3drNGdKRi0ydjd2NHM?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 01:56:29 GMT",
+          "description": "ING \"한·일, 빠르고 큰 폭의 금리 인상 가능성\" 연합인포맥스",
           "source": "연합인포맥스",
           "keyword": "금리",
           "catId": "nc_economy"
         },
         {
-          "title": "연준 금리인상 기대강화에 美주식·채권 동반하락…달러는 강세(종합) - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9iYTJhUzlheUpGR3VGVVoxSGlwSS1CY2g4WUY0RnRoeGdPVC11YUZJZkxiajFhcVV4TW45QTdNOVJmREo5UHNGTmcxUGc3N08yQ0ExS1FXY2s5OW1wX2g5c9IBYEFVX3lxTE9iYTJhUzlheUpGR3VGVVoxSGlwSS1CY2g4WUY0RnRoeGdPVC11YUZJZkxiajFhcVV4TW45QTdNOVJmREo5UHNGTmcxUGc3N08yQ0ExS1FXY2s5OW1wX2g5cw?oc=5",
-          "pubDate": "Wed, 17 Jun 2026 20:36:48 GMT",
-          "description": "연준 금리인상 기대강화에 美주식·채권 동반하락…달러는 강세(종합) 연합뉴스",
+          "title": "하나은행, 중·저신용자에 자체 중금리대출…연 5.5% 고정금리 - 연합뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1tWGxaR0hYX2NwMmlicHM3cFlkNVlZeUhOUkoxMXd5b2FsN1hxVjkyUHE1ZkVoY0RweFRVS3MzMVdMLVk5VlpyWGVMbmZCdkhOT2RPV2ZfQlZfci0tMG1QaNIBYEFVX3lxTE1tWGxaR0hYX2NwMmlicHM3cFlkNVlZeUhOUkoxMXd5b2FsN1hxVjkyUHE1ZkVoY0RweFRVS3MzMVdMLVk5VlpyWGVMbmZCdkhOT2RPV2ZfQlZfci0tMG1QaA?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 02:49:52 GMT",
+          "description": "하나은행, 중·저신용자에 자체 중금리대출…연 5.5% 고정금리 연합뉴스",
           "source": "연합뉴스",
           "keyword": "금리",
           "catId": "nc_economy"
         },
         {
-          "title": "[그래픽] 한미 기준금리 추이 - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1kaFE4N3ROX0RjTVNRbWhNOFprVUhWUFNvelFORS0tdEJYc3dEUGxGTDB6Y3dJeFdlY2xjNVpJRGc3emdEbFY2YXZmVG1PNTJEekRheWVoU1BBOXhlNDIxNdIBYEFVX3lxTE1kaFE4N3ROX0RjTVNRbWhNOFprVUhWUFNvelFORS0tdEJYc3dEUGxGTDB6Y3dJeFdlY2xjNVpJRGc3emdEbFY2YXZmVG1PNTJEekRheWVoU1BBOXhlNDIxNQ?oc=5",
-          "pubDate": "Wed, 17 Jun 2026 23:15:31 GMT",
-          "description": "[그래픽] 한미 기준금리 추이 연합뉴스",
+          "title": "월가 전문가 \"주식·채권 모두 AI 노출…투자 방식 개편해야\" - 연합인포맥스",
+          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1YVGFYZWVKblV6ckd4QktUTmNGZ0ZJbFI3NzNsRGRicXpjWUNJN2Zoc3hyQnBmNHFzeGhZZFFFSGIwNVlmVDE2YXNUcWM3RHFvUXF1TlRhQUtaRmRheEhRVTBoYmxRVzdNZWN5RDNvWWk?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 01:00:56 GMT",
+          "description": "월가 전문가 \"주식·채권 모두 AI 노출…투자 방식 개편해야\" 연합인포맥스",
+          "source": "연합인포맥스",
+          "keyword": "주식",
+          "catId": "nc_economy"
+        },
+        {
+          "title": "KSP, 정책자문서 기획형 경제협력 플랫폼으로…전략분야 육성 - 연합뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFAySXJUSVpqNUpyY3BiUFFxbV9IMG5VWjFOa0ZmTHRwV01iY1dVYnpfVGc1SEFPRUc2RUg3aE9YZE1oWXN5Rkl6RWpqZ3F5a2doQllhYnQwd1o4YkXSAWBBVV95cUxOckNpWjRhZ3Z3X1dXanpVQl9GZUlRQUhQX3lEU0RwZFNqYzBpOW9YT2dVNUFRTjVmREdPOEM0bHk5MjhOYjNmcmtnbnphVFB1LVNyQXdlVVp1ZktSR3Jxa2c?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 01:00:40 GMT",
+          "description": "KSP, 정책자문서 기획형 경제협력 플랫폼으로…전략분야 육성 연합뉴스",
           "source": "연합뉴스",
+          "keyword": "경제",
+          "catId": "nc_economy"
+        },
+        {
+          "title": "[국민연금 양난] 다음달 강제 리밸런싱 돌입…55조 매도 대기 - 연합인포맥스",
+          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9vQV9uYzNuNF9ZX2FCM2RFVW8tOFV0WjdjVERrYWlyTHkwQTNiNF9EbDNrY0tDQ18yb1R2YUwtemZjOV9JQzFwTlEzZVhOc2N6N0RZTDdfTlIyNWN3TjR5Y0tpTmhNUUhwdmJFaHlBSVQ?oc=5",
+          "pubDate": "Thu, 18 Jun 2026 21:08:00 GMT",
+          "description": "[국민연금 양난] 다음달 강제 리밸런싱 돌입…55조 매도 대기 연합인포맥스",
+          "source": "연합인포맥스",
           "keyword": "금리",
+          "catId": "nc_economy"
+        },
+        {
+          "title": "\"종전에도 물가안정 더딜 것…금리 추세하락 판단 어려워\" - 연합인포맥스",
+          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBmMkFnSTV3OFdBa3B0ZDlVdGFHc1U2OGFpSnBrbDBJbEUxYjlCMVBUczlVdTlLLXhyaUd1RmxnYkpXdHJiYmJacHF0dW9NMzBMS1FqTlFHZk50U0d1RWU0UTZQWno5dG5zWUNNOXQzUE4?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 02:10:10 GMT",
+          "description": "\"종전에도 물가안정 더딜 것…금리 추세하락 판단 어려워\" 연합인포맥스",
+          "source": "연합인포맥스",
+          "keyword": "금리",
+          "catId": "nc_economy"
+        },
+        {
+          "title": "\"워시 의장 말 아낄수록 경제지표 발표시마다 변동성 확대\" - 연합인포맥스",
+          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1IVU1xY1lBV29aZGRnYTJvc0pBT2JzSXQzVGR1VVlnV2hBRE4yU1JyRjFScHZBZkpTS2lxM0Y4dm9pakR1OFZVUWRuT3d1RU5ycGZKQWZFMjZHTXQxMTdYQVZUVExaQTZPMU10UVREOE4?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 04:10:25 GMT",
+          "description": "\"워시 의장 말 아낄수록 경제지표 발표시마다 변동성 확대\" 연합인포맥스",
+          "source": "연합인포맥스",
+          "keyword": "경제",
+          "catId": "nc_economy"
+        },
+        {
+          "title": "[ICYMI] 제약적인 정책금리 vs 부양적인 대차대조표…워시의 '이분법' - 연합인포맥스",
+          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9rWWxGd2hQZHpVTFZPR3lQeWZPLVBhbVo0aTRGMndfZm5JdHBnQVM1YjBJTVFTZUJyN0hYN0FGcDdzQ2gyM0czOS1ueUFycGdIemc4NjBTLXFSaDdtb1pDc1BkWUpRWmRtbV9ONERRZVI?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 03:35:59 GMT",
+          "description": "[ICYMI] 제약적인 정책금리 vs 부양적인 대차대조표…워시의 '이분법' 연합인포맥스",
+          "source": "연합인포맥스",
+          "keyword": "금리",
+          "catId": "nc_economy"
+        },
+        {
+          "title": "짐 폴슨 \"美 경제 위협하는 우려스러운 경고 신호 발견\" - 연합인포맥스",
+          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1pNC1XQkllVkVHakMtaEZOTElTc3pkYTJ5ZVRNYUVxX3dpNzNoZDdGM2syRWt2LUZIdDF6TzlkTFNQa0Zac3JnMkdLY3Vuc09OTGpvQlFCSFVGRUtMcEpPWjd6U1dPS3pRU0JOSmdMODI?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 01:48:00 GMT",
+          "description": "짐 폴슨 \"美 경제 위협하는 우려스러운 경고 신호 발견\" 연합인포맥스",
+          "source": "연합인포맥스",
+          "keyword": "경제",
           "catId": "nc_economy"
         }
       ]
@@ -560,182 +560,182 @@
       "name": "글로벌",
       "articles": [
         {
-          "title": "종전합의 : 미국-이란 14개항 양해각서의 구체적인 내용은? - BBC",
-          "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5zOS03TVRXR2VzTVV4V1B0dTNBVkxhN1Q2MDlGdFVCeHhvUmQ2ellja25pYWtZN3RjS2hSWjdiS2RXSzBxTnB6a0NmemZEc0t0dnJ0WEdmdmtBSTVR0gFiQVVfeXFMTWtwVG1yV2htT2F6cWtCR2xSTmp4LVV4RG5iRU80Ylhnb01RV2tvdWhUWG5tWDhGRHljVUtxVm9KVDM4Zk1MaU5lRm5wbzBKM3B6NHpuMFU0UlRlZk5aM05EZ1E?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 03:27:26 GMT",
-          "description": "종전합의 : 미국-이란 14개항 양해각서의 구체적인 내용은? BBC",
+          "title": "미·이란 후속 협상 제동…밴스 부통령 출국 돌연 연기 - 조선일보",
+          "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1adWxET09sWU1PX0ZRS1F2VXh4MTRzb1hTbWxWYW5zVlRaTm0wb0RwLWF2X0xocm83MWtMR2lXenJ6VUplUnp2ZXBHRllrSUh3RWFSWkkyVlNBeUxzQUp1Y1h0M3p3R1YxRFHSAW5BVV95cUxOcTlFYUxDRjhIejlLM0tpbGNMd1pMakdjSmhkNmRhdGNLYzdSSnBJOWJaREZCY1dhemt5cnVBX1BoOHdXNDU4QWYtc2xTaGZiMXkwTXExd2VxTVlCRTNnN1FwMFcwemM0YXVQZVJfZw?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 02:40:00 GMT",
+          "description": "미·이란 후속 협상 제동…밴스 부통령 출국 돌연 연기 조선일보",
+          "source": "조선일보",
+          "keyword": "글로벌",
+          "catId": "nc_global"
+        },
+        {
+          "title": "이란전쟁: 미국과 합의로 자신들이 더 강해졌다고 믿는 이란 … 그 이유는? - BBC",
+          "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5RNTdQa1BwbEl2SlAyajQwQ0tVc19jOHAyWlQ3a1ZkeGxhMVBJLUtlU2h4dXB4TnJUUmJnOEFXRWZJbXUyYTU2LU1ZZmg2ZXl1UkstN2pYWWpWc2dY0gFiQVVfeXFMTkdubHBNQUdVZXBpT09HWUR3X2pqMVlGYVdmaHBPVk5tQ0ZINVRHRmtDcm0tSW5uZjV2ZHVhcThyeG5WcHhqSTJVQWJHeFB0NTRyd2dnMVp6czdrM3U1UjlGYmc?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 03:39:28 GMT",
+          "description": "이란전쟁: 미국과 합의로 자신들이 더 강해졌다고 믿는 이란 … 그 이유는? BBC",
           "source": "BBC",
           "keyword": "미국",
           "catId": "nc_global"
         },
         {
-          "title": "미국-이란, 종전 MOU 공식 서명 …효력 즉시 발효 - KBS 뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9MNkQ3Y3l2Zm1MWnFnRmh4YjByeFVYS3JVTXRMdzdBNjNjdGdjT2hJNTVRS0ZhRGJ0cEFneXFzaDc4UHBIU1VKODJpZVk1NG5UVUhVQ19sblRXNVE?oc=5",
-          "pubDate": "Wed, 17 Jun 2026 22:08:00 GMT",
-          "description": "미국-이란, 종전 MOU 공식 서명 …효력 즉시 발효 KBS 뉴스",
-          "source": "KBS 뉴스",
+          "title": "인천시, 스페인 K-엑스포서 56억원 규모 수출 상담 - 연합뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE50dUN3TW1fV2xxYVhyc05kU1FaTFNMMGlCVlNXeVR0RTVNRHltRzJQMUMwcl93ZnZZdDh0bTBPT1ZKS3pFeFlPQzNxVXZtM1JMVGZyYVpqdG4tamlLVDJIYtIBYEFVX3lxTE50dUN3TW1fV2xxYVhyc05kU1FaTFNMMGlCVlNXeVR0RTVNRHltRzJQMUMwcl93ZnZZdDh0bTBPT1ZKS3pFeFlPQzNxVXZtM1JMVGZyYVpqdG4tamlLVDJIYg?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 00:39:29 GMT",
+          "description": "인천시, 스페인 K-엑스포서 56억원 규모 수출 상담 연합뉴스",
+          "source": "연합뉴스",
+          "keyword": "수출",
+          "catId": "nc_global"
+        },
+        {
+          "title": "베트남, 對중국 리치 수출 호조…청과류 수출 성장 기대 - 인사이드비나",
+          "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5vNkVoSnBCejEwXzFXcWFIU0NudjJpb3ZzWFIzaHlWZ1FBWDROTTR4UUtweURWcUhPWlJlMEI0Z1FxN05adDE3RTAzZGIzTW9fTGVEUDdhTGxzOTFwMjZ1VmdJWWF6M0prT01Ibw?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 05:00:00 GMT",
+          "description": "베트남, 對중국 리치 수출 호조…청과류 수출 성장 기대 인사이드비나",
+          "source": "인사이드비나",
+          "keyword": "수출",
+          "catId": "nc_global"
+        },
+        {
+          "title": "[조간브리핑] \"미국의 AI 동맹 선언··· 새 질서 시작되나\" - 헬로디디",
+          "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9xTTRVTHd1UXoxaUVxVlRkRlVvMXNUTFdtazljT1IwOVpXeXk3OEI3bGtVbm54SUZoQmJpQ21icy1nWVgzRnBCejBRV1Nma2V4OTJBS0d3UWVMUEFhdXBFTmR4VVRqQTgyRHc?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 00:41:00 GMT",
+          "description": "[조간브리핑] \"미국의 AI 동맹 선언··· 새 질서 시작되나\" 헬로디디",
+          "source": "헬로디디",
           "keyword": "미국",
           "catId": "nc_global"
         },
         {
-          "title": "방미통위, 부산 스트리밍 페스티벌 참여…OTT 해외진출 지원 - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1ERG5YNXEtSHJ1ZzZHWE9kblFuMG5FY09XUUM3WUtjMm5HVTBlU1UwXzRZS0ZNWDUwdkpzMGNxTmdheFFIYURvTWozMjNKRlNIeGhzWllpaXZaWWvSAWBBVV95cUxOZWwwYWNlZHE3dEh0X3ZPYTNfWUktRExvUGlFdVFfd3NMNXo2SjY2NG0yLUtkaTlLTkFWMGNxeWd3QnQxUm9ZNVhFQ2NNWnVaMDFiOUYxdEtVWlowVXVsNmw?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 04:30:00 GMT",
-          "description": "방미통위, 부산 스트리밍 페스티벌 참여…OTT 해외진출 지원 연합뉴스",
-          "source": "연합뉴스",
-          "keyword": "해외진출",
+          "title": "대미 흑자 줄고 중국 적자 늘고…미국 주식투자 증가폭 확대 - v.daum.net",
+          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1GTGM4VGhCQVVpUjIxUGtXaE53NlpYdnljLUlnbk5LWGNwVkd2Z0hpdVA4aG11Mk5nVlptZ0loWGVxaFZWYzBHZ1h0bmYybEU?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 03:00:04 GMT",
+          "description": "대미 흑자 줄고 중국 적자 늘고…미국 주식투자 증가폭 확대 v.daum.net",
+          "source": "v.daum.net",
+          "keyword": "미국",
           "catId": "nc_global"
         },
         {
-          "title": "제주 수출 3억5천만 달러 달성…5개월 만에 지난해 총액 돌파 - 헤드라인제주",
-          "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBOTG9YcUt0S2hLR05nLVpRSDhVSWhVRDZUVGlzN2JfZmxXcENIcTNqZk83LXZTZUF5cXc4N3ZlZC1XR05kZjJ3ZWFJbTFJcHloc3R0eTdqNk13d25JYVpkWURtOHRmcldCeEpPazh0UVFMcTQ?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 00:59:33 GMT",
-          "description": "제주 수출 3억5천만 달러 달성…5개월 만에 지난해 총액 돌파 헤드라인제주",
+          "title": "[K-뷰티 수출전략]③ 해외 매출 90% 시대...'브랜드 파워'가 이끈다 - 오피니언뉴스",
+          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9KcFZMOFVGVTI0U0FfOS1ZTlQ1YmZlVjdBNWI3eVlQM2ZxRl9UT0JNVW05OVZvU2Q2ZnZHSGxOcmtvbUFBN1I5NlpZanowR3lzVFBSVHNmRFhUQWxMYk5FZXRGZFp4QTdxM2dhRTdxZFc?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 04:30:00 GMT",
+          "description": "[K-뷰티 수출전략]③ 해외 매출 90% 시대...'브랜드 파워'가 이끈다 오피니언뉴스",
+          "source": "오피니언뉴스",
+          "keyword": "수출",
+          "catId": "nc_global"
+        },
+        {
+          "title": "미국 ‘106일 전쟁’에 화력 고갈…中 ‘대만 압박’ 세질 듯[美·이란 종전과 ‘글로벌 질서 격변’] - 문화일보",
+          "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE53VDF2NXgtZFl4VjBuY2x1YmhacGtIeUdrbjNIbi13Q2VfdkVmUU9hUTE0cDc4Ylh5UEpBa21WdGdfeklnQXY2Uk5ucW9Pd25D?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 04:33:54 GMT",
+          "description": "미국 ‘106일 전쟁’에 화력 고갈…中 ‘대만 압박’ 세질 듯[美·이란 종전과 ‘글로벌 질서 격변’] 문화일보",
+          "source": "문화일보",
+          "keyword": "글로벌",
+          "catId": "nc_global"
+        },
+        {
+          "title": "오뚜기, 울산에 글로벌 물류 거점 구축…'글로벌 공급망 경쟁력 강화' - 물류신문",
+          "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE0zdEtWT3dXUmh1OHB1SW5XNGxqSUNjczNScTBXVFRHdVJwcHRCVzZERDV0R3JxS2Rhd0FPdUdybmtvbXlMVGUzLUo4OTZZaVRYbUpYcHNHN0xhVnA5bktydHpPLXlwdUVBWnZr?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 00:48:10 GMT",
+          "description": "오뚜기, 울산에 글로벌 물류 거점 구축…'글로벌 공급망 경쟁력 강화' 물류신문",
+          "source": "물류신문",
+          "keyword": "글로벌",
+          "catId": "nc_global"
+        },
+        {
+          "title": "베스핀글로벌, 구글 시큐리티 오퍼레이션스 MSSP 선정 - 디일렉",
+          "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBRekFHdkdndlNFWXFXb0xaMWpjbDVaYTNqZlNWazBwVEFZMUZTeGc2aFdaaGtjNnh4b2pPdXlNSm96Z1FMcENTRFI2YVQ0RE1BUXVyVnRKdk9qdEVEYzYtQVRQYk4yUQ?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 02:19:53 GMT",
+          "description": "베스핀글로벌, 구글 시큐리티 오퍼레이션스 MSSP 선정 디일렉",
+          "source": "디일렉",
+          "keyword": "글로벌",
+          "catId": "nc_global"
+        },
+        {
+          "title": "중국 '둥관', 산업 로봇 수출 핵심 도시로 부상 - 로봇신문",
+          "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBqZHRvOXJ4WFgzZ2RSNGZjbFdLN3lzUnJnNFVZdnBmVnk0dW5GTzhMdHFFVmdoNU9mMzJQeEhzM0pVbF8xTzkwVnpSajlPOF9QYTJHdC1QdWZPQXBUSnJVNVBwRlB2RkwtLTN4bA?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 04:50:39 GMT",
+          "description": "중국 '둥관', 산업 로봇 수출 핵심 도시로 부상 로봇신문",
+          "source": "로봇신문",
+          "keyword": "수출",
+          "catId": "nc_global"
+        },
+        {
+          "title": "이란 비핵화 협상 지연 가능성...'미국의 재앙' 합의 비난 잇따라 - YTN",
+          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE82dWYwVm1fdllPQy1JS0lJdWFidjY3d0g5TmlRV3lXMi01cHNPNm92akZLMHpRcWdTVUpWdl9VUkxSaHM1eHYtdTFWUXU2Wl9pcTZuVlRiNzU5Y1dPc2c?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 02:41:00 GMT",
+          "description": "이란 비핵화 협상 지연 가능성...'미국의 재앙' 합의 비난 잇따라 YTN",
+          "source": "YTN",
+          "keyword": "미국",
+          "catId": "nc_global"
+        },
+        {
+          "title": "의수협 ‘CPHI China’ 한국관 참가…글로벌 진출 지원 - 데일리팜",
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE85M3NRZW1DN0RWX2I3NU9KQi1zSHZaLUllMVJsMjZYMEtEOVJNbVpzNUg2RWdXNGhwdTNwRmxTYURvS2lWajBPTWRCQnJfQUIxdGY4R0dR?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 04:45:30 GMT",
+          "description": "의수협 ‘CPHI China’ 한국관 참가…글로벌 진출 지원 데일리팜",
+          "source": "데일리팜",
+          "keyword": "글로벌",
+          "catId": "nc_global"
+        },
+        {
+          "title": "인스피언, EDI 통합 기술 미국 특허 등록 완료 - 보안뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBVX2JlR3FiS1ZRVXBrZVhHMTVtUDNsWXg4ekFGRmNOcTNPaTB3REgxVHF6MF9HMGswaVhKM3FQUURsWEtrREU4di04UlRLRjZJSjNrWmJBN0MzSGdfdWFjc1dJUDNnN1Jz?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 01:52:00 GMT",
+          "description": "인스피언, EDI 통합 기술 미국 특허 등록 완료 보안뉴스",
+          "source": "보안뉴스",
+          "keyword": "미국",
+          "catId": "nc_global"
+        },
+        {
+          "title": "제주 달코미양배추, 해외시장 공략 본격화...수출 확대 '시동' - 헤드라인제주",
+          "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1zM3k1OWlEbmQ2Wk53R0dOVGJTY2txSzdVaFN1eVdwYXpHQm9vZGlSUjNVMDhmRGNHWmxSOWNfTjJSWG5yUGlpdGdUcUtjOTRPa1AyUkZWeFVZX2x3UlF3OXkxNjN6dE1laUhvaXhvQlZWbjg?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 04:58:24 GMT",
+          "description": "제주 달코미양배추, 해외시장 공략 본격화...수출 확대 '시동' 헤드라인제주",
           "source": "헤드라인제주",
           "keyword": "수출",
           "catId": "nc_global"
         },
         {
-          "title": "미국, 딥시크 등 중국 기업 100곳 블랙리스트 제재 보류 - AI타임스",
-          "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9hYTc2RFJfc1Q2eV9KY1IxaUpKMVYyWXVfaVNnb3pVVlYzREE3LURVU210cGhWWmZQV3B1VmNacVM5aUtfcEpyS3pYMzhVSEhZaDFaU2RGZVVxUnJfVXg2YVctNFNaRXJMbHc?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 03:41:23 GMT",
-          "description": "미국, 딥시크 등 중국 기업 100곳 블랙리스트 제재 보류 AI타임스",
-          "source": "AI타임스",
-          "keyword": "미국",
-          "catId": "nc_global"
-        },
-        {
-          "title": "경제 수장들 “미국 통화정책 긴축 가능성…취약차주 지원할 것” - 한겨레",
-          "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE1XdVNtejBPSkpvZ0FRaHo5cWJrSi02SXZmMTBVRS11a1dkdmlYMG5EQUN1bElDLXFvVklGZ2k5cW9Wa2dkSjRxZFg4aXptcE02elp5SXhNaWQ5VnBFU3ZCMXhRd01Iek1OR19XSlZBY1RTZw?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 00:37:00 GMT",
-          "description": "경제 수장들 “미국 통화정책 긴축 가능성…취약차주 지원할 것” 한겨레",
-          "source": "한겨레",
-          "keyword": "미국",
-          "catId": "nc_global"
-        },
-        {
-          "title": "항암치료 글로벌 트렌드는 '면역치료·RAS·ADC'가 핵심 - 의학신문",
-          "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1ZMXo0NEhHdGVHLUhrcFBfaDRtQnhHZ0VSeE5ZcTF4enE5QUJSZm11WHExdTYyTXNqUDlibzktVWptOU1Ibm14dFZBZjc5MjU4UEpwblMzNmNfbFREekhodDctOXlkMEYzaUE?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 02:43:49 GMT",
-          "description": "항암치료 글로벌 트렌드는 '면역치료·RAS·ADC'가 핵심 의학신문",
-          "source": "의학신문",
-          "keyword": "글로벌",
-          "catId": "nc_global"
-        },
-        {
-          "title": "알테오젠 \"ALT-B4 첫 기술수출 상대는 프랑스 제약사 사노피\" - 연합인포맥스",
-          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE05cXlfSWdIRkJoc1ltaTNNUU9RQ0kyQjhFWWJfUlNyT2VrNkhRVnU2bHlVSlM4M01oeENjYjVZZ1lCRlRMUndOUXRhSFF2NGY2OFB3QnNjUXlPOVRUY1RhVUhINVNvWnk4VUhOWDV2Qm8?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 02:17:21 GMT",
-          "description": "알테오젠 \"ALT-B4 첫 기술수출 상대는 프랑스 제약사 사노피\" 연합인포맥스",
+          "title": "오뚜기, 울산 삼남 물류거점 완공…글로벌 대응 강화 - 연합인포맥스",
+          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5aN29OZ2xFU0ZZejM4MUhsUzZnT0lTeXRWZXZTSkZRemRnYWIyWTRKeUNHVkVYSWRrSXhtdHRoaDNwZ21ZRXZJcjVFMUQ3RUpFeS1FQTAwYnotMFc2YncwQ0pObEJIdDIycXFVYlBZb1A?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 04:45:43 GMT",
+          "description": "오뚜기, 울산 삼남 물류거점 완공…글로벌 대응 강화 연합인포맥스",
           "source": "연합인포맥스",
-          "keyword": "수출",
-          "catId": "nc_global"
-        },
-        {
-          "title": "에이루트, 수출 강소기업 선정… '수출 경쟁력 입증, 美 등 해외 시장 공략 ↑' - 머니투데이 - 머니투데이",
-          "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5NVURtRFV0TVNGelVMeU1BQk5HNWtzVmFLcUNNdFJuRmRMUVVpeE54TUwzLUtwYW81QzlibVp6bnNBOFNkZ2dTeDFXaHphYXFBbnVKT3FfMEFxZFJVa25oTVJ3MFNVTlNo0gFuQVVfeXFMTndIRFV6WW9RQmZWdGhXSzA3UFZ0NGlLQ2Rhc1VrTm5FLUxWTkgzZTJmUGVab1hPNXBaY0FJQUtkSkJSM1NET3FMUWN3Qko0YTFRaHdQSVNNRFBfa0Rva2tXVkdvLTRwb3k0WklNWVE?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 01:50:42 GMT",
-          "description": "에이루트, 수출 강소기업 선정… '수출 경쟁력 입증, 美 등 해외 시장 공략 ↑' - 머니투데이 머니투데이",
-          "source": "머니투데이",
-          "keyword": "수출",
-          "catId": "nc_global"
-        },
-        {
-          "title": "“미, ‘AI 모델 접근권’ 동맹국에 대중 수출통제 동참 압박 카드로 활용 가능성…비상시 AI 인프라 체계 필요” - 경향신문",
-          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE4zdnJwMlpjNFBiai1udlcyN3Nyb3pGZGRVNUdPcTY5NnB5cEFPbVd3RDRpZTlLVjZBSXd0dlZDTmtreV83UVVsUjBhTW9GMlhrV2szV09Ta1NYZ9IBX0FVX3lxTE85YmRoczd6RDZJZFJyU3NGUlU4SHhZMVJaSjdUQWR2SFM3RFdqUW9aYlRDeEs0eFU2YlViaFl2OGdyOEpIWUpodDBobDIwdnN2dEZzNkpnODhOUlpzWE5V?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 02:26:00 GMT",
-          "description": "“미, ‘AI 모델 접근권’ 동맹국에 대중 수출통제 동참 압박 카드로 활용 가능성…비상시 AI 인프라 체계 필요” 경향신문",
-          "source": "경향신문",
-          "keyword": "수출",
-          "catId": "nc_global"
-        },
-        {
-          "title": "[K-VIBE] 전태수의 웹 3.0 이야기…앤트로픽 수출통제 사태와 AI 주권 - v.daum.net",
-          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBUSWJWR05WZG5yY1lXUldPbGl3STJNSUpDWF85dHIyV0t3NFBmcUp0Z1dOOFNBQkE3SUJ2Z0Q5QTJwem9xN1ByWFppbHBuMEU?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 02:12:00 GMT",
-          "description": "[K-VIBE] 전태수의 웹 3.0 이야기…앤트로픽 수출통제 사태와 AI 주권 v.daum.net",
-          "source": "v.daum.net",
-          "keyword": "수출",
-          "catId": "nc_global"
-        },
-        {
-          "title": "트럼프 \"이란 합의 안 지키면 폭격...동결자산, 미국 돈 아냐\" - YTN",
-          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFB0elZfbkxsUXJMa192eVVnUlM3Y19WcUFDNWNxRVNlQU8taDQ2Nk5VbjFTQVRiS1ZZbUZkcmx2LWd6YXZ0VFg2VFQ2TVJodHFwMzRTWXM2Vmhtd0JaWVE?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 03:53:00 GMT",
-          "description": "트럼프 \"이란 합의 안 지키면 폭격...동결자산, 미국 돈 아냐\" YTN",
-          "source": "YTN",
-          "keyword": "미국",
-          "catId": "nc_global"
-        },
-        {
-          "title": "\"미·이란 합의, 사실상 미국의 항복\"…세계 질서 '다극화' 가속 - 더구루",
-          "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE4tanQwT3YzcGxpNTZ4eVUzYjJzQzhOc2VXM1l2NW9TSnJoNUZ2UzRjeWJyaWlvdzFtQ2pNRHM3azVwWnczN0taRkhQQWh5M2NqaW8yTTVjM3pjZ21VQko0bmdSQQ?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 02:02:38 GMT",
-          "description": "\"미·이란 합의, 사실상 미국의 항복\"…세계 질서 '다극화' 가속 더구루",
-          "source": "더구루",
-          "keyword": "미국",
-          "catId": "nc_global"
-        },
-        {
-          "title": "가온전선, 미국 태양광 발전단지에 수백억원대 송전 케이블 공급 - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE4xSlBKRGZEaFhYM1FORDRFV3c4MTRsM1c1a0xZUDB4ZXpNc0FTNW5NQlpMbFZUSGxkZ1I3dG1Ga1hnN0xMSF9hZUsyRWVNc3JaajVnVlVkZ2N1VU42SEtTVNIBYEFVX3lxTE4xSlBKRGZEaFhYM1FORDRFV3c4MTRsM1c1a0xZUDB4ZXpNc0FTNW5NQlpMbFZUSGxkZ1I3dG1Ga1hnN0xMSF9hZUsyRWVNc3JaajVnVlVkZ2N1VU42SEtTVA?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 00:03:57 GMT",
-          "description": "가온전선, 미국 태양광 발전단지에 수백억원대 송전 케이블 공급 연합뉴스",
-          "source": "연합뉴스",
-          "keyword": "미국",
-          "catId": "nc_global"
-        },
-        {
-          "title": "전남 특산물·화장품, 스페인서 통했다…전남 기업 45만달러 수출협약 - AI타임스",
-          "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9qWW53TlpMRXkwRzNlT2V5Q01ucld3VnBqX0I2MkI5dWN6R3dGNk1nSkJyUWNqWEsxaWpIeGhiRm1wNHlzdW5FeS1VUGJLNHpDRWx3YjVucEF3UHRwQ3luc3Qwci1ZV0JDTGc?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 03:32:47 GMT",
-          "description": "전남 특산물·화장품, 스페인서 통했다…전남 기업 45만달러 수출협약 AI타임스",
-          "source": "AI타임스",
-          "keyword": "수출",
-          "catId": "nc_global"
-        },
-        {
-          "title": "[자막뉴스] \"미국은 약해지고 이란만 강해졌다...사실상 항복 선언\" - YTN",
-          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBJWGNwaG1CUHdHNE9qeDh1M0NpZFhTVG5rQ2piUjJNLVdQSzJObUxlYlMwVG03VU1ZekdGTDhScDVFbmtGTlh2S1pQZXFkT0M2WUoyMFhsZ0E0N0w1OWc?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 01:53:00 GMT",
-          "description": "[자막뉴스] \"미국은 약해지고 이란만 강해졌다...사실상 항복 선언\" YTN",
-          "source": "YTN",
-          "keyword": "미국",
-          "catId": "nc_global"
-        },
-        {
-          "title": "미토스 수출통제 후폭풍 속 앤트로픽 한국 상륙 - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE55U1FrcWRjLVMxWlFCLXl4NGMtSUVUMzhDMlJ4V05YN0ZORkpjZVZXaXZiS09tdkdsT2M3U3dieURyeU9BX0cteGtaMHkwZmYxczBBbzIwRDhEQTTSAWBBVV95cUxNSGpUeFRfblF0eFpzU2dsZlA2QmVURmtqNWR3UjhTTTV4OFhSSEFacHZFVU1DcHdGVnJ1MUFSOTlIYjgyQ0Q5UzlLWkdJWVVLbndMa3NPTldiS2NRME80VW4?oc=5",
-          "pubDate": "Wed, 17 Jun 2026 15:00:01 GMT",
-          "description": "미토스 수출통제 후폭풍 속 앤트로픽 한국 상륙 연합뉴스",
-          "source": "연합뉴스",
-          "keyword": "수출",
-          "catId": "nc_global"
-        },
-        {
-          "title": "과기부-앤트로픽, 글로벌 AI 안전·보안 협력 MOU - AI타임스",
-          "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5naGp4cTJiM2pudm5PNDQwREY4MjNFaUoxZElJRENIZk5aREpvTTJ2ZXliTm1wQVl6SHNfWGt6MVVPR2UxMlBSLW1qRjd3b09SbmZNRWgyUFZ3SWV1WjlmX0xQakF3anE2b3c?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 02:30:00 GMT",
-          "description": "과기부-앤트로픽, 글로벌 AI 안전·보안 협력 MOU AI타임스",
-          "source": "AI타임스",
           "keyword": "글로벌",
           "catId": "nc_global"
         },
         {
-          "title": "[그래픽] 미국-이란 종전 합의 양해각서(MOU) - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBhSVNfX1NEQUg0d3pSV05YN2VzbFVPcFpfek1PN0ZHcnFqeEVBOWl5clZmUWFUOHdPQUR6LWM3X2V1dXFmQzlKT3BZMWZOV0dhcDFDQnJiODY0bkXSAWBBVV95cUxPb29FeU1ISnBXMmJ1UnpGV29TS2RudDNHSVYyUTVtc3FZOXQ2bjVyVFhjQ2taZDZ5LW1FXzgwU2h5MEpvQTNIZUlpN3l1dkNJNHFGZE9kdmEybEZTZ3J2ZW8?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 00:52:59 GMT",
-          "description": "[그래픽] 미국-이란 종전 합의 양해각서(MOU) 연합뉴스",
+          "title": "美, AI ‘미토스’ 수출 금지 중심에 韓 통신사?… 와이어드 “中 통신산업 진출 20년돼” - 조선비즈 - Chosunbiz",
+          "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQMmU0ek1nOHBQYnBTeXVJWjh6VlBZcUJybDRkeUhscmNzQkZjOVNTaXVTZTRjc0pRdHVLMXA1aThpcEdLRF9lVmNoYjMxUS1jRDFqRjlfOUVscVJkb1dxbHNzMGJfWERqc2lDckdWQlYxeGlMTC1sdDJQbnRhOUpDT2930gGWAUFVX3lxTE1Gcm00TEZsaWdKNmFuQ0Y5ZDk5VElyVkdhMGRCWm1SZkxwV00wUHBBei1HV2dlWk5ZZTBzbGtMbDB5aVlBQ0JFMm9tSWFSR2RLc1ZzX0JtN1RlaUwxdktaUThwemQzeGZ6SnRjbTZYMHpTNzFVb0hDRGFKcFgwdTlYdHVsTGl6SHRtR3REQmxxRGh5Y0loZw?oc=5",
+          "pubDate": "Thu, 18 Jun 2026 22:46:00 GMT",
+          "description": "美, AI ‘미토스’ 수출 금지 중심에 韓 통신사?… 와이어드 “中 통신산업 진출 20년돼” - 조선비즈 Chosunbiz",
+          "source": "Chosunbiz",
+          "keyword": "수출",
+          "catId": "nc_global"
+        },
+        {
+          "title": "K-뷰티 앞세운 인천, 스페인서 56억 원 규모 수출상담 성과 - 연합뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9HYldhaGhqd1d3ZEsybjRXYXoyRHVsZ2MyQzlPRzFqV3cyUHV1ZVR3bS1DdklGdHo1STQ3WVFVbmpLcTNIc3FxRGcwbFVoOWtGZGQ2eHQtalUxQm8?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 01:03:16 GMT",
+          "description": "K-뷰티 앞세운 인천, 스페인서 56억 원 규모 수출상담 성과 연합뉴스",
           "source": "연합뉴스",
+          "keyword": "수출",
+          "catId": "nc_global"
+        },
+        {
+          "title": "\"정신 차려라\"...미국·이스라엘, 살벌해지는 갈등 - YTN",
+          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9JSlBEZEVMVWZOdzBwR0pScGpJWHBuekllNHVYMTN3eWgybHlwcDVJSG1XOEJwQVFKRWVIVEd2NmZJSzAxTk8xSWpSQ1Mzcmt0MGtLSkNhZjRGWDhETWc?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 01:01:00 GMT",
+          "description": "\"정신 차려라\"...미국·이스라엘, 살벌해지는 갈등 YTN",
+          "source": "YTN",
           "keyword": "미국",
           "catId": "nc_global"
         },
         {
-          "title": "코트라, 태국·인니서 아세안 K-스마트시티 수출 로드쇼 - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1VcHVoTGMxN0czU29DM3BidzZacVI1MDROTFIyWEFzc1g3OVJ2NUFiQmlvbHFhNUc3X1c5cmg1T28tVWhnQkZOR0VYenJoT2VJYk10ZXcycWF6VWPSAWBBVV95cUxQRmY0eDJYUHc3akFUY2daNnlNUGdQSHdIYk1EcEk5dXZrVm83MkpXOTJVNFhrUE1tM2d0UGg1clRIRmR4SVplcnNwb3EzX2NhdnR4VUc3eFNsb2lZTEJNQ0I?oc=5",
-          "pubDate": "Thu, 18 Jun 2026 02:00:02 GMT",
-          "description": "코트라, 태국·인니서 아세안 K-스마트시티 수출 로드쇼 연합뉴스",
-          "source": "연합뉴스",
+          "title": "美 정부의 클로드 수출 통제… 저무는 기술 자유무역 시대 - 조선일보",
+          "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPUTB6MnhrSnZkbmV5cVhEZzJmcEN2LWdpWUMxTW9YSWZkM21OS3o3VmVLUnRsX0t6WG1IWGtMQ1lMV1NZRWZlbnNpRFFKNXpOV01yci1sY1MwM1dzSFFqc0lQM1B0SHR3cUlPYWFNR2ZDemhsdDZnSHQyYWgwRUNrcEdaWDVNQQ?oc=5",
+          "pubDate": "Fri, 19 Jun 2026 00:47:00 GMT",
+          "description": "美 정부의 클로드 수출 통제… 저무는 기술 자유무역 시대 조선일보",
+          "source": "조선일보",
           "keyword": "수출",
           "catId": "nc_global"
         }
@@ -781,20 +781,20 @@
           "catId": "1780579574163xztes"
         },
         {
-          "title": "대우건설, '산성역 헤리스톤' 최고 105대1 기록 - 오피니언뉴스",
-          "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE94a0t2MENHa3J6MVlpLXNnbzJDcWJiTU9RLUg5VzhvRHRFUjZUckhOYi0wTzNWRkY4Zm5uYTBPWEtVdmhDaEdDRlBoS205aXJ2a1QtbWxFZ0QyMDdRWWhjZEJ2YXdGUWxXd013alFxNEp2UQ?oc=5",
-          "pubDate": "Wed, 03 Jul 2024 07:00:00 GMT",
-          "description": "대우건설, '산성역 헤리스톤' 최고 105대1 기록 오피니언뉴스",
-          "source": "오피니언뉴스",
-          "keyword": "산성역 헤리스톤",
-          "catId": "1780579574163xztes"
-        },
-        {
           "title": "“매교역푸르지오SK뷰만 웃었다”…경기도 아파트 시장, 대출 규제에 ‘거래절벽’ - 경기신문",
           "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBHNjRkX2lHT1JVQ1Ytbm04QmZzXzFwV2p0THlhckc0UWlPTjJCSnlsZ0RvZmFYaFZqSy1RMTNSNE1hUGhpX2ktZlgxdXBmMTlGZ1lVT0RTX0MzUzBuNzNrUHpB?oc=5",
           "pubDate": "Thu, 24 Jul 2025 07:00:00 GMT",
           "description": "“매교역푸르지오SK뷰만 웃었다”…경기도 아파트 시장, 대출 규제에 ‘거래절벽’ 경기신문",
           "source": "경기신문",
+          "keyword": "산성역 헤리스톤",
+          "catId": "1780579574163xztes"
+        },
+        {
+          "title": "대우건설, '산성역 헤리스톤' 최고 105대1 기록 - 오피니언뉴스",
+          "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE94a0t2MENHa3J6MVlpLXNnbzJDcWJiTU9RLUg5VzhvRHRFUjZUckhOYi0wTzNWRkY4Zm5uYTBPWEtVdmhDaEdDRlBoS205aXJ2a1QtbWxFZ0QyMDdRWWhjZEJ2YXdGUWxXd013alFxNEp2UQ?oc=5",
+          "pubDate": "Wed, 03 Jul 2024 07:00:00 GMT",
+          "description": "대우건설, '산성역 헤리스톤' 최고 105대1 기록 오피니언뉴스",
+          "source": "오피니언뉴스",
           "keyword": "산성역 헤리스톤",
           "catId": "1780579574163xztes"
         },
@@ -817,6 +817,15 @@
           "catId": "1780579574163xztes"
         },
         {
+          "title": "대우건설 성남 ‘산성역 헤리스톤’ 3487가구 공급 - 헤럴드경제",
+          "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1qMHdabmstQmFPT1M3T3hsV3VKbktNMU9wSHBvSkdlamo2UFZrZUVOOWpNN2xoQ2Rqa0ZSVkM2SVMxbWNCWlp3eEh0N2NLb3NLWVBmSA?oc=5",
+          "pubDate": "Mon, 01 Jul 2024 07:00:00 GMT",
+          "description": "대우건설 성남 ‘산성역 헤리스톤’ 3487가구 공급 헤럴드경제",
+          "source": "헤럴드경제",
+          "keyword": "산성역 헤리스톤",
+          "catId": "1780579574163xztes"
+        },
+        {
           "title": "대우건설, '산성역 헤리스톤' 최고 105.18대 1 청약 마감 - 더밸류뉴스",
           "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5DZUZnQ3dhdjIzclBPZDRodjgyTWVHdHRmLVQxbllhcW5ZM2kwOUNDaTY1eHkwbjVDRzVrRDNVUnhwV3hKN0Vuc1lBOGNlTVlocERQeg?oc=5",
           "pubDate": "Wed, 03 Jul 2024 07:00:00 GMT",
@@ -831,6 +840,15 @@
           "pubDate": "Tue, 04 Jun 2024 07:00:00 GMT",
           "description": "[르포] '산성역 헤리스톤' 가보니…분양가 놓고, '청약' VS '구축' 엇갈린 의견 브릿지경제",
           "source": "브릿지경제",
+          "keyword": "산성역 헤리스톤",
+          "catId": "1780579574163xztes"
+        },
+        {
+          "title": "대우건설, 성남 산성역 헤리스톤 청약…최고 105대1 경쟁률 - 뉴스1",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE4yYVlUeDJrLVVSUHJUYnItVlRTN1dwTmdjM3Q2alY1c3pFMk9HVXVYOXo0TGUtd3NSaU5QamxlaGRfYmp1ZEN5U2RKX3QzSE5TY292RzJRdDdwOEk?oc=5",
+          "pubDate": "Wed, 03 Jul 2024 07:00:00 GMT",
+          "description": "대우건설, 성남 산성역 헤리스톤 청약…최고 105대1 경쟁률 뉴스1",
+          "source": "뉴스1",
           "keyword": "산성역 헤리스톤",
           "catId": "1780579574163xztes"
         },
@@ -853,29 +871,11 @@
           "catId": "1780579574163xztes"
         },
         {
-          "title": "대우건설, 성남 산성역 헤리스톤 청약…최고 105대1 경쟁률 - 뉴스1",
-          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE4yYVlUeDJrLVVSUHJUYnItVlRTN1dwTmdjM3Q2alY1c3pFMk9HVXVYOXo0TGUtd3NSaU5QamxlaGRfYmp1ZEN5U2RKX3QzSE5TY292RzJRdDdwOEk?oc=5",
-          "pubDate": "Wed, 03 Jul 2024 07:00:00 GMT",
-          "description": "대우건설, 성남 산성역 헤리스톤 청약…최고 105대1 경쟁률 뉴스1",
-          "source": "뉴스1",
-          "keyword": "산성역 헤리스톤",
-          "catId": "1780579574163xztes"
-        },
-        {
           "title": "대우건설 “‘산성역 헤리스톤’ 정당계약 7일만에 완판” - 매일건설신문",
           "link": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTE11R2hiaVUwbU8tR0dMSW42cUR4YUhhUkVabFFsQTBKVHlBUkRNbWlib2w4Y3U3WkdVOWFPWkI1N2QxdW8?oc=5",
           "pubDate": "Tue, 30 Jul 2024 07:00:00 GMT",
           "description": "대우건설 “‘산성역 헤리스톤’ 정당계약 7일만에 완판” 매일건설신문",
           "source": "매일건설신문",
-          "keyword": "산성역 헤리스톤",
-          "catId": "1780579574163xztes"
-        },
-        {
-          "title": "대우건설, '산성역 헤리스톤' 6월 분양 예정…초대형 브랜드 단지 '눈길' - 한국금융신문",
-          "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9pUDRmQlBWQjkwVzMwSEpwVHQ2Um9nRDNmTUpSajFkSnJzZzZiMGgydzQxOGtaRGdtTXpiWmFkQThjTE1zS2dKbnZEVFZtNS13VFFuYU5JNTlpdFN1cTBfOXNfWEgxOGdSbnl6ck0zZjBaX2p6VHVJY1ViZVk?oc=5",
-          "pubDate": "Tue, 28 May 2024 07:00:00 GMT",
-          "description": "대우건설, '산성역 헤리스톤' 6월 분양 예정…초대형 브랜드 단지 '눈길' 한국금융신문",
-          "source": "한국금융신문",
           "keyword": "산성역 헤리스톤",
           "catId": "1780579574163xztes"
         },
