@@ -1462,13 +1462,15 @@ function scheduleAutoSave() {
   clearTimeout(_autoSaveTimer);
   _autoSaveTimer = setTimeout(silentCloudSave, 15000);
 }
+function countStateData(s) {
+  return (s.todos?.length||0) + (s.prayers?.length||0) + (s.jobs?.length||0) +
+         (s.programs?.length||0) + (s.books?.length||0) + (s.newsCategories?.length||0) +
+         (s.recipes?.length||0) + (s.insights?.length||0) + (s.sites?.length||0) +
+         (s.aiStudy?.length||0);
+}
 async function silentCloudSave() {
   const token = getSyncToken(); if (!token) return;
-  // 실제 데이터가 없는 빈 상태면 클라우드 덮어쓰기 방지
-  const hasData = (state.todos?.length || 0) + (state.prayers?.length || 0) +
-                  (state.jobs?.length || 0) + (state.programs?.length || 0) +
-                  (state.books?.length || 0) + (state.newsCategories?.length || 0) > 0;
-  if (!hasData) return;
+  if (countStateData(state) === 0) return;
   try {
     let sha = '';
     const getRes = await fetch(`https://api.github.com/repos/${SYNC_REPO}/contents/${SYNC_FILE}`,
@@ -1476,16 +1478,10 @@ async function silentCloudSave() {
     if (getRes.ok) {
       const f = await getRes.json();
       sha = f.sha;
-      // 클라우드가 더 많은 데이터를 가지고 있으면 저장 안 함
+      // 클라우드가 더 많은 데이터를 가지고 있으면 저장 안 함 (모든 데이터 타입 포함)
       try {
         const cloudState = JSON.parse(base64ToUtf8(f.content))?.state || {};
-        const cloudData = (cloudState.todos?.length || 0) + (cloudState.prayers?.length || 0) +
-                          (cloudState.jobs?.length || 0) + (cloudState.programs?.length || 0) +
-                          (cloudState.newsCategories?.length || 0);
-        const localData  = (state.todos?.length || 0) + (state.prayers?.length || 0) +
-                           (state.jobs?.length || 0) + (state.programs?.length || 0) +
-                           (state.newsCategories?.length || 0);
-        if (cloudData > localData) return;
+        if (countStateData(cloudState) > countStateData(state)) return;
       } catch {}
     }
     const syncState = { ...state, newsCache: {}, _progDeadlineFilter: null };
@@ -1507,17 +1503,19 @@ async function silentCloudLoad() {
 
     const remoteTime  = new Date(backup.savedAt || 0).getTime();
     const localTime   = new Date(localStorage.getItem('dgh_last_sync') || 0).getTime();
-    const remoteTodos = (loaded.todos?.length || 0) + (loaded.prayers?.length || 0) + (loaded.newsCategories?.length || 0);
-    const localTodos  = (state.todos?.length || 0)  + (state.prayers?.length || 0)  + (state.newsCategories?.length || 0);
+    const remoteCount = countStateData(loaded);
+    const localCount  = countStateData(state);
 
-    // 클라우드가 더 최신이거나, 로컬보다 데이터가 많으면 자동 로드
-    if (remoteTime > localTime || remoteTodos > localTodos) {
+    // 클라우드가 더 최신이거나, 모든 데이터 합산 기준으로 더 많으면 자동 로드
+    if (remoteTime > localTime || remoteCount > localCount) {
       state = { ...state, ...loaded };
       localStorage.setItem('dgh_last_sync', backup.savedAt || new Date().toISOString());
       saveState();
       renderDashboard();
-      if (name === 'todo') { renderTodos(); renderTodoCalendar(); }
-      showToast('☁️ 최신 데이터를 불러왔습니다 (TODO ' + (loaded.todos?.length||0) + '개)');
+      // 현재 열린 탭 재렌더링
+      const activeTab = ALL_TABS.find(t => !document.getElementById('tab-content-'+t)?.classList.contains('hidden'));
+      if (activeTab) switchTab(activeTab);
+      showToast('☁️ 최신 데이터를 불러왔습니다');
     }
   } catch(e) { /* 자동 로드 실패 시 무시 */ }
 }
