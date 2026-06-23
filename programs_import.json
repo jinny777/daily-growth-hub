@@ -1,7 +1,20 @@
 [
   {
-    "id": "fetched_1782097002605",
-    "createdAt": 1782097002605,
+    "id": "fetched_1782181918462",
+    "createdAt": 1782181918462,
+    "name": "2026년 「창업도시 조성 프로젝트」 창업기업 모집 통합공고(투자연계형 창업패키지, 지역창업패키지)",
+    "org": "창업진흥원",
+    "category": "사업화자금",
+    "deadline": "2026-07-07",
+    "amount": "",
+    "status": "검토중",
+    "source": "K-startup",
+    "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=178194",
+    "notes": "K-Startup 공고"
+  },
+  {
+    "id": "fetched_1782181918463",
+    "createdAt": 1782181917462,
     "name": "2026년 민관협력 오픈이노베이션 (모두의 챌린지 기후테크) 창업기업 모집공고",
     "org": "민관협력 오픈이노베이션 지원사업",
     "category": "기타",
@@ -13,8 +26,8 @@
     "notes": "K-Startup 공고"
   },
   {
-    "id": "fetched_1782097002606",
-    "createdAt": 1782097001605,
+    "id": "fetched_1782181918464",
+    "createdAt": 1782181916462,
     "name": "2026년 스타트업·벤처 캠퍼스(SVC) 사전 프로그램 창업기업 2차 모집공고",
     "org": "K-스타트업 센터 사업",
     "category": "기타",
@@ -26,8 +39,8 @@
     "notes": "K-Startup 공고"
   },
   {
-    "id": "fetched_1782097002607",
-    "createdAt": 1782097000605,
+    "id": "fetched_1782181918465",
+    "createdAt": 1782181915462,
     "name": "「2026년 민관협력 오픈이노베이션 지원」모두의 챌린지 바이오 창업기업 모집공고",
     "org": "민관협력 오픈이노베이션 지원사업",
     "category": "기타",
@@ -39,8 +52,8 @@
     "notes": "K-Startup 공고"
   },
   {
-    "id": "fetched_1782097002608",
-    "createdAt": 1782096999605,
+    "id": "fetched_1782181918466",
+    "createdAt": 1782181914462,
     "name": "2026년 공공시장 진출 교육 프로그램(10기) 창업기업 모집공고",
     "org": "창업진흥원",
     "category": "창업교육",
@@ -52,8 +65,8 @@
     "notes": "K-Startup 공고"
   },
   {
-    "id": "fetched_1782097002609",
-    "createdAt": 1782096998605,
+    "id": "fetched_1782181918467",
+    "createdAt": 1782181913462,
     "name": "초격차 스타트업 프로젝트 모두의 챌린지 AX 참여기업 모집공고(추경)",
     "org": "초격차 스타트업 프로젝트",
     "category": "기타",
@@ -65,34 +78,8 @@
     "notes": "K-Startup 공고"
   },
   {
-    "id": "fetched_1782097002610",
-    "createdAt": 1782096997605,
-    "name": "초격차 스타트업 프로젝트(DIPS) Link-up(링크업) - 4대 도메인 AX 프로그램 창업기업 모집공고(2차)",
-    "org": "창업진흥원",
-    "category": "기타",
-    "deadline": "2026-06-22",
-    "amount": "",
-    "status": "검토중",
-    "source": "K-startup",
-    "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=177764",
-    "notes": "K-Startup 공고"
-  },
-  {
-    "id": "fetched_1782097002611",
-    "createdAt": 1782096996605,
-    "name": "「민관협력 오픈이노베이션 지원」 2026년 제2차 방산 스타트업 챌린지(모두의 챌린지–방산) 수요기업 협업 과제 모집공고",
-    "org": "민관협력 오픈이노베이션 지원사업",
-    "category": "기타",
-    "deadline": "2026-06-22",
-    "amount": "",
-    "status": "검토중",
-    "source": "K-startup",
-    "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=177933",
-    "notes": "K-Startup 공고"
-  },
-  {
-    "id": "fetched_1782097002612",
-    "createdAt": 1782096995605,
+    "id": "fetched_1782181918468",
+    "createdAt": 1782181912462,
     "name": "창업지원사업 예비위원단 재모집 (신산업분야)",
     "org": "창업진흥원",
     "category": "기타",
@@ -104,8 +91,8 @@
     "notes": "K-Startup 공고"
   },
   {
-    "id": "fetched_1782097002613",
-    "createdAt": 1782096994605,
+    "id": "fetched_1782181918469",
+    "createdAt": 1782181911462,
     "name": "민간기업 분야 우수인재 특별귀화 추천 신청 모집 공고 (Announcement on the Call for Applications for Recommendation for Special Naturalization of Outstanding Private-Sector Talent)",
     "org": "창업진흥원",
     "category": "기타",
@@ -117,8 +104,8 @@
     "notes": "K-Startup 공고"
   },
   {
-    "id": "fetched_1782097002614",
-    "createdAt": 1782096993605,
+    "id": "fetched_1782181918470",
+    "createdAt": 1782181910462,
     "name": "2026년 팁스(TIPS) 창업기업 지원계획 수정 공고",
     "org": "창업진흥원",
     "category": "기타",
@@ -130,8 +117,8 @@
     "notes": "K-Startup 공고"
   },
   {
-    "id": "fetched_1782097002615",
-    "createdAt": 1782096992605,
+    "id": "fetched_1782181918471",
+    "createdAt": 1782181909462,
     "name": "2026년 중앙부처 및 지자체 창업지원사업 통합공고",
     "org": "창업진흥원",
     "category": "기타",
@@ -143,8 +130,8 @@
     "notes": "K-Startup 공고"
   },
   {
-    "id": "fetched_1782097002616",
-    "createdAt": 1782096991605,
+    "id": "fetched_1782181918472",
+    "createdAt": 1782181908462,
     "name": "[Startup Korea Special Visa] Announcement on Application for Recommendations for the “Startup Korea Special Visa”",
     "org": "창업진흥원",
     "category": "기타",
@@ -156,42 +143,55 @@
     "notes": "K-Startup 공고"
   },
   {
-    "id": "fetched_1782097002617",
-    "createdAt": 1782096990605,
-    "name": "[은평창업지원센터] 도전! 2026 은평스타트업리그 모집",
+    "id": "fetched_1782181918473",
+    "createdAt": 1782181907462,
+    "name": "「민관협력 오픈이노베이션 지원」 2026년 제2차 방산 스타트업 챌린지(모두의 챌린지–방산) 수요기업 협업 과제 모집 수정(2차) 공고",
     "org": "",
     "category": "기타",
-    "deadline": "2026-07-13",
+    "deadline": "2026-06-29",
     "amount": "",
     "status": "검토중",
     "source": "K-startup",
-    "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=178193",
+    "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=178227",
     "notes": "K-Startup 공고"
   },
   {
-    "id": "fetched_1782097002618",
-    "createdAt": 1782096989605,
-    "name": "2026년도 딥테크 특화 창업중심대학 창업기업 모집공고",
+    "id": "fetched_1782181918474",
+    "createdAt": 1782181906462,
+    "name": "중앙대-금천구 창업 협력공간(WB가산타워 7층) 입주자 모집 공고(4차)",
     "org": "",
     "category": "기타",
-    "deadline": "2026-07-08",
+    "deadline": "2026-07-10",
     "amount": "",
     "status": "검토중",
     "source": "K-startup",
-    "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=178198",
+    "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=178199",
     "notes": "K-Startup 공고"
   },
   {
-    "id": "fetched_1782097002619",
-    "createdAt": 1782096988605,
-    "name": "[LH한국토지주택공사] 판교제2테크노밸리 기업지원허브 LH희망상가 입점자 모집공고(공공지원형)",
+    "id": "fetched_1782181918475",
+    "createdAt": 1782181905462,
+    "name": "[동국대BMC창업보육센터] 바이오ㆍ메디컬 패키지지원 프로그램 참여기업 모집(~9/30(금)까지)",
     "org": "",
     "category": "기타",
-    "deadline": "2026-06-30",
+    "deadline": "2026-09-30",
     "amount": "",
     "status": "검토중",
     "source": "K-startup",
-    "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=178164",
+    "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=178200",
+    "notes": "K-Startup 공고"
+  },
+  {
+    "id": "fetched_1782181918476",
+    "createdAt": 1782181904462,
+    "name": "&lt;2026년 유럽 현지 검증 프로그램&gt; 참여 기업 모집 (~26.6.26.11시)",
+    "org": "",
+    "category": "기타",
+    "deadline": "2026-06-26",
+    "amount": "",
+    "status": "검토중",
+    "source": "K-startup",
+    "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=178202",
     "notes": "K-Startup 공고"
   }
 ]
