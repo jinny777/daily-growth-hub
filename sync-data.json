@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-07-06T08:31:13.346Z",
+  "savedAt": "2026-07-06T08:32:05.789Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -55,8 +55,8 @@
         "date": "2026-05-25",
         "text": "핀테크지원센타 멘토링 신청",
         "category": "📌 일반",
-        "done": false,
-        "doneDate": null,
+        "done": true,
+        "doneDate": "2026-07-06",
         "createdAt": 1779632058783
       },
       {
@@ -64,8 +64,8 @@
         "date": "2026-05-22",
         "text": "그룹바이 업데이트",
         "category": "📌 일반",
-        "done": false,
-        "doneDate": null,
+        "done": true,
+        "doneDate": "2026-07-06",
         "createdAt": 1779446750505
       },
       {
@@ -73,8 +73,8 @@
         "date": "2026-05-23",
         "text": "서비스 테스트",
         "category": "📌 일반",
-        "done": false,
-        "doneDate": null,
+        "done": true,
+        "doneDate": "2026-07-06",
         "createdAt": 1779408127963
       },
       {
@@ -172,8 +172,8 @@
         "date": "2026-05-23",
         "text": "기술임치 신청",
         "category": "📌 일반",
-        "done": false,
-        "doneDate": null,
+        "done": true,
+        "doneDate": "2026-07-06",
         "createdAt": 1779174936845
       },
       {
@@ -233,7 +233,7 @@
     ],
     "todoFilter": "pending",
     "todoCalYear": 2026,
-    "todoCalMonth": 4,
+    "todoCalMonth": 5,
     "jobs": [
       {
         "id": "web_1779510793727",
