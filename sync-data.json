@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-07-06T08:33:09.959Z",
+  "savedAt": "2026-07-06T08:34:00.257Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -7253,7 +7253,7 @@
       }
     ],
     "jobFilter": "",
-    "jobChannelFilter": "기타",
+    "jobChannelFilter": "인크루트",
     "programs": [
       {
         "id": "fetched_1779417448490",
