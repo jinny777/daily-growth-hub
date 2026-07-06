@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-07-06T08:32:05.789Z",
+  "savedAt": "2026-07-06T08:32:33.195Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -6545,7 +6545,7 @@
       }
     ],
     "jobFilter": "",
-    "jobChannelFilter": "원티드",
+    "jobChannelFilter": "GroupBy",
     "programs": [
       {
         "id": "fetched_1779417448490",
