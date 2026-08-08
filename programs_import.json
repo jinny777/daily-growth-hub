@@ -1,7 +1,20 @@
 [
   {
-    "id": "fetched_1786068734748",
-    "createdAt": 1786068734748,
+    "id": "fetched_1786150812443",
+    "createdAt": 1786150812443,
+    "name": "2026년 모두의 창업 글로벌 프로그램 주관기관 모집",
+    "org": "창업진흥원",
+    "category": "글로벌",
+    "deadline": "2026-08-24",
+    "amount": "",
+    "status": "검토중",
+    "source": "K-startup",
+    "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=178779",
+    "notes": "K-Startup 공고"
+  },
+  {
+    "id": "fetched_1786150812444",
+    "createdAt": 1786150811443,
     "name": "2026년 창업진흥원 정책 아이디어 공모전",
     "org": "",
     "category": "기타",
@@ -13,8 +26,8 @@
     "notes": "K-Startup 공고"
   },
   {
-    "id": "fetched_1786068734749",
-    "createdAt": 1786068733748,
+    "id": "fetched_1786150812445",
+    "createdAt": 1786150810443,
     "name": "2026년 재창업 활성화 유공포상 공고(재창업기업, 재창업 지원 부문)",
     "org": "재도전성공패키지",
     "category": "기타",
@@ -26,8 +39,8 @@
     "notes": "K-Startup 공고"
   },
   {
-    "id": "fetched_1786068734750",
-    "createdAt": 1786068732748,
+    "id": "fetched_1786150812446",
+    "createdAt": 1786150809443,
     "name": "2026년도 방산 특화 창업중심대학 창업기업 모집 공고",
     "org": "창업진흥원",
     "category": "기타",
@@ -39,8 +52,8 @@
     "notes": "K-Startup 공고"
   },
   {
-    "id": "fetched_1786068734751",
-    "createdAt": 1786068731748,
+    "id": "fetched_1786150812447",
+    "createdAt": 1786150808443,
     "name": "「다시 쓰는 성공기」 제14회 재도전 사례 공모전 참가 모집 공고",
     "org": "재도전성공패키지",
     "category": "기타",
@@ -52,8 +65,8 @@
     "notes": "K-Startup 공고"
   },
   {
-    "id": "fetched_1786068734752",
-    "createdAt": 1786068730748,
+    "id": "fetched_1786150812448",
+    "createdAt": 1786150807443,
     "name": "2026년 프리 팁스 2차 창업기업 모집 공고",
     "org": "민관공동창업자발굴육성사업",
     "category": "기타",
@@ -65,8 +78,8 @@
     "notes": "K-Startup 공고"
   },
   {
-    "id": "fetched_1786068734753",
-    "createdAt": 1786068729748,
+    "id": "fetched_1786150812449",
+    "createdAt": 1786150806443,
     "name": "2026년도 조달청 벤처나라 입점 기관추천(9월~12월) 참가기업 모집공고",
     "org": "창업진흥원",
     "category": "기타",
@@ -78,8 +91,8 @@
     "notes": "K-Startup 공고"
   },
   {
-    "id": "fetched_1786068734754",
-    "createdAt": 1786068728748,
+    "id": "fetched_1786150812450",
+    "createdAt": 1786150805443,
     "name": "창업지원사업 예비위원단 재모집 (신산업분야)",
     "org": "창업진흥원",
     "category": "기타",
@@ -91,8 +104,8 @@
     "notes": "K-Startup 공고"
   },
   {
-    "id": "fetched_1786068734755",
-    "createdAt": 1786068727748,
+    "id": "fetched_1786150812451",
+    "createdAt": 1786150804443,
     "name": "민간기업 분야 우수인재 특별귀화 추천 신청 모집 공고 (Announcement on the Call for Applications for Recommendation for Special Naturalization of Outstanding Private-Sector Talent)",
     "org": "창업진흥원",
     "category": "기타",
@@ -104,8 +117,8 @@
     "notes": "K-Startup 공고"
   },
   {
-    "id": "fetched_1786068734756",
-    "createdAt": 1786068726748,
+    "id": "fetched_1786150812452",
+    "createdAt": 1786150803443,
     "name": "2026년 팁스(TIPS) 창업기업 지원계획 수정 공고",
     "org": "창업진흥원",
     "category": "기타",
@@ -117,8 +130,8 @@
     "notes": "K-Startup 공고"
   },
   {
-    "id": "fetched_1786068734757",
-    "createdAt": 1786068725748,
+    "id": "fetched_1786150812453",
+    "createdAt": 1786150802443,
     "name": "2026년 중앙부처 및 지자체 창업지원사업 통합공고",
     "org": "창업진흥원",
     "category": "기타",
@@ -130,8 +143,8 @@
     "notes": "K-Startup 공고"
   },
   {
-    "id": "fetched_1786068734758",
-    "createdAt": 1786068724748,
+    "id": "fetched_1786150812454",
+    "createdAt": 1786150801443,
     "name": "[Startup Korea Special Visa] Announcement on Application for Recommendations for the “Startup Korea Special Visa”",
     "org": "창업진흥원",
     "category": "기타",
@@ -143,8 +156,21 @@
     "notes": "K-Startup 공고"
   },
   {
-    "id": "fetched_1786068734759",
-    "createdAt": 1786068723748,
+    "id": "fetched_1786150812455",
+    "createdAt": 1786150800443,
+    "name": "2026년 웰컴 투 팁스 1차 참가기업 모집 (충청권)",
+    "org": "",
+    "category": "기타",
+    "deadline": "2026-08-18",
+    "amount": "",
+    "status": "검토중",
+    "source": "K-startup",
+    "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=178845",
+    "notes": "K-Startup 공고"
+  },
+  {
+    "id": "fetched_1786150812456",
+    "createdAt": 1786150799443,
     "name": "2026년 창업진흥원 대전 팁스타운 일본 파트너 초청 상담회 참가기업 모집 공고",
     "org": "",
     "category": "기타",
@@ -156,8 +182,8 @@
     "notes": "K-Startup 공고"
   },
   {
-    "id": "fetched_1786068734760",
-    "createdAt": 1786068722748,
+    "id": "fetched_1786150812457",
+    "createdAt": 1786150798443,
     "name": "2026 SVC Seoul 멤버십(확장형) 모집공고",
     "org": "",
     "category": "기타",
@@ -167,226 +193,5 @@
     "source": "K-startup",
     "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=178802",
     "notes": "K-Startup 공고"
-  },
-  {
-    "id": "fetched_1786068734761",
-    "createdAt": 1786068721748,
-    "name": "2026 SVC Seoul Membership(Global) Recruitment Announcement",
-    "org": "",
-    "category": "기타",
-    "deadline": "2026-12-11",
-    "amount": "",
-    "status": "검토중",
-    "source": "K-startup",
-    "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=178803",
-    "notes": "K-Startup 공고"
-  },
-  {
-    "id": "fetched_1786068734762",
-    "createdAt": 1786068720748,
-    "name": "「민관협력 오픈이노베이션 지원」2026년 &#039;성과기업 후속 지원&#039; 창업기업 모집공고",
-    "org": "",
-    "category": "기타",
-    "deadline": "2026-08-26",
-    "amount": "",
-    "status": "검토중",
-    "source": "K-startup",
-    "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=178821",
-    "notes": "K-Startup 공고"
-  },
-  {
-    "id": "fetched_1786068734763",
-    "createdAt": 1786068719748,
-    "name": "2026년 빅웨이브 글로벌(일본5차)참가기업 모집 공고",
-    "org": "1552",
-    "category": "글로벌",
-    "deadline": "2026-08-21",
-    "amount": "",
-    "status": "검토중",
-    "source": "Bizinfo",
-    "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?hashCode=&rowsSel=&rows=15&cpage=&cat=&schPblancDiv=&schJrsdCodeTy=&schWntyAt=&schAreaDetailCodes=&schEndAt=N&orderGb=&sort=&preKeywords=&condition=&condition1=&keyword=&pblancId=PBLN_000000000125195",
-    "notes": "기업마당 공고"
-  },
-  {
-    "id": "fetched_1786068734764",
-    "createdAt": 1786068718748,
-    "name": "[충북] 2026년 2차 미취업청년 취업연계 일경험 지원사업 참여기업 모집 공고",
-    "org": "1551",
-    "category": "기타",
-    "deadline": "2026-09-04",
-    "amount": "",
-    "status": "검토중",
-    "source": "Bizinfo",
-    "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?hashCode=&rowsSel=&rows=15&cpage=&cat=&schPblancDiv=&schJrsdCodeTy=&schWntyAt=&schAreaDetailCodes=&schEndAt=N&orderGb=&sort=&preKeywords=&condition=&condition1=&keyword=&pblancId=PBLN_000000000125194",
-    "notes": "기업마당 공고"
-  },
-  {
-    "id": "fetched_1786068734765",
-    "createdAt": 1786068717748,
-    "name": "[대전] 2026년 독일 뒤셀도르프 의료기기 전시회(MEDICA) 단체참가 참여기업 모집 공고",
-    "org": "1550",
-    "category": "기타",
-    "deadline": "2026-08-13",
-    "amount": "",
-    "status": "검토중",
-    "source": "Bizinfo",
-    "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?hashCode=&rowsSel=&rows=15&cpage=&cat=&schPblancDiv=&schJrsdCodeTy=&schWntyAt=&schAreaDetailCodes=&schEndAt=N&orderGb=&sort=&preKeywords=&condition=&condition1=&keyword=&pblancId=PBLN_000000000125193",
-    "notes": "기업마당 공고"
-  },
-  {
-    "id": "fetched_1786068734766",
-    "createdAt": 1786068716748,
-    "name": "2026년 중국 섬서성 환경보호산업 시장진출 지원사업 연장 공고",
-    "org": "1549",
-    "category": "기타",
-    "deadline": "2026-08-13",
-    "amount": "",
-    "status": "검토중",
-    "source": "Bizinfo",
-    "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?hashCode=&rowsSel=&rows=15&cpage=&cat=&schPblancDiv=&schJrsdCodeTy=&schWntyAt=&schAreaDetailCodes=&schEndAt=N&orderGb=&sort=&preKeywords=&condition=&condition1=&keyword=&pblancId=PBLN_000000000125192",
-    "notes": "기업마당 공고"
-  },
-  {
-    "id": "fetched_1786068734767",
-    "createdAt": 1786068715748,
-    "name": "[대전] 2026년 3차 해외규격인증 획득지원사업 참여기업 모집 공고",
-    "org": "1548",
-    "category": "글로벌",
-    "deadline": "",
-    "amount": "",
-    "status": "검토중",
-    "source": "Bizinfo",
-    "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?hashCode=&rowsSel=&rows=15&cpage=&cat=&schPblancDiv=&schJrsdCodeTy=&schWntyAt=&schAreaDetailCodes=&schEndAt=N&orderGb=&sort=&preKeywords=&condition=&condition1=&keyword=&pblancId=PBLN_000000000125190",
-    "notes": "기업마당 공고"
-  },
-  {
-    "id": "fetched_1786068734768",
-    "createdAt": 1786068714748,
-    "name": "[경북] 영천시 2026년 해외(태국ㆍ말레이시아) 무역사절단 참가기업 추가모집 공고",
-    "org": "1547",
-    "category": "글로벌",
-    "deadline": "",
-    "amount": "",
-    "status": "검토중",
-    "source": "Bizinfo",
-    "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?hashCode=&rowsSel=&rows=15&cpage=&cat=&schPblancDiv=&schJrsdCodeTy=&schWntyAt=&schAreaDetailCodes=&schEndAt=N&orderGb=&sort=&preKeywords=&condition=&condition1=&keyword=&pblancId=PBLN_000000000125189",
-    "notes": "기업마당 공고"
-  },
-  {
-    "id": "fetched_1786068734769",
-    "createdAt": 1786068713748,
-    "name": "[경북] 김천시 2026년 해외무역사절단 파견 지원 참가기업 모집 공고",
-    "org": "1546",
-    "category": "글로벌",
-    "deadline": "2026-08-24",
-    "amount": "",
-    "status": "검토중",
-    "source": "Bizinfo",
-    "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?hashCode=&rowsSel=&rows=15&cpage=&cat=&schPblancDiv=&schJrsdCodeTy=&schWntyAt=&schAreaDetailCodes=&schEndAt=N&orderGb=&sort=&preKeywords=&condition=&condition1=&keyword=&pblancId=PBLN_000000000125188",
-    "notes": "기업마당 공고"
-  },
-  {
-    "id": "fetched_1786068734770",
-    "createdAt": 1786068712748,
-    "name": "[경북] 김천시ㆍ칠곡군 2026년 6차 시군 특화 맞춤형 일자리 지원사업 참여기업 모집 공고",
-    "org": "1545",
-    "category": "기타",
-    "deadline": "2026-08-14",
-    "amount": "",
-    "status": "검토중",
-    "source": "Bizinfo",
-    "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?hashCode=&rowsSel=&rows=15&cpage=&cat=&schPblancDiv=&schJrsdCodeTy=&schWntyAt=&schAreaDetailCodes=&schEndAt=N&orderGb=&sort=&preKeywords=&condition=&condition1=&keyword=&pblancId=PBLN_000000000125186",
-    "notes": "기업마당 공고"
-  },
-  {
-    "id": "fetched_1786068734771",
-    "createdAt": 1786068711748,
-    "name": "[강원] 2026년 하반기 중소기업 밀집지역 위기대응 체계 구축사업 Stand-up 맞춤지원 모집 공고",
-    "org": "1544",
-    "category": "기타",
-    "deadline": "",
-    "amount": "",
-    "status": "검토중",
-    "source": "Bizinfo",
-    "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?hashCode=&rowsSel=&rows=15&cpage=&cat=&schPblancDiv=&schJrsdCodeTy=&schWntyAt=&schAreaDetailCodes=&schEndAt=N&orderGb=&sort=&preKeywords=&condition=&condition1=&keyword=&pblancId=PBLN_000000000125185",
-    "notes": "기업마당 공고"
-  },
-  {
-    "id": "fetched_1786068734772",
-    "createdAt": 1786068710748,
-    "name": "[전남광주] 2026년 사회연대경제박람회 판매ㆍ체험 부스 참여기업 모집 연장 공고",
-    "org": "1543",
-    "category": "기타",
-    "deadline": "2026-08-11",
-    "amount": "",
-    "status": "검토중",
-    "source": "Bizinfo",
-    "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?hashCode=&rowsSel=&rows=15&cpage=&cat=&schPblancDiv=&schJrsdCodeTy=&schWntyAt=&schAreaDetailCodes=&schEndAt=N&orderGb=&sort=&preKeywords=&condition=&condition1=&keyword=&pblancId=PBLN_000000000125184",
-    "notes": "기업마당 공고"
-  },
-  {
-    "id": "fetched_1786068734773",
-    "createdAt": 1786068709748,
-    "name": "[충남] 예산군 2026년 3차 뿌리산업 고도화를 통한 전후방산업 동반성장 모델 구축 사업 모집 공고(시군구 연고산업 육성사업)",
-    "org": "1542",
-    "category": "기타",
-    "deadline": "2026-08-25",
-    "amount": "",
-    "status": "검토중",
-    "source": "Bizinfo",
-    "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?hashCode=&rowsSel=&rows=15&cpage=&cat=&schPblancDiv=&schJrsdCodeTy=&schWntyAt=&schAreaDetailCodes=&schEndAt=N&orderGb=&sort=&preKeywords=&condition=&condition1=&keyword=&pblancId=PBLN_000000000125183",
-    "notes": "기업마당 공고"
-  },
-  {
-    "id": "fetched_1786068734774",
-    "createdAt": 1786068708748,
-    "name": "[인천] 2026년 공공구매(조달) 상담회 참가기업 모집 공고(지역상품 공공 조달정보 지원사업)",
-    "org": "1541",
-    "category": "기타",
-    "deadline": "2026-09-14",
-    "amount": "",
-    "status": "검토중",
-    "source": "Bizinfo",
-    "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?hashCode=&rowsSel=&rows=15&cpage=&cat=&schPblancDiv=&schJrsdCodeTy=&schWntyAt=&schAreaDetailCodes=&schEndAt=N&orderGb=&sort=&preKeywords=&condition=&condition1=&keyword=&pblancId=PBLN_000000000125182",
-    "notes": "기업마당 공고"
-  },
-  {
-    "id": "fetched_1786068734775",
-    "createdAt": 1786068707748,
-    "name": "2026년 민관협력 오픈이노베이션 지원 성과기업 후속 지원 창업기업 모집 공고",
-    "org": "1540",
-    "category": "기타",
-    "deadline": "2026-08-26",
-    "amount": "",
-    "status": "검토중",
-    "source": "Bizinfo",
-    "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?hashCode=&rowsSel=&rows=15&cpage=&cat=&schPblancDiv=&schJrsdCodeTy=&schWntyAt=&schAreaDetailCodes=&schEndAt=N&orderGb=&sort=&preKeywords=&condition=&condition1=&keyword=&pblancId=PBLN_000000000125181",
-    "notes": "기업마당 공고"
-  },
-  {
-    "id": "fetched_1786068734776",
-    "createdAt": 1786068706748,
-    "name": "2026년 부산국제수산EXPO(BISFE) 연계 상담회 참가업체 모집 공고",
-    "org": "1539",
-    "category": "글로벌",
-    "deadline": "2026-09-18",
-    "amount": "",
-    "status": "검토중",
-    "source": "Bizinfo",
-    "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?hashCode=&rowsSel=&rows=15&cpage=&cat=&schPblancDiv=&schJrsdCodeTy=&schWntyAt=&schAreaDetailCodes=&schEndAt=N&orderGb=&sort=&preKeywords=&condition=&condition1=&keyword=&pblancId=PBLN_000000000125180",
-    "notes": "기업마당 공고"
-  },
-  {
-    "id": "fetched_1786068734777",
-    "createdAt": 1786068705748,
-    "name": "[부산] 2026년 국제게임전시회 지스타 BTBㆍBTC 부산공동관 참가기업 모집 공고",
-    "org": "1538",
-    "category": "글로벌",
-    "deadline": "2026-08-20",
-    "amount": "",
-    "status": "검토중",
-    "source": "Bizinfo",
-    "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?hashCode=&rowsSel=&rows=15&cpage=&cat=&schPblancDiv=&schJrsdCodeTy=&schWntyAt=&schAreaDetailCodes=&schEndAt=N&orderGb=&sort=&preKeywords=&condition=&condition1=&keyword=&pblancId=PBLN_000000000125179",
-    "notes": "기업마당 공고"
   }
 ]
