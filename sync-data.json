@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-07-06T08:34:33.148Z",
+  "savedAt": "2026-08-27T10:47:37.102Z",
   "state": {
     "user": {
       "email": "user@example.com",
@@ -49,6 +49,7 @@
     ],
     "siteFilter": "",
     "recipes": [],
+    "deletedNotebookRecipeIds": [],
     "todos": [
       {
         "id": "17796320587830kfdf",
