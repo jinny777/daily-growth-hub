@@ -147,7 +147,7 @@
       <button id="tab-news"     onclick="switchTab('news')"     class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">📰 뉴스클리핑</button>
       <button id="tab-book"     onclick="switchTab('book')"     class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">📚 독서</button>
       <button id="tab-insight"  onclick="switchTab('insight')"  class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">💡 깨달음</button>
-      <button id="tab-recipe"   onclick="switchTab('recipe')"   class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">🍳 요리모음</button>
+      <button id="tab-recipe"   onclick="switchTab('recipe')"   class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">🍳 요리 레시피</button>
       <button id="tab-aistudy"  onclick="switchTab('aistudy')"  class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">🤖 AI스터디</button>
       <button id="tab-admin"    onclick="switchTab('admin')"    class="px-4 py-3 text-sm text-gray-500 transition whitespace-nowrap">⚙️ 관리자</button>
     </div>
@@ -185,7 +185,7 @@
       <p class="font-bold text-lg">오늘 모든 학습 완료!</p>
       <p id="banner-streak" class="text-sm opacity-90 mt-0.5"></p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
       <!-- ETF CARD -->
       <div id="card-etf" class="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex flex-col gap-3 card-enter transition-all" style="animation-delay:0ms">
         <div class="flex items-center gap-2">
@@ -237,6 +237,18 @@
           class="block text-center text-sm bg-amber-500 text-white rounded-xl py-2.5 font-bold hover:bg-amber-600 active:scale-95 transition">📖 성경 읽으러 가기</a>
         <button id="btn-bible" onclick="completeTask('bible')"
           class="rounded-xl py-2.5 text-sm font-bold bg-amber-500 text-white hover:bg-amber-600 active:scale-95 transition">읽기 완료</button>
+      </div>
+      <!-- RECIPE SHORTCUT CARD -->
+      <div id="card-recipe-shortcut" class="bg-white rounded-2xl border border-orange-100 shadow-sm p-5 flex flex-col gap-3 card-enter transition-all" style="animation-delay:240ms">
+        <div class="flex items-center gap-2">
+          <span class="text-xl">🍳</span>
+          <span class="text-xs font-bold uppercase tracking-widest text-orange-500">요리 레시피</span>
+        </div>
+        <h3 class="font-bold text-gray-900 text-base leading-snug">나만의 레시피 카드 모음</h3>
+        <div class="flex-1 bg-orange-50 rounded-xl p-4 text-sm text-orange-800 leading-relaxed">
+          재료와 조리 순서를 카드로 저장하고, 요리 이름과 태그로 빠르게 찾아보세요.
+        </div>
+        <button onclick="switchTab('recipe')" class="rounded-xl py-2.5 text-sm font-bold bg-orange-500 text-white hover:bg-orange-600 active:scale-95 transition">🍳 요리 레시피 열기</button>
       </div>
     </div>
   </div>
@@ -799,7 +811,7 @@
   <!-- ── TAB: RECIPE ── -->
   <div id="tab-content-recipe" class="max-w-5xl mx-auto px-4 py-8 hidden">
     <div class="bg-white rounded-2xl shadow-sm p-5 mb-5">
-      <h2 class="font-bold text-gray-800 mb-3">🍳 레시피 추가</h2>
+      <div class="flex items-center justify-between gap-3 mb-3 flex-wrap"><h2 class="font-bold text-gray-800">🍳 요리 레시피 카드</h2><a href="https://jinny-onenote-private-web.vercel.app/workspace" target="_blank" rel="noopener" class="text-xs bg-orange-50 text-orange-600 border border-orange-200 px-3 py-1.5 rounded-lg hover:bg-orange-100 transition font-semibold">전자필기장 요리 자료 ↗</a></div>
       <div class="space-y-2">
         <div class="flex gap-2">
           <input id="recipe-url" type="url" placeholder="YouTube URL 붙여넣기 (https://youtu.be/...)"
