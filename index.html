@@ -1839,6 +1839,10 @@ function showScreen(name) {
   );
 }
 const ALL_TABS = ['today','sites','prayer','todo','job','program','news','book','insight','recipe','recipecreate','aistudy','admin'];
+function getRequestedTab() {
+  const requested = new URLSearchParams(window.location.search).get('tab');
+  return requested && ALL_TABS.includes(requested) && requested !== 'sites' && requested !== 'aistudy' ? requested : 'today';
+}
 function switchTab(name) {
   ALL_TABS.forEach(t => {
     const btn = document.getElementById('tab-'+t);
@@ -1866,7 +1870,7 @@ function doLogin() {
   const email = document.getElementById('login-email').value.trim() || 'user@example.com';
   state.user = { email, name: email.split('@')[0] };
   state.startDate = today(); state.dayOffset = state.dayOffset || 0;
-  saveState(); showScreen('dashboard'); renderDashboard();
+  saveState(); showScreen('dashboard'); renderDashboard(); switchTab(getRequestedTab());
 }
 function doRegister() {
   const name = document.getElementById('reg-name').value.trim() || '사용자';
@@ -4750,7 +4754,7 @@ saveState();
 
 updateSyncButtons();
 if (state.user) {
-  showScreen('dashboard'); renderDashboard();
+  showScreen('dashboard'); renderDashboard(); switchTab(getRequestedTab());
   // 토큰이 있으면 클라우드에서 최신 데이터 자동 로드
   silentCloudLoad();
 }
